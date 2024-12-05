@@ -4,7 +4,7 @@
   "readme": "README.md",
   "repository": "https://github.com/Kaida-Amethyst/Moonbit-Math",
   "license": "Apache-2.0",
-  "keywords": [math, numeric],
+  "keywords": ["math", "numeric"],
   "description": "",
   "source": "src"
 }
