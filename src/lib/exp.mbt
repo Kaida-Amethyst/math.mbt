@@ -36,7 +36,8 @@
 //  3. Scale back to obtain exp(x):
 // From step 1, we have
 //    exp(x) = 2^k * exp(r)
-///| # Introduction:
+///| Return exponent of x 
+/// # Introduction:
 ///
 /// Compute exp(x)
 ///

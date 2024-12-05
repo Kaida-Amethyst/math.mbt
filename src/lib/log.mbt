@@ -36,7 +36,8 @@
 // log(+INF) is +INF; log(0) is -INF with signal;
 // log(NaN) is that NaN with no signal.
 //
-///|# Introduction:
+///| Return the logrithm of x
+/// # Introduction:
 ///
 ///  Return the logrithm of x
 ///

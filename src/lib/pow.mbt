@@ -1,4 +1,5 @@
-///|# Introduction:
+///| Compute x pow of y, where x is a double and y is a double.
+/// # Introduction:
 ///
 ///   Compute `x**y` where `x` is a double and `y` is a double.
 ///
