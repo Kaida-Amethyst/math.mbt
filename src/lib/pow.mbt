@@ -1,5 +1,3 @@
-
-
 ///|# Introduction:
 ///
 ///   Compute `x**y` where `x` is a double and `y` is a double.
