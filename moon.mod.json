@@ -2,9 +2,9 @@
   "name": "KaidaAmethyst/math",
   "version": "0.1.0",
   "readme": "README.md",
-  "repository": "",
+  "repository": "https://github.com/Kaida-Amethyst/Moonbit-Math",
   "license": "Apache-2.0",
-  "keywords": [],
+  "keywords": [math, numeric],
   "description": "",
   "source": "src"
 }

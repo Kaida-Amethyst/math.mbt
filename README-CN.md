@@ -80,7 +80,7 @@ fn main() {
 
 ## 许可证
 
-Moonbit 数学库采用 MIT 许可证。有关更多详细信息，请参阅 [LICENSE](LICENSE) 文件。
+Moonbit 数学库采用 Apache-2.0 许可证。有关更多详细信息，请参阅 [LICENSE](LICENSE) 文件。
 
 ---
 

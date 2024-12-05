@@ -82,7 +82,7 @@ We welcome contributions to the Moonbit Math Library! If you find any issues or 
 
 ## License
 
-The Moonbit Math Library is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+The Moonbit Math Library is licensed under the Apache-2.0 License. See the [LICENSE](LICENSE) file for more details.
 
 ---
 
