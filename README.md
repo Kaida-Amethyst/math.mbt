@@ -69,11 +69,9 @@ The Moonbit Math Library strives for high precision in its calculations, aiming 
 Here is a simple example demonstrating how to use the `sin` function from the Moonbit Math Library:
 
 ```moonbit
-import math
-
 fn main() {
     let angle = 1.0 // in radians
-    let result = math.sin(angle)
+    let result = @math.sin(angle)
     println("The sine of \(angle) is \(result)")
 }
 ```
