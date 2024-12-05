@@ -1,6 +1,6 @@
 {
   "is-main": true,
   "import": [
-    "KaidaAmethyst/math/lib"
+    "Kaida-Amethyst/math/lib"
   ]
 }
