@@ -23,3 +23,10 @@ fn copysign(x: Double, y: Double) -> Double {
   let hy : UInt = __hi(y)
   __combine((hx & 0x7fffffff | hy & 0x80000000).to_uint64(), __low(x).to_uint64())
 }
+
+let double_nan : Double = (0x7fffffff_ffffffffUL).reinterpret_as_double()
+// pub let double_max : Double = (0x7fefffffffffffffUL).reinterpret_as_double()
+// pub let pi : Double = 3.14159265358979323846
+// pub let double_pi : Double = pi
+// pub let e : Double = 2.71828182845904523536
+// pub let double_e : Double = e

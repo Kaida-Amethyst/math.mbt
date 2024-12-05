@@ -1,6 +1,11 @@
-///|scalbn(x,n) returns x* 2**n  computed by  exponent  
-///|manipulation rather than by actually performing an 
-///|exponentiation or a multiplication.
+///|
+/// # Introcution:
+///
+/// Compute x * 2 **n without computing 2 ** n.
+///
+/// # Accruacy:
+///
+/// 1 ulp (unit in the last place).
 pub fn scalbn(input: Double, n: Int) -> Double {
   let two54 = 1.80143985094819840000e+16
   let twom54 = 5.55111512312578270212e-17
