@@ -20,40 +20,42 @@ Moonbit 数学库在计算中力求高精度，旨在匹配 glibc 实现的准�
 
 | 函数名        | ULP                  |
 |---------------|----------------------|
-| acos          |                      |
-| acosh         |                      |
-| asin          |                      |
-| asinh         |                      |
-| atan          |                      |
-| atanh         |                      |
-| cbrt          |                      |
-| ceil          |                      |
-| cos           |                      |
-| cosh          |                      |
-| erf           |                      |
-| erfinv        |                      |
-| exp           |                      |
-| exp10         |                      |
-| exp2          |                      |
-| expm1         |                      |
-| floor         |                      |
-| hypot         |                      |
-| isinf         |                      |
-| isnan         |                      |
-| log           |                      |
-| log10         |                      |
-| log1p         |                      |
-| log2          |                      |
-| pow           |                      |
-| rsqrt         |                      |
-| round         |                      |
-| scalbn        |                      |
-| sin           |                      |
-| sinh          |                      |
-| sqrt          |                      |
-| tan           |                      |
-| tanh          |                      |
-| trunc         |                      |
+| acos          |(TODO)                |
+| acosh         |(TODO)                |
+| asin          |(TODO)                |
+| asinh         |(TODO)                |
+| atan          |(TODO)                |
+| atanh         |(TODO)                |
+| cbrt          |(TODO)                |
+| ceil          |(TODO)                |
+| cos           |(TODO)                |
+| cosh          |(TODO)                |
+| erf           |(TODO)                |
+| erfinv        |(TODO)                |
+| exp           |1                     |
+| exp10         |(TODO)                |
+| exp2          |(TODO)                |
+| expm1         |2                     |
+| floor         |(TODO)                |
+| hypot         |(TODO)                |
+| isinf         |(TODO)                |
+| isnan         |(TODO)                |
+| log           |1                     |
+| log10         |1                     |
+| log1p         |1                     |
+| log2          |(TODO)                |
+| pow           |2                     |
+| pown          |(TODO)                |
+| rsqrt         |(TODO)                |
+| rint          |(TODO)                |
+| round         |(TODO)                |
+| scalbn        |2                     |
+| sin           |(TODO)                |
+| sinh          |(TODO)                |
+| sqrt          |(TODO)                |
+| tan           |(TODO)                |
+| tanh          |(TODO)                |
+| trunc         |(TODO)                |
 
 ### 精度说明
 
