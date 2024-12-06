@@ -126,3 +126,8 @@ pub fn log(input: Double) -> Double {
     }
   }
 }
+
+// test "log" {
+//
+// }
+
