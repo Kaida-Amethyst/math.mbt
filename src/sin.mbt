@@ -1,3 +1,4 @@
+///| Compute sine of double-precision floating-point number `x`.
 pub fn sin(x : Double) -> Double {
   if Double::is_inf(x) || Double::is_nan(x) {
     x

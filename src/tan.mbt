@@ -7,6 +7,7 @@ let tan_q = [
   -0x335FC07.97CB461BD8709633FE8F,
 ]
 
+///| Compute the tangent of double-precision floating-point number `x`.
 pub fn tan(x : Double) -> Double {
   if Double::is_inf(x) || Double::is_nan(x) {
     x

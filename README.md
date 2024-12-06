@@ -30,7 +30,7 @@ The Moonbit Math Library strives for high precision in its calculations, aiming 
 | atanh         |(TODO)                    |
 | cbrt          |1                         |
 | ceil          |0                         |
-| cos           |(TODO)                    |
+| cos           |2                         |
 | cosh          |(TODO)                    |
 | cospi         |(TODO)                    |
 | digamma       |7                         |
@@ -67,13 +67,13 @@ The Moonbit Math Library strives for high precision in its calculations, aiming 
 | rint          |(TODO)                    |
 | round         |0                         |
 | scalbn        |2                         |
-| sin           |(TODO)                    |
+| sin           |2                         |
 | sinh          |(TODO)                    |
 | sinpi         |(TODO)                    |
 | sincos        |(TODO)                    |
 | sincospi      |(TODO)                    |
 | sqrt          |1                         |
-| tan           |(TODO)                    |
+| tan           |2                         |
 | tanh          |(TODO)                    |
 | trunc         |0                         |
 | tgamma        |(TODO)                    |

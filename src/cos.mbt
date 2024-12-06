@@ -1,3 +1,4 @@
+///| Compute cosine of double-precision floating-point number `x`
 pub fn cos(x : Double) -> Double {
   if Double::is_inf(x) || Double::is_nan(x) {
     x
