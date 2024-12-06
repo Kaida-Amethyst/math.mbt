@@ -31,33 +31,35 @@ Moonbit 数学库在计算中力求高精度，旨在匹配 glibc 实现的准�
 | cos           |(TODO)                |
 | cosh          |(TODO)                |
 | cospi         |(TODO)                |
-| digamma       |(TODO)                |
+| digamma       |7                     |
 | erf           |(TODO)                |
 | erfc          |(TODO)                |
-| erfcx         |(TODO)                |
-| erfinv        |(TODO)                |
+| erfcx         |2                     |
+| erfinv        |2                     |
 | erfcinv       |(TODO)                |
 | exp           |1                     |
-| exp10         |(TODO)                |
-| exp2          |(TODO)                |
+| exp10         |1                     |
+| exp2          |1                     |
 | expm1         |2                     |
 | floor         |0                     |
 | hypot         |(TODO)                |
-| isinf         |(TODO)                |
-| isnan         |(TODO)                |
-| isfinite      |(TODO)                |
+| isinf         |0                     |
+| isnan         |0                     |
+| isfinite      |0                     |
 | j0            |(TODO)                |
 | j1            |(TODO)                |
 | jn            |(TODO)                |
 | log           |1                     |
 | log10         |1                     |
 | log1p         |1                     |
-| log2          |(TODO)                |
+| log2          |1                     |
 | logb          |(TODO)                |
 | lgamma        |(TODO)                |
 | ldexp         |2                     |
+| normcdf       |(TODO)                |
+| normcdfinv    |(TODO)                |
 | pow           |2                     |
-| pown          |(TODO)                |
+| pown          |0                     |
 | rsqrt         |(TODO)                |
 | rcbrt         |(TODO)                |
 | rint          |(TODO)                |
@@ -68,11 +70,12 @@ Moonbit 数学库在计算中力求高精度，旨在匹配 glibc 实现的准�
 | sinpi         |(TODO)                |
 | sincos        |(TODO)                |
 | sincospi      |(TODO)                |
-| sqrt          |(TODO)                |
+| sqrt          |1                     |
 | tan           |(TODO)                |
 | tanh          |(TODO)                |
-| trunc         |(TODO)                |
+| trunc         |0                     |
 | tgamma        |(TODO)                |
+| zeta          |(TODO)                |
 
 ### 精度说明
 
@@ -89,13 +92,13 @@ Moonbit 数学库在计算中力求高精度，旨在匹配 glibc 实现的准�
 fn main() {
     let angle = 1.0 // 以弧度为单位
     let result = @math.sin(angle)
-    println("The sine of \(angle) is \(result)")
+    println("The sine of \{angle} is \{result}")
 }
 ```
 
 ## 贡献
 
-我们欢迎对 Moonbit 数学库的贡献！如果您发现任何问题或有改进建议，请随时在我们的 [GitHub 仓库](https://github.com/KaidaAmethyst/moonbit-math) 上提交问题或拉取请求。
+我们欢迎对 Moonbit 数学库的贡献！如果您发现任何问题或有改进建议，请随时在我们的 [GitHub 仓库](https://github.com/Kaida-Amethyst/moonbit-math) 上提交问题或拉取请求。
 
 ## 许可证
 

@@ -33,33 +33,35 @@ The Moonbit Math Library strives for high precision in its calculations, aiming 
 | cos           |(TODO)                    |
 | cosh          |(TODO)                    |
 | cospi         |(TODO)                    |
-| digamma       |(TODO)                    |
+| digamma       |7                         |
 | erf           |(TODO)                    |
 | erfc          |(TODO)                    |
-| erfcx         |(TODO)                    |
-| erfinv        |(TODO)                    |
+| erfcx         |2                         |
+| erfinv        |2                         |
 | erfcinv       |(TODO)                    |
 | exp           |1                         |
-| exp10         |(TODO)                    |
-| exp2          |(TODO)                    |
+| exp10         |1                         |
+| exp2          |1                         |
 | expm1         |2                         |
 | floor         |0                         |
 | hypot         |(TODO)                    |
-| isinf         |(TODO)                    |
-| isnan         |(TODO)                    |
-| isfinite      |(TODO)                    |
+| isinf         |0                         |
+| isnan         |0                         |
+| isfinite      |0                         |
 | j0            |(TODO)                    |
 | j1            |(TODO)                    |
 | jn            |(TODO)                    |
 | log           |1                         |
 | log10         |1                         |
 | log1p         |1                         |
-| log2          |(TODO)                    |
+| log2          |1                         |
 | logb          |(TODO)                    |
 | lgamma        |(TODO)                    |
 | ldexp         |2                         |
+| normcdf       |(TODO)                    |
+| normcdfinv    |(TODO)                    |
 | pow           |2                         |
-| pown          |(TODO)                    |
+| pown          |0                         |
 | rsqrt         |(TODO)                    |
 | rcbrt         |(TODO)                    |
 | rint          |(TODO)                    |
@@ -70,11 +72,12 @@ The Moonbit Math Library strives for high precision in its calculations, aiming 
 | sinpi         |(TODO)                    |
 | sincos        |(TODO)                    |
 | sincospi      |(TODO)                    |
-| sqrt          |(TODO)                    |
+| sqrt          |1                         |
 | tan           |(TODO)                    |
 | tanh          |(TODO)                    |
-| trunc         |(TODO)                    |
+| trunc         |0                         |
 | tgamma        |(TODO)                    |
+| zeta          |(TODO)                    |
 
 ### Notes on Precision
 
@@ -91,13 +94,13 @@ Here is a simple example demonstrating how to use the `sin` function from the Mo
 fn main() {
     let angle = 1.0 // in radians
     let result = @math.sin(angle)
-    println("The sine of \(angle) is \(result)")
+    println("The sine of \{angle} is \{result}")
 }
 ```
 
 ## Contributing
 
-We welcome contributions to the Moonbit Math Library! If you find any issues or have suggestions for improvements, please feel free to open an issue or submit a pull request on our [GitHub repository](https://github.com/KaidaAmethyst/moonbit-math).
+We welcome contributions to the Moonbit Math Library! If you find any issues or have suggestions for improvements, please feel free to open an issue or submit a pull request on our [GitHub repository](https://github.com/Kaida-Amethyst/moonbit-math).
 
 ## License
 

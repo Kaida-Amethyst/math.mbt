@@ -117,7 +117,7 @@ fn ulp_error(x: Double, y : Double) -> Int64 {
   abs_i64(diff)
 }
 
-type! UlpTooLarge String derive(Show)
+priv type! UlpTooLarge String derive(Show)
 
 fn assert_ulp(expect: Double, actual : Double, min_ulp: Int) -> Unit!Error {
   let min_ulp: Int64 = min_ulp.to_int64()
@@ -148,3 +148,8 @@ let cos_ = [
   -0x0.000000000C7D24D03C8, 0x0.00000008F74EBDA72B71, -0x0.0000049F93DFAB12FDC6,
   0x0.0001A01A019C844F3E07, -0x0.005B05B05B053E453C34, 0x0.0AAAAAAAAAAAA55A47E1,
 ]
+
+// NOTE: This function is not accurate for large x
+fn fma(x: Double, y : Double, z: Double) -> Double {
+  x * y + z
+}
