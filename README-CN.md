@@ -20,42 +20,59 @@ Moonbit 数学库在计算中力求高精度，旨在匹配 glibc 实现的准�
 
 | 函数名        | ULP                  |
 |---------------|----------------------|
-| acos          |(TODO)                |
-| acosh         |(TODO)                |
+| acos          |1                     |
+| acosh         |1                     |
 | asin          |(TODO)                |
 | asinh         |(TODO)                |
 | atan          |(TODO)                |
 | atanh         |(TODO)                |
-| cbrt          |(TODO)                |
-| ceil          |(TODO)                |
+| cbrt          |1                     |
+| ceil          |0                     |
 | cos           |(TODO)                |
 | cosh          |(TODO)                |
+| cospi         |(TODO)                |
+| digamma       |(TODO)                |
 | erf           |(TODO)                |
+| erfc          |(TODO)                |
+| erfcx         |(TODO)                |
 | erfinv        |(TODO)                |
+| erfcinv       |(TODO)                |
 | exp           |1                     |
 | exp10         |(TODO)                |
 | exp2          |(TODO)                |
 | expm1         |2                     |
-| floor         |(TODO)                |
+| floor         |0                     |
 | hypot         |(TODO)                |
 | isinf         |(TODO)                |
 | isnan         |(TODO)                |
+| isfinite      |(TODO)                |
+| j0            |(TODO)                |
+| j1            |(TODO)                |
+| jn            |(TODO)                |
 | log           |1                     |
 | log10         |1                     |
 | log1p         |1                     |
 | log2          |(TODO)                |
+| logb          |(TODO)                |
+| lgamma        |(TODO)                |
+| ldexp         |2                     |
 | pow           |2                     |
 | pown          |(TODO)                |
 | rsqrt         |(TODO)                |
+| rcbrt         |(TODO)                |
 | rint          |(TODO)                |
-| round         |(TODO)                |
+| round         |0                     |
 | scalbn        |2                     |
 | sin           |(TODO)                |
 | sinh          |(TODO)                |
+| sinpi         |(TODO)                |
+| sincos        |(TODO)                |
+| sincospi      |(TODO)                |
 | sqrt          |(TODO)                |
 | tan           |(TODO)                |
 | tanh          |(TODO)                |
 | trunc         |(TODO)                |
+| tgamma        |(TODO)                |
 
 ### 精度说明
 
