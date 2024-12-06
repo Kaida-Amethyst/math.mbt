@@ -41,6 +41,12 @@
 ///
 ///  Return the logrithm of x
 ///
+/// # Special cases:
+///
+/// 1. log(x) is NaN with signal if x < 0 (including -INF).
+/// 2. log(+INF) is +INF.
+/// 3. log(0) is -INF with signal.
+///
 /// # Accuracy:
 /// 
 /// according to an error analysis, the error is always less than
@@ -127,7 +133,11 @@ pub fn log(input: Double) -> Double {
   }
 }
 
-// test "log" {
-//
-// }
+test "log" {
+  fn assert_log_ulp(input: Double, expect_result: Double) -> Unit!Error {
+    assert_ulp!(log(input), expect_result, log_max_ulp)
+  }
+  assert_log_ulp!(1.0, 0.0)
+  assert_log_ulp!(2.0, 0.6931471805599453)
+}
 

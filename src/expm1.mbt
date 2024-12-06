@@ -167,21 +167,17 @@ pub fn expm1(x: Double) -> Double {
     }
     if k <= -2 || k > 56 {
       let mut y: Double = one - (e - x)
-      // __hi(y) += k << 20
       y = __combineW(__hi(y) + (k << 20).reinterpret_as_uint(), __low(y))
       return y - one
     }
     let mut t: Double = one
     if k < 20 {
-      // __hi(t) = 0x3ff00000 - (0x200000 >> k)
       t = __combineW((0x3ff00000 - (0x200000 >> k)).reinterpret_as_uint(), 0)
       let mut y: Double = t - (e - x)
-      // __hi(y) += k << 20
       y = __combineW(__hi(y) + (k << 20).reinterpret_as_uint(), __low(y))
     } else {
       t = __combineW(((0x3ff - k) << 20).reinterpret_as_uint(), 0)
       let mut y: Double = x - (e + t) + one
-      // __hi(y) += k << 20
       y = __combineW(__hi(y) + (k << 20).reinterpret_as_uint(), __low(y))
     }
   }

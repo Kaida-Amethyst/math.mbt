@@ -1,3 +1,4 @@
+// Constants
 let int_max : Int = 0x7fffffff
 let int64_max : Int64 = 0x7fff_ffff_ffff_ffffL
 let double_nan : Double = (0x7fffffff_ffffffffUL).reinterpret_as_double()
@@ -7,6 +8,7 @@ let double_nan : Double = (0x7fffffff_ffffffffUL).reinterpret_as_double()
 // pub let e : Double = 2.71828182845904523536
 // pub let double_e : Double = e
 
+// Computation Utilities
 fn __hi(x: Double) -> UInt {
   (x.reinterpret_as_uint64() >> 32).to_uint()
 }
@@ -41,6 +43,7 @@ fn abs_i64(x: Int64) -> Int64 {
   }
 }
 
+// Ulp Error
 // 1. if x is Nan, y is Nan, return 0
 // 2. if x is +inf, y is +inf, return 0
 // 3. if x is -inf, y is -inf, return 0
@@ -110,3 +113,6 @@ fn assert_ulp(expect: Double, actual : Double, min_ulp: Int) -> Unit!Error {
     raise UlpTooLarge(msg)
   }
 }
+
+// max ulp of functions
+let log_max_ulp: Int = 1
