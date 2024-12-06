@@ -43,6 +43,20 @@ fn abs_i64(x: Int64) -> Int64 {
   }
 }
 
+fn max_element(elements: Array[Double]) -> (Double, Int) {
+  let mut max_val = elements[0]
+  let mut idx = 0
+
+  for i, v in elements {
+    if v > max_val {
+      max_val = v
+      idx = i
+    }
+  }
+
+  (max_val, idx)
+}
+
 // Ulp Error
 // 1. if x is Nan, y is Nan, return 0
 // 2. if x is +inf, y is +inf, return 0
