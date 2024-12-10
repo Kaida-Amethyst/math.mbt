@@ -2,11 +2,15 @@
 let int_max : Int = 0x7fffffff
 let int64_max : Int64 = 0x7fff_ffff_ffff_ffffL
 let double_nan : Double = (0x7fffffff_ffffffffUL).reinterpret_as_double()
+let double_pos_inf : Double = (0x7ff00000_00000000UL).reinterpret_as_double()
 // pub let double_max : Double = (0x7fefffffffffffffUL).reinterpret_as_double()
 // pub let pi : Double = 3.14159265358979323846
 // pub let double_pi : Double = pi
 // pub let e : Double = 2.71828182845904523536
 // pub let double_e : Double = e
+
+// epsilon
+let double_epsilon : Double = 0x0.0000000000001P-1022
 
 // Computation Utilities
 fn __hi(x: Double) -> UInt {
@@ -117,14 +121,12 @@ fn ulp_error(x: Double, y : Double) -> Int64 {
   abs_i64(diff)
 }
 
-priv type! UlpTooLarge String derive(Show)
-
 fn assert_ulp(expect: Double, actual : Double, min_ulp: Int) -> Unit!Error {
   let min_ulp: Int64 = min_ulp.to_int64()
   let ulp_err = ulp_error(expect, actual)
   if ulp_err > min_ulp {
-    let msg = "expect: \{expect}, actual: \{actual}, ulp error: \{ulp_err}, min ulp: \{min_ulp}"
-    raise UlpTooLarge(msg)
+    println("expect: \{expect}, actual: \{actual}, ulp error: \{ulp_err}, min ulp: \{min_ulp}")
+    assert_eq!(1, 0)
   }
 }
 

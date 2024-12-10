@@ -100,3 +100,36 @@
 // 	    return t1*w;
 // 	} else return w;
 // }
+
+///| Returns the square root of the sum of the squares of its arguments, hypot(x, y) = sqrt(x*x, y*y)
+/// # Introduction
+///
+/// hypot return the square root of the sum of the squares of its arguments, the formula is:
+///
+/// $$hypot(x) = \sqrt{x^2 + y^2}$$
+///
+/// # Special cases
+///
+/// 1. If x or y is NaN, return NaN
+/// 2. If x or y is inf, return +inf
+///
+/// # Accuracy
+///
+/// 2 ulps (units in the last place)
+pub fn hypot(x: Double, y: Double) -> Double {
+  let x = fabs(x)
+  let y = fabs(y)
+
+  if isinf(x) || isinf(y) {
+    return double_pos_inf
+  }
+
+  let (x, y) = if y > x { (y, x) } else { (x, y) }
+
+  if x * double_epsilon >= y {
+    return x
+  }
+
+  let rat = y / x
+  x * sqrt(1.0 + rat * rat)
+}
