@@ -25,14 +25,14 @@ The Moonbit Math Library strives for high precision in its calculations, aiming 
 | acos          |1                         |
 | acosh         |1                         |
 | asin          |(TODO)                    |
-| asinh         |(TODO)                    |
+| asinh         |1                         |
 | atan          |(TODO)                    |
-| atanh         |(TODO)                    |
+| atanh         |1                         |
 | cbrt          |1                         |
 | ceil          |0                         |
 | cos           |2                         |
-| cosh          |(TODO)                    |
-| cospi         |(TODO)                    |
+| cosh          |1                         |
+| cospi         |1                         |
 | digamma       |7                         |
 | erf           |(TODO)                    |
 | erfc          |(TODO)                    |
@@ -44,7 +44,7 @@ The Moonbit Math Library strives for high precision in its calculations, aiming 
 | exp2          |1                         |
 | expm1         |2                         |
 | floor         |0                         |
-| hypot         |(TODO)                    |
+| hypot         |2                         |
 | isinf         |0                         |
 | isnan         |0                         |
 | isfinite      |0                         |
@@ -68,15 +68,20 @@ The Moonbit Math Library strives for high precision in its calculations, aiming 
 | round         |0                         |
 | scalbn        |2                         |
 | sin           |2                         |
-| sinh          |(TODO)                    |
-| sinpi         |(TODO)                    |
+| sinc          |(TODO)                    |
+| sinh          |1                         |
+| sinhc         |(TODO)                    |
+| sinpi         |1                         |
 | sincos        |(TODO)                    |
 | sincospi      |(TODO)                    |
 | sqrt          |1                         |
 | tan           |2                         |
-| tanh          |(TODO)                    |
+| tanh          |1                         |
 | trunc         |0                         |
 | tgamma        |(TODO)                    |
+| y0            |(TODO)                    |
+| y1            |(TODO)                    |
+| yn            |(TODO)                    |
 | zeta          |(TODO)                    |
 
 ### Notes on Precision
@@ -89,6 +94,19 @@ The Moonbit Math Library strives for high precision in its calculations, aiming 
 ## Usage Example
 
 Here is a simple example demonstrating how to use the `sin` function from the Moonbit Math Library:
+
+First add dependencies in `moon.pkg.json`:
+
+```json
+{
+    "import" :[
+        ...
+        "Kaida-Amethyst/math"
+    ]
+}
+```
+
+Then you can use math functions, for example:
 
 ```moonbit
 fn main() {

@@ -23,14 +23,14 @@ Moonbit 数学库在计算中力求高精度，旨在匹配 glibc 实现的准�
 | acos          |1                     |
 | acosh         |1                     |
 | asin          |(TODO)                |
-| asinh         |(TODO)                |
+| asinh         |1                     |
 | atan          |(TODO)                |
-| atanh         |(TODO)                |
+| atanh         |1                     |
 | cbrt          |1                     |
 | ceil          |0                     |
-| cos           |(TODO)                |
-| cosh          |(TODO)                |
-| cospi         |(TODO)                |
+| cos           |2                     |
+| cosh          |1                     |
+| cospi         |1                     |
 | digamma       |7                     |
 | erf           |(TODO)                |
 | erfc          |(TODO)                |
@@ -42,7 +42,7 @@ Moonbit 数学库在计算中力求高精度，旨在匹配 glibc 实现的准�
 | exp2          |1                     |
 | expm1         |2                     |
 | floor         |0                     |
-| hypot         |(TODO)                |
+| hypot         |2                     |
 | isinf         |0                     |
 | isnan         |0                     |
 | isfinite      |0                     |
@@ -65,16 +65,21 @@ Moonbit 数学库在计算中力求高精度，旨在匹配 glibc 实现的准�
 | rint          |(TODO)                |
 | round         |0                     |
 | scalbn        |2                     |
-| sin           |(TODO)                |
-| sinh          |(TODO)                |
-| sinpi         |(TODO)                |
+| sin           |2                     |
+| sinc          |(TODO)                |
+| sinh          |1                     |
+| sinhc         |(TODO)                |
+| sinpi         |1                     |
 | sincos        |(TODO)                |
 | sincospi      |(TODO)                |
 | sqrt          |1                     |
-| tan           |(TODO)                |
-| tanh          |(TODO)                |
+| tan           |2                     |
+| tanh          |1                     |
 | trunc         |0                     |
 | tgamma        |(TODO)                |
+| y0            |(TODO)                |
+| y1            |(TODO)                |
+| yn            |(TODO)                |
 | zeta          |(TODO)                |
 
 ### 精度说明
@@ -87,6 +92,19 @@ Moonbit 数学库在计算中力求高精度，旨在匹配 glibc 实现的准�
 ## 使用示例
 
 以下是一个简单的示例，演示如何使用 Moonbit 数学库中的 `sin` 函数：
+
+首先你需要在`moon.pkg.json`中添加依赖：
+
+```json
+{
+    "import" :[
+        ...
+        "Kaida-Amethyst/math"
+    ]
+}
+```
+
+然后就可以在代码中使用函数：
 
 ```moonbit
 fn main() {
