@@ -141,7 +141,7 @@ let pi4b = 0x0.000000A2216800000988
 
 let pi4c = 0x0.000000000000C234BE07
 
-pub const PI = 0x3.243F6A8885A308CA8A54
+// pub const PI = 0x3.243F6A8885A308CA8A54
 
 let pi4 : Double = 4.0 / PI
 let sin_ = [
