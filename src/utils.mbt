@@ -1,8 +1,9 @@
 // Constants
-let int_max : Int = 0x7fffffff
+// let int_max : Int = 0x7fffffff
 let int64_max : Int64 = 0x7fff_ffff_ffff_ffffL
 let double_nan : Double = (0x7fffffff_ffffffffUL).reinterpret_as_double()
 let double_pos_inf : Double = (0x7ff00000_00000000UL).reinterpret_as_double()
+let double_neg_inf : Double = (0xfff00000_00000000UL).reinterpret_as_double()
 // pub let double_max : Double = (0x7fefffffffffffffUL).reinterpret_as_double()
 // pub let pi : Double = 3.14159265358979323846
 // pub let double_pi : Double = pi
@@ -11,6 +12,7 @@ let double_pos_inf : Double = (0x7ff00000_00000000UL).reinterpret_as_double()
 
 // epsilon
 let double_epsilon : Double = 0x0.0000000000001P-1022
+// const DoubleEpsilon : Double = 0x0.0000000000001P-1022
 
 // Computation Utilities
 fn __hi(x: Double) -> UInt {

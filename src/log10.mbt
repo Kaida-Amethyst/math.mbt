@@ -63,3 +63,41 @@ pub fn log10(x: Double) -> Double {
   let z = y * log10_2lo + ivln10 * log(x)
   z + y * log10_2hi
 }
+
+
+test "log" {
+  fn assert_log10_ulp(input: Double, expect_result: Double) -> Unit!Error {
+    assert_ulp!(expect_result, log10(input), log_max_ulp)
+  }
+
+  assert_log10_ulp!(1, 0)
+  assert_log10_ulp!(2, 0.3010299956639812)
+  assert_log10_ulp!(3, 0.47712125471966244)
+  assert_log10_ulp!(4, 0.6020599913279624)
+  assert_log10_ulp!(5, 0.6989700043360189)
+  assert_log10_ulp!(6, 0.7781512503836436)
+  assert_log10_ulp!(7, 0.8450980400142568)
+  assert_log10_ulp!(8, 0.9030899869919435)
+  assert_log10_ulp!(9, 0.9542425094393249)
+  assert_log10_ulp!(10, 1)
+  assert_log10_ulp!(100, 2)
+  assert_log10_ulp!(1000, 3)
+  assert_log10_ulp!(10000, 4)
+  assert_log10_ulp!(2.5, 0.3979400086720376)
+  assert_log10_ulp!(3.4, 0.5314789170422551)
+  assert_log10_ulp!(5.3, 0.724275869600789)
+  assert_log10_ulp!(6.2, 0.7923916894982539)
+  assert_log10_ulp!(7.1, 0.8512583487190752)
+  assert_log10_ulp!(8.9, 0.9493900066449128)
+  assert_log10_ulp!(9.8, 0.9912260756924949)
+  assert_log10_ulp!(10.7, 1.0293837776852097)
+  assert_log10_ulp!(101.6, 2.0068937079479006)
+  assert_log10_ulp!(1.542, 0.1880843737149382)
+  assert_log10_ulp!(2.846, 0.45423489574826553)
+  assert_log10_ulp!(7.881, 0.8965813275057327)
+  assert_log10_ulp!(3.772, 0.5765716840652907)
+  assert_log10_ulp!(-1, double_nan)
+  assert_log10_ulp!(0, double_neg_inf)
+  assert_log10_ulp!(-0, double_neg_inf)
+  assert_log10_ulp!(double_nan, double_nan)
+}

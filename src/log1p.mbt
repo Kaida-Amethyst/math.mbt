@@ -190,3 +190,39 @@ pub fn log1p(x: Double) -> Double {
     return k.to_double() * ln2_hi - ((hfsq - (s * (hfsq + r) + (k.to_double() * ln2_lo + c))) - f)
   }
 }
+
+test "log10" {
+  fn assert_log1p_ulp(input: Double, expect_result: Double) -> Unit!Error {
+    assert_ulp!(expect_result, log1p(input), log_max_ulp)
+  }
+  assert_log1p_ulp!(1, 0.6931471805599453)
+  assert_log1p_ulp!(2, 1.0986122886681096)
+  assert_log1p_ulp!(3, 1.3862943611198906)
+  assert_log1p_ulp!(4, 1.6094379124341003)
+  assert_log1p_ulp!(5, 1.791759469228055)
+  assert_log1p_ulp!(6, 1.9459101490553132)
+  assert_log1p_ulp!(7, 2.0794415416798357)
+  assert_log1p_ulp!(8, 2.1972245773362196)
+  assert_log1p_ulp!(9, 2.302585092994046)
+  assert_log1p_ulp!(10, 2.3978952727983707)
+  assert_log1p_ulp!(100, 4.61512051684126)
+  assert_log1p_ulp!(1000, 6.90875477931522)
+  assert_log1p_ulp!(10000, 9.210440366976517)
+  assert_log1p_ulp!(2.5, 1.252762968495368)
+  assert_log1p_ulp!(3.4, 1.4816045409242156)
+  assert_log1p_ulp!(5.3, 1.840549633397487)
+  assert_log1p_ulp!(6.2, 1.9740810260220096)
+  assert_log1p_ulp!(7.1, 2.0918640616783932)
+  assert_log1p_ulp!(8.9, 2.2925347571405443)
+  assert_log1p_ulp!(9.8, 2.379546134130174)
+  assert_log1p_ulp!(10.7, 2.4595888418037104)
+  assert_log1p_ulp!(101.6, 4.630837932736669)
+  assert_log1p_ulp!(1.542, 0.9329511727672624)
+  assert_log1p_ulp!(2.846, 1.347033647166588)
+  assert_log1p_ulp!(7.881, 2.1839141632763672)
+  assert_log1p_ulp!(3.772, 1.5627655042356696)
+  // assert_log1p_ulp!(-1, double_nan)
+  assert_log1p_ulp!(0, 0)
+  assert_log1p_ulp!(-0, -0)
+  assert_log1p_ulp!(double_nan, double_nan)
+}
