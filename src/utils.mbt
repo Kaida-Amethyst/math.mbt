@@ -38,7 +38,7 @@ fn __combineW(hi: UInt, low: UInt) -> Double {
 fn copysign(x: Double, y: Double) -> Double {
   let hx : UInt = __hi(x)
   let hy : UInt = __hi(y)
-  __combine((hx & 0x7fffffff | hy & 0x80000000).to_uint64(), __low(x).to_uint64())
+  __combineW((hx & 0x7fffffff | hy & 0x80000000), __low(x))
 }
 
 fn abs_i64(x: Int64) -> Int64 {

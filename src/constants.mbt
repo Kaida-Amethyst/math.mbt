@@ -4,28 +4,28 @@ pub const MANTISSA_DIGITS: UInt = 53U;
 pub const DIGITS: UInt = 15U;
 
 ///| Epsilon is the minimum value that make double `1.0 + epsilon != 1.0`
-pub const EPSILON : Double = 2.2204460492503131e-16;
+pub const DOUBLE_EPSILON : Double = 2.2204460492503131e-16;
 
 ///| The smallest positive value that can be represented by a double.
-pub const MIN: Double = -1.7976931348623157E+308
+pub const DOUBLE_MIN: Double = -1.7976931348623157E+308
 
 ///| The smallest positive value that can be represented by a double.
-pub const MIN_POSITIVE: Double = 2.2250738585072014E-308
+pub const DOUBLE_MIN_POSITIVE: Double = 2.2250738585072014E-308
 
 ///| The largest positive value that can be represented by a double.
-pub const MAX: Double = 1.7976931348623157E+308
+pub const DOUBLE_MAX: Double = 1.7976931348623157E+308
 
 ///| The minimum exponent a normalized double can have (IEEE 754).
-pub const MIN_EXP: Int = -1021;
+pub const DOUBLE_MIN_EXP: Int = -1021;
 
 ///| The maximum exponent a normalized double can have (IEEE 754).
-pub const MAX_EXP: Int = 1024;
+pub const DOUBLE_MAX_EXP: Int = 1024;
 
 ///| The minimum exponent a normalized double can have (base 10).
-pub const MIN_10_EXP: Int = -307;
+pub const DOUBLE_MIN_10_EXP: Int = -307;
 
 ///| The maximum exponent a normalized double can have (base 10).
-pub const MAX_10_EXP: Int = 308;
+pub const DOUBLE_MAX_10_EXP: Int = 308;
 
 ///| Nature Exponent
 pub const E: Double = 2.7182818284590452354;
