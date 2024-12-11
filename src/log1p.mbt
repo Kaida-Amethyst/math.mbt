@@ -191,6 +191,11 @@ pub fn log1p(x: Double) -> Double {
   }
 }
 
+///| `ln_1p` is an alias for `log1p`
+pub fn ln_1p(x: Double) -> Double {
+  log1p(x)
+}
+
 test "log10" {
   fn assert_log1p_ulp(input: Double, expect_result: Double) -> Unit!Error {
     assert_ulp!(expect_result, log1p(input), log_max_ulp)

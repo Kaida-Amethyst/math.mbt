@@ -23,3 +23,8 @@ pub fn pown(x: Double, n : Int) -> Double {
   }
   s
 }
+
+///| powi computes `x ** i` where x is a Double and i is an Int. It is an alias for `pown`.
+pub fn powi(x: Double, i: Int) -> Double {
+  pown(x, i)
+}

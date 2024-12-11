@@ -1,5 +1,8 @@
 
 ///| erfinv(x) computes the inverse error function of x.
+///
+/// Paper: Approximating the erfinv function, Mike Giles, Oxford:
+/// https://people.maths.ox.ac.uk/gilesm/codes/erfinv/gems.pdf
 pub fn erfinv(x: Double) -> Double {
   let (sign, x) = if x >= 0.0 {
     (1.0, x)
