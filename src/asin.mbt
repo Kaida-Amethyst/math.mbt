@@ -99,3 +99,19 @@
 // 	}    
 // 	if(hx>0) return t; else return -t;    
 // }
+
+///| Compute arcsine of `x`
+pub fn asin(x : Double) -> Double {
+  if isinf(x) || isnan(x) || x == 0.0 {
+    x
+  } else {
+    let x_ = x.abs()
+    if x_ > 1.0 {
+      double_nan
+    } else {
+      let temp = (1.0 - x_ * x_).sqrt()
+      (if x > 0.7 { PI / 2.0 - satan(temp / x_) } else { satan(x_ / temp) }) *
+      x.signum()
+    }
+  }
+}

@@ -118,3 +118,55 @@
 // 	    return (hx<0)? -z:z;
 // 	}
 // }
+
+fn xatan(x : Double) -> Double {
+  let z = x * x
+  x *
+  (
+    z *
+    (
+      (((atan_p[0] * z + atan_p[1]) * z + atan_p[2]) * z + atan_p[3]) * z +
+      atan_p[4]
+    ) /
+    (
+      ((((z + atan_q[0]) * z + atan_q[1]) * z + atan_q[2]) * z + atan_q[3]) * z +
+      atan_q[4]
+    )
+  ) +
+  x
+}
+
+let atan_p = [
+  -8.750608600031904122785e-01, -1.615753718733365076637e+01, -7.500855792314704667340e+01,
+  -1.228866684490136173410e+02, -6.485021904942025371773e+01,
+]
+
+let atan_q = [
+  2.485846490142306297962e+01, 1.650270098316988542046e+02, 4.328810604912902668951e+02,
+  4.853903996359136964868e+02, 1.945506571482613964425e+02,
+]
+
+let morebits = 6.123233995736765886130e-17
+
+let tan3pio8 = 2.41421356237309504880
+
+fn satan(x : Double) -> Double {
+  if x <= 0.66 {
+    xatan(x)
+  } else if x > tan3pio8 {
+    PI / 2.0 - xatan(1.0 / x) + morebits
+  } else {
+    PI / 4.0 + xatan((x - 1.0) / (x + 1.0)) + 0.5 * morebits
+  }
+}
+
+///| Compute arctangent of `x`
+pub fn atan(x : Double) -> Double {
+  if isinf(x) || isnan(x) || x == 0.0 {
+    x
+  } else if x > 0.0 {
+    satan(x)
+  } else {
+    -satan(-x)
+  }
+}

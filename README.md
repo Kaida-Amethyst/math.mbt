@@ -24,9 +24,9 @@ The Moonbit Math Library strives for high precision in its calculations, aiming 
 |---------------|--------------------------|
 | acos          |1                         |
 | acosh         |1                         |
-| asin          |(TODO)                    |
+| asin          |1                         |
 | asinh         |1                         |
-| atan          |(TODO)                    |
+| atan          |1                         |
 | atanh         |1                         |
 | cbrt          |1                         |
 | ceil          |0                         |
@@ -34,8 +34,8 @@ The Moonbit Math Library strives for high precision in its calculations, aiming 
 | cosh          |1                         |
 | cospi         |1                         |
 | digamma       |7                         |
-| erf           |(TODO)                    |
-| erfc          |(TODO)                    |
+| erf           |0                         |
+| erfc          |0                         |
 | erfcx         |2                         |
 | erfinv        |2                         |
 | erfcinv       |(TODO)                    |
@@ -85,7 +85,7 @@ The Moonbit Math Library strives for high precision in its calculations, aiming 
 | sincospi      |(TODO)                    |
 | signum        |(TODO)                    |
 | sqrt          |1                         |
-| sqrt1pm1      |(T                        |
+| sqrt1pm1      |1                         |
 | tan           |2                         |
 | tanh          |1                         |
 | trunc         |0                         |
