@@ -5,7 +5,6 @@
 //  */
 //
 ///| ilogb(x) returns the binary exponent of non-zero x
-/// ilogb(x) returns the binary exponent of non-zero x
 pub fn ilogb(x: Double) -> Int {
   let mut hx : Int = __hi(x).reinterpret_as_int() & 0x7fffffff
   if hx < 0x00100000 {

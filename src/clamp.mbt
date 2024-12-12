@@ -16,9 +16,9 @@
 /// # Examples
 ///
 /// ```
-/// assert!((-3.0f64).clamp(-3.0, -2.0, 1.0) == -2.0);
-/// assert!((0.0f64).clamp(0.0, -2.0, 1.0) == 0.0);
-/// assert!((2.0f64).clamp(2.0, -2.0, 1.0) == 1.0);
+/// assert_eq!(clamp(-3.0, -2.0, 1.0), -2.0);
+/// assert_eq!(clamp(0.0, -2.0, 1.0), 0.0);
+/// assert_eq!(clamp(2.0, -2.0, 1.0), 1.0);
 /// ```
 pub fn clamp(x: Double, min: Double, max: Double) -> Double {
   let (min, max) = if min > max { (max, min) } else { (min, max) };

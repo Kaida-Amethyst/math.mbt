@@ -157,3 +157,19 @@ let cos_ = [
 fn fma(x: Double, y : Double, z: Double) -> Double {
   x * y + z
 }
+
+
+fn absmaximum(vec: Array[Double]) -> Double {
+  let mut max : Double = 0.0
+  for p in vec {
+    let ap = fabs(p)
+    if ap > max {
+      max = ap
+    }
+  }
+  max
+}
+
+fn square(x: Double) -> Double {
+  x * x
+}
