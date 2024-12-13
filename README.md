@@ -11,7 +11,7 @@ The Moonbit Math Library is a comprehensive collection of mathematical functions
 To use the Moonbit Math Library in your project, you can easily add it via the Moonbit package manager. Simply run the following command:
 
 ```bash
-moon add Kaida-Amethyst/math
+moon add Kaida-Amethyst/moonbit-math
 ```
 
 This command will add the library to your project dependencies, allowing you to import and use the mathematical functions seamlessly.

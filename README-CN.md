@@ -9,7 +9,7 @@ Moonbit 数学库是一个在 Moonbit 编程语言中实现的数学函数库。
 要在您的项目中使用 Moonbit 数学库，您可以通过 Moonbit 包管理器轻松添加它。只需运行以下命令：
 
 ```bash
-moon add KaidaAmethyst/moonbit-math
+moon add Kaida-Amethyst/moonbit-math
 ```
 
 此命令会将库添加到您的项目依赖项中，使您能够无缝导入和使用数学函数。
