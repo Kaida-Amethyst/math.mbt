@@ -15,55 +15,45 @@
 //  *	sinh(x) is |x| if x is +INF, -INF, or NaN.
 //  *	only sinh(0)=0 is exact for finite x.
 //  */
-//
-// #include "fdlibm.h"
-//
-// #ifdef __STDC__
-// static const double one = 1.0, shuge = 1.0e307;
-// #else
-// static double one = 1.0, shuge = 1.0e307;
-// #endif
-//
-// #ifdef __STDC__
-// 	double __ieee754_sinh(double x)
-// #else
-// 	double __ieee754_sinh(x)
-// 	double x;
-// #endif
-// {	
-// 	double t,w,h;
-// 	int ix,jx;
-// 	unsigned lx;
-//
-//     /* High word of |x|. */
-// 	jx = __HI(x);
-// 	ix = jx&0x7fffffff;
-//
-//     /* x is INF or NaN */
-// 	if(ix>=0x7ff00000) return x+x;	
-//
-// 	h = 0.5;
-// 	if (jx<0) h = -h;
-//     /* |x| in [0,22], return sign(x)*0.5*(E+E/(E+1))) */
-// 	if (ix < 0x40360000) {		/* |x|<22 */
-// 	    if (ix<0x3e300000) 		/* |x|<2**-28 */
-// 		if(shuge+x>one) return x;/* sinh(tiny) = tiny with inexact */
-// 	    t = expm1(fabs(x));
-// 	    if(ix<0x3ff00000) return h*(2.0*t-t*t/(t+one));
-// 	    return h*(t+t/(t+one));
-// 	}
-//
-//     /* |x| in [22, log(maxdouble)] return 0.5*exp(|x|) */
-// 	if (ix < 0x40862E42)  return h*__ieee754_exp(fabs(x));
-//
-//     /* |x| in [log(maxdouble), overflowthresold] */
-// 	lx = *( (((*(unsigned*)&one)>>29)) + (unsigned*)&x);
-// 	if (ix<0x408633CE || (ix==0x408633ce)&&(lx<=(unsigned)0x8fb9f87d)) {
-// 	    w = __ieee754_exp(0.5*fabs(x));
-// 	    t = h*w;
-// 	    return t*w;
-// 	}
-//
-//     /* |x| > overflowthresold, sinh(x) overflow */
-// 	return x*shuge;
-// }
+///| Compute hyperbolic sine function of a double-precision floating point number.
+///
+/// # Special Cases
+///
+/// 1. sinh(x) is |x| if x is +INF, -INF, or NaN.
+/// 2. Only sinh(0)=0 is exact for finite x.
+pub fn sinh(x: Double) -> Double {
+  if isnan(x) || isinf(x) {
+    return x
+  }
+
+  let ix = __hi(x).reinterpret_as_int() & 0x7fffffff
+  let abs_x = fabs(x)
+  let shuge = 1.0e307
+  
+  let h = if x < 0.0 { -0.5 } else { 0.5 }
+
+  if ix < 0x40360000 {
+    if ix < 0x3e300000 {
+      if shuge + x > 1.0 {
+        return x
+      }
+    }
+    let t = expm1(abs_x)
+    if ix < 0x3ff00000 {
+      return h * (2.0 * t - t * t / (t + 1.0))
+    }
+    return h * (t + t / (t + 1.0))
+  }
+
+  if ix < 0x40862E42 {
+    return h * exp(abs_x)
+  }
+
+  if abs_x.reinterpret_as_uint64() < 0x408633ce8fb9f87d {
+    let w = exp(0.5 * abs_x)
+    let t = h * w
+    return t * w
+  }
+
+  x * shuge
+}
