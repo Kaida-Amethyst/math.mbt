@@ -20,80 +20,101 @@ This command will add the library to your project dependencies, allowing you to 
 
 The Moonbit Math Library strives for high precision in its calculations, aiming to match the accuracy of glibc implementations. Below is a table that outlines the ULP (Units in the Last Place) precision differences for each function in the library.
 
-| Function Name | ULP Precision Difference |
-|---------------|--------------------------|
-| acos          |1                         |
-| acosh         |1                         |
-| asin          |1                         |
-| asinh         |1                         |
-| atan          |1                         |
-| atanh         |1                         |
-| cbrt          |1                         |
-| ceil          |0                         |
-| cos           |2                         |
-| cosh          |1                         |
-| cospi         |1                         |
-| digamma       |7                         |
-| erf           |0                         |
-| erfc          |0                         |
-| erfcx         |2                         |
-| erfinv        |2                         |
-| erfcinv       |(TODO)                    |
-| exp           |1                         |
-| exp10         |1                         |
-| exp2          |1                         |
-| expm1         |2                         |
-| floor         |0                         |
-| fract         |0                         |
-| gamma         |(TODO)                    |
-| gegenbauer    |(TODO)                    |
-| gelu          |(TODO)                    |
-| hypot         |2                         |
-| isinf         |0                         |
-| isnan         |0                         |
-| isfinite      |0                         |
-| j0            |(TODO)                    |
-| j1            |(TODO)                    |
-| jn            |(TODO)                    |
-| jacobi        |(TODO)                    |
-| log           |1                         |
-| log10         |1                         |
-| log1p         |1                         |
-| log2          |1                         |
-| logaddexp     |(TODO)                    |
-| logb          |(TODO)                    |
-| lgamma        |(TODO)                    |
-| ldexp         |2                         |
-| nearbyint     |(TODO)                    |
-| normcdf       |(TODO)                    |
-| normcdfinv    |(TODO)                    |
-| pow           |2                         |
-| pown          |0                         |
-| powi          |0                         |
-| rsqrt         |1                         |
-| rcbrt         |1                         |
-| rhypot        |1                         |
-| rint          |(TODO)                    |
-| round         |0                         |
-| scalbn        |2                         |
-| sin           |2                         |
-| sinc          |(TODO)                    |
-| sinh          |1                         |
-| sinhc         |(TODO)                    |
-| sinpi         |1                         |
-| sincos        |(TODO)                    |
-| sincospi      |(TODO)                    |
-| signum        |(TODO)                    |
-| sqrt          |1                         |
-| sqrt1pm1      |1                         |
-| tan           |2                         |
-| tanh          |1                         |
-| trunc         |0                         |
-| tgamma        |(TODO)                    |
-| y0            |(TODO)                    |
-| y1            |(TODO)                    |
-| yn            |(TODO)                    |
-| zeta          |(TODO)                    |
+| func          | description                          | ulp (for result is float or double) |
+|---------------|--------------------------------------|-------------------------------------|
+| abs           | Compute absolute value               | TODO                                |
+| acos          | Compute arccosine                    | TODO                                |
+| acosh         | Compute inverse hyperbolic cosine    | TODO                                |
+| asin          | Compute arcsine                      | TODO                                |
+| asinh         | Compute inverse hyperbolic sine      | TODO                                |
+| atan          | Compute arctangent                   | TODO                                |
+| atan2         | Compute arctangent with two arguments| TODO                                |
+| atanh         | Compute inverse hyperbolic tangent   | TODO                                |
+| cbrt          | Compute cubic root                   | TODO                                |
+| ceil          | Round up to the nearest integer      | TODO                                |
+| clamp         | Clamp value within a specified range  | TODO                               |
+| constants     | Mathematical constants               | TODO                                |
+| cos           | Compute cosine                       | TODO                                |
+| cosh          | Compute hyperbolic cosine            | TODO                                |
+| cospi         | Compute cos(πx)                      | TODO                                |
+| digamma       | Compute Digamma function             | TODO                                |
+| div_euclid    | Compute Euclidean division           | TODO                                |
+| erf           | Compute error function               | TODO                                |
+| erfc          | Compute complementary error function | TODO                                |
+| erfcinv       | Compute inverse complementary error function | TODO                        |
+| erfcx         | Compute scaled complementary error function | TODO                         |
+| erfinv        | Compute inverse error function       | TODO                                |
+| exp           | Compute exponential function         | TODO                                |
+| exp10         | Compute 10 raised to the power of x  | TODO                                |
+| exp2          | Compute 2 raised to the power of x   | TODO                                |
+| expm1         | Compute exp(x) - 1                   | TODO                                |
+| fast_rsqrt    | Compute fast reciprocal square root  | TODO                                |
+| floor         | Round down to the nearest integer    | TODO                                |
+| fract         | Compute fractional part              | TODO                                |
+| fdim          | Compute positive difference of two numbers | TODO                          |
+| gelu          | Compute GELU function                | TODO                                |
+| gegenbauer    | Compute Gegenbauer polynomial        | TODO                                |
+| gamma         | Compute Gamma function               | TODO                                |
+| hermite       | Compute Hermite polynomial           | TODO                                |
+| hypot         | Compute Euclidean norm               | TODO                                |
+| ilogb         | Compute integer part of log2(x)      | TODO                                |
+| isfinite      | Check if value is finite             | TODO                                |
+| isinf         | Check if value is infinite           | TODO                                |
+| isnan         | Check if value is NaN                | TODO                                |
+| isnormal      | Check if value is normal             | TODO                                |
+| issubnormal   | Check if value is subnormal          | TODO                                |
+| jacobi        | Compute Jacobi elliptic function     | TODO                                |
+| j0            | Compute Bessel function of the first kind (0th order) | TODO               |
+| j1            | Compute Bessel function of the first kind (1st order) | TODO               |
+| jn            | Compute Bessel function of the first kind (nth order) | TODO               |
+| ldexp         | Compute x * 2^exp                    | TODO                                |
+| log           | Compute natural logarithm            | TODO                                |
+| log10         | Compute logarithm base 10            | TODO                                |
+| log1p         | Compute log(1 + x)                   | TODO                                |
+| log2          | Compute logarithm base 2             | TODO                                |
+| logaddexp     | Compute log(exp(x) + exp(y))         | TODO                                |
+| logb          | Compute integer part of log2(x)      | TODO                                |
+| logsumexp     | Compute log(sum(exp(x)))             | TODO                                |
+| nearbyint     | Round to nearest integer             | TODO                                |
+| nextafter     | Return next floating-point number    | TODO                                |
+| nextdown      | Return next smaller floating-point number | TODO                           |
+| nextup        | Return next larger floating-point number | TODO                            |
+| norm          | Compute norm                         | TODO                                |
+| normcdf       | Compute cumulative distribution function of normal distribution | TODO     |
+| normcdfinv    | Compute inverse cumulative distribution function of normal distribution | TODO |
+| pown          | Compute integer power of x           | TODO                                |
+| polygamma     | Compute Polygamma function           | TODO                                |
+| pow           | Compute x raised to the power of y   | TODO                                |
+| rcbrt         | Compute reciprocal of cubic root     | TODO                                |
+| rem_euclid    | Compute Euclidean remainder          | TODO                                |
+| rhypot        | Compute reciprocal of Euclidean norm | TODO                                |
+| rint          | Round to nearest integer             | TODO                                |
+| rnorm         | Compute reciprocal of norm           | TODO                                |
+| round         | Round to nearest integer             | TODO                                |
+| roundeven     | Round to nearest even integer        | TODO                                |
+| rsqrt         | Compute reciprocal of square root    | TODO                                |
+| scalbn        | Compute x * 2^n                      | TODO                                |
+| sign          | Compute sign function                | TODO                                |
+| signum        | Compute sign function                | TODO                                |
+| sin           | Compute sine                         | TODO                                |
+| sinc          | Compute sinc function                | TODO                                |
+| sincos        | Compute sine and cosine simultaneously | TODO                              |
+| sincospi      | Compute sin(πx) and cos(πx) simultaneously | TODO                          |
+| sinh          | Compute hyperbolic sine              | TODO                                |
+| sinhc         | Compute normalized hyperbolic sine   | TODO                                |
+| sinpi         | Compute sin(πx)                      | TODO                                |
+| sqrt          | Compute square root                  | TODO                                |
+| sqrt1pm1      | Compute sqrt(1 + x) - 1              | TODO                                |
+| tan           | Compute tangent                      | TODO                                |
+| tanh          | Compute hyperbolic tangent           | TODO                                |
+| to_degrees    | Convert radians to degrees           | TODO                                |
+| to_radians    | Convert degrees to radians           | TODO                                |
+| trunc         | Truncate to integer part             | TODO                                |
+| utils         | Utility functions                    | TODO                                |
+| y0            | Compute Bessel function of the second kind (0th order) | TODO              |
+| y1            | Compute Bessel function of the second kind (1st order) | TODO              |
+| yn            | Compute Bessel function of the second kind (nth order) | TODO              |
+| zeta          | Compute Riemann zeta function        | TODO                                |
 
 ### Notes on Precision
 
