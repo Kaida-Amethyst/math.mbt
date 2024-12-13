@@ -132,8 +132,10 @@ First add dependencies in `moon.pkg.json`:
 ```json
 {
     "import" :[
-        ...
-        "Kaida-Amethyst/math"
+        {
+            "path":"Kaida-Amethyst/moonbit-math",
+            "alias": "math"
+        }
     ]
 }
 ```

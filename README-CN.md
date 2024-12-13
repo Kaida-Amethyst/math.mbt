@@ -130,8 +130,10 @@ Moonbit 数学库在计算中力求高精度，旨在匹配 glibc 实现的准�
 ```json
 {
     "import" :[
-        ...
-        "Kaida-Amethyst/math"
+        {
+            "path":"Kaida-Amethyst/moonbit-math",
+            "alias": "math"
+        }
     ]
 }
 ```

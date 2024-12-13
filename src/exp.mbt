@@ -42,9 +42,10 @@
 /// Compute exp(x)
 ///
 /// # Special cases:
-///   exp(INF) is INF, exp(NaN) is NaN;
-///   exp(-INF) is 0, and
-///   for finite argument, only exp(0)=1 is exact.
+///
+/// 1. exp(INF) is INF, exp(NaN) is NaN;
+/// 2. exp(-INF) is 0, and
+/// 3. for finite argument, only exp(0)=1 is exact.
 ///
 /// # Accuracy:
 /// 
