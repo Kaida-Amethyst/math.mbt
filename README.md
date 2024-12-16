@@ -28,7 +28,7 @@ The Moonbit Math Library strives for high precision in its calculations, aiming 
 
 | func          | description                          | Support | ulp (for result is float or double) |
 |---------------|--------------------------------------|---------|-------------------------------------|
-| abs           | Compute absolute value               | ✓       | 0                                   |
+| abs           | Compute absolute value               | ✓       |  0                                  |
 | acos          | Compute arccosine                    | ✓       |  0                                  |
 | acosh         | Compute inverse hyperbolic cosine    | ✓       |  0                                  |
 | asin          | Compute arcsine                      | ✓       |  0                                  |
@@ -150,7 +150,7 @@ First add dependencies in `moon.pkg.json`:
 }
 ```
 
-Or use `Kaida-Amethyst/math` if waht you added is `Kaida-Amethyst/math`.
+Or use `Kaida-Amethyst/math` if what you added is `Kaida-Amethyst/math`.
 
 ```json
 {
