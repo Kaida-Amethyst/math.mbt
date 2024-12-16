@@ -45,6 +45,9 @@ pub const ONE_OVER_PI: Double = 0.318309886183790671538;
 ///| 2/PI
 pub const TWO_OVER_PI: Double = 0.636619772367581343076;
 
+///| 1/sqrt(PI)
+pub const INV_SQRT_PI: Double = 0.564189583547756286948;
+
 ///| 2/sqrt(PI)
 pub const TWO_OVER_SQRTPI: Double = 1.12837916709551257390;
 
