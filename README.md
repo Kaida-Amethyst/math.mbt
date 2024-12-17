@@ -47,8 +47,8 @@ The Moonbit Math Library strives for high precision in its calculations, aiming 
 | digamma       | Compute Digamma function             | ✓       |  4                                  |
 | div_euclid    | Compute Euclidean division           | ✓       |  0                                  |
 | erf           | Compute error function               | ✓       |  1                                  |
-| erfc          | Compute complementary error function | (TODO)  |  (TODO)                             |
-| erfcinv       | Compute inverse complementary error function | (TODO) |  (TODO)                      |
+| erfc          | Compute complementary error function | ✓       |  (TODO)                             |
+| erfcinv       | Compute inverse complementary error function | ✓      |  (TODO)                      |
 | erfcx         | Compute scaled complementary error function | ✓       |  1                           |
 | erfinv        | Compute inverse error function       | ✓       |  2                                  |
 | exp           | Compute exponential function         | ✓       |  0                                  |
@@ -64,7 +64,7 @@ The Moonbit Math Library strives for high precision in its calculations, aiming 
 | gamma         | Compute Gamma function               | (TODO)  |  (TODO)                             |
 | hermite       | Compute Hermite polynomial           | ✓       |  3                                  |
 | hypot         | Compute Euclidean norm               | ✓       |  0                                  |
-| ilogb         | Compute integer part of log2(x)      | (TODO)  |  (TODO)                             |
+| ilogb         | Compute integer part of log2(x)      | ✓       |  0                            |
 | isfinite      | Check if value is finite             | ✓       |  0                                  |
 | isinf         | Check if value is infinite           | ✓       |  0                                  |
 | isnan         | Check if value is NaN                | ✓       |  0                                  |
@@ -83,7 +83,7 @@ The Moonbit Math Library strives for high precision in its calculations, aiming 
 | logb          | Compute integer part of log2(x)      | ✓       |  0                                  |
 | logsumexp     | Compute log(sum(exp(x)))             | ✓       |  0                                  |
 | nearbyint     | Round to nearest integer             | ✓       |  0                                  |
-| nextafter     | Return next floating-point number    | (TODO)  |  (TODO)                             |
+| nextafter     | Return next floating-point number    | ✓       |  0                                  |
 | nextdown      | Return next smaller floating-point number | (TODO)       |  (TODO)                   |
 | nextup        | Return next larger floating-point number | (TODO)    |  (TODO)                       |
 | norm          | Compute norm                         | ✓       |  0                                  |
