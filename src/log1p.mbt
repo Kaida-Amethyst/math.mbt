@@ -197,8 +197,8 @@ pub fn ln_1p(x: Double) -> Double {
 }
 
 test "log10" {
-  fn assert_log1p_ulp(input: Double, expect_result: Double) -> Unit!Error {
-    assert_ulp!(expect_result, log1p(input), log_max_ulp)
+  fn assert_log1p_ulp!(input, expect_result) {
+    assert_ulp!(expect_result, log1p(input), LOG1P_MAX_ULP)
   }
   assert_log1p_ulp!(1, 0.6931471805599453)
   assert_log1p_ulp!(2, 1.0986122886681096)
@@ -226,7 +226,7 @@ test "log10" {
   assert_log1p_ulp!(2.846, 1.347033647166588)
   assert_log1p_ulp!(7.881, 2.1839141632763672)
   assert_log1p_ulp!(3.772, 1.5627655042356696)
-  // assert_log1p_ulp!(-1, double_nan)
+  assert_log1p_ulp!(-1.0, double_neg_inf)
   assert_log1p_ulp!(0, 0)
   assert_log1p_ulp!(-0, -0)
   assert_log1p_ulp!(double_nan, double_nan)

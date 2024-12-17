@@ -55,3 +55,52 @@ pub fn cbrt(x: Double) -> Double {
   // retore the sign bit
   __combineW(__hi(t) | sign.reinterpret_as_uint(), __low(t))
 }
+
+
+test "cbrt" {
+  fn assert_cbrt_ulp!(input, expect) {
+    assert_ulp!(expect, cbrt(input), CBRT_MAX_ULP)
+  }
+
+  assert_cbrt_ulp!(-1, -1)
+  assert_cbrt_ulp!(-2, -1.2599210498948734)
+  assert_cbrt_ulp!(-3, -1.4422495703074083)
+  assert_cbrt_ulp!(-4, -1.5874010519681996)
+  assert_cbrt_ulp!(-5, -1.7099759466766968)
+  assert_cbrt_ulp!(-6, -1.8171205928321394)
+  assert_cbrt_ulp!(-7, -1.9129311827723894)
+  assert_cbrt_ulp!(-8, -2)
+  assert_cbrt_ulp!(-9, -2.080083823051904)
+  assert_cbrt_ulp!(-27, -3.0000000000000004)
+  assert_cbrt_ulp!(1, 1)
+  assert_cbrt_ulp!(2, 1.2599210498948734)
+  assert_cbrt_ulp!(3, 1.4422495703074083)
+  assert_cbrt_ulp!(4, 1.5874010519681996)
+  assert_cbrt_ulp!(5, 1.7099759466766968)
+  assert_cbrt_ulp!(6, 1.8171205928321394)
+  assert_cbrt_ulp!(7, 1.9129311827723894)
+  assert_cbrt_ulp!(8, 2)
+  assert_cbrt_ulp!(9, 2.080083823051904)
+  assert_cbrt_ulp!(27, 3.0000000000000004)
+  assert_cbrt_ulp!(10, 2.1544346900318834)
+  assert_cbrt_ulp!(100, 4.641588833612778)
+  assert_cbrt_ulp!(1000, 10)
+  assert_cbrt_ulp!(10000, 21.54434690031884)
+  assert_cbrt_ulp!(2.5, 1.3572088082974532)
+  assert_cbrt_ulp!(3.4, 1.5036945962049748)
+  assert_cbrt_ulp!(5.3, 1.743513401265128)
+  assert_cbrt_ulp!(6.2, 1.8370905500142276)
+  assert_cbrt_ulp!(7.1, 1.9219973427746715)
+  assert_cbrt_ulp!(8.9, 2.0723510980592614)
+  assert_cbrt_ulp!(9.8, 2.139974961130159)
+  assert_cbrt_ulp!(10.7, 2.2035754532216254)
+  assert_cbrt_ulp!(101.6, 4.666213107846952)
+  assert_cbrt_ulp!(1.542, 1.1553000476063058)
+  assert_cbrt_ulp!(2.846, 1.4171363302434639)
+  assert_cbrt_ulp!(7.881, 1.990033752783906)
+  assert_cbrt_ulp!(3.772, 1.556648513825142)
+  assert_cbrt_ulp!(-1, -1)
+  assert_cbrt_ulp!(0, 0)
+  assert_cbrt_ulp!(-0, -0)
+  assert_cbrt_ulp!(double_nan, double_nan)
+}

@@ -53,7 +53,7 @@ The Moonbit Math Library strives for high precision in its calculations, aiming 
 | erfinv        | Compute inverse error function       | ✓       |  2                                  |
 | exp           | Compute exponential function         | ✓       |  0                                  |
 | exp10         | Compute 10 raised to the power of x  | ✓       |  0                                  |
-| exp2          | Compute 2 raised to the power of x   | ✓       |  0                                  |
+| exp2          | Compute 2 raised to the power of x   | ✓       |  58                                 |
 | expm1         | Compute exp(x) - 1                   | ✓       |  0                                  |
 | fast_rsqrt    | Compute fast reciprocal square root  | ✓       |  (TODO)                             |
 | floor         | Round down to the nearest integer    | ✓       |  0                                  |

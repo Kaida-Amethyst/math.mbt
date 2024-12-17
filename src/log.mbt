@@ -135,7 +135,7 @@ pub fn log(input: Double) -> Double {
 
 test "log" {
   fn assert_log_ulp(input: Double, expect_result: Double) -> Unit!Error {
-    assert_ulp!(expect_result, log(input), log_max_ulp)
+    assert_ulp!(expect_result, log(input), LOG_MAX_ULP)
   }
   assert_log_ulp!(1, 0)
   assert_log_ulp!(2, 0.6931471805599453)

@@ -67,7 +67,7 @@ pub fn log10(x: Double) -> Double {
 
 test "log" {
   fn assert_log10_ulp(input: Double, expect_result: Double) -> Unit!Error {
-    assert_ulp!(expect_result, log10(input), log_max_ulp)
+    assert_ulp!(expect_result, log10(input), LOG10_MAX_ULP)
   }
 
   assert_log10_ulp!(1, 0)

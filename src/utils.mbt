@@ -132,9 +132,6 @@ fn assert_ulp(expect: Double, actual : Double, min_ulp: Int) -> Unit!Error {
   }
 }
 
-// max ulp of functions
-let log_max_ulp: Int = 1
-
 let pi4a = 0x0.C90FDA000000000011B5
 
 let pi4b = 0x0.000000A2216800000988
@@ -157,7 +154,6 @@ let cos_ = [
 fn fma(x: Double, y : Double, z: Double) -> Double {
   x * y + z
 }
-
 
 fn absmaximum(vec: Array[Double]) -> Double {
   let mut max : Double = 0.0
