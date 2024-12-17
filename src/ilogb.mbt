@@ -1,9 +1,3 @@
-// /* ilogb(double x)
-//  * return the binary exponent of non-zero x
-//  * ilogb(0) = 0x80000001
-//  * ilogb(inf/NaN) = 0x7fffffff (no signal is raised)
-//  */
-//
 ///| ilogb(x) returns the binary exponent of non-zero x
 pub fn ilogb(x: Double) -> Int {
   let mut hx : Int = __hi(x).reinterpret_as_int() & 0x7fffffff
