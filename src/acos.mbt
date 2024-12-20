@@ -88,3 +88,38 @@ pub fn acos(x: Double) -> Double {
     2.0 * (df + w)
   }
 }
+
+test "acos" {
+  fn assert_acos_ulp!(input, expect) {
+    assert_ulp!(expect, acos(input), ACOS_MAX_ULP);
+  }
+  assert_acos_ulp!(-0.8, 2.498091544796509)
+  assert_acos_ulp!(-0.7, 2.3461938234056494)
+  assert_acos_ulp!(-0.6, 2.214297435588181)
+  assert_acos_ulp!(-0.5, 2.0943951023931957)
+  assert_acos_ulp!(-0.4, 1.9823131728623846)
+  assert_acos_ulp!(-0.3, 1.8754889808102941)
+  assert_acos_ulp!(-0.2, 1.7721542475852274)
+  assert_acos_ulp!(-0.1, 1.6709637479564565)
+  assert_acos_ulp!(-0, 1.5707963267948966)
+  assert_acos_ulp!(-3.141592653589793, double_nan)
+  assert_acos_ulp!(-1.5707963267948966, double_nan)
+  assert_acos_ulp!(-0.7853981633974483, 2.4741354375614093)
+  assert_acos_ulp!(0, 1.5707963267948966)
+  assert_acos_ulp!(0.1, 1.4706289056333368)
+  assert_acos_ulp!(0.2, 1.369438406004566)
+  assert_acos_ulp!(0.3, 1.2661036727794992)
+  assert_acos_ulp!(0.4, 1.1592794807274085)
+  assert_acos_ulp!(0.5, 1.0471975511965979)
+  assert_acos_ulp!(0.6, 0.9272952180016123)
+  assert_acos_ulp!(0.7, 0.7953988301841436)
+  assert_acos_ulp!(0.8, 0.6435011087932843)
+  assert_acos_ulp!(0.9, 0.45102681179626236)
+  assert_acos_ulp!(1, 0)
+  assert_acos_ulp!(3.141592653589793, double_nan)
+  assert_acos_ulp!(1.5707963267948966, double_nan)
+  assert_acos_ulp!(0.7853981633974483, 0.6674572160283838)
+  assert_acos_ulp!(double_nan, double_nan)
+  assert_acos_ulp!(double_pos_inf, double_nan)
+  assert_acos_ulp!(double_neg_inf, double_nan)
+}
