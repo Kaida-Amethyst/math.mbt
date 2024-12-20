@@ -104,7 +104,7 @@ pub fn expm1(x: Double) -> Double {
 
   let mut hx = __hi(x)
   let xsb : Int = (hx & 0x80000000).reinterpret_as_int()
-  let y:Double = if xsb == 0 { x } else { -x }
+  let mut y:Double = if xsb == 0 { x } else { -x }
   hx = hx & 0x7fffffff
   if hx >= 0x4043687A {
     if hx >= 0x40862E42 {
@@ -167,18 +167,18 @@ pub fn expm1(x: Double) -> Double {
       return if x < -0.25 { -2.0 * (e - (x + 0.5)) } else { one + 2.0 * (x - e) }
     }
     if k <= -2 || k > 56 {
-      let mut y: Double = one - (e - x)
+      y = one - (e - x)
       y = __combineW(__hi(y) + (k << 20).reinterpret_as_uint(), __low(y))
       return y - one
     }
     let mut t: Double = one
     if k < 20 {
       t = __combineW((0x3ff00000 - (0x200000 >> k)).reinterpret_as_uint(), 0)
-      let mut y: Double = t - (e - x)
+      y = t - (e - x)
       y = __combineW(__hi(y) + (k << 20).reinterpret_as_uint(), __low(y))
     } else {
       t = __combineW(((0x3ff - k) << 20).reinterpret_as_uint(), 0)
-      let mut y: Double = x - (e + t) + one
+      y = x - (e + t) + one
       y = __combineW(__hi(y) + (k << 20).reinterpret_as_uint(), __low(y))
     }
   }
@@ -211,9 +211,9 @@ test "expm1" {
   assert_expm1_ulp!(0.7, 1.0137527074704764)
   assert_expm1_ulp!(0.8, 1.2255409284924677)
   assert_expm1_ulp!(0.9, 1.4596031111569499)
-  // assert_expm1_ulp!(1, 1.718281828459045)
-  // assert_expm1_ulp!(3.141592653589793, 22.140692632779267)
-  // assert_expm1_ulp!(1.5707963267948966, 3.8104773809653514)
+  assert_expm1_ulp!(1, 1.718281828459045)
+  assert_expm1_ulp!(3.141592653589793, 22.140692632779267)
+  assert_expm1_ulp!(1.5707963267948966, 3.8104773809653514)
   assert_expm1_ulp!(0.7853981633974483, 1.1932800507380155)
   assert_expm1_ulp!(-1, -0.6321205588285577)
   assert_expm1_ulp!(-2, -0.8646647167633873)
@@ -225,35 +225,35 @@ test "expm1" {
   assert_expm1_ulp!(-8, -0.9996645373720975)
   assert_expm1_ulp!(-9, -0.9998765901959134)
   assert_expm1_ulp!(1, 1.718281828459045)
-  // assert_expm1_ulp!(2, 6.38905609893065)
-  // assert_expm1_ulp!(3, 19.085536923187668)
-  // assert_expm1_ulp!(4, 53.598150033144236)
-  // assert_expm1_ulp!(5, 147.4131591025766)
-  // assert_expm1_ulp!(6, 402.4287934927351)
-  // assert_expm1_ulp!(7, 1095.6331584284585)
-  // assert_expm1_ulp!(8, 2979.9579870417283)
-  // assert_expm1_ulp!(9, 8102.083927575384)
-  // assert_expm1_ulp!(10, 22025.465794806718)
-  // assert_expm1_ulp!(100, 26881171418161356000000000000000000000000000)
-  // assert_expm1_ulp!(1000, double_pos_inf)
-  // assert_expm1_ulp!(10000, double_pos_inf)
-  // assert_expm1_ulp!(2.5, 11.182493960703473)
-  // assert_expm1_ulp!(3.4, 28.96410004739701)
-  // assert_expm1_ulp!(5.3, 199.33680997479166)
-  // assert_expm1_ulp!(6.2, 491.7490410932563)
-  // assert_expm1_ulp!(7.1, 1210.9670744925763)
-  // assert_expm1_ulp!(8.9, 7330.973539155995)
-  // assert_expm1_ulp!(9.8, 18032.744927828524)
-  // assert_expm1_ulp!(10.7, 44354.85513029784)
-  // assert_expm1_ulp!(101.6, 133143313639875650000000000000000000000000000)
-  // assert_expm1_ulp!(1.542, 3.673928786933209)
-  // assert_expm1_ulp!(2.846, 16.218768831241345)
-  // assert_expm1_ulp!(7.881, 2645.517754639287)
-  // assert_expm1_ulp!(3.772, 42.466911783522)
-  // assert_expm1_ulp!(-1.542, -0.7860472322993718)
-  // assert_expm1_ulp!(-2.846, -0.9419238384694716)
-  // assert_expm1_ulp!(-7.881, -0.9996221449872207)
-  // assert_expm1_ulp!(-3.772, -0.9769939947659431)
+  assert_expm1_ulp!(2, 6.38905609893065)
+  assert_expm1_ulp!(3, 19.085536923187668)
+  assert_expm1_ulp!(4, 53.598150033144236)
+  assert_expm1_ulp!(5, 147.4131591025766)
+  assert_expm1_ulp!(6, 402.4287934927351)
+  assert_expm1_ulp!(7, 1095.6331584284585)
+  assert_expm1_ulp!(8, 2979.9579870417283)
+  assert_expm1_ulp!(9, 8102.083927575384)
+  assert_expm1_ulp!(10, 22025.465794806718)
+  assert_expm1_ulp!(100, 26881171418161356000000000000000000000000000)
+  assert_expm1_ulp!(1000, double_pos_inf)
+  assert_expm1_ulp!(10000, double_pos_inf)
+  assert_expm1_ulp!(2.5, 11.182493960703473)
+  assert_expm1_ulp!(3.4, 28.96410004739701)
+  assert_expm1_ulp!(5.3, 199.33680997479166)
+  assert_expm1_ulp!(6.2, 491.7490410932563)
+  assert_expm1_ulp!(7.1, 1210.9670744925763)
+  assert_expm1_ulp!(8.9, 7330.973539155995)
+  assert_expm1_ulp!(9.8, 18032.744927828524)
+  assert_expm1_ulp!(10.7, 44354.85513029784)
+  assert_expm1_ulp!(101.6, 133143313639875650000000000000000000000000000)
+  assert_expm1_ulp!(1.542, 3.673928786933209)
+  assert_expm1_ulp!(2.846, 16.218768831241345)
+  assert_expm1_ulp!(7.881, 2645.517754639287)
+  assert_expm1_ulp!(3.772, 42.466911783522)
+  assert_expm1_ulp!(-1.542, -0.7860472322993718)
+  assert_expm1_ulp!(-2.846, -0.9419238384694716)
+  assert_expm1_ulp!(-7.881, -0.9996221449872207)
+  assert_expm1_ulp!(-3.772, -0.9769939947659431)
   assert_expm1_ulp!(-1, -0.6321205588285577)
   assert_expm1_ulp!(0, 0)
   assert_expm1_ulp!(-0, -0)

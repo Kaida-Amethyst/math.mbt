@@ -134,6 +134,8 @@ pub fn log1p(x: Double) -> Double {
     }
     if hx > 0 || hx <= 0xbfd2bec3 {
       k = 0
+      f = x
+      hu = 1
     }
   }
   if hx >= 0x7ff00000 {
@@ -200,6 +202,23 @@ test "log10" {
   fn assert_log1p_ulp!(input, expect_result) {
     assert_ulp!(expect_result, log1p(input), LOG1P_MAX_ULP)
   }
+  assert_log1p_ulp!(-0.8, -1.6094379124341005)
+  assert_log1p_ulp!(-0.7, -1.203972804325936)
+  assert_log1p_ulp!(-0.6, -0.916290731874155)
+  assert_log1p_ulp!(-0.5, -0.6931471805599453)
+  assert_log1p_ulp!(-0.4, -0.5108256237659907)
+  assert_log1p_ulp!(-0.3, -0.35667494393873234)
+  assert_log1p_ulp!(-0.2, -0.22314355131420976)
+  assert_log1p_ulp!(-0.1, -0.10536051565782631)
+  assert_log1p_ulp!(0.1, 0.09531017980432487)
+  assert_log1p_ulp!(0.2, 0.18232155679395462)
+  assert_log1p_ulp!(0.3, 0.26236426446749106)
+  assert_log1p_ulp!(0.4, 0.33647223662121295)
+  assert_log1p_ulp!(0.5, 0.4054651081081644)
+  assert_log1p_ulp!(0.6, 0.4700036292457356)
+  assert_log1p_ulp!(0.7, 0.5306282510621704)
+  assert_log1p_ulp!(0.8, 0.5877866649021191)
+  assert_log1p_ulp!(0.9, 0.6418538861723948)
   assert_log1p_ulp!(1, 0.6931471805599453)
   assert_log1p_ulp!(2, 1.0986122886681096)
   assert_log1p_ulp!(3, 1.3862943611198906)
