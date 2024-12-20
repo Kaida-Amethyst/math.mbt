@@ -12,3 +12,5 @@ const EXP10_MAX_ULP : Int = 1
 
 const CBRT_MAX_ULP: Int = 1
 
+const ATAN_MAX_ULP : Int = 2
+
