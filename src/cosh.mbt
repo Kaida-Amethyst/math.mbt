@@ -23,8 +23,12 @@
 // cosh(x) is |x| if x is +INF, -INF, or NaN.
 // only cosh(0)=1 is exact for finite x.
 pub fn cosh(x: Double) -> Double {
-  if isnan(x) || isinf(x) {
+  if isnan(x) {
     return x
+  }
+
+  if isinf(x){
+    return double_pos_inf
   }
 
   let ix = __hi(x).reinterpret_as_int() & 0x7fffffff
@@ -57,47 +61,79 @@ pub fn cosh(x: Double) -> Double {
   double_pos_inf
 }
 
-// #ifdef __STDC__
-// static const double one=1.0, two=2.0, tiny = 1.0e-300;
-// #else
-// static double one=1.0, two=2.0, tiny = 1.0e-300;
-// #endif
-//
-// #ifdef __STDC__
-// 	double tanh(double x)
-// #else
-// 	double tanh(x)
-// 	double x;
-// #endif
-// {
-// 	double t,z;
-// 	int jx,ix;
-//
-//     /* High word of |x|. */
-// 	jx = __HI(x);
-// 	ix = jx&0x7fffffff;
-//
-//     /* x is INF or NaN */
-// 	if(ix>=0x7ff00000) { 
-// 	    if (jx>=0) return one/x+one;    /* tanh(+-inf)=+-1 */
-// 	    else       return one/x-one;    /* tanh(NaN) = NaN */
-// 	}
-//
-//     /* |x| < 22 */
-// 	if (ix < 0x40360000) {		/* |x|<22 */
-// 	    if (ix<0x3c800000) 		/* |x|<2**-55 */
-// 		return x*(one+x);    	/* tanh(small) = small */
-// 	    if (ix>=0x3ff00000) {	/* |x|>=1  */
-// 		t = expm1(two*fabs(x));
-// 		z = one - two/(t+two);
-// 	    } else {
-// 	        t = expm1(-two*fabs(x));
-// 	        z= -t/(t+two);
-// 	    }
-//     /* |x| > 22, return +-1 */
-// 	} else {
-// 	    z = one - tiny;		/* raised inexact flag */
-// 	}
-// 	return (jx>=0)? z: -z;
-// }
-
+test "cosh" {
+  fn assert_cosh_ulp!(input, expect) {
+    assert_ulp!(expect, cosh(input), COSH_MAX_ULP);
+  }
+  assert_cosh_ulp!(-0.8, 1.3374349463048447)
+  assert_cosh_ulp!(-0.7, 1.255169005630943)
+  assert_cosh_ulp!(-0.6, 1.1854652182422676)
+  assert_cosh_ulp!(-0.5, 1.1276259652063807)
+  assert_cosh_ulp!(-0.4, 1.081072371838455)
+  assert_cosh_ulp!(-0.3, 1.0453385141288605)
+  assert_cosh_ulp!(-0.2, 1.020066755619076)
+  assert_cosh_ulp!(-0.1, 1.0050041680558035)
+  assert_cosh_ulp!(-0, 1)
+  assert_cosh_ulp!(-3.141592653589793, 11.591953275521519)
+  assert_cosh_ulp!(-1.5707963267948966, 2.5091784786580567)
+  assert_cosh_ulp!(-0.7853981633974483, 1.3246090892520057)
+  assert_cosh_ulp!(0, 1)
+  assert_cosh_ulp!(0.1, 1.0050041680558035)
+  assert_cosh_ulp!(0.2, 1.020066755619076)
+  assert_cosh_ulp!(0.3, 1.0453385141288605)
+  assert_cosh_ulp!(0.4, 1.081072371838455)
+  assert_cosh_ulp!(0.5, 1.1276259652063807)
+  assert_cosh_ulp!(0.6, 1.1854652182422676)
+  assert_cosh_ulp!(0.7, 1.255169005630943)
+  assert_cosh_ulp!(0.8, 1.3374349463048447)
+  assert_cosh_ulp!(0.9, 1.4330863854487745)
+  assert_cosh_ulp!(1, 1.5430806348152437)
+  assert_cosh_ulp!(3.141592653589793, 11.591953275521519)
+  assert_cosh_ulp!(1.5707963267948966, 2.5091784786580567)
+  assert_cosh_ulp!(0.7853981633974483, 1.3246090892520057)
+  assert_cosh_ulp!(-1, 1.5430806348152437)
+  assert_cosh_ulp!(-2, 3.7621956910836314)
+  assert_cosh_ulp!(-3, 10.067661995777765)
+  assert_cosh_ulp!(-4, 27.308232836016487)
+  assert_cosh_ulp!(-5, 74.20994852478785)
+  assert_cosh_ulp!(-6, 201.7156361224559)
+  assert_cosh_ulp!(-7, 548.317035155212)
+  assert_cosh_ulp!(-8, 1490.479161252178)
+  assert_cosh_ulp!(-9, 4051.5420254925943)
+  assert_cosh_ulp!(1, 1.5430806348152437)
+  assert_cosh_ulp!(2, 3.7621956910836314)
+  assert_cosh_ulp!(3, 10.067661995777765)
+  assert_cosh_ulp!(4, 27.308232836016487)
+  assert_cosh_ulp!(5, 74.20994852478785)
+  assert_cosh_ulp!(6, 201.7156361224559)
+  assert_cosh_ulp!(7, 548.317035155212)
+  assert_cosh_ulp!(8, 1490.479161252178)
+  assert_cosh_ulp!(9, 4051.5420254925943)
+  assert_cosh_ulp!(10, 11013.232920103324)
+  assert_cosh_ulp!(100, 13440585709080678000000000000000000000000000)
+  assert_cosh_ulp!(1000, double_pos_inf)
+  assert_cosh_ulp!(10000, double_pos_inf)
+  assert_cosh_ulp!(2.5, 6.132289479663686)
+  assert_cosh_ulp!(3.4, 14.998736658678668)
+  assert_cosh_ulp!(5.3, 100.17090078434929)
+  assert_cosh_ulp!(6.2, 246.3755352619463)
+  assert_cosh_ulp!(7.1, 605.9839497987498)
+  assert_cosh_ulp!(8.9, 3665.986837772461)
+  assert_cosh_ulp!(9.8, 9016.872491640062)
+  assert_cosh_ulp!(10.7, 22177.92757642139)
+  assert_cosh_ulp!(101.6, 66571656819937820000000000000000000000000000)
+  assert_cosh_ulp!(1.542, 2.443940777316919)
+  assert_cosh_ulp!(2.846, 8.638422496385937)
+  assert_cosh_ulp!(7.881, 1323.2590662471498)
+  assert_cosh_ulp!(3.772, 21.74495889437803)
+  assert_cosh_ulp!(-1.542, 2.443940777316919)
+  assert_cosh_ulp!(-2.846, 8.638422496385937)
+  assert_cosh_ulp!(-7.881, 1323.2590662471498)
+  assert_cosh_ulp!(-3.772, 21.74495889437803)
+  assert_cosh_ulp!(-1, 1.5430806348152437)
+  assert_cosh_ulp!(0, 1)
+  assert_cosh_ulp!(-0, 1)
+  assert_cosh_ulp!(double_nan, double_nan)
+  assert_cosh_ulp!(double_pos_inf, double_pos_inf)
+  assert_cosh_ulp!(double_neg_inf, double_pos_inf)
+}

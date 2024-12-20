@@ -18,15 +18,16 @@
 // 	 := sign(x)*log(2|x|+1/(|x|+sqrt(x*x+1))) if|x|>2, else
 // 	 := sign(x)*log1p(|x| + x^2/(1 + sqrt(1+x^2)))  
 pub fn asinh(x: Double) -> Double {
+  if isnan(x) || isinf(x) {
+    return x
+  }
+
   let one : Double = 1.0
   let ln2 : Double = 6.93147180559945286227e-01
   let huge : Double = 1.0e300
 
   let hx = __hi(x).reinterpret_as_int()
   let ix = hx & 0x7fffffff
-  if ix >= 0x7ff00000 {
-    return x + x
-  }
   if ix < 0x3e300000 {
     if huge + x > one {
       return x
@@ -46,4 +47,55 @@ pub fn asinh(x: Double) -> Double {
   } else {
     -w
   }
+}
+
+test "asinh" {
+  fn assert_asinh_ulp!(input, expect) {
+    assert_ulp!(expect, asinh(input), ASINH_MAX_ULP);
+  }
+  assert_asinh_ulp!(-1, -0.881373587019543)
+  assert_asinh_ulp!(-2, -1.4436354751788103)
+  assert_asinh_ulp!(-3, -1.8184464592320668)
+  assert_asinh_ulp!(-4, -2.0947125472611012)
+  assert_asinh_ulp!(-5, -2.3124383412727525)
+  assert_asinh_ulp!(-6, -2.491779852644912)
+  assert_asinh_ulp!(-7, -2.644120761058629)
+  assert_asinh_ulp!(-8, -2.7764722807237177)
+  assert_asinh_ulp!(-9, -2.8934439858858716)
+  assert_asinh_ulp!(1, 0.881373587019543)
+  assert_asinh_ulp!(2, 1.4436354751788103)
+  assert_asinh_ulp!(3, 1.8184464592320668)
+  assert_asinh_ulp!(4, 2.0947125472611012)
+  assert_asinh_ulp!(5, 2.3124383412727525)
+  assert_asinh_ulp!(6, 2.491779852644912)
+  assert_asinh_ulp!(7, 2.644120761058629)
+  assert_asinh_ulp!(8, 2.7764722807237177)
+  assert_asinh_ulp!(9, 2.8934439858858716)
+  assert_asinh_ulp!(10, 2.99822295029797)
+  assert_asinh_ulp!(100, 5.298342365610589)
+  assert_asinh_ulp!(1000, 7.600902709541988)
+  assert_asinh_ulp!(10000, 9.903487555036127)
+  assert_asinh_ulp!(2.5, 1.6472311463710956)
+  assert_asinh_ulp!(3.4, 1.9378792776645006)
+  assert_asinh_ulp!(5.3, 2.3696374478085054)
+  assert_asinh_ulp!(6.2, 2.524137570200328)
+  assert_asinh_ulp!(7.1, 2.658164806954139)
+  assert_asinh_ulp!(8.9, 2.8823397863009728)
+  assert_asinh_ulp!(9.8, 2.9781225426278812)
+  assert_asinh_ulp!(10.7, 3.0655674012135137)
+  assert_asinh_ulp!(101.6, 5.314214933622987)
+  assert_asinh_ulp!(1.542, 1.2178370752124148)
+  assert_asinh_ulp!(2.846, 1.7685886800290045)
+  assert_asinh_ulp!(7.881, 2.7616029991101763)
+  assert_asinh_ulp!(3.772, 2.0378777304008615)
+  assert_asinh_ulp!(-1.542, -1.2178370752124148)
+  assert_asinh_ulp!(-2.846, -1.7685886800290045)
+  assert_asinh_ulp!(-7.881, -2.7616029991101763)
+  assert_asinh_ulp!(-3.772, -2.0378777304008615)
+  assert_asinh_ulp!(-1, -0.881373587019543)
+  assert_asinh_ulp!(0, 0)
+  assert_asinh_ulp!(-0, -0)
+  assert_asinh_ulp!(double_nan, double_nan)
+  assert_asinh_ulp!(double_pos_inf, double_pos_inf)
+  assert_asinh_ulp!(double_neg_inf, double_neg_inf)
 }

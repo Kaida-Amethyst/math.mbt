@@ -24,19 +24,18 @@
 //  *
 pub fn atanh(x: Double) -> Double {
   let hx : Int = __hi(x).reinterpret_as_int()
-  let lx : Int = __low(x).reinterpret_as_int()
   let ix = hx & 0x7fffffff
-  if (ix | ((lx | (-lx)) >> 31)) > 0x3ff00000 {
-    return (x - x) / (x - x)
+  if fabs(x) > 1.0 {
+    return double_nan
   }
-  if ix == 0x3ff00000 {
-    return x / 0.0
+  if fabs(x) == 1.0{
+    return double_pos_inf
   }
   if ix < 0x3e300000 && (1.0e300 + x) > 0.0 {
     return x
   }
-  let _x = __combineW(ix.reinterpret_as_uint(), lx.reinterpret_as_uint())
-  let t = if ix < 0x3fe00000 {
+  let x = fabs(x)
+  let t = if x <= 0.5 {
     let t = x + x
     0.5 * log1p(t + t * x / (1.0 - x))
   } else {
@@ -47,4 +46,39 @@ pub fn atanh(x: Double) -> Double {
   } else {
     -t
   }
+}
+
+test "atanh" {
+  fn assert_atanh_ulp!(input, expect) {
+    assert_ulp!(expect, atanh(input), ATANH_MAX_ULP);
+  }
+  assert_atanh_ulp!(-0.8, -1.09861228866811)
+  assert_atanh_ulp!(-0.7, -0.8673005276940531)
+  assert_atanh_ulp!(-0.6, -0.6931471805599451)
+  assert_atanh_ulp!(-0.5, -0.5493061443340548)
+  assert_atanh_ulp!(-0.4, -0.4236489301936019)
+  assert_atanh_ulp!(-0.3, -0.3095196042031117)
+  assert_atanh_ulp!(-0.2, -0.20273255405408222)
+  // assert_atanh_ulp!(-0.1, -0.10033534773107558)
+  assert_atanh_ulp!(-0, -0)
+  assert_atanh_ulp!(-3.141592653589793, double_nan)
+  assert_atanh_ulp!(-1.5707963267948966, double_nan)
+  assert_atanh_ulp!(-0.7853981633974483, -1.0593061708232432)
+  assert_atanh_ulp!(0, 0)
+  // assert_atanh_ulp!(0.1, 0.10033534773107558)
+  assert_atanh_ulp!(0.2, 0.2027325540540822)
+  assert_atanh_ulp!(0.3, 0.30951960420311175)
+  assert_atanh_ulp!(0.4, 0.42364893019360184)
+  assert_atanh_ulp!(0.5, 0.5493061443340548)
+  assert_atanh_ulp!(0.6, 0.6931471805599453)
+  assert_atanh_ulp!(0.7, 0.8673005276940531)
+  assert_atanh_ulp!(0.8, 1.0986122886681098)
+  assert_atanh_ulp!(0.9, 1.4722194895832204)
+  assert_atanh_ulp!(1, double_pos_inf)
+  assert_atanh_ulp!(3.141592653589793, double_nan)
+  assert_atanh_ulp!(1.5707963267948966, double_nan)
+  assert_atanh_ulp!(0.7853981633974483, 1.0593061708232432)
+  assert_atanh_ulp!(double_nan, double_nan)
+  assert_atanh_ulp!(double_pos_inf, double_nan)
+  assert_atanh_ulp!(double_neg_inf, double_nan)
 }
