@@ -29,19 +29,19 @@ The Moonbit Math Library strives for high precision in its calculations, aiming 
 | func          | description                          | Support | ulp (for result is float or double) |
 |---------------|--------------------------------------|---------|-------------------------------------|
 | abs           | Compute absolute value               | ✓       |  0                                  |
-| acos          | Compute arccosine                    | ✓       |  0                                  |
-| acosh         | Compute inverse hyperbolic cosine    | ✓       |  0                                  |
-| asin          | Compute arcsine                      | ✓       |  0                                  |
-| asinh         | Compute inverse hyperbolic sine      | ✓       |  0                                  |
-| atan          | Compute arctangent                   | ✓       |  0                                  |
-| atan2         | Compute arctangent with two arguments| ✓       |  0                                  |
-| atanh         | Compute inverse hyperbolic tangent   | ✓       |  0                                  |
-| cbrt          | Compute cubic root                   | ✓       |  0                                  |
+| acos          | Compute arccosine                    | ✓       |  1                                  |
+| acosh         | Compute inverse hyperbolic cosine    | ✓       |  1                                  |
+| asin          | Compute arcsine                      | ✓       |  1                                  |
+| asinh         | Compute inverse hyperbolic sine      | ✓       |  1                                  |
+| atan          | Compute arctangent                   | ✓       |  1                                  |
+| atan2         | Compute arctangent with two arguments| ✓       |  1                                  |
+| atanh         | Compute inverse hyperbolic tangent   | ✓       |  1                                  |
+| cbrt          | Compute cubic root                   | ✓       |  1                                  |
 | ceil          | Round up to the nearest integer      | ✓       |  0                                  |
 | clamp         | Clamp value within a specified range | ✓       |  0                                  |
-| cos           | Compute cosine                       | ✓       |  0                                  |
-| cosh          | Compute hyperbolic cosine            | ✓       |  0                                  |
-| cospi         | Compute cos(πx)                      | ✓       |  0                                  |
+| cos           | Compute cosine                       | ✓       |  49                                 |
+| cosh          | Compute hyperbolic cosine            | ✓       |  1                                  |
+| cospi         | Compute cos(πx)                      | ✓       |  3                                  |
 | cyl_bessel_i0 | Cylindrical Bessel function of order 0| (TODO) |  (TODO)                             |
 | cyl_bessel_i1 | Cylindrical Bessel function of order 1| (TODO) |  (TODO)                             |
 | digamma       | Compute Digamma function             | ✓       |  4                                  |
@@ -107,13 +107,13 @@ The Moonbit Math Library strives for high precision in its calculations, aiming 
 | scalbn        | Compute x * 2^n                      | ✓       |  0                                  |
 | sign          | Compute sign function                | ✓       |  0                                  |
 | signum        | Compute sign function                | ✓       |  0                                  |
-| sin           | Compute sine                         | ✓       |  0                                  |
+| sin           | Compute sine                         | ✓       |  3                                  |
 | sinc          | Compute sinc function                | (TODO)  |  (TODO)                             |
 | sincos        | Compute sine and cosine simultaneously | ✓       |  0                                |
 | sincospi      | Compute sin(πx) and cos(πx) simultaneously | ✓       |  0                            |
 | sinh          | Compute hyperbolic sine              | ✓       |  0                                  |
 | sinhc         | Compute normalized hyperbolic sine   | (TODO)  |  (TODO)                             |
-| sinpi         | Compute sin(πx)                      | ✓       |  0                                  |
+| sinpi         | Compute sin(πx)                      | ✓       |  3                                  |
 | sqrt          | Compute square root                  | ✓       |  0                                  |
 | sqrt1pm1      | Compute sqrt(1 + x) - 1              | ✓       |  0                                  |
 | tan           | Compute tangent                      | ✓       |  0                                  |
