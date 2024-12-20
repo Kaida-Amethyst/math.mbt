@@ -17,7 +17,6 @@ const ATAN_MAX_ULP : Int = 1
 const ASIN_MAX_ULP : Int = 1
 const ACOS_MAX_ULP : Int = 1
 
-
 const ACOSH_MAX_ULP : Int = 1
 const ASINH_MAX_ULP : Int = 1
 const ATANH_MAX_ULP : Int = 2
@@ -29,3 +28,11 @@ const TANH_MAX_ULP : Int = 2
 const COS_MAX_ULP : Int = 1
 const SIN_MAX_ULP : Int = 1
 const TAN_MAX_ULP : Int = 1
+
+const COSPI_MAX_ULP : Int = 49
+const SINPI_MAX_ULP : Int = 3
+// const TANPI_MAX_ULP : Int = 3
+
+const SQRT_MAX_ULP : Int = 0
+
+// const HYPOT_MAX_ULP : Int = 1
