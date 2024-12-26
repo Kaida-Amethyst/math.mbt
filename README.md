@@ -71,8 +71,8 @@ The Moonbit Math Library strives for high precision in its calculations, aiming 
 | isnormal      | Check if value is normal             | ✓       |  0                                  |
 | issubnormal   | Check if value is subnormal          | ✓       |  0                                  |
 | jacobi        | Compute Jacobi elliptic function     | ✓       |  0                                  |
-| j0            | Compute Bessel function of the first kind (0th order) | ✓       |  1                 |
-| j1            | Compute Bessel function of the first kind (1st order) | ✓       |  1                 |
+| j0            | Compute Bessel function of the first kind (0th order) | ✓       |  2                 |
+| j1            | Compute Bessel function of the first kind (1st order) | ✓       |  4                 |
 | jn            | Compute Bessel function of the first kind (nth order) | ✓       |  1                 |
 | ldexp         | Compute x * 2^exp                    | ✓       |  0                                  |
 | log           | Compute natural logarithm            | ✓       |  0                                  |
