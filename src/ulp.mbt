@@ -39,3 +39,5 @@ const SQRT_MAX_ULP : Int = 0
 
 const ERF_MAX_ULP : Int = 1
 const ERFC_MAX_ULP : Int = 1
+
+const J0_MAX_ULP : Int = 2

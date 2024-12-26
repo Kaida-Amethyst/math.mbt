@@ -31,8 +31,12 @@ const S04 : Double =  1.16614003333790000205e-09
 //		sin(x) +- cos(x) = -cos(2x)/(sin(x) -+ cos(x))
 // 	    to compute the worse one.)
 pub fn j0(x: Double) -> Double {
-  if isnan(x) || isinf(x) {
-    return x
+  if isinf(x) {
+    return 0.0
+  }
+
+  if isnan(x) {
+    return double_nan
   }
 
   let hx = __hi(x).reinterpret_as_int()
@@ -40,13 +44,21 @@ pub fn j0(x: Double) -> Double {
   let huge = 1.0e300
   let invsqrtpi =  5.64189583547756279280e-01
 
-  if fabs(x) >= 2.0 {
-    let s = sin(x)
-    let c = cos(x)
-    let mut ss = s - c
-    let mut cc = s + c
+  let mut s = 0.0
+  let mut c = 0.0
+  let mut ss = 0.0
+  let mut cc = 0.0
+  let mut z = 0.0
+
+  let x = fabs(x)
+
+  if x >= 2.0 {
+    s = sin(x)
+    c = cos(x)
+    ss = s - c
+    cc = s + c
     if ix < 0x7fe00000 {
-      let z = -cos(x + x)
+      z = -cos(x + x)
       if s * c < 0.0 {
         cc = z / ss
       } else {
@@ -54,12 +66,12 @@ pub fn j0(x: Double) -> Double {
       }
     }
 
-    let z = if ix > 0x48000000 {
-      invsqrtpi * cc / sqrt(x)
+    if ix > 0x48000000 {
+      z = invsqrtpi * cc / sqrt(x)
     } else {
       let u = pzero(x)
       let v = qzero(x)
-      invsqrtpi * (u * cc - v * ss) / sqrt(x)
+      z = invsqrtpi * (u * cc - v * ss) / sqrt(x)
     }
     return z
   }
@@ -75,7 +87,7 @@ pub fn j0(x: Double) -> Double {
   }
   let z = x * x
   let r = z * (R02 + z * (R03 + z * (R04 + z * R05)))
-  let s = 1.0 + z * (S01 + z * (S02 + z * (S03 + z * S04)))
+  s = 1.0 + z * (S01 + z * (S02 + z * (S03 + z * S04)))
   if fabs(x) < 1.0 {
     1.0 + z * (-0.25 + r / s)
   } else {
@@ -320,4 +332,81 @@ fn qzero(x: Double) -> Double {
   let r = p[0] + z * (p[1] + z * (p[2] + z * (p[3] + z * (p[4] + z * p[5]))))
   let s = 1.0 + z * (q[0] + z * (q[1] + z * (q[2] + z * (q[3] + z * (q[4] + z * q[5])))))
   (-0.125 + r / s) / x
+}
+
+test "j0" {
+  fn assert_j0_ulp!(input, expect) {
+    assert_ulp!(expect, j0(input), J0_MAX_ULP);
+  }
+  assert_j0_ulp!(-0.8, 0.8462873527504803)
+  assert_j0_ulp!(-0.7, 0.8812008886074053)
+  assert_j0_ulp!(-0.6, 0.9120048634972107)
+  assert_j0_ulp!(-0.5, 0.9384698072408129)
+  assert_j0_ulp!(-0.4, 0.9603982266595634)
+  assert_j0_ulp!(-0.3, 0.977626246538296)
+  assert_j0_ulp!(-0.2, 0.9900249722395765)
+  assert_j0_ulp!(-0.1, 0.99750156206604)
+  assert_j0_ulp!(-0, 1)
+  assert_j0_ulp!(-3.141592653589793, -0.30424217764409384)
+  assert_j0_ulp!(-1.5707963267948966, 0.4720012157682348)
+  assert_j0_ulp!(-0.7853981633974483, 0.8516319137048081)
+  assert_j0_ulp!(0, 1)
+  assert_j0_ulp!(0.1, 0.99750156206604)
+  assert_j0_ulp!(0.2, 0.9900249722395765)
+  assert_j0_ulp!(0.3, 0.977626246538296)
+  assert_j0_ulp!(0.4, 0.9603982266595634)
+  assert_j0_ulp!(0.5, 0.9384698072408129)
+  assert_j0_ulp!(0.6, 0.9120048634972107)
+  assert_j0_ulp!(0.7, 0.8812008886074053)
+  assert_j0_ulp!(0.8, 0.8462873527504803)
+  assert_j0_ulp!(0.9, 0.8075237981225447)
+  assert_j0_ulp!(1, 0.7651976865579666)
+  assert_j0_ulp!(3.141592653589793, -0.30424217764409384)
+  assert_j0_ulp!(1.5707963267948966, 0.4720012157682348)
+  assert_j0_ulp!(0.7853981633974483, 0.8516319137048081)
+  assert_j0_ulp!(-1, 0.7651976865579666)
+  assert_j0_ulp!(-2, 0.22389077914123567)
+  assert_j0_ulp!(-3, -0.2600519549019335)
+  assert_j0_ulp!(-4, -0.3971498098638474)
+  assert_j0_ulp!(-5, -0.1775967713143383)
+  assert_j0_ulp!(-6, 0.15064525725099698)
+  assert_j0_ulp!(-7, 0.30007927051955563)
+  assert_j0_ulp!(-8, 0.1716508071375539)
+  assert_j0_ulp!(-9, -0.09033361118287614)
+  assert_j0_ulp!(1, 0.7651976865579666)
+  assert_j0_ulp!(2, 0.22389077914123567)
+  assert_j0_ulp!(3, -0.2600519549019335)
+  assert_j0_ulp!(4, -0.3971498098638474)
+  assert_j0_ulp!(5, -0.1775967713143383)
+  assert_j0_ulp!(6, 0.15064525725099698)
+  assert_j0_ulp!(7, 0.30007927051955563)
+  assert_j0_ulp!(8, 0.1716508071375539)
+  assert_j0_ulp!(9, -0.09033361118287614)
+  assert_j0_ulp!(10, -0.2459357644513483)
+  assert_j0_ulp!(100, 0.01998585030422312)
+  assert_j0_ulp!(1000, 0.024786686152420176)
+  assert_j0_ulp!(10000, -0.007096160353388801)
+  assert_j0_ulp!(2.5, -0.04838377646819801)
+  assert_j0_ulp!(3.4, -0.3642955967620004)
+  assert_j0_ulp!(5.3, -0.07580311158558423)
+  assert_j0_ulp!(6.2, 0.20174722294890426)
+  assert_j0_ulp!(7.1, 0.2990513805015501)
+  assert_j0_ulp!(8.9, -0.06525324685124441)
+  assert_j0_ulp!(9.8, -0.2322760275793675)
+  assert_j0_ulp!(10.7, -0.21644273992381763)
+  assert_j0_ulp!(101.6, 0.07602161718727572)
+  assert_j0_ulp!(1.542, 0.4882759615889758)
+  assert_j0_ulp!(2.846, -0.20352825538263417)
+  assert_j0_ulp!(7.881, 0.19849590902850872)
+  assert_j0_ulp!(3.772, -0.40203795854403196)
+  assert_j0_ulp!(-1.542, 0.4882759615889758)
+  assert_j0_ulp!(-2.846, -0.20352825538263417)
+  assert_j0_ulp!(-7.881, 0.19849590902850872)
+  assert_j0_ulp!(-3.772, -0.40203795854403196)
+  assert_j0_ulp!(-1, 0.7651976865579666)
+  assert_j0_ulp!(0, 1)
+  assert_j0_ulp!(-0, 1)
+  assert_j0_ulp!(double_nan, double_nan)
+  assert_j0_ulp!(double_pos_inf, 0)
+  assert_j0_ulp!(double_neg_inf, 0)
 }
