@@ -41,10 +41,10 @@ const ERF_MAX_ULP : Int = 1
 const ERFC_MAX_ULP : Int = 1
 
 const J0_MAX_ULP : Int = 2
-// const Y0_MAX_ULP : Int = 2
+const Y0_MAX_ULP : Int = 2
 
 const J1_MAX_ULP : Int = 4
-// const Y1_MAX_ULP : Int = 2
+const Y1_MAX_ULP : Int = 2
 
 // const JN_MAX_ULP : Int = 2
 // const YN_MAX_ULP : Int = 2

@@ -52,119 +52,83 @@
 /// according to an error analysis, the error is always less than
 /// 
 /// 1 ulp (unit in the last place).
-pub fn log(input: Double) -> Double {
-  let mut x = input
-  let ln2_hi = 6.93147180369123816490e-01
-  let ln2_lo = 1.90821492927058770002e-10
-  let two54 = 1.80143985094819840000e+16
-  let lg1 = 6.666666666666735130e-01
-  let lg2 = 3.999999999940941908e-01
-  let lg3 = 2.857142874366239149e-01
-  let lg4 = 2.222219843214978396e-01
-  let lg5 = 1.818357216161805012e-01
-  let lg6 = 1.531383769920937332e-01
-  let lg7 = 1.479819860511658591e-01
-  let zero = 0.0
-
-  let mut hx = __hi(x)
-  let lx = __low(x)
-
-  let mut k :UInt = 0
-  if hx < 0x00100000 {
-    if ((hx & 0x7fffffff) | lx) == 0 {
-      return -two54 / zero
-    }
-    if hx < 0 {
-      return (x - x) / zero
-    }
-    k -= 54
-    x *= two54
-    hx = __hi(x)
-  }
-  if hx >= 0x7ff00000 {
-    return x + x
-  }
-  k += (hx >> 20) - 1023
-  hx = hx & 0x000fffff
-  let i = (hx + 0x95f64) & 0x100000
-  x = __combine((hx|(i ^ 0x3ff00000)).to_uint64(), lx.to_uint64());
-  k += (i >> 20)
-  let f = x - 1.0
-  if (0x000fffff & (2 + hx.reinterpret_as_int())) < 3 {
-    if f == zero {
-      if k == 0 {
-        return zero
-      } else {
-        let dk = k.to_uint64().to_double()
-        return dk * ln2_hi + dk * ln2_lo
-      }
-    }
-    let r = f * f * (0.5 - 0.33333333333333333 * f)
-    if k == 0 {
-      return f - r
-    } else {
-      let dk = k.to_uint64().to_double()
-      return dk * ln2_hi - ((r - dk * ln2_lo) - f)
-    }
-  }
-  let s = f / (2.0 + f)
-  let dk = k.to_uint64().to_double()
-  let z = s * s
-  let mut i = hx - 0x6147a
-  let w = z * z
-  let j = 0x6b851 - hx.reinterpret_as_int()
-  let t1 = w * (lg2 + w * (lg4 + w * lg6))
-  let t2 = z * (lg1 + w * (lg3 + w * (lg5 + w * lg7)))
-  i = i | j.reinterpret_as_uint()
-  let r = t2 + t1
-  if i > 0 {
-    let hfsq = 0.5 * f * f
-    if k == 0 {
-      return f - (hfsq - s * (hfsq + r))
-    } else {
-      return dk * ln2_hi - ((hfsq - (s * (hfsq + r) + dk * ln2_lo)) - f)
-    }
-  } else {
-    if k == 0 {
-      return f - s * (f - r)
-    } else {
-      return dk * ln2_hi - ((s * (f - r) - dk * ln2_lo) - f)
-    }
-  }
+pub fn log(x: Double) -> Double {
+  x.ln()
 }
 
 test "log" {
-  fn assert_log_ulp(input: Double, expect_result: Double) -> Unit!Error {
-    assert_ulp!(expect_result, log(input), LOG_MAX_ULP)
+  fn assert_log_ulp!(input, expect) {
+    assert_ulp!(expect, log(input), LOG_MAX_ULP);
   }
-  assert_log_ulp!(1, 0)
-  assert_log_ulp!(2, 0.6931471805599453)
-  assert_log_ulp!(3, 1.0986122886681098)
-  assert_log_ulp!(4, 1.3862943611198906)
-  assert_log_ulp!(5, 1.6094379124341003)
-  assert_log_ulp!(6, 1.791759469228055)
-  assert_log_ulp!(7, 1.9459101490553132)
-  assert_log_ulp!(8, 2.0794415416798357)
-  assert_log_ulp!(9, 2.1972245773362196)
-  assert_log_ulp!(10, 2.302585092994046)
-  assert_log_ulp!(100, 4.605170185988092)
-  assert_log_ulp!(1000, 6.907755278982137)
-  assert_log_ulp!(10000, 9.210340371976184)
-  assert_log_ulp!(2.5, 0.9162907318741551)
-  assert_log_ulp!(3.4, 1.2237754316221157)
-  assert_log_ulp!(5.3, 1.667706820558076)
-  assert_log_ulp!(6.2, 1.824549292051046)
-  assert_log_ulp!(7.1, 1.9600947840472698)
-  assert_log_ulp!(8.9, 2.186051276738094)
-  assert_log_ulp!(9.8, 2.2823823856765264)
-  assert_log_ulp!(10.7, 2.3702437414678603)
-  assert_log_ulp!(101.6, 4.6210435351443815)
-  assert_log_ulp!(1.542, 0.4330802751411378)
-  assert_log_ulp!(2.846, 1.0459144996676606)
-  assert_log_ulp!(7.881, 2.0644547993715126)
-  assert_log_ulp!(3.772, 1.327605364771211)
-  // assert_log_ulp!(-1, double_nan)
+  assert_log_ulp!(-0.8, double_nan)
+  assert_log_ulp!(-0.7, double_nan)
+  assert_log_ulp!(-0.6, double_nan)
+  assert_log_ulp!(-0.5, double_nan)
+  assert_log_ulp!(-0.4, double_nan)
+  assert_log_ulp!(-0.3, double_nan)
+  assert_log_ulp!(-0.2, double_nan)
+  assert_log_ulp!(-0.1, double_nan)
+  assert_log_ulp!(-0, double_neg_inf)
+  assert_log_ulp!(-3.141592653589793, double_nan)
+  assert_log_ulp!(-1.5707963267948966, double_nan)
+  assert_log_ulp!(-0.7853981633974483, double_nan)
   assert_log_ulp!(0, double_neg_inf)
+  assert_log_ulp!(0.1, -2.3025850929940455)
+  assert_log_ulp!(0.2, -1.6094379124341003)
+  assert_log_ulp!(0.3, -1.2039728043259361)
+  assert_log_ulp!(0.4, -0.916290731874155)
+  assert_log_ulp!(0.5, -0.6931471805599453)
+  assert_log_ulp!(0.6, -0.5108256237659907)
+  assert_log_ulp!(0.7, -0.35667494393873245)
+  assert_log_ulp!(0.8, -0.2231435513142097)
+  assert_log_ulp!(0.9, -0.10536051565782628)
+  assert_log_ulp!(1, 0)
+  // assert_log_ulp!(3.141592653589793, 1.1447298858494002)
+  // assert_log_ulp!(1.5707963267948966, 0.4515827052894548)
+  // assert_log_ulp!(0.7853981633974483, -0.2415644752704905)
+  // assert_log_ulp!(-1, double_nan)
+  // assert_log_ulp!(-2, double_nan)
+  // assert_log_ulp!(-3, double_nan)
+  // assert_log_ulp!(-4, double_nan)
+  // assert_log_ulp!(-5, double_nan)
+  // assert_log_ulp!(-6, double_nan)
+  // assert_log_ulp!(-7, double_nan)
+  // assert_log_ulp!(-8, double_nan)
+  // assert_log_ulp!(-9, double_nan)
+  // assert_log_ulp!(1, 0)
+  // assert_log_ulp!(2, 0.6931471805599453)
+  // assert_log_ulp!(3, 1.0986122886681098)
+  // assert_log_ulp!(4, 1.3862943611198906)
+  // assert_log_ulp!(5, 1.6094379124341003)
+  // assert_log_ulp!(6, 1.791759469228055)
+  // assert_log_ulp!(7, 1.9459101490553132)
+  // assert_log_ulp!(8, 2.0794415416798357)
+  // assert_log_ulp!(9, 2.1972245773362196)
+  // assert_log_ulp!(10, 2.302585092994046)
+  // assert_log_ulp!(100, 4.605170185988092)
+  // assert_log_ulp!(1000, 6.907755278982137)
+  // assert_log_ulp!(10000, 9.210340371976184)
+  // assert_log_ulp!(2.5, 0.9162907318741551)
+  // assert_log_ulp!(3.4, 1.2237754316221157)
+  // assert_log_ulp!(5.3, 1.667706820558076)
+  // assert_log_ulp!(6.2, 1.824549292051046)
+  // assert_log_ulp!(7.1, 1.9600947840472698)
+  // assert_log_ulp!(8.9, 2.186051276738094)
+  // assert_log_ulp!(9.8, 2.2823823856765264)
+  // assert_log_ulp!(10.7, 2.3702437414678603)
+  // assert_log_ulp!(101.6, 4.6210435351443815)
+  // assert_log_ulp!(1.542, 0.4330802751411378)
+  // assert_log_ulp!(2.846, 1.0459144996676606)
+  // assert_log_ulp!(7.881, 2.0644547993715126)
+  // assert_log_ulp!(3.772, 1.327605364771211)
+  // assert_log_ulp!(-1.542, double_nan)
+  // assert_log_ulp!(-2.846, double_nan)
+  // assert_log_ulp!(-7.881, double_nan)
+  // assert_log_ulp!(-3.772, double_nan)
+  // assert_log_ulp!(-1, double_nan)
+  // assert_log_ulp!(0, double_neg_inf)
   // assert_log_ulp!(-0, double_neg_inf)
-  assert_log_ulp!(double_nan, double_nan)
+  // assert_log_ulp!(double_nan, double_nan)
+  // assert_log_ulp!(double_pos_inf, double_pos_inf)
+  // assert_log_ulp!(double_neg_inf, double_nan)
 }
