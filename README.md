@@ -61,7 +61,7 @@ The Moonbit Math Library strives for high precision in its calculations, aiming 
 | fdim          | Compute positive difference of two numbers | ✓       |  0                            |
 | gelu          | Compute GELU function                | ✓       |  (TODO)                             |
 | gegenbauer    | Compute Gegenbauer polynomial        | ✓       |  (TODO)                             |
-| gamma         | Compute Gamma function               | (TODO)  |  (TODO)                             |
+| gamma         | Compute Gamma function               | ✓       |  (TODO)                             |
 | hermite       | Compute Hermite polynomial           | ✓       |  3                                  |
 | hypot         | Compute Euclidean norm               | ✓       |  0                                  |
 | ilogb         | Compute integer part of log2(x)      | ✓       |  0                            |
@@ -124,7 +124,7 @@ The Moonbit Math Library strives for high precision in its calculations, aiming 
 | y0            | Compute Bessel function of the second kind (0th order) | ✓       |  2                |
 | y1            | Compute Bessel function of the second kind (1st order) | ✓       |  2                |
 | yn            | Compute Bessel function of the second kind (nth order) | ✓       |  2                |
-| zeta          | Compute Riemann zeta function        | (TODO)  |  (TODO)                             |
+| zeta          | Compute Riemann zeta function        | ✓       |  (TODO)                             |
 
 ### Notes on Precision
 
