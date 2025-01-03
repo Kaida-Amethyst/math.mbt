@@ -3,6 +3,18 @@ pub const RADIX: UInt = 2U;
 pub const MANTISSA_DIGITS: UInt = 53U;
 pub const DIGITS: UInt = 15U;
 
+///| INT_MAX is the maximum value an `Int` can represent. 2147483647
+pub const INT_MAX : Int = 2147483647;
+
+///| INT64_MAX is the maximum value an `Int64` can represent. 9223372036854775807
+pub const INT64_MAX : Int64 = 9223372036854775807;
+
+///| UINT_MAX is the maximum value an `UInt` can represent. 4294967295
+pub const UINT_MAX : UInt = 4294967295U;
+
+///| UINT64_MAX is the maximum value an `UInt64` can represent. 18446744073709551615
+pub const UINT64_MAX : UInt64 = 18446744073709551615UL;
+
 ///| Epsilon is the minimum value that make double `1.0 + epsilon != 1.0`. 2.2204460492503131e-16
 pub const DOUBLE_EPSILON : Double = 2.2204460492503131e-16;
 

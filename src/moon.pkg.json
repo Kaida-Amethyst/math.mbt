@@ -1,6 +1,7 @@
 {
   "targets" : {
     "fma_wasm.mbt" : ["wasm", "wasm-gc"],
-    "fma_js.mbt" : ["js"]
+    "fma_js.mbt" : ["js"],
+    "fma.mbt" : ["not", "js", "wasm", "wasm-gc"]
   }
 }

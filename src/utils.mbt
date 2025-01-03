@@ -1,14 +1,10 @@
 // Constants
 // let int_max : Int = 0x7fffffff
-let int64_max : Int64 = 0x7fff_ffff_ffff_ffffL
 let double_nan : Double = (0x7fffffff_ffffffffUL).reinterpret_as_double()
 let double_pos_inf : Double = (0x7ff00000_00000000UL).reinterpret_as_double()
 let double_neg_inf : Double = (0xfff00000_00000000UL).reinterpret_as_double()
 // pub let double_max : Double = (0x7fefffffffffffffUL).reinterpret_as_double()
-// pub let pi : Double = 3.14159265358979323846
 // pub let double_pi : Double = pi
-// pub let e : Double = 2.71828182845904523536
-// pub let double_e : Double = e
 
 // epsilon
 let double_epsilon : Double = 0x0.0000000000001P-1022
@@ -92,27 +88,27 @@ fn ulp_error(x: Double, y : Double) -> Int64 {
   }
 
   if xisnan && not(yisnan) {
-    return int64_max
+    return INT64_MAX
   }
 
   if yisnan && not(xisnan) {
-    return int64_max
+    return INT64_MAX
   }
 
   if xispinf && not(yispinf) {
-    return int64_max
+    return INT64_MAX
   }
 
   if yispinf && not(xispinf) {
-    return int64_max
+    return INT64_MAX
   }
 
   if xisninf && not(yisninf) {
-    return int64_max
+    return INT64_MAX
   }
 
   if yisninf && not(xisninf) {
-    return int64_max
+    return INT64_MAX
   }
 
   let xi : Int64 = x.reinterpret_as_int64()
@@ -149,11 +145,6 @@ let cos_ = [
   -0x0.000000000C7D24D03C8, 0x0.00000008F74EBDA72B71, -0x0.0000049F93DFAB12FDC6,
   0x0.0001A01A019C844F3E07, -0x0.005B05B05B053E453C34, 0x0.0AAAAAAAAAAAA55A47E1,
 ]
-
-// NOTE: This function is not accurate for large x
-// fn fma(x: Double, y : Double, z: Double) -> Double {
-//   x * y + z
-// }
 
 fn absmaximum(vec: Array[Double]) -> Double {
   let mut max : Double = 0.0
