@@ -151,9 +151,9 @@ let cos_ = [
 ]
 
 // NOTE: This function is not accurate for large x
-fn fma(x: Double, y : Double, z: Double) -> Double {
-  x * y + z
-}
+// fn fma(x: Double, y : Double, z: Double) -> Double {
+//   x * y + z
+// }
 
 fn absmaximum(vec: Array[Double]) -> Double {
   let mut max : Double = 0.0
