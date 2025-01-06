@@ -12,6 +12,10 @@
 ///
 /// 1 ulp (unit in the last place).
 pub fn cbrt(x: Double) -> Double {
+  if isinf(x) || isnan(x) || x == 0.0 {
+    return x
+  }
+
   let b1 : UInt = 715094163 // B1 = (682-0.03306235651)*2**20
   let b2 : UInt = 696219795 // B2 = (664-0.03306235651)*2**20
   let c =  5.42857142857142815906e-01 // 19/35     = 0x3FE15F15, 0xF15F15F1
@@ -20,17 +24,9 @@ pub fn cbrt(x: Double) -> Double {
   let f =  1.60714285714285720630e+00 // 45/28     = 0x3FF9B6DB, 0x6DB6DB6E
   let g =  3.57142857142857150787e-01 // 5/14      = 0x3FD6DB6D, 0xB6DB6DB7
 
-  let mut x = x
-  let mut hx = __hi(x).reinterpret_as_int()
-  let sign = hx & 0x80000000 // sign= sign(x)
-  hx = hx ^ sign
-  if hx >= 0x7ff00000 {
-    return x + x // cbrt(NaN,INF) is itself
-  }
-  if (hx | __low(x).reinterpret_as_int()) == 0 {
-    return x // cbrt(0) is itself
-  }
-  x = __combineW(hx.reinterpret_as_uint(), __low(x))
+  let hx = __hi(x).reinterpret_as_int()
+  let sign = if x < 0.0 { true } else { false }
+  let x = fabs(x)
   // rough cbrt to 5 bits
   let t = if hx < 0x00100000 {
     // subnormal number
@@ -53,7 +49,11 @@ pub fn cbrt(x: Double) -> Double {
   let r = (r - t) / (w + r)
   let t = t + t * r
   // retore the sign bit
-  __combineW(__hi(t) | sign.reinterpret_as_uint(), __low(t))
+  if sign {
+    -t
+  } else {
+    t
+  }
 }
 
 

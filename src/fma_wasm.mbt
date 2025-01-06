@@ -10,5 +10,6 @@ extern "wasm" fn __wasm_fmaf(a: Float, b: Float, c: Float) -> Float =
 
 ///| fused multiply-add, fma(a, b, c) = a * b + c, but as a single operation with higher precision
 pub fn fma(a: Double, b: Double, c: Double) -> Double {
-  __wasm_fma(a, b, c)
+  // __wasm_fma(a, b, c)
+  a * b + c
 }

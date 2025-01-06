@@ -48,3 +48,5 @@ const Y1_MAX_ULP : Int = 2
 
 // const JN_MAX_ULP : Int = 2
 // const YN_MAX_ULP : Int = 2
+
+const ERFINV_MAX_ULP: Int = 2

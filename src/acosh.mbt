@@ -37,8 +37,6 @@ pub fn acosh(x: Double) -> Double {
   } else if hx >= 0x41b00000 {
     // x > 2**28
     return log(x) + ln2
-  } else if ((hx - 0x3ff00000) | __low(x).reinterpret_as_int()) == 0 {
-    return 0.0
   } else if hx > 0x40000000 {
     // 2**28 > x > 2
     let t = x * x
