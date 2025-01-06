@@ -42,8 +42,11 @@ The Moonbit Math Library strives for high precision in its calculations, aiming 
 | cos           | Compute cosine                       | ✓       |  49                                 |
 | cosh          | Compute hyperbolic cosine            | ✓       |  1                                  |
 | cospi         | Compute cos(πx)                      | ✓       |  3                                  |
-| cyl_bessel_i0 | Cylindrical Bessel function of order 0| (TODO) |  (TODO)                             |
-| cyl_bessel_i1 | Cylindrical Bessel function of order 1| (TODO) |  (TODO)                             |
+| bessel_i0     | Cylindrical Bessel function of order 0| (TODO) |  (TODO)                             |
+| bessel_i1     | Cylindrical Bessel function of order 1| (TODO) |  (TODO)                             |
+| bessel_k0     | Modified Bessel function of the second kind of order 0 | (TODO) | (TODO)             |
+| bessel_k1     | Modified Bessel function of the second kind of order 1 | (TODO) | (TODO)             |
+| bessel_kn     | Modified Bessel function of the second kind of order n | (TODO) | (TODO)             |
 | digamma       | Compute Digamma function             | ✓       |  1023                               |
 | div_euclid    | Compute Euclidean division           | ✓       |  0                                  |
 | erf           | Compute error function               | ✓       |  1                                  |
@@ -63,8 +66,8 @@ The Moonbit Math Library strives for high precision in its calculations, aiming 
 | gegenbauer    | Compute Gegenbauer polynomial        | ✓       |  (TODO)                             |
 | gamma         | Compute Gamma function               | ✓       |  (TODO)                             |
 | hermite       | Compute Hermite polynomial           | ✓       |  3                                  |
-| hypot         | Compute Euclidean norm               | ✓       |  0                                  |
-| ilogb         | Compute integer part of log2(x)      | ✓       |  0                            |
+| hypot         | Compute Euclidean norm               | ✓       |  4                                  |
+| ilogb         | Compute integer part of log2(x)      | ✓       |  0                                  |
 | isfinite      | Check if value is finite             | ✓       |  0                                  |
 | isinf         | Check if value is infinite           | ✓       |  0                                  |
 | isnan         | Check if value is NaN                | ✓       |  0                                  |
@@ -124,7 +127,7 @@ The Moonbit Math Library strives for high precision in its calculations, aiming 
 | y0            | Compute Bessel function of the second kind (0th order) | ✓       |  2                |
 | y1            | Compute Bessel function of the second kind (1st order) | ✓       |  2                |
 | yn            | Compute Bessel function of the second kind (nth order) | ✓       |  2                |
-| zeta          | Compute Riemann zeta function        | ✓       |  (TODO)                             |
+| zeta          | Compute Riemann zeta function        | ✓       |  3                                  |
 
 ### Notes on Precision
 

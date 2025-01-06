@@ -1,5 +1,4 @@
-
-
+///| Compute the Riemann zeta function of two arguments.
 pub fn zeta(x: Double, y: Double) -> Double {
   let machep = 1.11022302462515654042e-16
   let ns = [12.0, -720.0, 30240.0, -1209600.0, 47900160.0,
@@ -18,12 +17,16 @@ pub fn zeta(x: Double, y: Double) -> Double {
   let mut e = 0.0
   let mut f = 0.0
 
+  if ispinf(x) && y == 1.0 {
+    return 1.0
+  }
+
   if x == 1.0 {
     return double_pos_inf
   }
 
   if x < 1.0 {
-    return double_neg_inf
+    return double_nan
   }
 
   if y <= 0.0 {
@@ -69,3 +72,191 @@ pub fn zeta(x: Double, y: Double) -> Double {
   }
   s
 }
+
+test "zeta" {
+  fn assert_zeta_ulp!(input1, input2, expect) {
+    assert_ulp!(expect, zeta(input1, input2), ZETA_MAX_ULP);
+  }
+  assert_zeta_ulp!(0, 0, double_nan);
+  assert_zeta_ulp!(0, -0, double_nan);
+  assert_zeta_ulp!(0, 1, double_nan);
+  assert_zeta_ulp!(-0, 0, double_nan);
+  assert_zeta_ulp!(-0, double_pos_inf, double_nan);
+  assert_zeta_ulp!(-0, double_neg_inf, double_nan);
+  assert_zeta_ulp!(-0, double_nan, double_nan);
+  assert_zeta_ulp!(1, 0, double_pos_inf);
+  assert_zeta_ulp!(1, -0, double_pos_inf);
+  assert_zeta_ulp!(1, 1, double_pos_inf);
+  assert_zeta_ulp!(1, -1, double_pos_inf);
+  assert_zeta_ulp!(1, 2, double_pos_inf);
+  assert_zeta_ulp!(1, -2, double_pos_inf);
+  assert_zeta_ulp!(1, 3.14159, double_pos_inf);
+  assert_zeta_ulp!(1, -3.14159, double_pos_inf);
+  assert_zeta_ulp!(1, -2.71828, double_pos_inf);
+  assert_zeta_ulp!(1, 2.71828, double_pos_inf);
+  assert_zeta_ulp!(1, 10000000, double_pos_inf);
+  assert_zeta_ulp!(1, -10000000, double_pos_inf);
+  assert_zeta_ulp!(1, 0.5, double_pos_inf);
+  assert_zeta_ulp!(1, -0.5, double_pos_inf);
+  assert_zeta_ulp!(1, 0.0027818, double_pos_inf);
+  assert_zeta_ulp!(1, -0.0027818, double_pos_inf);
+  assert_zeta_ulp!(1, double_pos_inf, double_pos_inf);
+  assert_zeta_ulp!(1, double_neg_inf, double_pos_inf);
+  assert_zeta_ulp!(1, double_nan, double_pos_inf);
+  assert_zeta_ulp!(-1, 0, double_nan);
+  assert_zeta_ulp!(-1, -0, double_nan);
+  assert_zeta_ulp!(-1, 1, double_nan);
+  assert_zeta_ulp!(-1, -1, double_nan);
+  assert_zeta_ulp!(-1, 2, double_nan);
+  assert_zeta_ulp!(-1, double_neg_inf, double_nan);
+  assert_zeta_ulp!(-1, double_nan, double_nan);
+  assert_zeta_ulp!(2, 0, double_pos_inf);
+  assert_zeta_ulp!(2, -0, double_pos_inf);
+  assert_zeta_ulp!(2, 1, 1.644934066848227);
+  assert_zeta_ulp!(2, -1, double_pos_inf);
+  assert_zeta_ulp!(2, 2, 0.6449340668482266);
+  assert_zeta_ulp!(2, -2, double_pos_inf);
+  assert_zeta_ulp!(2, 3.14159, 0.3742441373024457);
+  assert_zeta_ulp!(2, -3.14159, 53.03230296609727);
+  assert_zeta_ulp!(2, -2.71828, 16.16869330055435);
+  assert_zeta_ulp!(2, 2.71828, 0.4436391802745055);
+  assert_zeta_ulp!(2, 10000000, 1.000000050000002e-07);
+  assert_zeta_ulp!(2, -10000000, double_pos_inf);
+  assert_zeta_ulp!(2, 0.5, 4.93480220054468);
+  assert_zeta_ulp!(2, -0.5, 8.934802200544679);
+  assert_zeta_ulp!(2, 5.0e-05, 400000001.6448138);
+  assert_zeta_ulp!(2, -5.0e-05, 400000001.6450542);
+  assert_zeta_ulp!(2, 0.0027818, 129227.1302988228);
+  assert_zeta_ulp!(2, -0.0027818, 129227.143674529);
+  assert_zeta_ulp!(2, double_pos_inf, double_nan);
+  assert_zeta_ulp!(2, double_neg_inf, double_pos_inf);
+  assert_zeta_ulp!(2, double_nan, double_nan);
+  assert_zeta_ulp!(-2, 0, double_nan);
+  assert_zeta_ulp!(-2, -0, double_nan);
+  assert_zeta_ulp!(-2, 1, double_nan);
+  assert_zeta_ulp!(-2, -1, double_nan);
+  assert_zeta_ulp!(-2, 2, double_nan);
+  assert_zeta_ulp!(-2, -2, double_nan);
+  assert_zeta_ulp!(-2, 3.14159, double_nan);
+  assert_zeta_ulp!(-2, -3.14159, double_nan);
+  assert_zeta_ulp!(-2, -2.71828, double_nan);
+  assert_zeta_ulp!(-2, 2.71828, double_nan);
+  assert_zeta_ulp!(-2, 10000000, double_nan);
+  assert_zeta_ulp!(-2, -10000000, double_nan);
+  assert_zeta_ulp!(-2, 0.5, double_nan);
+  assert_zeta_ulp!(-2, -0.5, double_nan);
+  assert_zeta_ulp!(-2, 5.0e-05, double_nan);
+  assert_zeta_ulp!(-2, -5.0e-05, double_nan);
+  assert_zeta_ulp!(-2, 0.0027818, double_nan);
+  assert_zeta_ulp!(-2, -0.0027818, double_nan);
+  assert_zeta_ulp!(-2, double_pos_inf, double_nan);
+  assert_zeta_ulp!(-2, double_neg_inf, double_nan);
+  assert_zeta_ulp!(-2, double_nan, double_nan);
+  assert_zeta_ulp!(3.14159, 0, double_pos_inf);
+  assert_zeta_ulp!(3.14159, -0, double_pos_inf);
+  assert_zeta_ulp!(3.14159, 1, 1.176242183133132);
+  assert_zeta_ulp!(3.14159, -1, double_pos_inf);
+  assert_zeta_ulp!(3.14159, 2, 0.1762421831331325);
+  assert_zeta_ulp!(3.14159, -2, double_pos_inf);
+  assert_zeta_ulp!(3.14159, 3.14159, 0.05615577992575627);
+  assert_zeta_ulp!(3.14159, -3.14159, double_nan);
+  assert_zeta_ulp!(3.14159, -2.71828, double_nan);
+  assert_zeta_ulp!(3.14159, 2.71828, 0.08044299178527513);
+  assert_zeta_ulp!(3.14159, 10000000, 4.765776991518263e-16);
+  assert_zeta_ulp!(3.14159, -10000000, double_pos_inf);
+  assert_zeta_ulp!(3.14159, 0.5, 9.204049909506169);
+  assert_zeta_ulp!(3.14159, -0.5, double_nan);
+  assert_zeta_ulp!(3.14159, 5.0e-05, 32514181377625.38);
+  assert_zeta_ulp!(3.14159, -5.0e-05, double_nan);
+  assert_zeta_ulp!(3.14159, 0.0027818, 106876000.1256451);
+  assert_zeta_ulp!(3.14159, -0.0027818, double_nan);
+  assert_zeta_ulp!(3.14159, double_pos_inf, double_nan);
+  assert_zeta_ulp!(3.14159, double_neg_inf, double_pos_inf);
+  assert_zeta_ulp!(3.14159, double_nan, double_nan);
+  assert_zeta_ulp!(-3.14159, 0, double_nan);
+  assert_zeta_ulp!(-3.14159, 0.5, double_nan);
+  assert_zeta_ulp!(-2.71828, double_neg_inf, double_nan);
+  assert_zeta_ulp!(-2.71828, double_nan, double_nan);
+  assert_zeta_ulp!(2.71828, 0, double_pos_inf);
+  assert_zeta_ulp!(2.71828, -0, double_pos_inf);
+  assert_zeta_ulp!(2.71828, 1, 1.269010123435276);
+  assert_zeta_ulp!(2.71828, -1, double_pos_inf);
+  assert_zeta_ulp!(2.71828, 2, 0.2690101234352756);
+  assert_zeta_ulp!(2.71828, -2, double_pos_inf);
+  assert_zeta_ulp!(2.71828, 3.14159, 0.1067931437511536);
+  assert_zeta_ulp!(2.71828, -3.14159, double_nan);
+  assert_zeta_ulp!(2.71828, -2.71828, double_nan);
+  assert_zeta_ulp!(2.71828, 2.71828, 0.1426898137577874);
+  assert_zeta_ulp!(2.71828, 10000000, 5.456901343854609e-13);
+  assert_zeta_ulp!(2.71828, -10000000, double_pos_inf);
+  assert_zeta_ulp!(2.71828, 0.5, 7.08219023609503);
+  assert_zeta_ulp!(2.71828, -0.5, double_nan);
+  assert_zeta_ulp!(2.71828, 5.0e-05, 491364545431.0044);
+  assert_zeta_ulp!(2.71828, -5.0e-05, double_nan);
+  assert_zeta_ulp!(2.71828, 0.0027818, 8851927.470588319);
+  assert_zeta_ulp!(2.71828, -0.0027818, double_nan);
+  assert_zeta_ulp!(2.71828, double_pos_inf, double_nan);
+  assert_zeta_ulp!(2.71828, double_neg_inf, double_pos_inf);
+  assert_zeta_ulp!(2.71828, double_nan, double_nan);
+  assert_zeta_ulp!(10000000, 0, double_pos_inf);
+  assert_zeta_ulp!(10000000, -0, double_pos_inf);
+  assert_zeta_ulp!(10000000, 1, 1);
+  assert_zeta_ulp!(10000000, -1, double_pos_inf);
+  assert_zeta_ulp!(10000000, 2, 0);
+  assert_zeta_ulp!(10000000, -2, double_pos_inf);
+  assert_zeta_ulp!(10000000, 3.14159, 0);
+  assert_zeta_ulp!(10000000, -3.14159, double_pos_inf);
+  assert_zeta_ulp!(10000000, -2.71828, double_pos_inf);
+  assert_zeta_ulp!(10000000, 2.71828, 0);
+  assert_zeta_ulp!(10000000, 10000000, 0);
+  assert_zeta_ulp!(10000000, -10000000, double_pos_inf);
+  assert_zeta_ulp!(10000000, 0.5, double_pos_inf);
+  assert_zeta_ulp!(10000000, -0.5, double_pos_inf);
+  assert_zeta_ulp!(10000000, 0.0027818, double_pos_inf);
+  assert_zeta_ulp!(10000000, -0.0027818, double_pos_inf);
+  assert_zeta_ulp!(10000000, double_pos_inf, double_nan);
+  assert_zeta_ulp!(10000000, double_neg_inf, double_pos_inf);
+  assert_zeta_ulp!(10000000, double_nan, double_nan);
+  assert_zeta_ulp!(-10000000, 0, double_nan);
+  assert_zeta_ulp!(-10000000, double_pos_inf, double_nan);
+  assert_zeta_ulp!(-10000000, double_neg_inf, double_nan);
+  assert_zeta_ulp!(-10000000, double_nan, double_nan);
+  assert_zeta_ulp!(0.5, 0, double_nan);
+  assert_zeta_ulp!(0.5, -0, double_nan);
+  assert_zeta_ulp!(0.5, 1, double_nan);
+  assert_zeta_ulp!(0.5, -1, double_nan);
+  assert_zeta_ulp!(0.5, 2, double_nan);
+  assert_zeta_ulp!(-0.5, 0, double_nan);
+  assert_zeta_ulp!(-0.5, -0, double_nan);
+  assert_zeta_ulp!(-0.5, 1, double_nan);
+  assert_zeta_ulp!(-0.5, -1, double_nan);
+  assert_zeta_ulp!(-0.5, 2, double_nan);
+  assert_zeta_ulp!(-0.5, -2, double_nan);
+  assert_zeta_ulp!(-0.5, 3.14159, double_nan);
+  assert_zeta_ulp!(-0.5, -3.14159, double_nan);
+  assert_zeta_ulp!(-0.5, -2.71828, double_nan);
+  assert_zeta_ulp!(-0.5, 2.71828, double_nan);
+  assert_zeta_ulp!(-0.5, 10000000, double_nan);
+  assert_zeta_ulp!(-0.5, -10000000, double_nan);
+  assert_zeta_ulp!(-0.5, 0.5, double_nan);
+  assert_zeta_ulp!(-0.0027818, -0, double_nan);
+  assert_zeta_ulp!(-0.0027818, double_nan, double_nan);
+  assert_zeta_ulp!(double_pos_inf, 0, double_pos_inf);
+  assert_zeta_ulp!(double_pos_inf, -0, double_pos_inf);
+  assert_zeta_ulp!(double_pos_inf, 1, 1);
+  assert_zeta_ulp!(double_pos_inf, -1, double_pos_inf);
+  assert_zeta_ulp!(double_pos_inf, 2, double_nan);
+  assert_zeta_ulp!(double_pos_inf, double_pos_inf, double_nan);
+  assert_zeta_ulp!(double_pos_inf, double_neg_inf, double_pos_inf);
+  assert_zeta_ulp!(double_pos_inf, double_nan, double_nan);
+  assert_zeta_ulp!(double_neg_inf, 0, double_nan);
+  assert_zeta_ulp!(double_neg_inf, -0, double_nan);
+  assert_zeta_ulp!(double_neg_inf, 10000000, double_nan);
+  assert_zeta_ulp!(double_neg_inf, -10000000, double_nan);
+  assert_zeta_ulp!(double_neg_inf, 0.5, double_nan);
+  assert_zeta_ulp!(double_neg_inf, -0.5, double_nan);
+  assert_zeta_ulp!(double_neg_inf, double_nan, double_nan);
+  assert_zeta_ulp!(double_nan, 0, double_pos_inf);
+  assert_zeta_ulp!(double_nan, -0, double_pos_inf);
+}
+

@@ -35,7 +35,7 @@ const SINPI_MAX_ULP : Int = 3
 
 const SQRT_MAX_ULP : Int = 0
 
-// const HYPOT_MAX_ULP : Int = 1
+const HYPOT_MAX_ULP : Int = 4
 
 const ERF_MAX_ULP : Int = 1
 const ERFC_MAX_ULP : Int = 1
@@ -50,3 +50,5 @@ const Y1_MAX_ULP : Int = 2
 // const YN_MAX_ULP : Int = 2
 
 const ERFINV_MAX_ULP: Int = 2
+
+const ZETA_MAX_ULP : Int = 3
