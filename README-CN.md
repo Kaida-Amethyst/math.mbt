@@ -42,7 +42,7 @@ Moonbit 数学库在计算中力求高精度，旨在匹配 glibc 实现的准�
 | cospi         | 计算 cos(πx)                  | ✓       |  0       |
 | cyl_bessel_i0 | 柱贝塞尔函数（0阶）           | (TODO)  |  (TODO)  |
 | cyl_bessel_i1 | 柱贝塞尔函数（1阶）           | (TODO)  |  (TODO)  |
-| digamma       | 计算 Digamma 函数             | ✓       |  4       |
+| digamma       | 计算 Digamma 函数             | ✓       |  1023    |
 | div_euclid    | 计算欧几里得除法              | ✓       |  0       |
 | erf           | 计算误差函数                  | ✓       |  1       |
 | erfc          | 计算互补误差函数              | ✓       |  1       |
@@ -51,7 +51,7 @@ Moonbit 数学库在计算中力求高精度，旨在匹配 glibc 实现的准�
 | erfinv        | 计算反误差函数                | ✓       |  2       |
 | exp           | 计算指数函数                  | ✓       |  0       |
 | exp10         | 计算 10 的 x 次方             | ✓       |  0       |
-| exp2          | 计算 2 的 x 次方              | ✓       |  0       |
+| exp2          | 计算 2 的 x 次方              | ✓       |  1       |
 | expm1         | 计算 exp(x) - 1               | ✓       |  0       |
 | fast_rsqrt    | 计算快速倒数平方根            | ✓       |  (TODO)  |
 | floor         | 向下取整到最近的整数          | ✓       |  0       |

@@ -44,7 +44,7 @@ The Moonbit Math Library strives for high precision in its calculations, aiming 
 | cospi         | Compute cos(πx)                      | ✓       |  3                                  |
 | cyl_bessel_i0 | Cylindrical Bessel function of order 0| (TODO) |  (TODO)                             |
 | cyl_bessel_i1 | Cylindrical Bessel function of order 1| (TODO) |  (TODO)                             |
-| digamma       | Compute Digamma function             | ✓       |  4                                  |
+| digamma       | Compute Digamma function             | ✓       |  1023                               |
 | div_euclid    | Compute Euclidean division           | ✓       |  0                                  |
 | erf           | Compute error function               | ✓       |  1                                  |
 | erfc          | Compute complementary error function | ✓       |  (TODO)                             |
@@ -53,7 +53,7 @@ The Moonbit Math Library strives for high precision in its calculations, aiming 
 | erfinv        | Compute inverse error function       | ✓       |  2                                  |
 | exp           | Compute exponential function         | ✓       |  0                                  |
 | exp10         | Compute 10 raised to the power of x  | ✓       |  0                                  |
-| exp2          | Compute 2 raised to the power of x   | ✓       |  58                                 |
+| exp2          | Compute 2 raised to the power of x   | ✓       |  1                                  |
 | expm1         | Compute exp(x) - 1                   | ✓       |  0                                  |
 | fast_rsqrt    | Compute fast reciprocal square root  | ✓       |  (TODO)                             |
 | floor         | Round down to the nearest integer    | ✓       |  0                                  |
@@ -89,8 +89,8 @@ The Moonbit Math Library strives for high precision in its calculations, aiming 
 | norm          | Compute norm                         | ✓       |  0                                  |
 | norm3d        | Compute norm3d                       | ✓       |  0                                  |
 | norm4d        | Compute norm4d                       | ✓       |  0                                  |
-| normcdf       | Compute cumulative distribution function of normal distribution | ✓       |  0       |
-| normcdfinv    | Compute inverse cumulative distribution function of normal distribution | ✓       |  0   |
+| normcdf       | Compute cumulative distribution function of normal distribution | ✓       |  (TODO)  |
+| normcdfinv    | Compute inverse cumulative distribution function of normal distribution | ✓       |  (TODO) |
 | pown          | Compute integer power of x           | ✓       |  0                                  |
 | polygamma     | Compute Polygamma function           | (TODO)  |  (TODO)                             |
 | pow           | Compute x raised to the power of y   | ✓       |  0                                  |
