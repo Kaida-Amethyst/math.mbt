@@ -1,5 +1,5 @@
 ///| Compute Gamma function
-pub fn gamma(x : Double) -> Double {
+pub fn lgamma(x : Double) -> Double {
   if isinf(x) || isnan(x) {
     return x
   }
