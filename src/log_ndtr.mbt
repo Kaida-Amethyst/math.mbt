@@ -1,10 +1,10 @@
-  // template <typename T>
-  // T log_ndtr(T x) {
-  //   constexpr T SQRT1_2{0.707106781186547524400844362104849039};   // 1/sqrt(2)
-  //   T t = x * SQRT1_2;
-  //   if (x < T{-1.0}) {
-  //     return log(erfcx(-t) / 2) - t * t;
-  //   } else {
-  //     return log1p(-erfc(t) / 2);
-  //   }
-  // }
+///| Computes the natural logarithm of the standard normal cumulative distribution function.
+pub fn log_ndtr(x: Double) -> Double {
+    // let sqrt1_2 = 0.707106781186547524400844362104849039; // 1/sqrt(2)
+    let t = x * SQRT1_OVER_2;
+    if x < -1.0 {
+        log(erfcx(-t) / 2.0) - t * t;
+    } else {
+        log1p(-erfc(t) / 2.0);
+    }
+}
