@@ -1,57 +1,23 @@
-//
-//Method
-// 
-//  1. Argument reduction:
-//     Reduce x to an r so that |r| <= 0.5*ln2 ~ 0.34658.
-// Given x, find r and integer k such that
-//              x = k*ln2 + r,  |r| <= 0.5*ln2.  
-//     Here r will be represented as r = hi-lo for better 
-// accuracy.
-//
-//  2. Approximation of exp(r) by a special rational function on
-// the interval [0,0.34658]:
-// Write
-//     R(r**2) = r*(exp(r)+1)/(exp(r)-1) = 2 + r*r/6 - r**4/360 + ...
-//     We use a special Remes algorithm on [0,0.34658] to generate 
-//	a polynomial of degree 5 to approximate R. The maximum error 
-// of this polynomial approximation is bounded by 2**-59. In
-// other words,
-//     R(z) ~ 2.0 + P1*z + P2*z**2 + P3*z**3 + P4*z**4 + P5*z**5
-// 	(where z=r*r, and the values of P1 to P5 are listed below)
-// and
-//     |                  5          |     -59
-//     | 2.0+P1*z+...+P5*z   -  R(z) | <= 2 
-//     |                             |
-// 
-// The computation of exp(r) thus becomes
-//                            2*r
-// 	exp(r) = 1 + -------
-// 	              R - r
-//                                r*R1(r)	
-// 	       = 1 + r + ----------- (for better accuracy)
-// 	                  2 - R1(r)
-// where
-// 		         2       4             10
-// 	R1(r) = r - (P1*r  + P2*r  + ... + P5*r   ).
-//  3. Scale back to obtain exp(x):
-// From step 1, we have
-//    exp(x) = 2^k * exp(r)
 ///| Return exponent of x 
-/// # Introduction:
 ///
-/// Compute exp(x)
+/// # Example
+///
+/// ```moonbit
+/// assert_eq!(exp(1), 2.718281828459045)
+/// assert_eq!(exp(-1), 0.36787944117144233)
+/// assert_eq!(exp(-2), 0.1353352832366127)
+/// assert_eq!(exp(-3), 0.049787068367863944)
+/// ```
+///
+/// # Accuracy:
+/// 
+/// 1 ulp (unit in the last place).
 ///
 /// # Special cases:
 ///
 /// 1. exp(INF) is INF, exp(NaN) is NaN;
 /// 2. exp(-INF) is 0, and
 /// 3. for finite argument, only exp(0)=1 is exact.
-///
-/// # Accuracy:
-/// 
-///   according to an error analysis, the error is always less than
-///   1 ulp (unit in the last place).
-///
 pub fn exp(input : Double) -> Double {
   let mut x = input
   let one = 1.0

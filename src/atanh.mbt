@@ -1,36 +1,41 @@
-///| hyperbolic arctangent of ``x``.
-/// # Introduction:
+///| Computes hyperbolic arctangent of ``x``.
 ///
-///   atanh(x) returns the hyperbolic arctangent of x.
+/// # Examples
 ///
-/// # Special cases:
-///
-/// 1. atanh(x) is NaN if |x| > 1 with signal;
-/// 2. atanh(NaN) is that NaN with no signal;
-/// 3. atanh(+-1) is +-INF with signal.
+/// ```moonbit
+/// let double_pos_inf = 1.0 / 0.0
+/// let double_neg_inf = -1.0 / 0.0
+/// assert_eq!(atanh(0.0), 0.0);
+/// assert_eq!(atanh(0.5), 0.5493061443340548);
+/// assert_eq!(atanh(1.0), double_pos_inf);
+/// assert_eq!(atanh(-0.5), -0.5493061443340548);
+/// assert_eq!(atanh(-1.0), double_neg_inf);
+/// ```
 ///
 /// # Accuracy:
 ///
 /// 1ulp (unit in the last place).
-//  * Method :
-//  *    1.Reduced x to positive by atanh(-x) = -atanh(x)
-//  *    2.For x>=0.5
-//  *                  1              2x                          x
-//  *	atanh(x) = --- * log(1 + -------) = 0.5 * log1p(2 * --------)
-//  *                  2             1 - x                      1 - x
-//  *	
-//  * 	For x<0.5
-//  *	atanh(x) = 0.5*log1p(2x+2x*x/(1-x))
-//  *
+///
+/// # Special cases:
+///
+/// 1. atanh(x) = NaN for all |x| > 1
+/// 2. atanh(NaN) = NaN
+/// 3. atanh(1) = +Inf
+/// 4. atanh(-1) = -Inf
 pub fn atanh(x: Double) -> Double {
   let hx : Int = __hi(x).reinterpret_as_int()
   let ix = hx & 0x7fffffff
   if fabs(x) > 1.0 {
     return double_nan
   }
-  if fabs(x) == 1.0{
+  if x == 1.0{
     return double_pos_inf
   }
+
+  if x == -1.0 {
+    return double_neg_inf
+  }
+
   if ix < 0x3e300000 && (1.0e300 + x) > 0.0 {
     return x
   }

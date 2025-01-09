@@ -1,31 +1,23 @@
-///| Compute arc cosine
-/// # Introduction
+///| Compute the principal value of the arc cosine of `x`.
 ///
-/// Computes the principal value of the arc cosine of `x`.
+/// # Examples
+///
+/// ```moonbit
+/// assert_eq!(acos(-0.5), 2.0943951023931957)
+/// assert_eq!(acos(0.5), 1.0471975511965979)
+/// assert_eq!(acos(1), 0)
+/// assert_eq!(acos(0), 1.5707963267948966)
+/// assert_eq!(acos(-1), 3.141592653589793)
+/// ```
+///
+/// # Accruacy
+///
+/// 1 ulp (unit in the last place).
 ///
 /// # Special cases
 ///
 /// 1. If `x` is NaN, a NaN is returned.
 /// 2. If |x| > 1, a NaN is returned with the invalid signal raised.
-///
-/// # Accruacy
-///
-/// 1 ulp (unit in the last place).
-// Method :                  
-// acos(x)  = pi/2 - asin(x)
-// acos(-x) = pi/2 + asin(x)
-// For |x|<=0.5
-// acos(x) = pi/2 - (x + x*x^2*R(x^2))	(see asin.c)
-// For x>0.5
-// 	acos(x) = pi/2 - (pi/2 - 2asin(sqrt((1-x)/2)))
-// 	= 2asin(sqrt((1-x)/2))  
-// 	= 2s + 2s*z*R(z) 	...z=(1-x)/2, s=sqrt(z)
-// 	= 2f + (2c + 2s*z*R(z))
-//     where f=hi part of s, and c = (z-f*f)/(s+f) is the correction term
-//     for f so that f+c ~ sqrt(z).
-// For x<-0.5
-// acos(x) = pi - 2asin(sqrt((1-|x|)/2))
-// 	= pi - 0.5*(s+s*z*R(z)), where z=(1-|x|)/2,s=sqrt(z)
 pub fn acos(x: Double) -> Double {
   let one : Double = 1.0
   let pi : Double = 3.14159265358979311600

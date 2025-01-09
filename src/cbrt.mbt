@@ -1,16 +1,23 @@
 ///| Return the cube root of `x`.
-/// # Introduction
 ///
-/// Return the cube root of `x`.
+/// # Example
+///
+/// ```moonbit
+/// assert_eq!(cbrt(3), 1.4422495703074083)
+/// assert_eq!(cbrt(-3), -1.4422495703074083)
+/// assert_eq!(cbrt(0), 0)
+/// assert_eq!(cbrt(1), 1)
+/// assert_eq!(cbrt(1000), 10)
+/// ````
+///
+/// # Accuracy
+///
+/// 1 ulp (unit in the last place).
 ///
 /// # Special Cases
 ///
 /// 1. If `x` is NaN, the result is NaN.
 /// 2. If `x` is ±0, the result is ±0.
-///
-/// # Accuracy
-///
-/// 1 ulp (unit in the last place).
 pub fn cbrt(x: Double) -> Double {
   if isinf(x) || isnan(x) || x == 0.0 {
     return x
