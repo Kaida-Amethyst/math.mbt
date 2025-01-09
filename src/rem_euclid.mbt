@@ -24,8 +24,6 @@
 /// assert_eq!(rem_euclid(-a, b), 1.0);
 /// assert_eq!(rem_euclid(a, -b), 3.0);
 /// assert_eq!(rem_euclid(-a, -b), 1.0);
-/// // limitation due to round-off error
-/// assert!(rem_euclid(EPSILON, 3.0) != 0.0);
 /// ```
 pub fn rem_euclid(x: Double, y: Double) -> Double {
   let r = x % y

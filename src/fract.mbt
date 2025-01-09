@@ -7,9 +7,7 @@
 /// # Example:
 ///
 /// ```moonbit
-/// let x = 3.14;
-/// let y = fract(x);
-/// assert!(y == 0.14);
+/// assert_eq!(fract(3.25), 0.25);
 /// ```
 ///
 /// # Accuracy

@@ -23,10 +23,10 @@ pub(all) enum RoundMode {
 ///
 /// # Example
 /// ```
-/// nearbyint(2.5) // Returns 2.0 (FE_TONEAREST mode)
-/// nearbyint(2.5, FE_DOWNWARD) // Returns 2.0 (FE_DOWNWARD mode)
-/// nearbyint(2.5, FE_UPWARD) // Returns 3.0 (FE_UPWARD mode)
-/// nearbyint(2.5, FE_TOWARDZERO) // Returns 2.0 (FE_TOWARDZERO mode)
+/// assert_eq!(nearbyint(2.5), 2.0)
+/// assert_eq!(nearbyint(2.5, round_mode=FE_DOWNWARD), 2.0)
+/// assert_eq!(nearbyint(2.5, round_mode=FE_UPWARD), 3.0)
+/// assert_eq!(nearbyint(2.5, round_mode=FE_TOWARDZERO), 2.0)
 /// ```
 ///
 /// # Note
@@ -39,4 +39,11 @@ pub fn nearbyint(x : Double, round_mode~: RoundMode = FE_TONEAREST) -> Double {
     FE_UPWARD => ceil(x)
     FE_TOWARDZERO => trunc(x)
   }
+}
+
+test "nearbyint" {
+  assert_eq!(nearbyint(2.5), 2.0);
+  assert_eq!(nearbyint(2.5, round_mode=FE_DOWNWARD), 2.0);
+  assert_eq!(nearbyint(2.5, round_mode=FE_UPWARD), 3.0);
+  assert_eq!(nearbyint(2.5, round_mode=FE_TOWARDZERO), 2.0);
 }
