@@ -1,4 +1,4 @@
-///| erfcx(x) = exp(x^2) * erfc(x)
+///| Computes the scaled complementary error function erfcx(x) = exp(x^2) * erfc(x).
 pub fn erfcx(x: Double) -> Double {
   let pinf = (0x7ff0_0000_0000_0000UL).reinterpret_as_double()
   let a = fabs(x);

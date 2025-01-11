@@ -1,4 +1,20 @@
 ///| Compute the error function of x
+///
+/// # Examples
+///
+/// ```moonbit
+/// assert_eq!(erfc(0.5), 0.4795001221869535)
+/// assert_eq!(erfc(1.0), 0.15729920705028513)
+/// assert_eq!(erfc(2.0), 0.004677734981047266)
+/// assert_eq!(erfc(-0.5), 1.5204998778130465)
+/// assert_eq!(erfc(-1.0), 1.842700792949715)
+/// assert_eq!(erfc(-2.0), 1.9953222650189528)
+/// ```
+///
+/// # Accuracy
+///
+/// 1 ulp (unit in the last place).
+/// 
 /// # Special Cases
 ///
 /// 1. erfc(0) = 1

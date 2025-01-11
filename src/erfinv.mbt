@@ -1,5 +1,21 @@
 ///| erfinv(x) computes the inverse error function of x.
 ///
+/// # Examples
+///
+/// ```moonbit
+/// assert_eq!(erfinv(0.5), 0.47693627620446977)
+/// assert_eq!(erfinv(-0.5), -0.47693627620446977)
+/// assert_eq!(erfinv(0), 0)
+/// let double_pos_inf = 1.0 / 0.0
+/// let double_neg_inf = -1.0 / 0.0
+/// assert_eq!(erfinv(1), double_pos_inf)
+/// assert_eq!(erfinv(-1), double_neg_inf)
+/// ```
+///
+/// # Accuracy
+///
+/// 2 ulp (unit in the last place).
+///
 /// # Special Cases
 ///
 /// - erfinv(1) returns +inf

@@ -1,5 +1,20 @@
 ///| Calculate the inverse complementary error function of the input argument.
 ///
+/// # Examples
+///
+/// ```moonbit
+/// assert_eq!(erfcinv(0.5), 0.4769362895959522)
+/// assert_eq!(erfcinv(0.9), 0.08885598888653257)
+/// assert_eq!(erfcinv(1), 0)
+/// assert_eq!(erfcinv(1.542), -0.5247751634041989)
+/// let double_neg_inf = -1.0 / 0.0
+/// assert_eq!(erfcinv(2), double_neg_inf)
+/// ```
+///
+/// # Accuracy
+///
+/// 1 ulp (unit in the last place).
+///
 /// # Special Cases
 ///
 /// 1. erfcinv(+-0) = +Inf
