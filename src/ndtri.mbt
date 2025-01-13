@@ -1,4 +1,10 @@
 ///| Computes the inverse of the standard normal cumulative distribution function.
+///
+/// # Special Cases
+///
+/// 1. ndtri(0) = -inf
+/// 2. ndtri(1) = inf
+/// 3. ndtri(y) = nan for y < 0 or y > 1
 pub fn ndtri(y0 : Double) -> Double {
   if y0 == 0.0 {
     return double_neg_inf

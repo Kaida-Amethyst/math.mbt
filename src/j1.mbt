@@ -1,10 +1,3 @@
-///| Compute Bessel function of the first kind of order one.
-///
-/// # Special Cases
-///
-/// 1. `j1(x)` is NaN if `x` is NaN.
-/// 2. `j1(x)` is 0 if `x` is ±∞.
-/// 3. `j1(x)` is NaN if `x` is less than 0.
 // Method -- j1(x):
 // 1. For tiny x, we use j1(x) = x/2 - x^3/16 + x^5/384 - ...
 // 2. Reduce x to |x| since j1(x)=-j1(-x),  and
@@ -23,6 +16,28 @@
 // 	   (To avoid cancellation, use
 // 	sin(x) +- cos(x) = -cos(2x)/(sin(x) -+ cos(x))
 // 	    to compute the worse one.)
+
+
+///| Compute Bessel function of the first kind of order one.
+///
+/// # Examples
+///
+/// ```moonbit
+/// assert_eq!(j1(0), 0)
+/// assert_eq!(j1(1), 0.4400505857449335)
+/// assert_eq!(j1(2), 0.5767248077568733)
+/// assert_eq!(j1(1.542), 0.5634545029920421)
+/// ```
+///
+/// # Special Cases
+///
+/// 1. `j1(x)` is NaN if `x` is NaN.
+/// 2. `j1(x)` is 0 if `x` is ±∞.
+/// 3. `j1(x)` is NaN if `x` is less than 0.
+///
+/// # Accuracy
+///
+/// 2 ulp
 pub fn j1(x : Double) -> Double {
   if isnan(x) {
     return double_nan

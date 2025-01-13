@@ -1,18 +1,3 @@
-const R02 : Double =  1.56249999999999947958e-02
-const R03 : Double = -1.89979294238854721751e-04
-const R04 : Double =  1.82954049532700665670e-06
-const R05 : Double = -4.61832688532103189199e-09
-const S01 : Double =  1.56191029464890010492e-02
-const S02 : Double =  1.16926784663337450260e-04
-const S03 : Double =  5.13546550207318111446e-07
-const S04 : Double =  1.16614003333790000205e-09
-
-///| Compute Bessel function of the first kind of order zero
-/// # Special cases:
-///
-/// 1. j0(nan)= nan
-/// 2. j0(0) = 1
-/// 3. j0(inf) = 0
 // Method -- j0(x):
 //	1. For tiny x, we use j0(x) = 1 - x^2/4 + x^4/64 - ...
 //	2. Reduce x to |x| since j0(x)=j0(-x),  and
@@ -30,6 +15,36 @@ const S04 : Double =  1.16614003333790000205e-09
 // 	   (To avoid cancellation, use
 //		sin(x) +- cos(x) = -cos(2x)/(sin(x) -+ cos(x))
 // 	    to compute the worse one.)
+
+const R02 : Double =  1.56249999999999947958e-02
+const R03 : Double = -1.89979294238854721751e-04
+const R04 : Double =  1.82954049532700665670e-06
+const R05 : Double = -4.61832688532103189199e-09
+const S01 : Double =  1.56191029464890010492e-02
+const S02 : Double =  1.16926784663337450260e-04
+const S03 : Double =  5.13546550207318111446e-07
+const S04 : Double =  1.16614003333790000205e-09
+
+///| Compute Bessel function of the first kind of order zero
+///
+/// # Examples
+///
+/// ```moonbit
+/// assert_eq!(j0(0.0), 1.0);
+/// assert_eq!(j0(1.0), 0.7651976865579666);
+/// assert_eq!(j0(2.0), 0.22389077914123567);
+/// assert_eq!(j0(3.0), -0.2600519549019335);
+/// ```
+///
+/// # Special cases:
+///
+/// 1. j0(nan)= nan
+/// 2. j0(0) = 1
+/// 3. j0(inf) = 0
+///
+/// # Accuracy
+///
+/// 2 ulp
 pub fn j0(x: Double) -> Double {
   if isinf(x) {
     return 0.0

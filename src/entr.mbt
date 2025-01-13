@@ -1,4 +1,25 @@
 ///| Compute the entropy of a probability distribution.
+///
+/// # Notes
+///
+/// Computes the entropy of a probability distribution, defined as $-x \times \log(x)$.
+///
+/// # Examples
+///
+/// ```moonbit
+/// assert_eq!(entr(0.0), 0.0);
+/// assert_eq!(entr(0.5), 0.34657359027997264);
+/// assert_eq!(entr(1.0), 0.0);
+/// ```
+///
+/// # Accuracy
+///
+/// 0 ulp.
+///
+/// # Special Cases
+///
+/// 1. entr(NaN) = NaN
+/// 2. entr(x) = -inf for x < 0
 pub fn entr(x: Double) -> Double {
   if isnan(x) {
     return x
