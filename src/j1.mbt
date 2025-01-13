@@ -17,7 +17,6 @@
 // 	sin(x) +- cos(x) = -cos(2x)/(sin(x) -+ cos(x))
 // 	    to compute the worse one.)
 
-
 ///| Compute Bessel function of the first kind of order one.
 ///
 /// # Examples
@@ -37,7 +36,7 @@
 ///
 /// # Accuracy
 ///
-/// 2 ulp
+/// 4 ulp
 pub fn j1(x : Double) -> Double {
   if isnan(x) {
     return double_nan

@@ -1,9 +1,3 @@
-///| Compute Bessel function of the second kind of order zero
-/// # Special Cases
-///
-/// 1. y0(nan) is nan
-/// 2. y0(0) is 0
-/// 3. y0(inf) is 0
 // Method -- y0(x):
 // 1. For x<2.
 //    Since 
@@ -22,6 +16,29 @@
 // 	   where x0 = x-pi/4. It is better to compute sin(x0),cos(x0)
 //    by the method mentioned above.
 // 3. Special cases: y0(0)=-inf, y0(x<0)=NaN, y0(inf)=0.
+
+
+///| Compute Bessel function of the second kind of order zero
+///
+/// # Examples
+///
+/// ```moonbit
+/// let inf = 1.0/0.0
+/// assert_eq!(y0(0), -inf)
+/// assert_eq!(y0(1), 0.08825696421567697)
+/// assert_eq!(y0(2), 0.5103756726497451)
+/// assert_eq!(y0(1.542), 0.3991886731083115)
+/// ```
+///
+/// # Special Cases
+///
+/// 1. y0(nan) is nan
+/// 2. y0(0) is 0
+/// 3. y0(inf) is 0
+///
+/// # Accuracy
+///
+/// 2 ulp
 pub fn y0(x: Double) -> Double {
 
   if isnan(x) || x < 0.0{

@@ -1,10 +1,3 @@
-///| Compute Bessel function of the second kind of order one.
-///
-/// # Special Cases
-///
-/// 1. `y1(x)` is NaN if `x` is NaN.
-/// 2. `y1(x)` is 0 if `x` is ±∞.
-/// 3. `y1(x)` is NaN if `x` is less than 0.
 // Method -- y1(x):
 // 1. screen out x<=0 cases: y1(0)=-inf, y1(x<0)=NaN 
 // 2. For x<2.
@@ -23,6 +16,28 @@
 // 	   where x1 = x-3*pi/4. It is better to compute sin(x1),cos(x1)
 //    by method mentioned above.
 // 
+
+///| Compute Bessel function of the second kind of order one.
+///
+/// # Examples
+///
+/// ```moonbit
+/// let inf = 1.0/0.0
+/// assert_eq!(y1(0), -inf);
+/// assert_eq!(y1(1), -0.7812128213002887);
+/// assert_eq!(y1(2), -0.10703243154093756);
+/// assert_eq!(y1(1.542), -0.3848820110973209);
+/// ```
+///
+/// # Special Cases
+///
+/// 1. `y1(x)` is NaN if `x` is NaN.
+/// 2. `y1(x)` is 0 if `x` is ±∞.
+/// 3. `y1(x)` is NaN if `x` is less than 0.
+///
+/// # Accuracy
+///
+/// 2 ulp
 pub fn y1(x: Double) -> Double {
   if isnan(x) || x < 0.0 {
     return double_nan
