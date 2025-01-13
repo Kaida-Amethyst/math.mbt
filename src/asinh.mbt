@@ -1,13 +1,3 @@
-
-///| Compute the inverse hyperbolic sine of `x`.
-/// # Introduction
-///
-/// Computes the inverse hyperbolic sine of `x`. The inverse hyperbolic sine is defined as:
-/// $$\text{asinh}(x) = \log(x + \sqrt{x^2 + 1})$$
-///
-/// # Accuracy
-///
-/// 1 ulp (unit in the last place).
 // asinh(x)
 // Method :
 // Based on 
@@ -17,6 +7,30 @@
 // 	 := sign(x)*(log(x)+ln2)) for large |x|, else
 // 	 := sign(x)*log(2|x|+1/(|x|+sqrt(x*x+1))) if|x|>2, else
 // 	 := sign(x)*log1p(|x| + x^2/(1 + sqrt(1+x^2)))  
+
+///| Compute the inverse hyperbolic sine of `x`.
+///
+/// Computes the inverse hyperbolic sine of `x`. The inverse hyperbolic sine is defined as:
+/// $$\text{asinh}(x) = \log(x + \sqrt{x^2 + 1})$$
+///
+/// # Examples
+///
+/// ```moonbit
+/// assert_eq!(asinh(-1), -0.881373587019543)
+/// assert_eq!(asinh(-2), -1.4436354751788103)
+/// assert_eq!(asinh(1), 0.881373587019543)
+/// assert_eq!(asinh(2), 1.4436354751788103)
+/// ```
+///
+/// # Special Cases
+///
+/// 1. asinh(NaN) = NaN.
+/// 2. asinh(±0) = ±0.
+/// 3. asinh(±∞) = ±∞.
+///
+/// # Accuracy
+///
+/// 1 ulp (unit in the last place).
 pub fn asinh(x: Double) -> Double {
   if isnan(x) || isinf(x) {
     return x

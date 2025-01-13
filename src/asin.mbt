@@ -1,4 +1,21 @@
 ///| Compute arcsine of `x`
+///
+/// # Examples
+///
+/// ```moonbit
+/// assert_eq!(asin(0), 0)
+/// assert_eq!(asin(1), 1.5707963267948966)
+/// assert_eq!(asin(-1), -1.5707963267948966)
+/// ```
+///
+/// # Special Cases
+///
+/// 1. asin(NaN) = NaN
+/// 2. asin(x) = NaN for all |x| > 1
+///
+/// # Accuracy
+///
+/// 1 ulp
 pub fn asin(x : Double) -> Double {
   if isinf(x) {
     return double_nan
