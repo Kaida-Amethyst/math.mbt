@@ -8,7 +8,13 @@ The Moonbit Math Library is a comprehensive collection of mathematical functions
 
 ## Installation
 
-To use the Moonbit Math Library in your project, you can easily add it via the Moonbit package manager. Simply run the following command:
+To use the Moonbit Math Library in your project, you can easily add it via the Moonbit package manager. First, update moonbit package index:
+
+```bash
+moon update
+```
+
+Then run the following command:
 
 ```bash
 moon add Kaida-Amethyst/moonbit-math
@@ -44,9 +50,15 @@ The Moonbit Math Library strives for high precision in its calculations, aiming 
 | cospi         | Compute cos(πx)                      | ✓       |  3                                  |
 | bessel_i0     | Cylindrical Bessel function of order 0| (TODO) |  (TODO)                             |
 | bessel_i1     | Cylindrical Bessel function of order 1| (TODO) |  (TODO)                             |
+| bessel_j0     | Compute Bessel function of the first kind (0th order) | ✓       |  2                 |
+| bessel_j1     | Compute Bessel function of the first kind (1st order) | ✓       |  4                 |
+| bessel_jn     | Compute Bessel function of the first kind (nth order) | ✓       |  1                 |
 | bessel_k0     | Modified Bessel function of the second kind of order 0 | (TODO) | (TODO)             |
 | bessel_k1     | Modified Bessel function of the second kind of order 1 | (TODO) | (TODO)             |
 | bessel_kn     | Modified Bessel function of the second kind of order n | (TODO) | (TODO)             |
+| bessel_y0     | Compute Bessel function of the second kind (0th order) | ✓       |  2                |
+| bessel_y1     | Compute Bessel function of the second kind (1st order) | ✓       |  2                |
+| bessel_yn     | Compute Bessel function of the second kind (nth order) | ✓       |  2                |
 | digamma       | Compute Digamma function             | ✓       |  1023                               |
 | div_euclid    | Compute Euclidean division           | ✓       |  0                                  |
 | erf           | Compute error function               | ✓       |  1                                  |
@@ -74,9 +86,6 @@ The Moonbit Math Library strives for high precision in its calculations, aiming 
 | isnormal      | Check if value is normal             | ✓       |  0                                  |
 | issubnormal   | Check if value is subnormal          | ✓       |  0                                  |
 | jacobi        | Compute Jacobi elliptic function     | ✓       |  0                                  |
-| j0            | Compute Bessel function of the first kind (0th order) | ✓       |  2                 |
-| j1            | Compute Bessel function of the first kind (1st order) | ✓       |  4                 |
-| jn            | Compute Bessel function of the first kind (nth order) | ✓       |  1                 |
 | ldexp         | Compute x * 2^exp                    | ✓       |  0                                  |
 | log           | Compute natural logarithm            | ✓       |  0                                  |
 | log10         | Compute logarithm base 10            | ✓       |  0                                  |
@@ -124,9 +133,6 @@ The Moonbit Math Library strives for high precision in its calculations, aiming 
 | to_degrees    | Convert radians to degrees           | ✓       |  0                                  |
 | to_radians    | Convert degrees to radians           | ✓       |  0                                  |
 | trunc         | Truncate to integer part             | ✓       |  0                                  |
-| y0            | Compute Bessel function of the second kind (0th order) | ✓       |  2                |
-| y1            | Compute Bessel function of the second kind (1st order) | ✓       |  2                |
-| yn            | Compute Bessel function of the second kind (nth order) | ✓       |  2                |
 | zeta          | Compute Riemann zeta function        | ✓       |  3                                  |
 
 ### Notes on Precision
@@ -166,7 +172,7 @@ Or use `Kaida-Amethyst/math` if what you added is `Kaida-Amethyst/math`.
 Then you can use math functions, for example:
 
 ```moonbit
-fn main() {
+fn main {
     let angle = 1.0 // in radians
     let result = @math.sin(angle)
     println("The sine of \{angle} is \{result}")

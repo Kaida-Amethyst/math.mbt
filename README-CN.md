@@ -6,7 +6,15 @@ Moonbit 数学库是一个在 Moonbit 编程语言中实现的数学函数综合
 
 ## 安装
 
-要在您的项目中使用 Moonbit 数学库，您可以通过 Moonbit 包管理器轻松添加它。只需运行以下命令：
+要在您的项目中使用 Moonbit 数学库，您可以通过 Moonbit 包管理器轻松添加它。
+
+首先更新包索引（强烈建议）：
+
+```bash
+moon update
+```
+
+接着运行以下命令：
 
 ```bash
 moon add Kaida-Amethyst/moonbit-math
@@ -40,8 +48,14 @@ Moonbit 数学库在计算中力求高精度，旨在匹配 glibc 实现的准�
 | cos           | 计算余弦                      | ✓       |  0       |
 | cosh          | 计算双曲余弦                  | ✓       |  0       |
 | cospi         | 计算 cos(πx)                  | ✓       |  0       |
-| cyl_bessel_i0 | 柱贝塞尔函数（0阶）           | (TODO)  |  (TODO)  |
-| cyl_bessel_i1 | 柱贝塞尔函数（1阶）           | (TODO)  |  (TODO)  |
+| bessel_i0     | 柱贝塞尔函数（0阶）           | (TODO)  |  (TODO)  |
+| bessel_i1     | 柱贝塞尔函数（1阶）           | (TODO)  |  (TODO)  |
+| bessel_j0     | 计算第一类贝塞尔函数（0阶）   | ✓       |  1       |
+| bessel_j1     | 计算第一类贝塞尔函数（1阶）   | ✓       |  1       |
+| bessel_jn     | 计算第一类贝塞尔函数（n阶）   | ✓       |  1       |
+| bessel_y0     | 计算第二类贝塞尔函数（0阶）   | ✓       |  2       |
+| bessel_y1     | 计算第二类贝塞尔函数（1阶）   | ✓       |  2       |
+| bessel_yn     | 计算第二类贝塞尔函数（n阶）   | ✓       |  2       |
 | digamma       | 计算 Digamma 函数             | ✓       |  1023    |
 | div_euclid    | 计算欧几里得除法              | ✓       |  0       |
 | erf           | 计算误差函数                  | ✓       |  1       |
@@ -69,9 +83,6 @@ Moonbit 数学库在计算中力求高精度，旨在匹配 glibc 实现的准�
 | isnormal      | 检查值是否正常                | ✓       |  0       |
 | issubnormal   | 检查值是否为次正常            | ✓       |  0       |
 | jacobi        | 计算 Jacobi 椭圆函数          | ✓       |  0       |
-| j0            | 计算第一类贝塞尔函数（0阶）   | ✓       |  1       |
-| j1            | 计算第一类贝塞尔函数（1阶）   | ✓       |  1       |
-| jn            | 计算第一类贝塞尔函数（n阶）   | ✓       |  1       |
 | ldexp         | 计算 x * 2^exp                | ✓       |  0       |
 | log           | 计算自然对数                  | ✓       |  0       |
 | log10         | 计算以 10 为底的对数          | ✓       |  0       |
@@ -119,9 +130,6 @@ Moonbit 数学库在计算中力求高精度，旨在匹配 glibc 实现的准�
 | to_degrees    | 将弧度转换为度                | ✓       |  0       |
 | to_radians    | 将度转换为弧度                | ✓       |  0       |
 | trunc         | 截断到整数部分                | ✓       |  0       |
-| y0            | 计算第二类贝塞尔函数（0阶）   | ✓       |  2       |
-| y1            | 计算第二类贝塞尔函数（1阶）   | ✓       |  2       |
-| yn            | 计算第二类贝塞尔函数（n阶）   | ✓       |  2       |
 | zeta          | 计算黎曼 zeta 函数            | (TODO)  |  (TODO)  |
 
 ### 精度说明
@@ -161,7 +169,7 @@ Moonbit 数学库在计算中力求高精度，旨在匹配 glibc 实现的准�
 然后您可以使用数学函数，例如：
 
 ```moonbit
-fn main() {
+fn main {
     let angle = 1.0 // 以弧度为单位
     let result = @math.sin(angle)
     println("The sine of \{angle} is \{result}")
