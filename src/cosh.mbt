@@ -1,9 +1,3 @@
-///| Compute hyperbolic cosine function of a double-precision floating point number.
-///
-/// # Special Cases
-///
-/// 1. cosh(x) is |x| if x is +INF, -INF, or NaN.
-/// 2. Only cosh(0)=1 is exact for finite x.
 // Method : 
 // mathematically cosh(x) if defined to be (exp(x)+exp(-x))/2
 // 1. Replace x by |x| (cosh(x) = cosh(-x)). 
@@ -22,6 +16,28 @@
 // Special cases:
 // cosh(x) is |x| if x is +INF, -INF, or NaN.
 // only cosh(0)=1 is exact for finite x.
+
+
+///| Compute hyperbolic cosine function of a double-precision floating point number.
+///
+/// # Examples
+///
+/// ```moonbit
+/// assert_eq!(cosh(0), 1)
+/// assert_eq!(cosh(1), 1.5430806348152437)
+/// assert_eq!(cosh(2), 3.7621956910836314)
+/// assert_eq!(cosh(3), 10.067661995777765)
+/// assert_eq!(cosh(-1), 1.5430806348152437)
+/// ```
+///
+/// # Special Cases
+///
+/// 1. cosh(x) is |x| if x is +INF, -INF, or NaN.
+/// 2. Only cosh(0)=1 is exact for finite x.
+///
+/// # Accuracy
+///
+/// 1 ulp.
 pub fn cosh(x: Double) -> Double {
   if isnan(x) {
     return x

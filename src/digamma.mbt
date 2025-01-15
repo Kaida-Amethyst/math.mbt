@@ -1,5 +1,31 @@
 
 ///| digamma(x) computes the digamma function of x.
+///
+/// digamma defined as $\psi(x) = \frac{d}{dx} \log \Gamma(x)$
+///
+/// # Reference
+///
+/// `boost::special_functions::digamma`
+///
+/// # Examples
+///
+/// ```moonbit
+/// assert_eq!(digamma(1.0), -0.5772156649015328);
+/// assert_eq!(digamma(2.0), 0.422784335098467);
+/// assert_eq!(digamma(-0.5), 0.036489973978576895);
+/// ```
+///
+/// # Special Cases
+///
+/// 1. digamma(0) = -∞
+/// 2. digamma(x) = nan for x < 0 and x is an integer
+/// 3. digamma(inf) = inf
+/// 4. digamma(-inf) = nan
+/// 3. digamma(nan) = nan
+///
+/// # Accuracy
+///
+/// 1023 ulp.
 pub fn digamma(x: Double) -> Double {
   let pi: Double = 3.14159265358979323846;
   let pos_inf: Double = (0x7ff0_0000_0000_0000UL).reinterpret_as_double();

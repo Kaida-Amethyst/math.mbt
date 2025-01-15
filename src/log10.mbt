@@ -1,25 +1,3 @@
-///| Return the base 10 logarithm of `x`
-/// # Introduction
-///
-/// Return the base 10 logarithm of `x`
-///
-/// # Special cases
-///
-/// `log10(x)` is `NaN` with signal if `x < 0`
-/// `log10(+INF)` is `+INF` with no signal
-/// `log10(0)` is `-INF` with signal
-/// `log10(NaN)` is that `NaN` with no signal
-/// `log10(10**N) = N` for `N=0,1,...,22`
-///
-/// # Accuracy
-///
-/// 1 ulp (unit in the last place)
-///
-/// # Notes
-///
-/// 1. To guarantee `log10(10**n)=n`, where `10**n` is normal, the rounding mode must set to Round-to-Nearest.
-/// 2. `[1/log(10)]` rounded to 53 bits has error  .198   ulps
-/// 3. `log10` is monotonic at all binary break points
 //  * Method :
 //  *	Let log10_2hi = leading 40 bits of log10(2) and
 //  *	    log10_2lo = log10(2) - log10_2hi,
@@ -29,6 +7,30 @@
 //  *		if(n<0)  n = n+1;
 //  *		x = scalbn(x,-n);
 //  *		log10(x) := n*log10_2hi + (n*log10_2lo + ivln10*log(x))
+
+///| Return the base 10 logarithm of `x`
+///
+/// # Examples
+///
+/// ```moonbit
+/// assert_eq!(log10(1), 0)
+/// assert_eq!(log10(2), 0.3010299956639812)
+/// assert_eq!(log10(3), 0.47712125471966244)
+/// assert_eq!(log10(4), 0.6020599913279624)
+/// ```
+///
+/// # Special cases
+///
+/// 1. log10(x) = NaN for all x < 0
+/// 2. log10(inf) = inf
+/// 3. log10(0) = -inf
+/// 4. log10(NaN) = NaN
+/// 5. log10(10**n) = n for n = 0, 1, ..., 22
+///
+/// # Accuracy
+///
+/// 1 ulp (unit in the last place)
+///
 pub fn log10(x: Double) -> Double {
   let mut x = x
   let two54 = 1.80143985094819840000e+16 // 0x43500000, 0x00000000

@@ -1,8 +1,12 @@
-///| ``log1p(x) = log(1+x)``
-/// # Introduction:
+///| `log1p(x)` computes `log(1+x)`
 ///
-///  Compute log(1+x)
+/// # Examples
 ///
+/// ```moonbit
+/// assert_eq!(log1p(0.1), 0.09531017980432487)
+/// assert_eq!(log1p(1), 0.6931471805599453)
+/// assert_eq!(log1p(-0.5), -0.6931471805599453)
+/// ```
 /// # Special Cases
 ///
 /// 1. log1p(INF) is INF, log1p(NaN) is NaN;
