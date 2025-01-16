@@ -3,7 +3,7 @@
   "import": [
     {
       "path": "Kaida-Amethyst/moonbit-math",
-      "alias": "math"
+      "alias": "kmath"
     }
   ]
 }

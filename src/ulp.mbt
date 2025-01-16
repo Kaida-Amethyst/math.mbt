@@ -1,7 +1,7 @@
 
 const LOG_MAX_ULP : Int = 1
 const LOG2_MAX_ULP : Int = 1
-const LOG10_MAX_ULP : Int = 1
+const LOG10_MAX_ULP : Int = 0
 const LOG1P_MAX_ULP : Int = 1
 
 const POW_MAX_ULP : Int = 2
