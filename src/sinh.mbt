@@ -1,4 +1,4 @@
-// /* __ieee754_sinh(x)
+// /* sinh(x)
 //  * Method : 
 //  * mathematically sinh(x) if defined to be (exp(x)-exp(-x))/2
 //  *	1. Replace x by |x| (sinh(-x) = -sinh(x)). 

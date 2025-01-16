@@ -136,9 +136,9 @@ pub fn jn(n : Int, x : Double) -> Double {
 
 
 // #ifdef __STDC__
-// 	double __ieee754_yn(int n, double x) 
+// 	double yn(int n, double x) 
 // #else
-// 	double __ieee754_yn(n,x) 
+// 	double yn(n,x) 
 // 	int n; double x;
 // #endif
 // {
@@ -158,8 +158,8 @@ pub fn jn(n : Int, x : Double) -> Double {
 // 		n = -n;
 // 		sign = 1 - ((n&1)<<1);
 // 	}
-// 	if(n==0) return(__ieee754_y0(x));
-// 	if(n==1) return(sign*__ieee754_y1(x));
+// 	if(n==0) return(y0(x));
+// 	if(n==1) return(sign*y1(x));
 // 	if(ix==0x7ff00000) return zero;
 // 	if(ix>=0x52D00000) { /* x > 2**302 */
 //     /* (x >> n**2) 
@@ -183,8 +183,8 @@ pub fn jn(n : Int, x : Double) -> Double {
 // 		}
 // 		b = invsqrtpi*temp/sqrt(x);
 // 	} else {
-// 	    a = __ieee754_y0(x);
-// 	    b = __ieee754_y1(x);
+// 	    a = y0(x);
+// 	    b = y1(x);
 // 	/* quit if b is -inf */
 // 	    for(i=1;i<n&&(__HI(b) != 0xfff00000);i++){ 
 // 		temp = b;

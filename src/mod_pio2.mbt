@@ -35,7 +35,7 @@ const INV_PIO2: Double = 6.3661977236758138e-01; // 0x3FE45F30, 0x6DC9C883 */
 const HALF: Double = 0.5;
 const TWO24: Double = 16777216.0; // 0x41700000, 0x00000000 */
 
-fn __ieee754_rem_pio2(x: Double, y: Array[Double]) -> Int {
+fn rem_pio2(x: Double, y: Array[Double]) -> Int {
   let two_over_pi = two_over_pi()
   let npio2_hw : Array[Int] = npio2_hw()
   let hx = __hi(x).reinterpret_as_int();
@@ -163,286 +163,286 @@ fn __ieee754_rem_pio2(x: Double, y: Array[Double]) -> Int {
 
 
 fn __kernel_rem_pio2(x: Array[Double], y: Array[Double], e0: Int, nx: Int, prec: Int, ipio2: Array[Int]) -> Int {
-    let pio2 = [
-      1.57079625129699707031e+00, // 0x3FF921FB, 0x40000000 */
-      7.54978941586159635335e-08, // 0x3E74442D, 0x00000000 */
-      5.39030252995776476554e-15, // 0x3CF84698, 0x80000000 */
-      3.28200341580791294123e-22, // 0x3B78CC51, 0x60000000 */
-      1.27065575308067607349e-29, // 0x39F01B83, 0x80000000 */
-      1.22933308981111328932e-36, // 0x387A2520, 0x40000000 */
-      2.73370053816464559624e-44, // 0x36E38222, 0x80000000 */
-      2.16741683877804819444e-51, // 0x3569F31D, 0x00000000 */
-    ]
+  let pio2 = [
+    1.57079625129699707031e+00, // 0x3FF921FB, 0x40000000 */
+    7.54978941586159635335e-08, // 0x3E74442D, 0x00000000 */
+    5.39030252995776476554e-15, // 0x3CF84698, 0x80000000 */
+    3.28200341580791294123e-22, // 0x3B78CC51, 0x60000000 */
+    1.27065575308067607349e-29, // 0x39F01B83, 0x80000000 */
+    1.22933308981111328932e-36, // 0x387A2520, 0x40000000 */
+    2.73370053816464559624e-44, // 0x36E38222, 0x80000000 */
+    2.16741683877804819444e-51, // 0x3569F31D, 0x00000000 */
+  ]
 
-    let init_jk = [2, 3, 4, 6]
-    let two24: Double = 16777216.0; // 0x41700000, 0x00000000
-    let twon24: Double = 5.96046447753906250000e-08; // 0x3E700000, 0x00000000
+  let init_jk = [2, 3, 4, 6]
+  let two24: Double = 16777216.0; // 0x41700000, 0x00000000
+  let twon24: Double = 5.96046447753906250000e-08; // 0x3E700000, 0x00000000
 
-    // Declare variables at the beginning, as in the original C code
-    let mut jz: Int = 0;
-    let mut jx: Int = 0;
-    let mut jv: Int = 0;
-    let mut jp: Int = 0;
-    let mut jk: Int = 0;
-    let mut carry: Int = 0;
-    let mut n: Int = 0;
-    let iq: Array[Int] = Array::make(20, 0)
-    let mut i: Int = 0;
-    let mut j: Int = 0;
-    let mut k: Int = 0;
-    let mut m: Int = 0;
-    let mut q0: Int = 0;
-    let mut ih: Int = 0;
-    let mut z: Double = 0;
-    let mut fw: Double = 0;
-    let f: Array[Double] = Array::make(20, 0.0)
-    let fq: Array[Double] = Array::make(20, 0.0)
-    let q: Array[Double] = Array::make(20, 0.0)
+  // Declare variables at the beginning, as in the original C code
+  let mut jz: Int = 0;
+  let mut jx: Int = 0;
+  let mut jv: Int = 0;
+  let mut jp: Int = 0;
+  let mut jk: Int = 0;
+  let mut carry: Int = 0;
+  let mut n: Int = 0;
+  let iq: Array[Int] = Array::make(20, 0)
+  let mut i: Int = 0;
+  let mut j: Int = 0;
+  let mut k: Int = 0;
+  let mut m: Int = 0;
+  let mut q0: Int = 0;
+  let mut ih: Int = 0;
+  let mut z: Double = 0;
+  let mut fw: Double = 0;
+  let f: Array[Double] = Array::make(20, 0.0)
+  let fq: Array[Double] = Array::make(20, 0.0)
+  let q: Array[Double] = Array::make(20, 0.0)
 
-    // initialize jk
-    jk = init_jk[prec];
-    jp = jk;
+  // initialize jk
+  jk = init_jk[prec];
+  jp = jk;
 
-    // determine jx, jv, q0, note that 3 > q0
-    jx = nx - 1;
-    jv = (e0 - 3) / 24;
-    if jv < 0 {
-        jv = 0;
-    }
-    q0 = e0 - 24 * (jv + 1);
+  // determine jx, jv, q0, note that 3 > q0
+  jx = nx - 1;
+  jv = (e0 - 3) / 24;
+  if jv < 0 {
+    jv = 0;
+  }
+  q0 = e0 - 24 * (jv + 1);
 
-    // set up f[0] to f[jx+jk] where f[jx+jk] = ipio2[jv+jk]
-    j = jv - jx;
-    m = jx + jk;
-    i = 0;
-    while i <= m {
-        f[i] = if j < 0 { 0.0 } else { ipio2[j].to_double() };
-        i += 1;
+  // set up f[0] to f[jx+jk] where f[jx+jk] = ipio2[jv+jk]
+  j = jv - jx;
+  m = jx + jk;
+  i = 0;
+  while i <= m {
+    f[i] = if j < 0 { 0.0 } else { ipio2[j].to_double() };
+    i += 1;
+    j += 1;
+  }
+
+  // compute q[0], q[1], ... q[jk]
+  i = 0;
+  while i <= jk {
+    j = 0;
+    fw = 0.0;
+    while j <= jx {
+        fw += x[j] * f[jx + i - j];
         j += 1;
     }
+    q[i] = fw;
+    i += 1;
+  }
 
-    // compute q[0], q[1], ... q[jk]
+  jz = jk;
+
+  // Use a loop to replace the `goto` logic
+  let mut recompute = true;
+  while recompute {
+    recompute = false;
+
+    // distill q[] into iq[] reversingly
     i = 0;
-    while i <= jk {
-        j = 0;
-        fw = 0.0;
-        while j <= jx {
+    j = jz;
+    z = q[jz];
+    while j > 0 {
+      fw = (twon24 * z).floor();
+      iq[i] = (z - two24 * fw).to_int();
+      z = q[j - 1] + fw;
+      i += 1;
+      j -= 1;
+    }
+
+    // compute n
+    z = scalbn(z, q0); // actual value of z
+    z -= 8.0 * (z * 0.125).floor(); // trim off integer >= 8
+    n = z.to_int()
+    z -= n.to_double()
+    ih = 0;
+    if q0 > 0 {
+      // need iq[jz-1] to determine n
+      i = iq[jz - 1] >> (24 - q0);
+      n += i;
+      iq[jz - 1] -= i << (24 - q0);
+      ih = iq[jz - 1] >> (23 - q0);
+    } else if q0 == 0 {
+      ih = iq[jz - 1] >> 23;
+    } else if z >= 0.5 {
+      ih = 2;
+    }
+
+    if ih > 0 {
+      // q > 0.5
+      n += 1;
+      carry = 0;
+      i = 0;
+      while i < jz {
+        j = iq[i];
+        if carry == 0 {
+          if j != 0 {
+            carry = 1;
+            iq[i] = 0x1000000 - j;
+          }
+        } else {
+          iq[i] = 0xffffff - j;
+        }
+        i += 1;
+      }
+      if q0 > 0 {
+        // rare case: chance is 1 in 12
+        match q0 {
+          1 => iq[jz - 1] = iq[jz - 1] & 0x7fffff
+          2 => iq[jz - 1] = iq[jz - 1] & 0x3fffff
+          _ => ()
+        }
+      }
+      if ih == 2 {
+        z = 1.0 - z;
+        if carry != 0 {
+          z -= scalbn(1.0, q0);
+        }
+      }
+    }
+
+    // check if recomputation is needed
+    if z == 0.0 {
+      j = 0;
+      i = jz - 1;
+      while i >= jk {
+        j = j | iq[i];
+        i -= 1;
+      }
+      if j == 0 {
+        // need recomputation
+        k = 1;
+        while iq[jk - k] == 0 {
+            k += 1;
+        }
+        i = jz + 1;
+        while i <= jz + k {
+          f[jx + i] = ipio2[jv + i].to_double()
+          j = 0;
+          fw = 0.0;
+          while j <= jx {
             fw += x[j] * f[jx + i - j];
             j += 1;
+          }
+          q[i] = fw;
+          i += 1;
         }
-        q[i] = fw;
-        i += 1;
+        jz += k;
+        recompute = true; // Continue to recompute
+        continue; // Skip the rest of the loop and recompute
+      }
     }
 
-    jz = jk;
+    // chop off zero terms
+    if z == 0.0 {
+      jz -= 1;
+      q0 -= 24;
+      while iq[jz] == 0 {
+        jz -= 1;
+        q0 -= 24;
+      }
+    } else {
+      // break z into 24-bit if necessary
+      z = scalbn(z, -q0);
+      if z >= two24 {
+        fw = (twon24 * z).floor();
+        iq[jz ] = (z - two24 * fw).to_int()
+        jz += 1;
+        q0 += 24;
+        iq[jz ] = fw.to_int()
+      } else {
+        iq[jz ] = z.to_int()
+      }
+    }
 
-    // Use a loop to replace the `goto` logic
-    let mut recompute = true;
-    while recompute {
-        recompute = false;
+    // convert integer "bit" chunk to floating-point value
+    fw = scalbn(1.0, q0);
+    i = jz;
+    while i >= 0 {
+      q[i] = fw * iq[i].to_double()
+      fw *= twon24;
+      i -= 1;
+    }
 
-        // distill q[] into iq[] reversingly
-        i = 0;
-        j = jz;
-        z = q[jz];
-        while j > 0 {
-            fw = (twon24 * z).floor();
-            iq[i] = (z - two24 * fw).to_int();
-            z = q[j - 1] + fw;
+    // compute PIo2[0,...,jp] * q[jz,...,0]
+    i = jz;
+    while i >= 0 {
+      fw = 0.0;
+      k = 0;
+      while k <= jp && k <= jz - i {
+        fw += pio2[k] * q[i + k];
+        k += 1;
+      }
+      fq[(jz - i) ] = fw;
+      i -= 1;
+    }
+
+    // compress fq[] into y[]
+    match prec {
+      0 => {
+        fw = 0.0;
+        i = jz;
+        while i >= 0 {
+            fw += fq[i ];
+            i -= 1;
+        }
+        y[0] = if ih == 0 { fw } else { -fw };
+      }
+      1 | 2 => {
+        fw = 0.0;
+        i = jz;
+        while i >= 0 {
+            fw += fq[i ];
+            i -= 1;
+        }
+        y[0] = if ih == 0 { fw } else { -fw };
+        fw = fq[0] - fw;
+        i = 1;
+        while i <= jz {
+            fw += fq[i ];
             i += 1;
-            j -= 1;
         }
-
-        // compute n
-        z = scalbn(z, q0); // actual value of z
-        z -= 8.0 * (z * 0.125).floor(); // trim off integer >= 8
-        n = z.to_int()
-        z -= n.to_double()
-        ih = 0;
-        if q0 > 0 {
-            // need iq[jz-1] to determine n
-            i = iq[jz - 1] >> (24 - q0);
-            n += i;
-            iq[jz - 1] -= i << (24 - q0);
-            ih = iq[jz - 1] >> (23 - q0);
-        } else if q0 == 0 {
-            ih = iq[jz - 1] >> 23;
-        } else if z >= 0.5 {
-            ih = 2;
+        y[1] = if ih == 0 { fw } else { -fw };
+      }
+      3 => {
+        i = jz;
+        while i > 0 {
+          fw = fq[i - 1] + fq[i ];
+          fq[i ] += fq[i - 1] - fw;
+          fq[i - 1] = fw;
+          i -= 1;
         }
-
-        if ih > 0 {
-            // q > 0.5
-            n += 1;
-            carry = 0;
-            i = 0;
-            while i < jz {
-                j = iq[i];
-                if carry == 0 {
-                    if j != 0 {
-                        carry = 1;
-                        iq[i] = 0x1000000 - j;
-                    }
-                } else {
-                    iq[i] = 0xffffff - j;
-                }
-                i += 1;
-            }
-            if q0 > 0 {
-                // rare case: chance is 1 in 12
-                match q0 {
-                    1 => iq[jz - 1] = iq[jz - 1] & 0x7fffff
-                    2 => iq[jz - 1] = iq[jz - 1] & 0x3fffff
-                    _ => ()
-                }
-            }
-            if ih == 2 {
-                z = 1.0 - z;
-                if carry != 0 {
-                    z -= scalbn(1.0, q0);
-                }
-            }
+        i = jz;
+        while i > 1 {
+          fw = fq[i - 1] + fq[i ];
+          fq[i ] += fq[i - 1] - fw;
+          fq[i - 1] = fw;
+          i -= 1;
         }
-
-        // check if recomputation is needed
-        if z == 0.0 {
-            j = 0;
-            i = jz - 1;
-            while i >= jk {
-                j = j | iq[i];
-                i -= 1;
-            }
-            if j == 0 {
-                // need recomputation
-                k = 1;
-                while iq[jk - k] == 0 {
-                    k += 1;
-                }
-                i = jz + 1;
-                while i <= jz + k {
-                    f[jx + i] = ipio2[jv + i].to_double()
-                    j = 0;
-                    fw = 0.0;
-                    while j <= jx {
-                        fw += x[j] * f[jx + i - j];
-                        j += 1;
-                    }
-                    q[i] = fw;
-                    i += 1;
-                }
-                jz += k;
-                recompute = true; // Continue to recompute
-                continue; // Skip the rest of the loop and recompute
-            }
+        fw = 0.0;
+        i = jz;
+        while i >= 2 {
+          fw += fq[i];
+          i -= 1;
         }
-
-        // chop off zero terms
-        if z == 0.0 {
-            jz -= 1;
-            q0 -= 24;
-            while iq[jz] == 0 {
-                jz -= 1;
-                q0 -= 24;
-            }
+        if ih == 0 {
+          y[0] = fq[0];
+          y[1] = fq[1];
+          y[2] = fw;
         } else {
-            // break z into 24-bit if necessary
-            z = scalbn(z, -q0);
-            if z >= two24 {
-                fw = (twon24 * z).floor();
-                iq[jz ] = (z - two24 * fw).to_int()
-                jz += 1;
-                q0 += 24;
-                iq[jz ] = fw.to_int()
-            } else {
-                iq[jz ] = z.to_int()
-            }
+          y[0] = -fq[0];
+          y[1] = -fq[1];
+          y[2] = -fw;
         }
-
-        // convert integer "bit" chunk to floating-point value
-        fw = scalbn(1.0, q0);
-        i = jz;
-        while i >= 0 {
-            q[i] = fw * iq[i].to_double()
-            fw *= twon24;
-            i -= 1;
-        }
-
-        // compute PIo2[0,...,jp] * q[jz,...,0]
-        i = jz;
-        while i >= 0 {
-            fw = 0.0;
-            k = 0;
-            while k <= jp && k <= jz - i {
-                fw += pio2[k] * q[i + k];
-                k += 1;
-            }
-            fq[(jz - i) ] = fw;
-            i -= 1;
-        }
-
-        // compress fq[] into y[]
-        match prec {
-            0 => {
-                fw = 0.0;
-                i = jz;
-                while i >= 0 {
-                    fw += fq[i ];
-                    i -= 1;
-                }
-                y[0] = if ih == 0 { fw } else { -fw };
-            }
-            1 | 2 => {
-                fw = 0.0;
-                i = jz;
-                while i >= 0 {
-                    fw += fq[i ];
-                    i -= 1;
-                }
-                y[0] = if ih == 0 { fw } else { -fw };
-                fw = fq[0] - fw;
-                i = 1;
-                while i <= jz {
-                    fw += fq[i ];
-                    i += 1;
-                }
-                y[1] = if ih == 0 { fw } else { -fw };
-            }
-            3 => {
-                i = jz;
-                while i > 0 {
-                    fw = fq[i - 1] + fq[i ];
-                    fq[i ] += fq[i - 1] - fw;
-                    fq[i - 1] = fw;
-                    i -= 1;
-                }
-                i = jz;
-                while i > 1 {
-                    fw = fq[i - 1] + fq[i ];
-                    fq[i ] += fq[i - 1] - fw;
-                    fq[i - 1] = fw;
-                    i -= 1;
-                }
-                fw = 0.0;
-                i = jz;
-                while i >= 2 {
-                    fw += fq[i];
-                    i -= 1;
-                }
-                if ih == 0 {
-                    y[0] = fq[0];
-                    y[1] = fq[1];
-                    y[2] = fw;
-                } else {
-                    y[0] = -fq[0];
-                    y[1] = -fq[1];
-                    y[2] = -fw;
-                }
-            }
-            _ => ()
-        }
+      }
+      _ => ()
     }
+  }
 
-    n & 7
+  n & 7
 }
 
 fn __kernel_sin(x: Double, y: Double, iy: Int) -> Double {

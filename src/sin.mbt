@@ -1,4 +1,23 @@
 ///| Compute sine of double-precision floating-point number `x`.
+///
+/// # Examples
+///
+/// ```moonbit
+/// assert_eq!(sin(-1.0), -0.8414709848078965)
+/// assert_eq!(sin(0.0), 0)
+/// assert_eq!(sin(1.5707963267948966), 1.0)
+/// assert_eq!(sin(3.141592653589793), 0.00000000000000012246467991473532)
+/// assert_eq!(sin(10000), -0.30561438888825215)
+/// ```
+///
+/// # Special Cases
+///
+/// 1. sin(+-inf) = NaN
+/// 2. sin(NaN) = NaN
+///
+/// # Accuracy
+///
+/// 1 ulp.
 pub fn sin(x : Double) -> Double {
   if isinf(x) || isnan(x) {
     return double_nan
@@ -10,10 +29,8 @@ pub fn sin(x : Double) -> Double {
   let ix = __hi(x).reinterpret_as_int() & 0x7fffffff
   if ix <= 0x3fe921fb {
     return __kernel_sin(x, z, 0)
-  } else if ix >= 0x7ff00000 {
-    return x - x
   } else {
-    let n = __ieee754_rem_pio2(x, y)
+    let n = rem_pio2(x, y)
     match n & 3 {
       0 => __kernel_sin(y[0], y[1], 1)
       1 => __kernel_cos(y[0], y[1])

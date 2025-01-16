@@ -1,5 +1,25 @@
 ///| Compute the tangent of double-precision floating-point number `x`.
-fn tan(x: Double) -> Double {
+///
+/// # Examples
+///
+/// ```moonbit
+/// assert_eq!(tan(-1.0), -1.5574077246549023)
+/// assert_eq!(tan(3.141592653589793), -0.00000000000000012246467991473532)
+/// assert_eq!(tan(1.5707963267948966), 16331239353195370)
+/// assert_eq!(tan(0.7853981633974483), 0.9999999999999999)
+/// assert_eq!(tan(0.0), 0)
+/// assert_eq!(tan(10000), 0.3209711346238147)
+/// ```
+///
+/// # Special Cases
+///
+/// 1. tan(+-inf) = NaN
+/// 2. tan(NaN) = NaN
+///
+/// # Accuracy
+///
+/// 1 ulp.
+pub fn tan(x: Double) -> Double {
   if isinf(x) || isnan(x) {
     return double_nan
   }
@@ -11,7 +31,7 @@ fn tan(x: Double) -> Double {
   if ix <= 0x3fe921fb {
     __kernal_tan(x, z, 1)
   } else {
-    let n = __ieee754_rem_pio2(x, y)
+    let n = rem_pio2(x, y)
     __kernal_tan(y[0], y[1], 1 - ((n & 1) << 1))
   }
 }
