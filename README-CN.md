@@ -35,19 +35,19 @@ Moonbit 数学库在计算中力求高精度，旨在匹配 glibc 实现的准�
 | 函数          | 描述                          | 支持情况| ulp      |
 |---------------|-------------------------------|---------|----------|
 | abs           | 计算绝对值                    | ✓       |  0       |
-| acos          | 计算反余弦                    | ✓       |  0       |
-| acosh         | 计算反双曲余弦                | ✓       |  0       |
-| asin          | 计算反正弦                    | ✓       |  0       |
-| asinh         | 计算反双曲正弦                | ✓       |  0       |
-| atan          | 计算反正切                    | ✓       |  0       |
-| atan2         | 计算带有两个参数的反正切      | ✓       |  0       |
-| atanh         | 计算反双曲正切                | ✓       |  0       |
+| acos          | 计算反余弦                    | ✓       |  1       |
+| acosh         | 计算反双曲余弦                | ✓       |  1       |
+| asin          | 计算反正弦                    | ✓       |  1       |
+| asinh         | 计算反双曲正弦                | ✓       |  1       |
+| atan          | 计算反正切                    | ✓       |  1       |
+| atan2         | 计算带有两个参数的反正切      | ✓       |  1       |
+| atanh         | 计算反双曲正切                | ✓       |  1       |
 | cbrt          | 计算立方根                    | ✓       |  0       |
 | ceil          | 向上取整到最近的整数          | ✓       |  0       |
 | clamp         | 将值限制在指定范围内          | ✓       |  0       |
-| cos           | 计算余弦                      | ✓       |  0       |
-| cosh          | 计算双曲余弦                  | ✓       |  0       |
-| cospi         | 计算 cos(πx)                  | ✓       |  0       |
+| cos           | 计算余弦                      | ✓       |  1       |
+| cosh          | 计算双曲余弦                  | ✓       |  1       |
+| cospi         | 计算 cos(πx)                  | ✓       |  1       |
 | bessel_i0     | 柱贝塞尔函数（0阶）           | (TODO)  |  (TODO)  |
 | bessel_i1     | 柱贝塞尔函数（1阶）           | (TODO)  |  (TODO)  |
 | bessel_j0     | 计算第一类贝塞尔函数（0阶）   | ✓       |  1       |
@@ -63,10 +63,10 @@ Moonbit 数学库在计算中力求高精度，旨在匹配 glibc 实现的准�
 | erfcinv       | 计算反互补误差函数            | ✓       |  4       |
 | erfcx         | 计算缩放互补误差函数          | ✓       |  1       |
 | erfinv        | 计算反误差函数                | ✓       |  2       |
-| exp           | 计算指数函数                  | ✓       |  0       |
-| exp10         | 计算 10 的 x 次方             | ✓       |  0       |
+| exp           | 计算指数函数                  | ✓       |  1       |
+| exp10         | 计算 10 的 x 次方             | ✓       |  1       |
 | exp2          | 计算 2 的 x 次方              | ✓       |  1       |
-| expm1         | 计算 exp(x) - 1               | ✓       |  0       |
+| expm1         | 计算 exp(x) - 1               | ✓       |  1       |
 | fast_rsqrt    | 计算快速倒数平方根            | ✓       |  (TODO)  |
 | floor         | 向下取整到最近的整数          | ✓       |  0       |
 | fract         | 计算小数部分                  | ✓       |  0       |
@@ -83,26 +83,26 @@ Moonbit 数学库在计算中力求高精度，旨在匹配 glibc 实现的准�
 | isnormal      | 检查值是否正常                | ✓       |  0       |
 | issubnormal   | 检查值是否为次正常            | ✓       |  0       |
 | jacobi        | 计算 Jacobi 椭圆函数          | ✓       |  0       |
-| ldexp         | 计算 x * 2^exp                | ✓       |  0       |
-| log           | 计算自然对数                  | ✓       |  0       |
-| log10         | 计算以 10 为底的对数          | ✓       |  0       |
-| log1p         | 计算 log(1 + x)               | ✓       |  0       |
-| log2          | 计算以 2 为底的对数           | ✓       |  0       |
-| logaddexp     | 计算 log(exp(x) + exp(y))     | ✓       |  0       |
-| logb          | 计算 log2(x) 的整数部分       | ✓       |  0       |
+| ldexp         | 计算 x * 2^exp                | ✓       |  1       |
+| log           | 计算自然对数                  | ✓       |  1       |
+| log10         | 计算以 10 为底的对数          | ✓       |  1       |
+| log1p         | 计算 log(1 + x)               | ✓       |  1       |
+| log2          | 计算以 2 为底的对数           | ✓       |  1       |
+| logaddexp     | 计算 log(exp(x) + exp(y))     | ✓       |  1       |
+| logb          | 计算 log2(x) 的整数部分       | ✓       |  1       |
 | logsumexp     | 计算 log(sum(exp(x)))         | ✓       |  0       |
 | nearbyint     | 四舍五入到最近的整数          | ✓       |  0       |
 | nextafter     | 返回下一个浮点数              | ✓       |  0       |
 | nextdown      | 返回下一个较小的浮点数        | (TODO)  |  (TODO)  |
 | nextup        | 返回下一个较大的浮点数        | (TODO)  |  (TODO)  |
 | norm          | 计算范数                      | ✓       |  0       |
-| norm3d        | 计算 norm3d                   | ✓       |  0       |
-| norm4d        | 计算 norm4d                   | ✓       |  0       |
-| normcdf       | 计算正态分布的累积分布函数    | ✓       |  0       |
-| normcdfinv    | 计算正态分布的反累积分布函数  | ✓       |  0       |
-| pown          | 计算 x 的整数次幂             | ✓       |  0       |
+| norm3d        | 计算 norm3d                   | ✓       |  1       |
+| norm4d        | 计算 norm4d                   | ✓       |  1       |
+| normcdf       | 计算正态分布的累积分布函数    | ✓       |  1       |
+| normcdfinv    | 计算正态分布的反累积分布函数  | ✓       |  1       |
+| pown          | 计算 x 的整数次幂             | ✓       |  1       |
 | polygamma     | 计算 Polygamma 函数           | (TODO)  |  (TODO)  |
-| pow           | 计算 x 的 y 次方              | ✓       |  0       |
+| pow           | 计算 x 的 y 次方              | ✓       |  3       |
 | rcbrt         | 计算立方根的倒数              | ✓       |  0       |
 | rem_euclid    | 计算欧几里得余数              | ✓       |  0       |
 | rhypot        | 计算欧几里得范数的倒数        | ✓       |  0       |
@@ -116,17 +116,17 @@ Moonbit 数学库在计算中力求高精度，旨在匹配 glibc 实现的准�
 | scalbn        | 计算 x * 2^n                  | ✓       |  0       |
 | sign          | 计算符号函数                  | ✓       |  0       |
 | signum        | 计算符号函数                  | ✓       |  0       |
-| sin           | 计算正弦                      | ✓       |  0       |
+| sin           | 计算正弦                      | ✓       |  1       |
 | sinc          | 计算 sinc 函数                | (TODO)  |  (TODO)  |
-| sincos        | 同时计算正弦和余弦            | ✓       |  0       |
-| sincospi      | 同时计算 sin(πx) 和 cos(πx)   | ✓       |  0       |
-| sinh          | 计算双曲正弦                  | ✓       |  0       |
+| sincos        | 同时计算正弦和余弦            | ✓       |  1       |
+| sincospi      | 同时计算 sin(πx) 和 cos(πx)   | ✓       |  1       |
+| sinh          | 计算双曲正弦                  | ✓       |  1       |
 | sinhc         | 计算归一化双曲正弦            | (TODO)  |  (TODO)  |
-| sinpi         | 计算 sin(πx)                  | ✓       |  0       |
-| sqrt          | 计算平方根                    | ✓       |  0       |
-| sqrt1pm1      | 计算 sqrt(1 + x) - 1          | ✓       |  0       |
-| tan           | 计算正切                      | ✓       |  0       |
-| tanh          | 计算双曲正切                  | ✓       |  0       |
+| sinpi         | 计算 sin(πx)                  | ✓       |  1       |
+| sqrt          | 计算平方根                    | ✓       |  1       |
+| sqrt1pm1      | 计算 sqrt(1 + x) - 1          | ✓       |  1       |
+| tan           | 计算正切                      | ✓       |  1       |
+| tanh          | 计算双曲正切                  | ✓       |  1       |
 | to_degrees    | 将弧度转换为度                | ✓       |  0       |
 | to_radians    | 将度转换为弧度                | ✓       |  0       |
 | trunc         | 截断到整数部分                | ✓       |  0       |

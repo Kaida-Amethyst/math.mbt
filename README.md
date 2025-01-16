@@ -45,7 +45,7 @@ The Moonbit Math Library strives for high precision in its calculations, aiming 
 | cbrt          | Compute cubic root                   | ✓       |  1                                  |
 | ceil          | Round up to the nearest integer      | ✓       |  0                                  |
 | clamp         | Clamp value within a specified range | ✓       |  0                                  |
-| cos           | Compute cosine                       | ✓       |  49                                 |
+| cos           | Compute cosine                       | ✓       |  1                                  |
 | cosh          | Compute hyperbolic cosine            | ✓       |  1                                  |
 | cospi         | Compute cos(πx)                      | ✓       |  3                                  |
 | bessel_i0     | Cylindrical Bessel function of order 0| (TODO) |  (TODO)                             |
@@ -67,9 +67,9 @@ The Moonbit Math Library strives for high precision in its calculations, aiming 
 | erfcx         | Compute scaled complementary error function | ✓       |  1                           |
 | erfinv        | Compute inverse error function       | ✓       |  2                                  |
 | exp           | Compute exponential function         | ✓       |  0                                  |
-| exp10         | Compute 10 raised to the power of x  | ✓       |  0                                  |
+| exp10         | Compute 10 raised to the power of x  | ✓       |  1                                  |
 | exp2          | Compute 2 raised to the power of x   | ✓       |  1                                  |
-| expm1         | Compute exp(x) - 1                   | ✓       |  0                                  |
+| expm1         | Compute exp(x) - 1                   | ✓       |  1                                  |
 | fast_rsqrt    | Compute fast reciprocal square root  | ✓       |  (TODO)                             |
 | floor         | Round down to the nearest integer    | ✓       |  0                                  |
 | fract         | Compute fractional part              | ✓       |  0                                  |
@@ -87,10 +87,10 @@ The Moonbit Math Library strives for high precision in its calculations, aiming 
 | issubnormal   | Check if value is subnormal          | ✓       |  0                                  |
 | jacobi        | Compute Jacobi elliptic function     | ✓       |  0                                  |
 | ldexp         | Compute x * 2^exp                    | ✓       |  0                                  |
-| log           | Compute natural logarithm            | ✓       |  0                                  |
-| log10         | Compute logarithm base 10            | ✓       |  0                                  |
-| log1p         | Compute log(1 + x)                   | ✓       |  0                                  |
-| log2          | Compute logarithm base 2             | ✓       |  0                                  |
+| log           | Compute natural logarithm            | ✓       |  1                                  |
+| log10         | Compute logarithm base 10            | ✓       |  1                                  |
+| log1p         | Compute log(1 + x)                   | ✓       |  1                                  |
+| log2          | Compute logarithm base 2             | ✓       |  1                                  |
 | logaddexp     | Compute log(exp(x) + exp(y))         | ✓       |  0                                  |
 | logb          | Compute integer part of log2(x)      | ✓       |  0                                  |
 | logsumexp     | Compute log(sum(exp(x)))             | ✓       |  0                                  |
@@ -105,31 +105,31 @@ The Moonbit Math Library strives for high precision in its calculations, aiming 
 | normcdfinv    | Compute inverse cumulative distribution function of normal distribution | ✓       |  (TODO) |
 | pown          | Compute integer power of x           | ✓       |  0                                  |
 | polygamma     | Compute Polygamma function           | (TODO)  |  (TODO)                             |
-| pow           | Compute x raised to the power of y   | ✓       |  0                                  |
-| rcbrt         | Compute reciprocal of cubic root     | ✓       |  0                                  |
+| pow           | Compute x raised to the power of y   | ✓       |  3                                  |
+| rcbrt         | Compute reciprocal of cubic root     | ✓       |  1                                  |
 | rem_euclid    | Compute Euclidean remainder          | ✓       |  0                                  |
-| rhypot        | Compute reciprocal of Euclidean norm | ✓       |  0                                  |
+| rhypot        | Compute reciprocal of Euclidean norm | ✓       |  1                                  |
 | rint          | Round to nearest integer             | ✓       |  0                                  |
-| rnorm         | Compute reciprocal of norm           | ✓       |  0                                  |
-| rnorm3d       | Compute reciprocal of norm3d         | ✓       |  0                                  |
-| rnorm4d       | Compute reciprocal of norm4d         | ✓       |  0                                  |
+| rnorm         | Compute reciprocal of norm           | ✓       |  1                                  |
+| rnorm3d       | Compute reciprocal of norm3d         | ✓       |  1                                  |
+| rnorm4d       | Compute reciprocal of norm4d         | ✓       |  1                                  |
 | round         | Round to nearest integer             | ✓       |  0                                  |
 | roundeven     | Round to nearest even integer        | ✓       |  0                                  |
-| rsqrt         | Compute reciprocal of square root    | ✓       |  0                                  |
+| rsqrt         | Compute reciprocal of square root    | ✓       |  1                                  |
 | scalbn        | Compute x * 2^n                      | ✓       |  0                                  |
 | sign          | Compute sign function                | ✓       |  0                                  |
 | signum        | Compute sign function                | ✓       |  0                                  |
-| sin           | Compute sine                         | ✓       |  3                                  |
+| sin           | Compute sine                         | ✓       |  1                                  |
 | sinc          | Compute sinc function                | (TODO)  |  (TODO)                             |
-| sincos        | Compute sine and cosine simultaneously | ✓       |  0                                |
-| sincospi      | Compute sin(πx) and cos(πx) simultaneously | ✓       |  0                            |
+| sincos        | Compute sine and cosine simultaneously | ✓       |  1                                |
+| sincospi      | Compute sin(πx) and cos(πx) simultaneously | ✓       |  1                            |
 | sinh          | Compute hyperbolic sine              | ✓       |  0                                  |
 | sinhc         | Compute normalized hyperbolic sine   | (TODO)  |  (TODO)                             |
 | sinpi         | Compute sin(πx)                      | ✓       |  3                                  |
-| sqrt          | Compute square root                  | ✓       |  0                                  |
-| sqrt1pm1      | Compute sqrt(1 + x) - 1              | ✓       |  0                                  |
-| tan           | Compute tangent                      | ✓       |  0                                  |
-| tanh          | Compute hyperbolic tangent           | ✓       |  0                                  |
+| sqrt          | Compute square root                  | ✓       |  1                                  |
+| sqrt1pm1      | Compute sqrt(1 + x) - 1              | ✓       |  1                                  |
+| tan           | Compute tangent                      | ✓       |  1                                  |
+| tanh          | Compute hyperbolic tangent           | ✓       |  1                                  |
 | to_degrees    | Convert radians to degrees           | ✓       |  0                                  |
 | to_radians    | Convert degrees to radians           | ✓       |  0                                  |
 | trunc         | Truncate to integer part             | ✓       |  0                                  |
