@@ -1,6 +1,5 @@
 fn main {
-  let x = 0.68
-  let y = @math.erfcinv(x)
-  println("erfcinv(\{x}) = \{y}")
-  // println("expm1(\{x}) = \{y}")
+  let x = -2.1
+  let y = @math.sin(x)
+  println("sin(\{x}) = \{y}")
 }

@@ -1,53 +1,25 @@
 ///| Compute sine of double-precision floating-point number `x`.
 pub fn sin(x : Double) -> Double {
-  if Double::is_inf(x) || Double::is_nan(x) {
-    double_nan
+  if isinf(x) || isnan(x) {
+    return double_nan
+  }
+
+  let y = [0.0, 0.0]
+  let z = 0.0
+
+  let ix = __hi(x).reinterpret_as_int() & 0x7fffffff
+  if ix <= 0x3fe921fb {
+    return __kernel_sin(x, z, 0)
+  } else if ix >= 0x7ff00000 {
+    return x - x
   } else {
-    let mut sign = false
-    let mut x_ = x
-    if x_ < 0.0 {
-      x_ = -x_
-      sign = true
+    let n = __ieee754_rem_pio2(x, y)
+    match n & 3 {
+      0 => __kernel_sin(y[0], y[1], 1)
+      1 => __kernel_cos(y[0], y[1])
+      2 => -__kernel_sin(y[0], y[1], 1)
+      _ => -__kernel_cos(y[0], y[1])
     }
-    let mut j = (x_ * pi4).to_int64()
-    if (j & 1L) == 1L {
-      j += 1L
-    }
-    let y = j.to_double()
-    j = j & 7L
-    if j > 3L {
-      sign = not(sign)
-      j -= 4L
-    }
-    let z = x_ - y * pi4a - y * pi4b - y * pi4c
-    let zz = z * z
-    (if j == 1L || j == 2L {
-      1.0 -
-      0.5 * zz +
-      zz *
-      zz *
-      (
-        (
-          (((cos_[0] * zz + cos_[1]) * zz + cos_[2]) * zz + cos_[3]) * zz +
-          cos_[4]
-        ) *
-        zz +
-        cos_[5]
-      )
-    } else {
-      z +
-      z *
-      zz *
-      (
-        (
-          (((sin_[0] * zz + sin_[1]) * zz + sin_[2]) * zz + sin_[3]) * zz +
-          sin_[4]
-        ) *
-        zz +
-        sin_[5]
-      )
-    }) *
-    (if sign { -1.0 } else { 1.0 })
   }
 }
 
@@ -64,7 +36,7 @@ test "sin" {
   assert_sin_ulp!(-0.2, -0.19866933079506122)
   assert_sin_ulp!(-0.1, -0.09983341664682815)
   assert_sin_ulp!(-0, -0)
-  // assert_sin_ulp!(-3.141592653589793, -0.00000000000000012246467991473532)
+  assert_sin_ulp!(-3.141592653589793, -0.00000000000000012246467991473532)
   assert_sin_ulp!(-1.5707963267948966, -1)
   assert_sin_ulp!(-0.7853981633974483, -0.7071067811865475)
   assert_sin_ulp!(0, 0)
@@ -78,7 +50,7 @@ test "sin" {
   assert_sin_ulp!(0.8, 0.7173560908995228)
   assert_sin_ulp!(0.9, 0.7833269096274834)
   assert_sin_ulp!(1, 0.8414709848078965)
-  // assert_sin_ulp!(3.141592653589793, 0.00000000000000012246467991473532)
+  assert_sin_ulp!(3.141592653589793, 0.00000000000000012246467991473532)
   assert_sin_ulp!(1.5707963267948966, 1)
   assert_sin_ulp!(0.7853981633974483, 0.7071067811865475)
   assert_sin_ulp!(-1, -0.8414709848078965)
