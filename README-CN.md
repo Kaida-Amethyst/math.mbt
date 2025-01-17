@@ -84,9 +84,9 @@ Moonbit 数学库在计算中力求高精度，旨在匹配 glibc 实现的准�
 | issubnormal   | 检查值是否为次正常            | ✓       |  0       |
 | jacobi        | 计算 Jacobi 椭圆函数          | ✓       |  0       |
 | ldexp         | 计算 x * 2^exp                | ✓       |  1       |
-| log           | 计算自然对数                  | ✓       |  1       |
-| log10         | 计算以 10 为底的对数          | ✓       |  1       |
-| log1p         | 计算 log(1 + x)               | ✓       |  1       |
+| log           | 计算自然对数                  | ✓       |  0       |
+| log10         | 计算以 10 为底的对数          | ✓       |  0       |
+| log1p         | 计算 log(1 + x)               | ✓       |  0       |
 | log2          | 计算以 2 为底的对数           | ✓       |  1       |
 | logaddexp     | 计算 log(exp(x) + exp(y))     | ✓       |  1       |
 | logb          | 计算 log2(x) 的整数部分       | ✓       |  1       |

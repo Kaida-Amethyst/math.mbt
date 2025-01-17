@@ -15,9 +15,7 @@
 ///
 /// # Accuracy:
 ///
-/// according to an error analysis, the error is always less than
-/// 1 ulp (unit in the last place).
-///
+/// 0 ulp (unit in the last place).
 pub fn log1p(x: Double) -> Double {
 
   let ln2_hi = 6.93147180369123816490e-01

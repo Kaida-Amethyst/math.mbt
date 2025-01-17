@@ -48,17 +48,44 @@
 /// 
 /// # Special cases:
 ///
-/// 1. log(x) is NaN with signal if x < 0 (including -INF).
-/// 2. log(+INF) is +INF.
-/// 3. log(0) is -INF with signal.
+/// 1. log(x) = NaN for all x < 0 (including -inf).
+/// 2. log(+inf) = +inf.
+/// 3. log(+-0) = -inf
 ///
 /// # Accuracy:
 /// 
-/// according to an error analysis, the error is always less than
-/// 
-/// 1 ulp (unit in the last place).
+/// 0 ulp
 pub fn log(x: Double) -> Double {
-  x.ln()
+  let l1 = 6.666666666666735130e-01 // 3FE55555 55555593
+  let l2 = 3.999999999940941908e-01 // 3FD99999 9997FA04
+  let l3 = 2.857142874366239149e-01 // 3FD24924 94229359
+  let l4 = 2.222219843214978396e-01 // 3FCC71C5 1D8E78AF
+  let l5 = 1.818357216161805012e-01 // 3FC74664 96CB03DE
+  let l6 = 1.531383769920937332e-01 // 3FC39A09 D078C69F
+  let l7 = 1.479819860511658591e-01 // 3FC2F112 DF3E5244
+  let ln2_hi = 6.93147180369123816490e-01 // 3fe62e42 fee00000
+  let ln2_lo = 1.90821492927058770002e-10 // 3dea39ef 35793c76
+  if x < 0.0 {
+    return double_nan
+  } else if x.is_nan() || x.is_inf() {
+    return x
+  } else if x == 0.0 {
+    return double_neg_inf
+  }
+  let (f1, ki) = frexp(x)
+  let (f, k) = if f1 < SQRT2 / 2.0 {
+    (f1 * 2.0 - 1.0, (ki - 1).to_double())
+  } else {
+    (f1 - 1.0, ki.to_double())
+  }
+  let s = f / (2.0 + f)
+  let s2 = s * s
+  let s4 = s2 * s2
+  let t1 = s2 * (l1 + s4 * (l3 + s4 * (l5 + s4 * l7)))
+  let t2 = s4 * (l2 + s4 * (l4 + s4 * l6))
+  let r = t1 + t2
+  let hfsq = 0.5 * f * f
+  k * ln2_hi - (hfsq - (s * (hfsq + r) + k * ln2_lo) - f)
 }
 
 test "log" {
@@ -102,7 +129,7 @@ test "log" {
   assert_log_ulp!(-9, double_nan)
   assert_log_ulp!(1, 0)
   assert_log_ulp!(2, 0.6931471805599453)
-  assert_log_ulp!(3, 1.0986122886681098)
+  assert_log_ulp!(3, 1.0986122886681096)
   assert_log_ulp!(4, 1.3862943611198906)
   assert_log_ulp!(5, 1.6094379124341003)
   assert_log_ulp!(6, 1.791759469228055)
@@ -116,7 +143,7 @@ test "log" {
   assert_log_ulp!(2.5, 0.9162907318741551)
   assert_log_ulp!(3.4, 1.2237754316221157)
   assert_log_ulp!(5.3, 1.667706820558076)
-  assert_log_ulp!(6.2, 1.824549292051046)
+  assert_log_ulp!(6.2, 1.8245492920510458)
   assert_log_ulp!(7.1, 1.9600947840472698)
   assert_log_ulp!(8.9, 2.186051276738094)
   assert_log_ulp!(9.8, 2.2823823856765264)

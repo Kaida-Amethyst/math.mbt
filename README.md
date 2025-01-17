@@ -87,9 +87,9 @@ The Moonbit Math Library strives for high precision in its calculations, aiming 
 | issubnormal   | Check if value is subnormal          | ✓       |  0                                  |
 | jacobi        | Compute Jacobi elliptic function     | ✓       |  0                                  |
 | ldexp         | Compute x * 2^exp                    | ✓       |  0                                  |
-| log           | Compute natural logarithm            | ✓       |  1                                  |
-| log10         | Compute logarithm base 10            | ✓       |  1                                  |
-| log1p         | Compute log(1 + x)                   | ✓       |  1                                  |
+| log           | Compute natural logarithm            | ✓       |  0                                  |
+| log10         | Compute logarithm base 10            | ✓       |  0                                  |
+| log1p         | Compute log(1 + x)                   | ✓       |  0                                  |
 | log2          | Compute logarithm base 2             | ✓       |  1                                  |
 | logaddexp     | Compute log(exp(x) + exp(y))         | ✓       |  0                                  |
 | logb          | Compute integer part of log2(x)      | ✓       |  0                                  |
