@@ -29,7 +29,7 @@
 ///
 /// # Accuracy
 ///
-/// 1 ulp (unit in the last place)
+/// 0 ulp (unit in the last place)
 ///
 pub fn log10(x: Double) -> Double {
   if x == 0 {
@@ -85,7 +85,6 @@ pub fn log10_v2(x: Double) -> Double {
   } else {
     (f, e.to_double())
   }
-  // println("e = \{e}, f = \{f}")
   let z = e * log10_2lo + ivln10 * log(f)
   z + e * log10_2hi
 }
@@ -99,6 +98,7 @@ test "log10" {
   assert_log10_ulp!(-1.5707963267948966, double_nan)
   assert_log10_ulp!(-0.7853981633974483, double_nan)
   assert_log10_ulp!(0, double_neg_inf)
+  assert_log10_ulp!(0.01, -2)
   assert_log10_ulp!(0.1, -1)
   assert_log10_ulp!(0.2, -0.6989700043360187)
   assert_log10_ulp!(0.3, -0.5228787452803376)
@@ -141,6 +141,8 @@ test "log10" {
   assert_log10_ulp!(100, 2)
   assert_log10_ulp!(1000, 3)
   assert_log10_ulp!(10000, 4)
+  assert_log10_ulp!(100000, 5)
+  assert_log10_ulp!(1000000, 6)
   assert_log10_ulp!(2.5, 0.3979400086720376)
   assert_log10_ulp!(3.4, 0.5314789170422551)
   assert_log10_ulp!(5.3, 0.724275869600789)
