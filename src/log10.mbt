@@ -31,25 +31,21 @@
 ///
 /// 0 ulp (unit in the last place)
 ///
-pub fn log10(x: Double) -> Double {
+pub fn log10(x : Double) -> Double {
   if x == 0 {
     return double_neg_inf
   }
-
   if x < 0 || isnan(x) {
     return double_nan
   }
-
   if isinf(x) {
     return double_pos_inf
   }
-
   let mut x = x
   let two54 = 1.80143985094819840000e+16 // 0x43500000, 0x00000000
   let ivln10 = 4.34294481903251816668e-01 // 0x3FDBCB7B, 0x1526E50E
   let log10_2hi = 3.01029995663611771306e-01 // 0x3FD34413, 0x509F6000
   let log10_2lo = 3.69423907715893078616e-13 // 0x3D59FEF3, 0x11F12B36
-
   let mut hx : Int = __hi(x).reinterpret_as_int()
   let lx : Int = __low(x).reinterpret_as_int()
   let mut k = 0
@@ -62,14 +58,14 @@ pub fn log10(x: Double) -> Double {
   let i = (k.reinterpret_as_uint() & 0x80000000) >> 31
   let i = i.reinterpret_as_int()
   hx = (hx & 0x000fffff) | ((0x3ff - i) << 20)
-  let y = (k+i).to_double()
+  let y = (k + i).to_double()
   x = __combineW(hx.reinterpret_as_uint(), lx.reinterpret_as_uint())
   let z = y * log10_2lo + ivln10 * log(x)
   z + y * log10_2hi
 }
 
 ///| An alternative implementation
-pub fn log10_v2(x: Double) -> Double {
+pub fn log10_v2(x : Double) -> Double {
   if x < 0 || isnan(x) {
     return double_nan
   }
@@ -91,8 +87,9 @@ pub fn log10_v2(x: Double) -> Double {
 
 test "log10" {
   fn assert_log10_ulp!(input, expect) {
-    assert_ulp!(expect, log10(input), LOG10_MAX_ULP);
+    assert_ulp!(expect, log10(input), LOG10_MAX_ULP)
   }
+
   assert_log10_ulp!(-0.8, double_nan)
   assert_log10_ulp!(-3.141592653589793, double_nan)
   assert_log10_ulp!(-1.5707963267948966, double_nan)

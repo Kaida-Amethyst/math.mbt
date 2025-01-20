@@ -6,7 +6,7 @@
 // asinh(x) := x  if  1+x*x=1,
 // 	 := sign(x)*(log(x)+ln2)) for large |x|, else
 // 	 := sign(x)*log(2|x|+1/(|x|+sqrt(x*x+1))) if|x|>2, else
-// 	 := sign(x)*log1p(|x| + x^2/(1 + sqrt(1+x^2)))  
+// 	 := sign(x)*log1p(|x| + x^2/(1 + sqrt(1+x^2)))
 
 ///| Compute the inverse hyperbolic sine of `x`.
 ///
@@ -31,15 +31,13 @@
 /// # Accuracy
 ///
 /// 1 ulp (unit in the last place).
-pub fn asinh(x: Double) -> Double {
+pub fn asinh(x : Double) -> Double {
   if isnan(x) || isinf(x) {
     return x
   }
-
   let one : Double = 1.0
   let ln2 : Double = 6.93147180559945286227e-01
   let huge : Double = 1.0e300
-
   let hx = __hi(x).reinterpret_as_int()
   let ix = hx & 0x7fffffff
   if ix < 0x3e300000 {
@@ -47,7 +45,7 @@ pub fn asinh(x: Double) -> Double {
       return x
     }
   }
-  let w: Double = if ix > 0x41b00000 {
+  let w : Double = if ix > 0x41b00000 {
     log(fabs(x)) + ln2
   } else if ix > 0x40000000 {
     let t = fabs(x)
@@ -65,8 +63,9 @@ pub fn asinh(x: Double) -> Double {
 
 test "asinh" {
   fn assert_asinh_ulp!(input, expect) {
-    assert_ulp!(expect, asinh(input), ASINH_MAX_ULP);
+    assert_ulp!(expect, asinh(input), ASINH_MAX_ULP)
   }
+
   assert_asinh_ulp!(-1, -0.881373587019543)
   assert_asinh_ulp!(-2, -1.4436354751788103)
   assert_asinh_ulp!(-3, -1.8184464592320668)

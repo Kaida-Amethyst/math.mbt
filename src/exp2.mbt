@@ -22,14 +22,15 @@
 /// 1. exp2(+Inf) = +Inf
 /// 2. exp2(-Inf) = 0
 ///.3. exp2(NaN) = NaN
-pub fn exp2(x: Double) -> Double {
+pub fn exp2(x : Double) -> Double {
   pow(2.0, x)
 }
 
 test "exp2" {
   fn assert_exp2_ulp!(input, expect) {
-    assert_ulp!(expect, exp2(input), EXP2_MAX_ULP);
+    assert_ulp!(expect, exp2(input), EXP2_MAX_ULP)
   }
+
   assert_exp2_ulp!(-1, 0.5)
   assert_exp2_ulp!(-2, 0.25)
   assert_exp2_ulp!(-3, 0.125)

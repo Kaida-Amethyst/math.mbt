@@ -15,25 +15,16 @@ pub fn jn(n : Int, x : Double) -> Double {
   if isnan(x) {
     return double_nan
   }
-
   if n == 0 {
     return j0(x)
   }
-
   if n == 1 {
     return j1(x)
   }
-
-  let (n, x) = if n < 0 {
-    (-n, -x)
-  } else {
-    (n, x)
-  }
-
-
+  let (n, x) = if n < 0 { (-n, -x) } else { (n, x) }
   let hx = __hi(x).reinterpret_as_int()
   let ix = hx & 0x7fffffff
-  let sgn = (n&1) & (hx >> 31)
+  let sgn = n & 1 & (hx >> 31)
   let x = fabs(x)
   let mut b = 0.0
   let mut a = 0.0
@@ -42,7 +33,7 @@ pub fn jn(n : Int, x : Double) -> Double {
     b = 0.0
   } else if n.to_double() <= x {
     if ix >= 0x52d00000 {
-      let temp = match (n & 3) {
+      let temp = match n & 3 {
         0 => cos(x) + sin(x)
         1 => -cos(x) + sin(x)
         2 => -cos(x) - sin(x)
@@ -60,72 +51,70 @@ pub fn jn(n : Int, x : Double) -> Double {
         a = temp
       }
     }
+  } else if ix < 0x3e100000 {
+    if n > 33 {
+      b = 0.0
+    } else {
+      temp = x * 0.5
+      b = temp
+      a = 1.0
+      for i = 2; i <= n; i = i + 1 {
+        a = a * i.to_double()
+        b = b * temp
+      }
+      b = b / a
+    }
   } else {
-    if ix < 0x3e100000 {
-      if n > 33 {
-        b = 0.0
-      } else {
-        temp = x * 0.5
-        b = temp
-        a = 1.0
-        for i = 2; i <=n; i=i+1 {
-          a = a * i.to_double()
-          b = b * temp
-        }
-        b = b/a
+    let w = (n + n).to_double() / x
+    let h = 2.0 / x
+    let mut q0 = w
+    let mut z = w + h
+    let mut q1 = w * z - 1.0
+    let mut k = 1
+    while q1 < 1.0e9 {
+      k = k + 1
+      z = z + h
+      let tmp = z * q1 - q0
+      q0 = q1
+      q1 = tmp
+    }
+    let m = n + n
+    let mut t = 0.0
+    for i = 2 * (n + k); i >= m; i = i - 2 {
+      t = 1.0 / (i.to_double() / x - t)
+    }
+    a = t
+    b = 1.0
+    let tmp = n.to_double()
+    let v = 2.0 / x
+    let tmp = tmp * log(fabs(v * tmp))
+    if tmp < 7.09782712893383973096e+02 {
+      let i = n - 1
+      let mut di = (i + i).to_double()
+      for i = i; i > 0; i = i - 1 {
+        temp = b
+        b = b * di
+        b = b / x - a
+        a = temp
+        di = di - 2.0
       }
     } else {
-      let w = (n + n).to_double() / x
-      let h = 2.0 / x
-      let mut q0 = w
-      let mut z = w + h
-      let mut q1 = w * z - 1.0
-      let mut k = 1
-      while q1 < 1.0e9 {
-        k = k + 1
-        z = z + h
-        let tmp = z * q1 - q0
-        q0 = q1
-        q1 = tmp
-      }
-      let m = n + n
-      let mut t = 0.0
-      for i = 2 * (n + k); i >= m; i = i - 2 {
-        t = 1.0 / (i.to_double() / x - t)
-      }
-      a = t
-      b = 1.0
-      let tmp = n.to_double()
-      let v = 2.0 / x
-      let tmp = tmp * log(fabs(v * tmp))
-      if tmp < 7.09782712893383973096e+02 {
-        let i = n - 1
-        let mut di = (i + i).to_double()
-        for i=i; i > 0; i = i - 1 {
-          temp = b
-          b = b * di
-          b = b / x - a
-          a = temp
-          di = di - 2.0
-        }
-      } else {
-        let i = n - 1
-        let mut di = (i + i).to_double()
-        for i = i; i > 0; i = i - 1 {
-          temp = b
-          b = b * di
-          b = b / x - a
-          a = temp
-          di = di - 2.0
-          if b > 1.0e100 {
-            a = a / b
-            t = t / b
-            b = 1.0
-          }
+      let i = n - 1
+      let mut di = (i + i).to_double()
+      for i = i; i > 0; i = i - 1 {
+        temp = b
+        b = b * di
+        b = b / x - a
+        a = temp
+        di = di - 2.0
+        if b > 1.0e100 {
+          a = a / b
+          t = t / b
+          b = 1.0
         }
       }
-      b = t * j0(x) / b
-    } 
+    }
+    b = t * j0(x) / b
   }
   if sgn == 1 {
     -b
@@ -133,7 +122,6 @@ pub fn jn(n : Int, x : Double) -> Double {
     b
   }
 }
-
 
 // #ifdef __STDC__
 // 	double yn(int n, double x) 
@@ -194,4 +182,3 @@ pub fn jn(n : Int, x : Double) -> Double {
 // 	}
 // 	if(sign>0) return b; else return -b;
 // }
-

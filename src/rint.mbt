@@ -25,6 +25,6 @@
 /// # Note
 ///
 /// It is equivalent to `nearbyint` function. Note that it's different with C-like languages.
-pub fn rint(x : Double, round_mode~: RoundMode = FE_TONEAREST) -> Double {
+pub fn rint(x : Double, round_mode~ : RoundMode = FE_TONEAREST) -> Double {
   nearbyint(x, round_mode~)
 }

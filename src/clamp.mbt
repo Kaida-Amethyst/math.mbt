@@ -1,4 +1,3 @@
-
 ///| Restrict a value to a certain interval unless it is NaN.
 ///
 /// Returns `max` if `x` is greater than `max`, and `min` if `self` is
@@ -20,8 +19,8 @@
 /// assert_eq!(clamp(0.0, -2.0, 1.0), 0.0);
 /// assert_eq!(clamp(2.0, -2.0, 1.0), 1.0);
 /// ```
-pub fn clamp(x: Double, min: Double, max: Double) -> Double {
-  let (min, max) = if min > max { (max, min) } else { (min, max) };
+pub fn clamp(x : Double, min : Double, max : Double) -> Double {
+  let (min, max) = if min > max { (max, min) } else { (min, max) }
   if x < min {
     return min
   }

@@ -12,49 +12,36 @@
 ///
 /// 1. For n = 0, y0(x) is called.
 /// 2. For n = 1, y1(x) is called.
-pub fn yn(n : Int, x: Double) -> Double {
+pub fn yn(n : Int, x : Double) -> Double {
   if isnan(x) {
     return double_nan
   }
-
   if ispinf(x) {
     return 0.0
   }
-
   if n < 0 {
     return double_nan
   }
-
   if x == 0.0 {
     return double_nan
   }
-
   if x < 0 {
     return double_nan
   }
-
-  let (n, sign) = if n < 0 {
-    (-n, 1 - ((n & 1) << 1))
-  } else {
-    (n, 1)
-  }
-
+  let (n, sign) = if n < 0 { (-n, 1 - ((n & 1) << 1)) } else { (n, 1) }
   if n == 0 {
     return y0(x)
   }
-
   if n == 1 {
     return sign.to_double() * y1(x)
   }
-
   let hx = __hi(x).reinterpret_as_int()
   let ix = hx & 0x7fffffff
-
   let mut a = 0.0
   let mut b = 0.0
   let mut temp = 0.0
   if ix >= 0x52d00000 {
-    temp = match (n&3) {
+    temp = match n & 3 {
       0 => sin(x) - cos(x)
       1 => -sin(x) - cos(x)
       2 => -sin(x) + cos(x)

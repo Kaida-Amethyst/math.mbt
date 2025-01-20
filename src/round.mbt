@@ -18,6 +18,6 @@
 /// # Accuracy
 ///
 /// 0 ulp.
-pub fn round(x: Double) -> Double {
+pub fn round(x : Double) -> Double {
   x.round()
 }

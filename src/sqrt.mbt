@@ -19,14 +19,15 @@
 /// # Accuracy
 ///
 /// 0 ulp.
-pub fn sqrt(x: Double) -> Double {
+pub fn sqrt(x : Double) -> Double {
   x.sqrt()
 }
 
 test "sqrt" {
   fn assert_sqrt_ulp!(input, expect) {
-    assert_ulp!(expect, sqrt(input), SQRT_MAX_ULP);
+    assert_ulp!(expect, sqrt(input), SQRT_MAX_ULP)
   }
+
   assert_sqrt_ulp!(-0.8, double_nan)
   assert_sqrt_ulp!(-0.7, double_nan)
   assert_sqrt_ulp!(-0, -0)

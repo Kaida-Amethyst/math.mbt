@@ -169,4 +169,3 @@
 //     let (x, q) = trig_reduce(x, COS_SWITCHOVER);
 //     sin_cos_core(x, q + 1)
 // }
-

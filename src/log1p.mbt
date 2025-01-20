@@ -16,8 +16,7 @@
 /// # Accuracy:
 ///
 /// 0 ulp (unit in the last place).
-pub fn log1p(x: Double) -> Double {
-
+pub fn log1p(x : Double) -> Double {
   let ln2_hi = 6.93147180369123816490e-01
   let ln2_lo = 1.90821492927058770002e-10
   let two54 = 1.80143985094819840000e+16
@@ -27,10 +26,8 @@ pub fn log1p(x: Double) -> Double {
   let lp4 = 2.222219843214978396e-01
   let lp5 = 1.818357216161805012e-01
   let lp6 = 1.531383769920937332e-01
-
   let zero = 0.0
   let lp7 = 1.479819860511658591e-01
-
   let hx = __hi(x).reinterpret_as_int()
   let ax = hx & 0x7fffffff
   let mut f = 0.0
@@ -40,7 +37,6 @@ pub fn log1p(x: Double) -> Double {
   let mut r = 0.0
   let mut u = 0.0
   let mut hu = 0
-
   let mut k = 1
   if hx < 0x3FDA827A {
     if ax >= 0x3ff00000 {
@@ -82,7 +78,6 @@ pub fn log1p(x: Double) -> Double {
     hu = hu & 0x000fffff
     if hu < 0x6a09e {
       u = __combineW(hu.reinterpret_as_uint() | 0x3ff00000, __low(u))
-
     } else {
       k += 1
       u = __combineW(hu.reinterpret_as_uint() | 0x3fe00000, __low(u))
@@ -104,22 +99,23 @@ pub fn log1p(x: Double) -> Double {
     if k == 0 {
       return f - r
     } else {
-      return k.to_double() * ln2_hi - ((r - (k.to_double() * ln2_lo + c)) - f)
+      return k.to_double() * ln2_hi - (r - (k.to_double() * ln2_lo + c) - f)
     }
   }
-
   s = f / (2.0 + f)
   z = s * s
-  r = z * (lp1 + z * (lp2 + z * (lp3 + z * (lp4 + z * (lp5 + z * (lp6 + z * lp7))))))
+  r = z *
+    (lp1 + z * (lp2 + z * (lp3 + z * (lp4 + z * (lp5 + z * (lp6 + z * lp7))))))
   if k == 0 {
     return f - (hfsq - s * (hfsq + r))
   } else {
-    return k.to_double() * ln2_hi - ((hfsq - (s * (hfsq + r) + (k.to_double() * ln2_lo + c))) - f)
+    return k.to_double() * ln2_hi -
+      (hfsq - (s * (hfsq + r) + (k.to_double() * ln2_lo + c)) - f)
   }
 }
 
 ///| `ln_1p` is an alias for `log1p`
-pub fn ln_1p(x: Double) -> Double {
+pub fn ln_1p(x : Double) -> Double {
   log1p(x)
 }
 
@@ -127,6 +123,7 @@ test "log10" {
   fn assert_log1p_ulp!(input, expect_result) {
     assert_ulp!(expect_result, log1p(input), LOG1P_MAX_ULP)
   }
+
   assert_log1p_ulp!(-0.8, -1.6094379124341005)
   assert_log1p_ulp!(-0.7, -1.203972804325936)
   assert_log1p_ulp!(-0.6, -0.916290731874155)

@@ -19,14 +19,12 @@
 /// # Accuracy
 ///
 /// Same as `sin` and `cos`, both are 1 ulp.
-pub fn sincos(x: Double) -> (Double, Double) {
+pub fn sincos(x : Double) -> (Double, Double) {
   if isinf(x) || isnan(x) {
     return (double_nan, double_nan)
   }
-
   let y = [0.0, 0.0]
   let z = 0.0
-
   let ix = __hi(x).reinterpret_as_int() & 0x7fffffff
   if ix <= 0x3fe921fb {
     return (__kernel_sin(x, z, 0), __kernel_cos(x, z))
@@ -42,9 +40,10 @@ pub fn sincos(x: Double) -> (Double, Double) {
 }
 
 test "sincos" {
-  let arr_x = [0.0, 1.0, 2.0, 3.0, 4.0, 0.7853981633974483, 
-               1.5707963267948966, 3.141592653589793, 10000.0]
-
+  let arr_x = [
+    0.0, 1.0, 2.0, 3.0, 4.0, 0.7853981633974483, 1.5707963267948966, 3.141592653589793,
+    10000.0,
+  ]
   for x in arr_x {
     let sin_x = sin(x)
     let cos_x = cos(x)

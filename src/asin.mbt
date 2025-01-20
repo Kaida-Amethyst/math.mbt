@@ -36,8 +36,9 @@ pub fn asin(x : Double) -> Double {
 
 test "asin" {
   fn assert_asin_ulp!(input, expect) {
-    assert_ulp!(expect, asin(input), ASIN_MAX_ULP);
+    assert_ulp!(expect, asin(input), ASIN_MAX_ULP)
   }
+
   assert_asin_ulp!(-0.8, -0.9272952180016123)
   assert_asin_ulp!(-0.7, -0.775397496610753)
   assert_asin_ulp!(-0.6, -0.6435011087932844)

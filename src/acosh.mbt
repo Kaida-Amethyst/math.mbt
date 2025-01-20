@@ -9,7 +9,7 @@
 //  Special cases:
 //  acosh(x) is NaN with signal if x<1.
 //  acosh(NaN) is NaN without signal.
-//  
+//
 
 ///| Return the inverse hyperbolic cosine of x.
 ///
@@ -32,7 +32,7 @@
 /// # Accuracy
 ///
 /// 1 ulp
-pub fn acosh(x: Double) -> Double {
+pub fn acosh(x : Double) -> Double {
   let one = 1.0
   let ln2 = 6.93147180559945286227e-01 // 0x3FE62E42, 0xFEFA39EF
   let hx = __hi(x).reinterpret_as_int()
@@ -59,8 +59,9 @@ pub fn acosh(x: Double) -> Double {
 
 test "acosh" {
   fn assert_acosh_ulp!(input, expect) {
-    assert_ulp!(expect, acosh(input), ACOSH_MAX_ULP);
+    assert_ulp!(expect, acosh(input), ACOSH_MAX_ULP)
   }
+
   assert_acosh_ulp!(-1, double_nan)
   assert_acosh_ulp!(-2, double_nan)
   assert_acosh_ulp!(-3, double_nan)

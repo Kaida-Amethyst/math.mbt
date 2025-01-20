@@ -6,7 +6,7 @@
 /// # Accruacy:
 ///
 /// 1 ulp (unit in the last place).
-pub fn scalbn(input: Double, n: Int) -> Double {
+pub fn scalbn(input : Double, n : Int) -> Double {
   let mut n = n
   let mut y : Double = input
   if n > 1023 {

@@ -18,16 +18,13 @@
 /// # Accuracy
 ///
 /// 1 ulp.
-pub fn cos(x: Double) -> Double {
+pub fn cos(x : Double) -> Double {
   if isinf(x) || isnan(x) {
     return double_nan
   }
-
   let y = [0.0, 0.0]
   let z = 0.0
-
   let ix = __hi(x).reinterpret_as_int() & 0x7fffffff
-
   if ix <= 0x3fe921fb {
     return __kernel_cos(x, z)
   } else {
@@ -43,8 +40,9 @@ pub fn cos(x: Double) -> Double {
 
 test "cos" {
   fn assert_cos_ulp!(input, expect) {
-    assert_ulp!(expect, cos(input), COS_MAX_ULP);
+    assert_ulp!(expect, cos(input), COS_MAX_ULP)
   }
+
   assert_cos_ulp!(-0.8, 0.6967067093471654)
   assert_cos_ulp!(-0.7, 0.7648421872844885)
   assert_cos_ulp!(-0.6, 0.8253356149096783)

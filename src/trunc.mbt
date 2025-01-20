@@ -18,6 +18,6 @@
 /// # Accuracy
 ///
 /// 0 ulp.
-pub fn trunc(x: Double) -> Double {
+pub fn trunc(x : Double) -> Double {
   x.trunc()
 }

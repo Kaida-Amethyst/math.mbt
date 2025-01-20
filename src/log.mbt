@@ -55,7 +55,7 @@
 /// # Accuracy:
 /// 
 /// 0 ulp
-pub fn log(x: Double) -> Double {
+pub fn log(x : Double) -> Double {
   let l1 = 6.666666666666735130e-01 // 3FE55555 55555593
   let l2 = 3.999999999940941908e-01 // 3FD99999 9997FA04
   let l3 = 2.857142874366239149e-01 // 3FD24924 94229359
@@ -90,8 +90,9 @@ pub fn log(x: Double) -> Double {
 
 test "log" {
   fn assert_log_ulp!(input, expect) {
-    assert_ulp!(expect, log(input), LOG_MAX_ULP);
+    assert_ulp!(expect, log(input), LOG_MAX_ULP)
   }
+
   assert_log_ulp!(-0.8, double_nan)
   assert_log_ulp!(-0.7, double_nan)
   assert_log_ulp!(-0.6, double_nan)

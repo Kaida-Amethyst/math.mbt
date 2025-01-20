@@ -32,13 +32,13 @@
 /// representable.
 ///
 /// 2 ulp (units in the last place) are added for rounding.
-pub fn pow(base: Double, expon: Double) -> Double {
+pub fn pow(base : Double, expon : Double) -> Double {
   base.pow(expon)
 }
 
 test "pow" {
   fn assert_pow_ulp!(base, exponent, expect) {
-    assert_ulp!(expect, pow(base, exponent), POW_MAX_ULP);
+    assert_ulp!(expect, pow(base, exponent), POW_MAX_ULP)
   }
 
   assert_pow_ulp!(2.0, 3.0, 8.0)
@@ -49,27 +49,23 @@ test "pow" {
   assert_pow_ulp!(1.5, 2.0, 2.25)
   assert_pow_ulp!(2.5, 3.0, 15.625)
   assert_pow_ulp!(10.0, 0.5, 3.1622776601683795)
-  assert_pow_ulp!(8.0, 1.0/3.0, 2.0)
-
+  assert_pow_ulp!(8.0, 1.0 / 3.0, 2.0)
   assert_pow_ulp!(-2.0, 3.0, -8.0)
   assert_pow_ulp!(-3.0, 2.0, 9.0)
   assert_pow_ulp!(-5.0, 3.0, -125.0)
   assert_pow_ulp!(-1.5, 2.0, 2.25)
   assert_pow_ulp!(-2.5, 3.0, -15.625)
-
   assert_pow_ulp!(-2.0, -3.0, -0.125)
   assert_pow_ulp!(-3.0, -2.0, 0.1111111111111111)
   assert_pow_ulp!(-5.0, -3.0, -0.008)
   assert_pow_ulp!(-1.5, -2.0, 0.4444444444444444)
   assert_pow_ulp!(-2.5, -3.0, -0.064)
-
   assert_pow_ulp!(2.0, -3.0, 0.125)
   assert_pow_ulp!(3.0, -2.0, 0.1111111111111111)
   assert_pow_ulp!(5.0, -3.0, 0.008)
   assert_pow_ulp!(10.0, -2.0, 0.01)
   assert_pow_ulp!(1.5, -2.0, 0.4444444444444444)
   assert_pow_ulp!(2.5, -3.0, 0.064)
-
   assert_pow_ulp!(0.0, 0.0, 1.0)
   assert_pow_ulp!(0.0, 5.0, 0.0)
   assert_pow_ulp!(0.0, -5.0, double_pos_inf)
@@ -89,7 +85,6 @@ test "pow" {
   assert_pow_ulp!(0.0, double_neg_inf, double_pos_inf)
   assert_pow_ulp!(double_neg_inf, -2.0, 0.0)
   assert_pow_ulp!(double_neg_inf, -3.0, -0.0)
-
   assert_pow_ulp!(1.4142, 3.1415, 2.9705015380568383)
   assert_pow_ulp!(10.0, 0.1, 1.2589254117941673)
   assert_pow_ulp!(2.7182, 3.1415, 23.136360554262573)

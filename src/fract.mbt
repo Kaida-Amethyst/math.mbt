@@ -1,4 +1,3 @@
-
 ///| Return the fractional part of a number
 /// # Introduction
 ///
@@ -13,6 +12,6 @@
 /// # Accuracy
 ///
 /// This function always returns the exact fractional part of the number.
-pub fn fract(x: Double) -> Double {
+pub fn fract(x : Double) -> Double {
   x - trunc(x)
 }

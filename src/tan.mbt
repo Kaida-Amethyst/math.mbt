@@ -19,15 +19,13 @@
 /// # Accuracy
 ///
 /// 1 ulp.
-pub fn tan(x: Double) -> Double {
+pub fn tan(x : Double) -> Double {
   if isinf(x) || isnan(x) {
     return double_nan
   }
-
   let y = Array::make(2, 0.0)
   let z = 0.0
   let ix = __hi(x).reinterpret_as_int() & 0x7fffffff
-
   if ix <= 0x3fe921fb {
     __kernal_tan(x, z, 1)
   } else {
@@ -38,8 +36,9 @@ pub fn tan(x: Double) -> Double {
 
 test "tan" {
   fn assert_tan_ulp!(input, expect) {
-    assert_ulp!(expect, tan(input), TAN_MAX_ULP);
+    assert_ulp!(expect, tan(input), TAN_MAX_ULP)
   }
+
   assert_tan_ulp!(-0.8, -1.0296385570503641)
   assert_tan_ulp!(-0.7, -0.8422883804630794)
   assert_tan_ulp!(-0.6, -0.6841368083416923)

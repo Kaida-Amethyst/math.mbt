@@ -19,23 +19,18 @@
 /// # Accuracy
 ///
 /// 2 ulp.
-pub fn tanh(x: Double) -> Double {
+pub fn tanh(x : Double) -> Double {
   if isnan(x) {
     return x
   }
-
   if ispinf(x) {
     return 1.0
   }
-
   if isninf(x) {
     return -1.0
   }
-
   let ix = __hi(x).reinterpret_as_int() & 0x7fffffff
-
   let tiny = 1.0e-300
-
   let z = if ix < 0x40360000 {
     if ix < 0x3c800000 {
       x * (1.0 + x)
@@ -49,7 +44,6 @@ pub fn tanh(x: Double) -> Double {
   } else {
     1.0 - tiny
   }
-
   if x >= 0.0 {
     z
   } else {
@@ -59,8 +53,9 @@ pub fn tanh(x: Double) -> Double {
 
 test "tanh" {
   fn assert_tanh_ulp!(input, expect) {
-    assert_ulp!(expect, tanh(input), TANH_MAX_ULP);
+    assert_ulp!(expect, tanh(input), TANH_MAX_ULP)
   }
+
   assert_tanh_ulp!(-0.8, -0.6640367702678491)
   assert_tanh_ulp!(-0.7, -0.6043677771171636)
   assert_tanh_ulp!(-0.6, -0.5370495669980353)

@@ -18,17 +18,14 @@
 /// # Accuracy
 ///
 /// 1 ulp.
-pub fn sinh(x: Double) -> Double {
+pub fn sinh(x : Double) -> Double {
   if isnan(x) || isinf(x) {
     return x
   }
-
   let ix = __hi(x).reinterpret_as_int() & 0x7fffffff
   let abs_x = fabs(x)
   let shuge = 1.0e307
-  
   let h = if x < 0.0 { -0.5 } else { 0.5 }
-
   if ix < 0x40360000 {
     if ix < 0x3e300000 {
       if shuge + x > 1.0 {
@@ -41,24 +38,22 @@ pub fn sinh(x: Double) -> Double {
     }
     return h * (t + t / (t + 1.0))
   }
-
   if ix < 0x40862E42 {
     return h * exp(abs_x)
   }
-
   if abs_x.reinterpret_as_uint64() < 0x408633ce8fb9f87d {
     let w = exp(0.5 * abs_x)
     let t = h * w
     return t * w
   }
-
   x * shuge
 }
 
 test "sinh" {
   fn assert_sinh_ulp!(input, expect) {
-    assert_ulp!(expect, sinh(input), SINH_MAX_ULP);
+    assert_ulp!(expect, sinh(input), SINH_MAX_ULP)
   }
+
   assert_sinh_ulp!(-0.8, -0.888105982187623)
   assert_sinh_ulp!(-0.7, -0.7585837018395334)
   assert_sinh_ulp!(-0.6, -0.6366535821482412)

@@ -18,6 +18,6 @@
 /// # Accuracy
 ///
 /// 0 ulp.
-pub fn floor(x: Double) -> Double {
+pub fn floor(x : Double) -> Double {
   x.floor()
 }

@@ -1,3 +1,4 @@
+///|
 fn normalize(f : Double) -> (Double, Int) {
   if f.abs() < DOUBLE_MIN_POSITIVE {
     return (f * (1L << 52).to_double(), -52)

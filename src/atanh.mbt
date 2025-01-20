@@ -22,21 +22,19 @@
 /// 2. atanh(NaN) = NaN
 /// 3. atanh(1) = +Inf
 /// 4. atanh(-1) = -Inf
-pub fn atanh(x: Double) -> Double {
+pub fn atanh(x : Double) -> Double {
   let hx : Int = __hi(x).reinterpret_as_int()
   let ix = hx & 0x7fffffff
   if fabs(x) > 1.0 {
     return double_nan
   }
-  if x == 1.0{
+  if x == 1.0 {
     return double_pos_inf
   }
-
   if x == -1.0 {
     return double_neg_inf
   }
-
-  if ix < 0x3e300000 && (1.0e300 + x) > 0.0 {
+  if ix < 0x3e300000 && 1.0e300 + x > 0.0 {
     return x
   }
   let x = fabs(x)
@@ -55,8 +53,9 @@ pub fn atanh(x: Double) -> Double {
 
 test "atanh" {
   fn assert_atanh_ulp!(input, expect) {
-    assert_ulp!(expect, atanh(input), ATANH_MAX_ULP);
+    assert_ulp!(expect, atanh(input), ATANH_MAX_ULP)
   }
+
   assert_atanh_ulp!(-0.8, -1.09861228866811)
   assert_atanh_ulp!(-0.7, -0.8673005276940531)
   assert_atanh_ulp!(-0.6, -0.6931471805599451)

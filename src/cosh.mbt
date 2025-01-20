@@ -17,7 +17,6 @@
 // cosh(x) is |x| if x is +INF, -INF, or NaN.
 // only cosh(0)=1 is exact for finite x.
 
-
 ///| Compute hyperbolic cosine function of a double-precision floating point number.
 ///
 /// # Examples
@@ -38,49 +37,43 @@
 /// # Accuracy
 ///
 /// 1 ulp.
-pub fn cosh(x: Double) -> Double {
+pub fn cosh(x : Double) -> Double {
   if isnan(x) {
     return x
   }
-
-  if isinf(x){
+  if isinf(x) {
     return double_pos_inf
   }
-
   let ix = __hi(x).reinterpret_as_int() & 0x7fffffff
-
   if ix < 0x3fd62e43 {
     let t = expm1(fabs(x))
     let w = 1.0 + t
     if ix < 0x3c800000 {
       return w
     }
-    return 1.0 + (t * t) / (w + w)
+    return 1.0 + t * t / (w + w)
   }
-
   if ix < 0x40360000 {
     let t = exp(fabs(x))
     return 0.5 * t + 0.5 / t
   }
-
   if ix < 0x40862E42 {
     return 0.5 * exp(fabs(x))
   }
-
   let lx = __low(x).reinterpret_as_int()
   if ix < 0x408633ce || (ix == 0x408633ce && lx <= 0x8fb9f87d) {
     let w = exp(0.5 * fabs(x))
     let t = 0.5 * w
     return t * w
   }
-
   double_pos_inf
 }
 
 test "cosh" {
   fn assert_cosh_ulp!(input, expect) {
-    assert_ulp!(expect, cosh(input), COSH_MAX_ULP);
+    assert_ulp!(expect, cosh(input), COSH_MAX_ULP)
   }
+
   assert_cosh_ulp!(-0.8, 1.3374349463048447)
   assert_cosh_ulp!(-0.7, 1.255169005630943)
   assert_cosh_ulp!(-0.6, 1.1854652182422676)

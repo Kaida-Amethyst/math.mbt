@@ -18,6 +18,6 @@
 /// # Accuracy
 ///
 /// 0 ulp.
-pub fn ceil(x: Double) -> Double {
+pub fn ceil(x : Double) -> Double {
   x.ceil()
 }

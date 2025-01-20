@@ -22,10 +22,8 @@ pub fn sin(x : Double) -> Double {
   if isinf(x) || isnan(x) {
     return double_nan
   }
-
   let y = [0.0, 0.0]
   let z = 0.0
-
   let ix = __hi(x).reinterpret_as_int() & 0x7fffffff
   if ix <= 0x3fe921fb {
     return __kernel_sin(x, z, 0)
@@ -42,8 +40,9 @@ pub fn sin(x : Double) -> Double {
 
 test "sin" {
   fn assert_sin_ulp!(input, expect) {
-    assert_ulp!(expect, sin(input), SIN_MAX_ULP);
+    assert_ulp!(expect, sin(input), SIN_MAX_ULP)
   }
+
   assert_sin_ulp!(-0.8, -0.7173560908995228)
   assert_sin_ulp!(-0.7, -0.644217687237691)
   assert_sin_ulp!(-0.6, -0.5646424733950354)

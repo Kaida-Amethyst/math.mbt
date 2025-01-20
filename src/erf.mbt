@@ -19,15 +19,13 @@
 /// 2. erf(inf) = 1
 /// 3. erf(-inf) = -1
 /// 4. erf(NaN) = NaN
-pub fn erf(x: Double) -> Double {
+pub fn erf(x : Double) -> Double {
   if isnan(x) {
     return double_nan
   }
-
   if isinf(x) {
     return if x > 0 { 1.0 } else { -1.0 }
   }
-
   let efx8 = 1.02703333676410069053
   let efx = 1.28379167095512586316
   let tiny = 1.0e-300
@@ -42,7 +40,6 @@ pub fn erf(x: Double) -> Double {
   let qq3 = 5.08130628187576562776e-03
   let qq4 = 1.32494738004321644526e-04
   let qq5 = -3.96022827877536812320e-06
-
   let pa0 = -2.36211856075265944077e-03
   let pa1 = 4.14856118683748331666e-01
   let pa2 = -3.72207876035701323847e-01
@@ -72,7 +69,6 @@ pub fn erf(x: Double) -> Double {
   let sa6 = 1.08635005541779435134e+02
   let sa7 = 6.57024977031928170135e+00
   let sa8 = -6.04244152148580987438e-02
-
   let rb0 = -9.86494292470009928597e-03
   let rb1 = -7.99283237680523006574e-01
   let rb2 = -1.77579549177547519889e+01
@@ -87,10 +83,8 @@ pub fn erf(x: Double) -> Double {
   let sb5 = 2.55305040643316442583e+03
   let sb6 = 4.74528541206955367215e+02
   let sb7 = -2.24409524465858183362e+01
-
   let hx = __hi(x).reinterpret_as_int()
   let ix = hx & 0x7fffffff
-
   if ix < 0x3feb0000 {
     if ix < 0x3e300000 {
       if ix < 0x00800000 {
@@ -104,41 +98,63 @@ pub fn erf(x: Double) -> Double {
     let y = r / s
     return x + x * y
   }
-
   if ix < 0x3ff40000 {
     let s = fabs(x) - 1.0
-    let p = pa0 + s * (pa1 + s * (pa2 + s * (pa3 + s * (pa4 + s * (pa5 + s * pa6)))))
-    let q = 1.0 + s * (qa1 + s * (qa2 + s * (qa3 + s * (qa4 + s * (qa5 + s * qa6)))))
+    let p = pa0 +
+      s * (pa1 + s * (pa2 + s * (pa3 + s * (pa4 + s * (pa5 + s * pa6)))))
+    let q = 1.0 +
+      s * (qa1 + s * (qa2 + s * (qa3 + s * (qa4 + s * (qa5 + s * qa6)))))
     return if hx >= 0 { erx + p / q } else { -erx - p / q }
   }
-
   if ix >= 0x40180000 {
     return if hx >= 0 { 1.0 - tiny } else { tiny - 1.0 }
   }
-
   let x = fabs(x)
   let s = 1.0 / (x * x)
-
   let (r, s) = if ix < 0x4006DB6E {
-    let r = ra0 + s * (ra1 + s * (ra2 + s * (ra3 + s * (ra4 + s * (ra5 + s * (ra6 + s * ra7))))))
-    let s = 1.0 + s * (sa1 + s * (sa2 + s * (sa3 + s * (sa4 + s * (sa5 + s * (sa6 + s * (sa7 + s * sa8)))))))
+    let r = ra0 +
+      s *
+      (
+        ra1 +
+        s * (ra2 + s * (ra3 + s * (ra4 + s * (ra5 + s * (ra6 + s * ra7)))))
+      )
+    let s = 1.0 +
+      s *
+      (
+        sa1 +
+        s *
+        (
+          sa2 +
+          s * (sa3 + s * (sa4 + s * (sa5 + s * (sa6 + s * (sa7 + s * sa8)))))
+        )
+      )
     (r, s)
   } else {
-    let r = rb0 + s * (rb1 + s * (rb2 + s * (rb3 + s * (rb4 + s * (rb5 + s * rb6)))))
-    let s = 1.0 + s * (sb1 + s * (sb2 + s * (sb3 + s * (sb4 + s * (sb5 + s * (sb6 + s * sb7))))))
+    let r = rb0 +
+      s * (rb1 + s * (rb2 + s * (rb3 + s * (rb4 + s * (rb5 + s * rb6)))))
+    let s = 1.0 +
+      s *
+      (
+        sb1 +
+        s * (sb2 + s * (sb3 + s * (sb4 + s * (sb5 + s * (sb6 + s * sb7)))))
+      )
     (r, s)
   }
-
   let mut z = x
   z = __combineW(__hi(z), 0)
   let r = exp(-z * z - 0.5625) * exp((z - x) * (z + x) + r / s)
-  if hx >= 0 { 1.0 - r / x } else { r / x - 1.0 }
+  if hx >= 0 {
+    1.0 - r / x
+  } else {
+    r / x - 1.0
+  }
 }
 
 test "erf" {
   fn assert_erf_ulp!(input, expect) {
-    assert_ulp!(expect, erf(input), ERF_MAX_ULP);
+    assert_ulp!(expect, erf(input), ERF_MAX_ULP)
   }
+
   assert_erf_ulp!(-0.8, -0.7421009647076605)
   assert_erf_ulp!(-0.7, -0.6778011938374184)
   assert_erf_ulp!(-0.6, -0.6038560908479259)

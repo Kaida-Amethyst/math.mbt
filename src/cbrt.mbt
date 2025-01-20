@@ -18,19 +18,17 @@
 ///
 /// 1. If `x` is NaN, the result is NaN.
 /// 2. If `x` is ±0, the result is ±0.
-pub fn cbrt(x: Double) -> Double {
+pub fn cbrt(x : Double) -> Double {
   if isinf(x) || isnan(x) || x == 0.0 {
     return x
   }
-
   let b1 : UInt = 715094163 // B1 = (682-0.03306235651)*2**20
   let b2 : UInt = 696219795 // B2 = (664-0.03306235651)*2**20
-  let c =  5.42857142857142815906e-01 // 19/35     = 0x3FE15F15, 0xF15F15F1
+  let c = 5.42857142857142815906e-01 // 19/35     = 0x3FE15F15, 0xF15F15F1
   let d = -7.05306122448979611050e-01 // -864/1225 = 0xBFE691DE, 0x2532C834
-  let e =  1.41428571428571436819e+00 // 99/70     = 0x3FF6A0EA, 0x0EA0EA0F
-  let f =  1.60714285714285720630e+00 // 45/28     = 0x3FF9B6DB, 0x6DB6DB6E
-  let g =  3.57142857142857150787e-01 // 5/14      = 0x3FD6DB6D, 0xB6DB6DB7
-
+  let e = 1.41428571428571436819e+00 // 99/70     = 0x3FF6A0EA, 0x0EA0EA0F
+  let f = 1.60714285714285720630e+00 // 45/28     = 0x3FF9B6DB, 0x6DB6DB6E
+  let g = 3.57142857142857150787e-01 // 5/14      = 0x3FD6DB6D, 0xB6DB6DB7
   let hx = __hi(x).reinterpret_as_int()
   let sign = if x < 0.0 { true } else { false }
   let x = fabs(x)
@@ -42,7 +40,7 @@ pub fn cbrt(x: Double) -> Double {
     let _t = _t * x
     __combineW(__hi(_t) / 3 + b2, 0)
   } else {
-    __combineW((hx.reinterpret_as_uint() / 3 + b1), 0)
+    __combineW(hx.reinterpret_as_uint() / 3 + b1, 0)
   }
   let r = t * t / x
   let s = c + r * t
@@ -62,7 +60,6 @@ pub fn cbrt(x: Double) -> Double {
     t
   }
 }
-
 
 test "cbrt" {
   fn assert_cbrt_ulp!(input, expect) {

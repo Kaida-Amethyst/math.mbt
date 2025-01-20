@@ -1,3 +1,4 @@
+///|
 fn xatan(x : Double) -> Double {
   let z = x * x
   x *
@@ -15,20 +16,25 @@ fn xatan(x : Double) -> Double {
   x
 }
 
+///|
 let atan_p = [
   -8.750608600031904122785e-01, -1.615753718733365076637e+01, -7.500855792314704667340e+01,
   -1.228866684490136173410e+02, -6.485021904942025371773e+01,
 ]
 
+///|
 let atan_q = [
   2.485846490142306297962e+01, 1.650270098316988542046e+02, 4.328810604912902668951e+02,
   4.853903996359136964868e+02, 1.945506571482613964425e+02,
 ]
 
+///|
 let morebits = 6.123233995736765886130e-17
 
+///|
 let tan3pio8 = 2.41421356237309504880
 
+///|
 fn satan(x : Double) -> Double {
   if x <= 0.66 {
     xatan(x)
@@ -75,8 +81,9 @@ pub fn atan(x : Double) -> Double {
 
 test "atan" {
   fn assert_atan_ulp!(input, expect) {
-    assert_ulp!(expect, atan(input), ATAN_MAX_ULP);
+    assert_ulp!(expect, atan(input), ATAN_MAX_ULP)
   }
+
   assert_atan_ulp!(-1, -0.7853981633974483)
   assert_atan_ulp!(-2, -1.1071487177940904)
   assert_atan_ulp!(-3, -1.2490457723982544)

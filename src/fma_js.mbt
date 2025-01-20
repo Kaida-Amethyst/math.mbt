@@ -1,4 +1,5 @@
-extern "js" fn __js_fma(a: Double, b: Double, c: Double) -> Double = 
+///|
+extern "js" fn __js_fma(a : Double, b : Double, c : Double) -> Double =
   #| (a, b, c) => {
   #|   if (typeof Math.fma === 'function') {
   #|     return Math.fma(a, b, c);
@@ -7,7 +8,8 @@ extern "js" fn __js_fma(a: Double, b: Double, c: Double) -> Double =
   #|   }
   #| }
 
-extern "js" fn __js_fmaf(a: Float, b: Float, c: Float) -> Float = 
+///|
+extern "js" fn __js_fmaf(a : Float, b : Float, c : Float) -> Float =
   #| (a, b, c) => {
   #|   if (typeof Math.fma === 'function') {
   #|     return Math.fma(a, b, c);
@@ -16,6 +18,7 @@ extern "js" fn __js_fmaf(a: Float, b: Float, c: Float) -> Float =
   #|   }
   #| }
 
-pub fn fma(a: Double, b: Double, c: Double) -> Double {
+///|
+pub fn fma(a : Double, b : Double, c : Double) -> Double {
   __js_fma(a, b, c)
 }

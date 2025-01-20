@@ -20,7 +20,7 @@
 /// assert_eq!(expm1(-1.0), -0.6321205588285577)
 /// assert_eq!(expm1(2.0), 6.38905609893065)
 /// ```
-pub fn expm1(x: Double) -> Double {
+pub fn expm1(x : Double) -> Double {
   let one = 1.0
   let huge = 1.0e+300
   let tiny = 1.0e-300
@@ -34,10 +34,9 @@ pub fn expm1(x: Double) -> Double {
   let q4 = 4.00821782732936239552e-06
   let q5 = -2.01099218183624371326e-07
   let mut x = x
-
   let mut hx = __hi(x)
   let xsb : Int = (hx & 0x80000000).reinterpret_as_int()
-  let mut y:Double = if xsb == 0 { x } else { -x }
+  let mut y : Double = if xsb == 0 { x } else { -x }
   hx = hx & 0x7fffffff
   if hx >= 0x4043687A {
     if hx >= 0x40862E42 {
@@ -58,7 +57,6 @@ pub fn expm1(x: Double) -> Double {
       }
     }
   }
-
   let mut hi = 0.0
   let mut lo = 0.0
   let mut k = 0
@@ -70,41 +68,46 @@ pub fn expm1(x: Double) -> Double {
       lo = if xsb == 0 { ln2_lo } else { -ln2_lo }
       k = if xsb == 0 { 1 } else { -1 }
     } else {
-      k = (invln2 * x +(if xsb == 0 { 0.5 } else { -0.5 })).to_int()
+      k = (invln2 * x + (if xsb == 0 { 0.5 } else { -0.5 })).to_int()
       t = k.to_double()
       hi = x - t * ln2_hi
       lo = t * ln2_lo
     }
     x = hi - lo
-    c = (hi - x) - lo
+    c = hi - x - lo
   } else if hx < 0x3c900000 {
     t = huge + x
     return x - (t - (huge + x))
   } else {
     k = 0
   }
-  let hfx: Double = 0.5 * x
-  let hxs: Double = x * hfx
-  let r1: Double = one + hxs * (q1 + hxs * (q2 + hxs * (q3 + hxs * (q4 + hxs * q5))))
-  let t: Double = 3.0 - r1 * hfx
-  let e: Double = hxs * ((r1 - t) / (6.0 - x * t))
+  let hfx : Double = 0.5 * x
+  let hxs : Double = x * hfx
+  let r1 : Double = one +
+    hxs * (q1 + hxs * (q2 + hxs * (q3 + hxs * (q4 + hxs * q5))))
+  let t : Double = 3.0 - r1 * hfx
+  let e : Double = hxs * ((r1 - t) / (6.0 - x * t))
   if k == 0 {
     return x - (x * e - hxs)
   } else {
-    let e: Double = (x * (e - c) - c)
-    let e: Double = e - hxs
+    let e : Double = x * (e - c) - c
+    let e : Double = e - hxs
     if k == -1 {
       return 0.5 * (x - e) - 0.5
     }
     if k == 1 {
-      return if x < -0.25 { -2.0 * (e - (x + 0.5)) } else { one + 2.0 * (x - e) }
+      return if x < -0.25 {
+        -2.0 * (e - (x + 0.5))
+      } else {
+        one + 2.0 * (x - e)
+      }
     }
     if k <= -2 || k > 56 {
       y = one - (e - x)
       y = __combineW(__hi(y) + (k << 20).reinterpret_as_uint(), __low(y))
       return y - one
     }
-    let mut t: Double = one
+    let mut t : Double = one
     if k < 20 {
       t = __combineW((0x3ff00000 - (0x200000 >> k)).reinterpret_as_uint(), 0)
       y = t - (e - x)
@@ -120,8 +123,9 @@ pub fn expm1(x: Double) -> Double {
 
 test "expm1" {
   fn assert_expm1_ulp!(input, expect) {
-    assert_ulp!(expect, expm1(input), EXPM1_MAX_ULP);
+    assert_ulp!(expect, expm1(input), EXPM1_MAX_ULP)
   }
+
   assert_expm1_ulp!(-0.8, -0.5506710358827784)
   assert_expm1_ulp!(-0.7, -0.5034146962085905)
   assert_expm1_ulp!(-0.6, -0.45118836390597356)

@@ -5,7 +5,7 @@
 ///
 /// 1. If one of the coordinates is infinite, the result is infinite.
 /// 2. If one of the coordinates is NaN, the result is NaN.
-pub fn norm(vec: Array[Double]) -> Double {
+pub fn norm(vec : Array[Double]) -> Double {
   let max = absmaximum(vec)
   let mut ssum : Double = 0.0
   for p in vec {

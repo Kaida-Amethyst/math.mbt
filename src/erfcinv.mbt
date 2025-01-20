@@ -21,20 +21,18 @@
 /// 2. erfcinv(2) = -inf
 /// 3. erfcinv(x) returns NaN for `x` outside [0, 2]
 /// 4. erfcinv(NaN) = NaN
-pub fn erfcinv(a: Double) -> Double {
+pub fn erfcinv(a : Double) -> Double {
   if a <= 0.0 {
     return double_pos_inf
   }
-
   if a >= 2.0 {
     return double_neg_inf
   }
-
-  let mut t = 2.0 - a;
+  let mut t = 2.0 - a
   let mut p = 0.0
   if a >= 2.1875e-3 && a <= 1.998125 {
     t = t * a
-    t = - log2(t)
+    t = -log2(t)
     p = -2.00998329e-10
     p = fma(p, t, 7.63788321e-09)
     p = fma(p, t, -9.44120231e-08)
@@ -60,18 +58,22 @@ pub fn erfcinv(a: Double) -> Double {
     p = fma(p, t, 4.29913402e-2)
     p = fma(p, t, -4.46814462e-4)
     p = fma(1.201122409, t, p * t)
-    if a > 1 { p = -p }
+    if a > 1 {
+      p = -p
+    }
     t = 1.0 / p
   }
   return t
 }
 
-const ERFCINV_MAX_ULP: Int = 505787246
+///|
+const ERFCINV_MAX_ULP : Int = 505787246
 
 test "erfcinv" {
   fn assert_erfcinv_ulp!(input, expect) {
-    assert_ulp!(expect, erfcinv(input), ERFCINV_MAX_ULP);
+    assert_ulp!(expect, erfcinv(input), ERFCINV_MAX_ULP)
   }
+
   assert_erfcinv_ulp!(-0.8, double_pos_inf)
   assert_erfcinv_ulp!(-0.2, double_pos_inf)
   assert_erfcinv_ulp!(-0.1, double_pos_inf)

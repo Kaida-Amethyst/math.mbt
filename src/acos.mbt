@@ -18,7 +18,7 @@
 ///
 /// 1. If `x` is NaN, a NaN is returned.
 /// 2. If |x| > 1, a NaN is returned with the invalid signal raised.
-pub fn acos(x: Double) -> Double {
+pub fn acos(x : Double) -> Double {
   let one : Double = 1.0
   let pi : Double = 3.14159265358979311600
   let pio2_hi : Double = 1.57079632679489655800
@@ -33,7 +33,6 @@ pub fn acos(x: Double) -> Double {
   let qS2 : Double = 2.02094576023350569471e+00
   let qS3 : Double = -6.88283971605453293030e-01
   let qS4 : Double = 7.70381505559019352791e-02
-
   let hx = __hi(x).reinterpret_as_int()
   let ix = hx & 0x7fffffff
   if ix >= 0x3ff00000 {
@@ -83,8 +82,9 @@ pub fn acos(x: Double) -> Double {
 
 test "acos" {
   fn assert_acos_ulp!(input, expect) {
-    assert_ulp!(expect, acos(input), ACOS_MAX_ULP);
+    assert_ulp!(expect, acos(input), ACOS_MAX_ULP)
   }
+
   assert_acos_ulp!(-0.8, 2.498091544796509)
   assert_acos_ulp!(-0.7, 2.3461938234056494)
   assert_acos_ulp!(-0.6, 2.214297435588181)

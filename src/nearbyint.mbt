@@ -1,3 +1,4 @@
+///|
 pub(all) enum RoundMode {
   FE_TONEAREST
   FE_DOWNWARD
@@ -32,7 +33,7 @@ pub(all) enum RoundMode {
 /// # Note
 ///
 /// It is equivalent to `rint` function. Note that it's different with C-like languages.
-pub fn nearbyint(x : Double, round_mode~: RoundMode = FE_TONEAREST) -> Double {
+pub fn nearbyint(x : Double, round_mode~ : RoundMode = FE_TONEAREST) -> Double {
   match round_mode {
     FE_TONEAREST => roundeven(x)
     FE_DOWNWARD => floor(x)
@@ -42,8 +43,8 @@ pub fn nearbyint(x : Double, round_mode~: RoundMode = FE_TONEAREST) -> Double {
 }
 
 test "nearbyint" {
-  assert_eq!(nearbyint(2.5), 2.0);
-  assert_eq!(nearbyint(2.5, round_mode=FE_DOWNWARD), 2.0);
-  assert_eq!(nearbyint(2.5, round_mode=FE_UPWARD), 3.0);
-  assert_eq!(nearbyint(2.5, round_mode=FE_TOWARDZERO), 2.0);
+  assert_eq!(nearbyint(2.5), 2.0)
+  assert_eq!(nearbyint(2.5, round_mode=FE_DOWNWARD), 2.0)
+  assert_eq!(nearbyint(2.5, round_mode=FE_UPWARD), 3.0)
+  assert_eq!(nearbyint(2.5, round_mode=FE_TOWARDZERO), 2.0)
 }
