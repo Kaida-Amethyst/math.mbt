@@ -1,26 +1,23 @@
-// /* sinh(x)
-//  * Method : 
-//  * mathematically sinh(x) if defined to be (exp(x)-exp(-x))/2
-//  *	1. Replace x by |x| (sinh(-x) = -sinh(x)). 
-//  *	2. 
-//  *		                                    E + E/(E+1)
-//  *	    0        <= x <= 22     :  sinh(x) := --------------, E=expm1(x)
-//  *			       			        2
-//  *
-//  *	    22       <= x <= lnovft :  sinh(x) := exp(x)/2 
-//  *	    lnovft   <= x <= ln2ovft:  sinh(x) := exp(x/2)/2 * exp(x/2)
-//  *	    ln2ovft  <  x	    :  sinh(x) := x*shuge (overflow)
-//  *
-//  * Special cases:
-//  *	sinh(x) is |x| if x is +INF, -INF, or NaN.
-//  *	only sinh(0)=0 is exact for finite x.
-//  */
 ///| Compute hyperbolic sine function of a double-precision floating point number.
+///
+/// # Examples
+///
+/// ```moonbit
+/// assert_eq!(sinh(-0.5), -0.5210953054937474)
+/// assert_eq!(sinh(0.0), 0.0)
+/// assert_eq!(sinh(0.5), 0.5210953054937474)
+/// assert_eq!(sinh(1.0), 1.1752011936438014)
+/// ```
 ///
 /// # Special Cases
 ///
-/// 1. sinh(x) is |x| if x is +INF, -INF, or NaN.
-/// 2. Only sinh(0)=0 is exact for finite x.
+/// 1. sinh(NaN) = NaN
+/// 2. sinh(+inf) = +inf
+/// 3. sinh(-inf) = -inf
+///
+/// # Accuracy
+///
+/// 1 ulp.
 pub fn sinh(x: Double) -> Double {
   if isnan(x) || isinf(x) {
     return x
