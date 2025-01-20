@@ -51,4 +51,7 @@ const Y1_MAX_ULP : Int = 2
 
 const ERFINV_MAX_ULP: Int = 2
 
+const TRIGAMMA_MAX_ULP: Int = 14
+const DIGAMMA_MAX_ULP: Int = 1023;
+
 const ZETA_MAX_ULP : Int = 3

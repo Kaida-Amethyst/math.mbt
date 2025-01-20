@@ -1,32 +1,24 @@
-// /* Tanh(x)
-//  * Return the Hyperbolic Tangent of x
-//  *
-//  * Method :
-//  *				       x    -x
-//  *				      e  - e
-//  *	0. tanh(x) is defined to be -----------
-//  *				       x    -x
-//  *				      e  + e
-//  *	1. reduce x to non-negative by tanh(-x) = -tanh(x).
-//  *	2.  0      <= x <= 2**-55 : tanh(x) := x*(one+x)
-//  *					        -t
-//  *	    2**-55 <  x <=  1     : tanh(x) := -----; t = expm1(-2x)
-//  *					       t + 2
-//  *						     2
-//  *	    1      <= x <=  22.0  : tanh(x) := 1-  ----- ; t=expm1(2x)
-//  *						   t + 2
-//  *	    22.0   <  x <= INF    : tanh(x) := 1.
-//  *
-//  * Special cases:
-//  *	tanh(NaN) is NaN;
-//  *	only tanh(0)=0 is exact for finite argument.
-//  */
 ///| Compute hyperbolic tangent function of a double-precision floating point number.
+///
+/// # Examples
+///
+/// ```moonbit
+/// assert_eq!(tanh(-0.5), -0.46211715726000974)
+/// assert_eq!(tanh(0.5), 0.46211715726000974)
+/// assert_eq!(tanh(0.0), 0.0)
+/// assert_eq!(tanh(1), 0.7615941559557649)
+/// assert_eq!(tanh(2), 0.9640275800758169)
+/// ```
 ///
 /// # Special Cases
 ///
-/// 1. tanh(x) is x if x is NaN.
-/// 2. tanh(x) is 1 if x is +INF.
+/// 1. tanh(NaN) = NaN
+/// 2. tanh(+inf) = 1
+/// 3. tanh(-inf) = -1
+///
+/// # Accuracy
+///
+/// 2 ulp.
 pub fn tanh(x: Double) -> Double {
   if isnan(x) {
     return x
