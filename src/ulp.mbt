@@ -56,13 +56,13 @@ const SINH_MAX_ULP : Int = 1
 const TANH_MAX_ULP : Int = 2
 
 ///|
-const COS_MAX_ULP : Int = 1
+const COS_MAX_ULP : Int = 0
 
 ///|
-const SIN_MAX_ULP : Int = 1
+const SIN_MAX_ULP : Int = 0
 
 ///|
-const TAN_MAX_ULP : Int = 1
+const TAN_MAX_ULP : Int = 0
 
 ///|
 const COSPI_MAX_ULP : Int = 49

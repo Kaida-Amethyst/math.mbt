@@ -275,3 +275,100 @@ pub fn ln_gamma(x : Double) -> Double {
 //   assert_lgamma_ulp!(3.772, 1.51290512968991);
 //   assert_lgamma_ulp!(double_nan, double_nan);
 // }
+
+// double lgam(double x) {
+//     double p, q, u, w, z;
+//     int sgngam = 1; // 局部变量，避免全局状态
+//
+//     // 处理 NaN 和无穷大
+//     if (isnan(x)) {
+//         return x;
+//     }
+//     if (!isfinite(x)) {
+//         return INFINITY;
+//     }
+//
+//     // 处理 x < -34.0 的情况
+//     if (x < -34.0) {
+//         q = -x;
+//         w = lgam(q); // 递归调用
+//         p = floor(q);
+//
+//         if (p == q) {
+//             mtherr("lgam", SING);
+//             return INFINITY; // 异常情况
+//         }
+//
+//         sgngam = (int)p % 2 == 0 ? -1 : 1;
+//         z = q - p;
+//
+//         if (z > 0.5) {
+//             p += 1.0;
+//             z = p - q;
+//         }
+//
+//         z = q * sin(PI * z);
+//         if (z == 0.0) {
+//             mtherr("lgam", SING);
+//             return INFINITY; // 异常情况
+//         }
+//
+//         z = LOGPI - log(z) - w;
+//         return z;
+//     }
+//
+//     // 处理 13.0 > x >= -34.0 的情况
+//     if (x < 13.0) {
+//         z = 1.0;
+//         p = 0.0;
+//         u = x;
+//
+//         while (u >= 3.0) {
+//             p -= 1.0;
+//             u = x + p;
+//             z *= u;
+//         }
+//
+//         while (u < 2.0) {
+//             if (u == 0.0) {
+//                 mtherr("lgam", SING);
+//                 return INFINITY; // 异常情况
+//             }
+//             z /= u;
+//             p += 1.0;
+//             u = x + p;
+//         }
+//
+//         sgngam = z < 0.0 ? -1 : 1;
+//         z = fabs(z);
+//
+//         if (u == 2.0) {
+//             return log(z);
+//         }
+//
+//         p -= 2.0;
+//         x = x + p;
+//         p = x * polevl(x, (double[]){ /* B coefficients */ }, 5) / p1evl(x, (double[]){ /* C coefficients */ }, 6);
+//         return log(z) + p;
+//     }
+//
+//     if (x > MAXLGM) {
+//         return double_nan
+//     }
+//
+//     q = (x - 0.5) * log(x) - x + LS2PI;
+//
+//     if (x > 1.0e8) {
+//         return q;
+//     }
+//
+//     p = 1.0 / (x * x);
+//
+//     if (x >= 1000.0) {
+//         q += ((7.9365079365079365079365e-4 * p - 2.7777777777777777777778e-3) * p + 0.0833333333333333333333) / x;
+//     } else {
+//         q += polevl(p, (double[]){ /* A coefficients */ }, 4) / x;
+//     }
+//
+//     return q;
+// }
