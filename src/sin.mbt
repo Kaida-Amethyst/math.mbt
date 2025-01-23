@@ -39,7 +39,8 @@ pub fn sin(x : Double) -> Double {
 
 test "sin" {
   fn assert_sin_ulp!(input, expect) {
-    assert_ulp!(expect, sin(input), SIN_MAX_ULP);
+    // assert_ulp!(expect, cephes_sin(input), SIN_MAX_ULP);
+    assert_ulp!(expect, cephes_sin(input), 7);
   }
   assert_sin_ulp!(-0.8, -0.7173560908995228);
   assert_sin_ulp!(-0.7, -0.644217687237691);
@@ -114,3 +115,137 @@ test "sin" {
   assert_sin_ulp!(double_pos_inf, double_nan);
   assert_sin_ulp!(double_neg_inf, double_nan);
 }
+
+// let sin_coef: Array[Double] = [
+//     1.58962301576546568060E-10,
+//     -2.50507477628578072866E-8,
+//     2.75573136213857245213E-6,
+//     -1.98412698295895385996E-4,
+//     8.33333333332211858878E-3,
+//     -1.66666666666666307295E-1,
+// ]
+//
+// let cos_coef: Array[Double] = [
+//     -1.13585365213876817300E-11,
+//     2.08757008419747316778E-9,
+//     -2.75573141792967388112E-7,
+//     2.48015872888517045348E-5,
+//     -1.38888888888730564116E-3,
+//     4.16666666666665929218E-2,
+// ]
+//
+// const DP1: Double = 7.85398125648498535156E-1
+// const DP2: Double = 3.77489470793079817668E-8
+// const DP3: Double = 2.69515142907905952645E-15
+// const LOSS_TH: Double = 1.073741824e9
+//
+// pub fn cephes_sin(x: Double) -> Double {
+//     let mut y: Double = 0.0
+//     let mut z: Double = 0.0
+//     let mut zz: Double = 0.0
+//     let mut j: Int = 0
+//     let mut sign: Int = 1
+//
+//     if isnan(x) || isinf(x) {
+//         return @double.not_a_number
+//     }
+//
+//     let mut x = x
+//     if x < 0.0 {
+//         x = -x
+//         sign = -1
+//     }
+//
+//     if x > LOSS_TH {
+//         return 0.0
+//     }
+//
+//     y = floor(x / PI_OVER_4)
+//     z = ldexp(y, -4)
+//     z = floor(z)
+//     z = y - ldexp(z, 4)
+//
+//     j = z.to_int()
+//     if (j & 1) != 0 {
+//         j += 1
+//         y += 1.0
+//     }
+//     j = j & 7
+//
+//     if j > 3 {
+//         sign = -sign
+//         j -= 4
+//     }
+//
+//     z = ((x - y * DP1) - y * DP2) - y * DP3
+//     zz = z * z
+//
+//     if (j == 1) || (j == 2) {
+//         y = 1.0 - zz * 0.5 + zz * zz * polevl(zz, cos_coef)
+//     } else {
+//         y = z + z * z * z * polevl(zz, sin_coef)
+//     }
+//
+//     if sign < 0 {
+//         y = -y
+//     }
+//
+//     y
+// }
+//
+// fn cephes_cos(x: Double) -> Double {
+//     let mut y: Double = 0.0
+//     let mut z: Double = 0.0
+//     let mut zz: Double = 0.0
+//     let mut i: Int = 0
+//     let mut j: Int = 0
+//     let mut sign: Int = 1
+//
+//     if isnan(x) && isinf(x) {
+//         return @double.not_a_number
+//     }
+//
+//     let mut x = x
+//     if x < 0.0 {
+//         x = -x
+//     }
+//
+//     if x > LOSS_TH {
+//         return 0.0
+//     }
+//
+//     y = floor(x / (PI / 4.0))
+//     z = floor(y / 16.0)
+//     z = y - z * 16.0
+//
+//     i = z.to_int()
+//     if (i & 1) != 0 {
+//         i += 1
+//         y += 1.0
+//     }
+//     j = i & 7
+//
+//     if j > 3 {
+//         j -= 4
+//         sign = -sign
+//     }
+//
+//     if j > 1 {
+//         sign = -sign
+//     }
+//
+//     z = ((x - y * DP1) - y * DP2) - y * DP3
+//     zz = z * z
+//
+//     if (j == 1) || (j == 2) {
+//         y = z + z * z * z * polevl(zz, sin_coef)
+//     } else {
+//         y = 1.0 - zz / 2.0 + zz * zz * polevl(zz, cos_coef)
+//     }
+//
+//     if sign < 0 {
+//         y = -y
+//     }
+//
+//     y
+// }
