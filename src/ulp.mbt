@@ -102,6 +102,12 @@ const Y1_MAX_ULP : Int = 2
 const ERFINV_MAX_ULP : Int = 2
 
 ///|
+const TGAMMA_MAX_ULP : Int = 4
+
+///|
+const LGAMMA_MAX_ULP : Int = 23
+
+///|
 const TRIGAMMA_MAX_ULP : Int = 14
 
 ///|
