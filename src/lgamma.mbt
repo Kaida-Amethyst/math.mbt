@@ -1,4 +1,24 @@
 ///| Compute Log Gamma function
+///
+/// # Examples
+///
+/// ```moonbit
+/// assert_eq!(lgamma(1.0), 0.0)
+/// assert_eq!(lgamma(10.0), 12.801827480081469)
+/// assert_eq!(lgamma(100.0), 359.1342053695754)
+/// assert_eq!(lgamma(1000.0), 5905.220423209181)
+/// assert_eq!(lgamma(1.542), -0.11843521817493691)
+/// ```
+///
+/// # Special Cases
+///
+/// 1. lgamma(NaN) = NaN
+/// 2. lgamma(+inf) = +inf
+/// 3. lgamma(-inf) = +inf
+///
+/// # Accuracy
+///
+/// 23 ulp.
 const LS2PI: Double = 0.91893853320467274178
 const MAXLGM: Double = 2.556348e305
 pub fn lgamma(x: Double) -> Double {

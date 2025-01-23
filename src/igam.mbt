@@ -2,6 +2,7 @@ const MACHEP: Double = 1.1102230246251565E-16
 const BIG: Double = 4.503599627370496e15
 const BIGINV: Double = 2.22044604925031308085e-16
 
+///| Upper Incomplete Gamma Function
 fn igamc(a: Double, x: Double) -> Double {
   if x <= 0.0 || a <= 0.0 {
     return 1.0
@@ -58,7 +59,8 @@ fn igamc(a: Double, x: Double) -> Double {
   ans * ax
 }
 
-fn igam(a: Double, x: Double) -> Double {
+/// Lower Incomplete Gamma Function
+pub fn igam(a: Double, x: Double) -> Double {
   if x <= 0.0 || a <= 0.0 {
     return 0.0
   }

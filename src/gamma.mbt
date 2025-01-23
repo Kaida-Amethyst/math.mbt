@@ -1,5 +1,32 @@
 ///| Compute the gamma function of x.
+///
+/// # Examples
+///
+/// ```moonbit
+/// assert_eq!(gamma(1.0), 1.0)
+/// assert_eq!(gamma(2.0), 1.0)
+/// assert_eq!(gamma(3.0), 2.0)
+/// assert_eq!(gamma(6.0), 120.0)
+/// assert_eq!(gamma(10.0), 362880.0)
+/// assert_eq!(gamma(-0.5), -3.5449077018110318)
+/// assert_eq!(gamma(0.5), 1.7724538509055159)
+/// assert_eq!(gamma(9.8), 231791.87991967567)
+/// ```
+///
+/// # Special Cases
+///
+/// 1. gamma(NaN) = NaN
+/// 2. gamma(+inf) = +inf
+/// 3. gamma(-inf) = -inf
+///
+/// # Accuracy
+///
+/// 4 ulp.
 pub fn gamma(x: Double) -> Double {
+  if isnan(x) || isinf(x) {
+    return x
+  }
+
   let mut p: Double = 0.0
   let mut q: Double = 0.0
   let mut z: Double = 0.0
@@ -26,10 +53,6 @@ pub fn gamma(x: Double) -> Double {
     7.14304917030273074085E-2,
     1.00000000000000000320E0,
   ]
-
-  if isnan(x) || isinf(x) {
-    return x
-  }
 
   q = fabs(x)
   if q > 33.0 {
@@ -160,7 +183,7 @@ test "tgamma" {
   assert_gamma_ulp!(6.2, 169.406099461723)
   assert_gamma_ulp!(7.1, 868.9568588006398)
   assert_gamma_ulp!(8.9, 32569.40492585501)
-  assert_gamma_ulp!(9.800000000000001, 231791.8799196757)
+  assert_gamma_ulp!(9.8, 231791.8799196757)
   assert_gamma_ulp!(10.7, 1799844.078931372)
   assert_gamma_ulp!(101.6, 1.486211638228605e+159)
   assert_gamma_ulp!(1.542, 0.888309360094435)

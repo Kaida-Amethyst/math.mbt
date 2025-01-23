@@ -1,13 +1,3 @@
-//  * Method :
-//  *	Let log10_2hi = leading 40 bits of log10(2) and
-//  *	    log10_2lo = log10(2) - log10_2hi,
-//  *	    ivln10   = 1/log(10) rounded.
-//  *	Then
-//  *		n = ilogb(x), 
-//  *		if(n<0)  n = n+1;
-//  *		x = scalbn(x,-n);
-//  *		log10(x) := n*log10_2hi + (n*log10_2lo + ivln10*log(x))
-
 ///| Return the base 10 logarithm of `x`
 ///
 /// # Examples
@@ -62,27 +52,6 @@ pub fn log10(x : Double) -> Double {
   x = __combineW(hx.reinterpret_as_uint(), lx.reinterpret_as_uint())
   let z = y * log10_2lo + ivln10 * log(x)
   z + y * log10_2hi
-}
-
-///| An alternative implementation
-pub fn log10_v2(x : Double) -> Double {
-  if x < 0 || isnan(x) {
-    return double_nan
-  }
-  if isinf(x) {
-    return x
-  }
-  let ivln10 = 4.34294481903251816668e-01
-  let log10_2hi = 3.01029995663611771306e-01
-  let log10_2lo = 3.69423907715893078616e-13
-  let (f, e) = frexp(x)
-  let (f, e) = if e >= 1 {
-    (f * 2.0, (e - 1).to_double())
-  } else {
-    (f, e.to_double())
-  }
-  let z = e * log10_2lo + ivln10 * log(f)
-  z + e * log10_2hi
 }
 
 test "log10" {
