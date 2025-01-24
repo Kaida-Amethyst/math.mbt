@@ -1,12 +1,11 @@
 ///| ldexp(x, exp) = x * 2^exp. It is equivalent to scalbn(x, exp).
 /// ldexp(x, exp) = x * 2^exp. It is equivalent to scalbn(x, exp), but with differnt implemenation.
-pub fn ldexp(x: Double, pw2: Int) -> Double {
+pub fn ldexp(x : Double, pw2 : Int) -> Double {
   let mut u = x.reinterpret_as_uint64()
   let mut e = ((u >> 52) & 0x7FF).to_int()
-
   if e == 0 {
     if x == 0.0 {
-        return 0.0
+      return 0.0
     }
     // Input is denormal.
     let mut x = x
@@ -30,7 +29,6 @@ pub fn ldexp(x: Double, pw2: Int) -> Double {
       e = ((u >> 52) & 0x7FF).to_int()
     }
   }
-
   e += pw2
 
   // Handle overflow
@@ -49,7 +47,7 @@ pub fn ldexp(x: Double, pw2: Int) -> Double {
     return x * ldexp(1.0, e - 1)
   } else {
     u = u & 0x800F_FFFF_FFFF_FFFF
-    u = u | ((e.to_uint64()) & 0x7FF) << 52
+    u = u | ((e.to_uint64() & 0x7FF) << 52)
     return u.reinterpret_as_double()
   }
 }

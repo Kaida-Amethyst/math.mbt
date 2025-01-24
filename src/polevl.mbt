@@ -14,7 +14,8 @@ pub fn polevl(x : Double, coef : Array[Double]) -> Double {
 // Evaluate polynomial when coefficient of x  is 1.0.
 // Otherwise same as polevl.
 //
-pub fn p1evl(x: Double, coef: Array[Double]) -> Double {
+///|
+pub fn p1evl(x : Double, coef : Array[Double]) -> Double {
   let mut ans : Double = x + coef[0]
   let n = coef.length()
   for i in 1..<n {

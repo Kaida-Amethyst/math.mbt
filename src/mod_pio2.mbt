@@ -1,28 +1,36 @@
 ///|
-fn two_over_pi() -> Array[Int] {
-  [
-    0xA2F983, 0x6E4E44, 0x1529FC, 0x2757D1, 0xF534DD, 0xC0DB62, 0x95993C, 0x439041,
-    0xFE5163, 0xABDEBB, 0xC561B7, 0x246E3A, 0x424DD2, 0xE00649, 0x2EEA09, 0xD1921C,
-    0xFE1DEB, 0x1CB129, 0xA73EE8, 0x8235F5, 0x2EBB44, 0x84E99C, 0x7026B4, 0x5F7E41,
-    0x3991D6, 0x398353, 0x39F49C, 0x845F8B, 0xBDF928, 0x3B1FF8, 0x97FFDE, 0x05980F,
-    0xEF2F11, 0x8B5A0A, 0x6D1F6D, 0x367ECF, 0x27CB09, 0xB74F46, 0x3F669E, 0x5FEA2D,
-    0x7527BA, 0xC7EBE5, 0xF17B3D, 0x0739F7, 0x8A5292, 0xEA6BFB, 0x5FB11F, 0x8D5D08,
-    0x560330, 0x46FC7B, 0x6BABF0, 0xCFBC20, 0x9AF436, 0x1DA9E3, 0x91615E, 0xE61B08,
-    0x659985, 0x5F14A0, 0x68408D, 0xFFD880, 0x4D7327, 0x310606, 0x1556CA, 0x73A8C9,
-    0x60E27B, 0xC08C6B,
-  ]
-}
+let two_over_pi : Array[Int] = [
+  0xA2F983, 0x6E4E44, 0x1529FC, 0x2757D1, 0xF534DD, 0xC0DB62, 0x95993C, 0x439041,
+  0xFE5163, 0xABDEBB, 0xC561B7, 0x246E3A, 0x424DD2, 0xE00649, 0x2EEA09, 0xD1921C,
+  0xFE1DEB, 0x1CB129, 0xA73EE8, 0x8235F5, 0x2EBB44, 0x84E99C, 0x7026B4, 0x5F7E41,
+  0x3991D6, 0x398353, 0x39F49C, 0x845F8B, 0xBDF928, 0x3B1FF8, 0x97FFDE, 0x05980F,
+  0xEF2F11, 0x8B5A0A, 0x6D1F6D, 0x367ECF, 0x27CB09, 0xB74F46, 0x3F669E, 0x5FEA2D,
+  0x7527BA, 0xC7EBE5, 0xF17B3D, 0x0739F7, 0x8A5292, 0xEA6BFB, 0x5FB11F, 0x8D5D08,
+  0x560330, 0x46FC7B, 0x6BABF0, 0xCFBC20, 0x9AF436, 0x1DA9E3, 0x91615E, 0xE61B08,
+  0x659985, 0x5F14A0, 0x68408D, 0xFFD880, 0x4D7327, 0x310606, 0x1556CA, 0x73A8C9,
+  0x60E27B, 0xC08C6B,
+]
 
 ///|
-fn npio2_hw() -> Array[Int] {
-  [
-    0x3FF921FB, 0x400921FB, 0x4012D97C, 0x401921FB, 0x401F6A7A, 0x4022D97C, 0x4025FDBB,
-    0x402921FB, 0x402C463A, 0x402F6A7A, 0x4031475C, 0x4032D97C, 0x40346B9C, 0x4035FDBB,
-    0x40378FDB, 0x403921FB, 0x403AB41B, 0x403C463A, 0x403DD85A, 0x403F6A7A, 0x40407E4C,
-    0x4041475C, 0x4042106C, 0x4042D97C, 0x4043A28C, 0x40446B9C, 0x404534AC, 0x4045FDBB,
-    0x4046C6CB, 0x40478FDB, 0x404858EB, 0x404921FB,
-  ]
-}
+let pi_over_2 : Array[Double] = [
+  1.57079625129699707031e+00, // 0x3FF921FB, 0x40000000 */
+   7.54978941586159635335e-08, // 0x3E74442D, 0x00000000 */
+   5.39030252995776476554e-15, // 0x3CF84698, 0x80000000 */
+   3.28200341580791294123e-22, // 0x3B78CC51, 0x60000000 */
+   1.27065575308067607349e-29, // 0x39F01B83, 0x80000000 */
+   1.22933308981111328932e-36, // 0x387A2520, 0x40000000 */
+   2.73370053816464559624e-44, // 0x36E38222, 0x80000000 */
+   2.16741683877804819444e-51, // 0x3569F31D, 0x00000000 */
+]
+
+///|
+let npio2_hw : Array[Int] = [
+  0x3FF921FB, 0x400921FB, 0x4012D97C, 0x401921FB, 0x401F6A7A, 0x4022D97C, 0x4025FDBB,
+  0x402921FB, 0x402C463A, 0x402F6A7A, 0x4031475C, 0x4032D97C, 0x40346B9C, 0x4035FDBB,
+  0x40378FDB, 0x403921FB, 0x403AB41B, 0x403C463A, 0x403DD85A, 0x403F6A7A, 0x40407E4C,
+  0x4041475C, 0x4042106C, 0x4042D97C, 0x4043A28C, 0x40446B9C, 0x404534AC, 0x4045FDBB,
+  0x4046C6CB, 0x40478FDB, 0x404858EB, 0x404921FB,
+]
 
 ///|
 const PIO2_1 : Double = 1.5707963267341256e+00 // 0x3FF921FB, 0x54400000 */
@@ -53,8 +61,6 @@ const TWO24 : Double = 16777216.0 // 0x41700000, 0x00000000 */
 
 ///|
 fn rem_pio2(x : Double, y : Array[Double]) -> Int {
-  let two_over_pi = two_over_pi()
-  let npio2_hw : Array[Int] = npio2_hw()
   let hx = __hi(x).reinterpret_as_int()
   let ix : Int = hx & 0x7fffffff
   let mut z = 0.0
@@ -158,7 +164,7 @@ fn rem_pio2(x : Double, y : Array[Double]) -> Int {
   while tx[nx - 1] == 0.0 {
     nx -= 1
   }
-  let n = __kernel_rem_pio2(tx, y, e0, nx, 2, two_over_pi)
+  let n = __kernel_rem_pio2(tx, y, e0, nx, 2)
   if hx > 0 {
     n
   } else {
@@ -174,19 +180,8 @@ fn __kernel_rem_pio2(
   y : Array[Double],
   e0 : Int,
   nx : Int,
-  prec : Int,
-  ipio2 : Array[Int]
+  prec : Int
 ) -> Int {
-  let pio2 = [
-    1.57079625129699707031e+00, // 0x3FF921FB, 0x40000000 */
-     7.54978941586159635335e-08, // 0x3E74442D, 0x00000000 */
-     5.39030252995776476554e-15, // 0x3CF84698, 0x80000000 */
-     3.28200341580791294123e-22, // 0x3B78CC51, 0x60000000 */
-     1.27065575308067607349e-29, // 0x39F01B83, 0x80000000 */
-     1.22933308981111328932e-36, // 0x387A2520, 0x40000000 */
-     2.73370053816464559624e-44, // 0x36E38222, 0x80000000 */
-     2.16741683877804819444e-51, // 0x3569F31D, 0x00000000 */
-  ]
   let init_jk = [2, 3, 4, 6]
   let two24 : Double = 16777216.0 // 0x41700000, 0x00000000
   let twon24 : Double = 5.96046447753906250000e-08 // 0x3E700000, 0x00000000
@@ -229,7 +224,7 @@ fn __kernel_rem_pio2(
   m = jx + jk
   i = 0
   while i <= m {
-    f[i] = if j < 0 { 0.0 } else { ipio2[j].to_double() }
+    f[i] = if j < 0 { 0.0 } else { two_over_pi[j].to_double() }
     i += 1
     j += 1
   }
@@ -331,7 +326,7 @@ fn __kernel_rem_pio2(
         }
         i = jz + 1
         while i <= jz + k {
-          f[jx + i] = ipio2[jv + i].to_double()
+          f[jx + i] = two_over_pi[jv + i].to_double()
           j = 0
           fw = 0.0
           while j <= jx {
@@ -384,7 +379,7 @@ fn __kernel_rem_pio2(
       fw = 0.0
       k = 0
       while k <= jp && k <= jz - i {
-        fw += pio2[k] * q[i + k]
+        fw += pi_over_2[k] * q[i + k]
         k += 1
       }
       fq[jz - i] = fw

@@ -37,6 +37,8 @@ const LOG10E : Double = 0.434294481903251827651
 
 const LOG2E : Double = 1.44269504088896340736
 
+const LOGPI : Double = 1.14472988584940017414
+
 const MANTISSA_DIGITS : UInt = 53
 
 const ONE_OVER_PI : Double = 0.318309886183790671538
@@ -109,6 +111,8 @@ fn erf(Double) -> Double
 
 fn erfc(Double) -> Double
 
+fn erfce(Double) -> Double
+
 fn erfcinv(Double) -> Double
 
 fn erfcx(Double) -> Double
@@ -122,6 +126,8 @@ fn exp10(Double) -> Double
 fn exp2(Double) -> Double
 
 fn expm1(Double) -> Double
+
+fn expx2(Double, Int) -> Double
 
 fn fast_rsqrt(Float) -> Float
 
@@ -137,6 +143,10 @@ fn frexp(Double) -> (Double, Int)
 
 fn gamma(Double) -> Double
 
+fn gdtr(Double, Double, Double) -> Double
+
+fn gdtrc(Double, Double, Double) -> Double
+
 fn gegenbauer(UInt, Double, Double) -> Double
 
 fn gegenbauer_derivative(UInt, Double, Double, UInt) -> Double
@@ -148,6 +158,8 @@ fn gelu(Double) -> Double
 fn hermite(UInt, Double) -> Double
 
 fn hypot(Double, Double) -> Double
+
+fn igam(Double, Double) -> Double
 
 fn ilogb(Double) -> Int
 
@@ -187,8 +199,6 @@ fn log(Double) -> Double
 
 fn log10(Double) -> Double
 
-fn log10_v2(Double) -> Double
-
 fn log1p(Double) -> Double
 
 fn log2(Double) -> Double
@@ -198,6 +208,8 @@ fn log_ndtr(Double) -> Double
 fn logaddexp(Double, Double) -> Double
 
 fn logsumexp(Array[Double]) -> Double
+
+fn ndtr(Double) -> Double
 
 fn ndtri(Double) -> Double
 
@@ -214,6 +226,8 @@ fn norm4d(Double, Double, Double, Double) -> Double
 fn normcdf(Double) -> Double
 
 fn normcdfinv(Double) -> Double
+
+fn p1evl(Double, Array[Double]) -> Double
 
 fn polevl(Double, Array[Double]) -> Double
 
@@ -268,8 +282,6 @@ fn sqrt1pm1(Double) -> Double
 fn tan(Double) -> Double
 
 fn tanh(Double) -> Double
-
-fn tgamma(Double) -> Double
 
 fn to_degrees(Double) -> Double
 
