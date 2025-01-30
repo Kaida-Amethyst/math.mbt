@@ -29,7 +29,10 @@ const EXPM1_MAX_ULP : Int = 1
 const CBRT_MAX_ULP : Int = 1
 
 ///|
-const ATAN_MAX_ULP : Int = 0
+const ATAN_MAX_ULP : Int = 1
+
+///|
+const ATAN2_MAX_ULP : Int = 1
 
 ///|
 const ASIN_MAX_ULP : Int = 1
