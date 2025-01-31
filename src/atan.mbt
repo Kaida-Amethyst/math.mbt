@@ -227,8 +227,8 @@ test "atan" {
   assert_atan_ulp!(0.4342945, 0.40971675933419394);
   assert_atan_ulp!(0.0000001, 0.00000009999999999999966);
   assert_atan_ulp!(1000000000, 1.5707963257948967);
-  assert_atan_ulp!(31415926535897.125, 1.5707963267948648);
-  assert_atan_ulp!(-27182818284590.566, -1.57079632679486);
+  assert_atan_ulp!(31415926535897.1234, 1.5707963267948648);
+  assert_atan_ulp!(-27182818284590.5678, -1.57079632679486);
   assert_atan_ulp!(@double.max_value, 1.5707963267948966);
   assert_atan_ulp!(@double.min_value, -1.5707963267948966);
   assert_atan_ulp!(@double.infinity, 1.5707963267948966);
