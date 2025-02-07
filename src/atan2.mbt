@@ -1,4 +1,13 @@
 ///| `atan2(y, x)` returns the angle whose tangent is `y/x`.
+///
+/// # Examples
+///
+/// ```moonbit
+/// assert_eq!(atan2(1, 0), 1.5707963267948966)
+/// assert_eq!(atan2(1, 1), 0.7853981633974483)
+/// assert_eq!(atan2(0, -1), 3.141592653589793)
+/// ```
+///
 /// # Special Cases:
 ///
 /// 1. `atan2((anything), NaN)` is NaN;

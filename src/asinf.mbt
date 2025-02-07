@@ -1,3 +1,21 @@
+///| Compute arcsine of `x`
+///
+/// # Examples
+///
+/// ```moonbit
+/// assert_eq!(asinf(0), 0)
+/// assert_eq!(asinf(1), 1.5707963267948966)
+/// assert_eq!(asinf(-1), -1.5707963267948966)
+/// ```
+///
+/// # Special Cases
+///
+/// 1. asinf(NaN) = NaN
+/// 2. asinf(x) = NaN for all |x| > 1
+///
+/// # Accuracy
+///
+/// 1 ulp
 pub fn asinf(x: Float) -> Float {
   let pio2 : Double = 1.57079632679489655800;
   let ps0 : Float = 1.6666586697e-01;

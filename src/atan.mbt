@@ -8,9 +8,8 @@
 /// assert_eq!(atan(2), 1.1071487177940904)
 /// assert_eq!(atan(-1),-0.7853981633974483)
 /// assert_eq!(atan(-2),-1.1071487177940904)
-/// let (pinf, ninf) = (1.0/0.0, -1.0/0.0)
-/// assert_eq!(atan(pinf), 1.5707963267948966)
-/// assert_eq!(atan(ninf), -1.5707963267948966)
+/// assert_eq!(atan(@double.infinity), 1.5707963267948966)
+/// assert_eq!(atan(@double.neg_infinity), -1.5707963267948966)
 /// ```
 ///
 /// # Accuracy

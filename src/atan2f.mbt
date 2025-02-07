@@ -1,3 +1,25 @@
+///| `atan2f(y, x)` returns the angle whose tangent is `y/x`.
+///
+/// # Examples
+///
+/// ```moonbit
+/// assert_eq!(atan2f(1, 0), 1.5707963267948966)
+/// assert_eq!(atan2f(1, 1), 0.7853981633974483)
+/// assert_eq!(atan2f(0, -1), 3.141592653589793)
+/// ```
+///
+/// # Special Cases:
+///
+/// 1. `atan2f((anything), NaN)` is NaN;
+/// 2. `atan2f(NAN, (anything))` is NaN;
+/// 3. `atan2f(+-0, +(anything but NaN))` is +-0;
+/// 4. `atan2f(+-0, -(anything but NaN))` is +-pi;
+/// 5. `atan2f(+-(anything but 0 and NaN), 0)` is +-pi/2;
+/// 6. `atan2f(+-(anything but INF and NaN), +INF)` is +-0;
+/// 7. `atan2f(+-(anything but INF and NaN), -INF)` is +-pi;
+/// 8. `atan2f(+-INF,+INF)` is +-pi/4;
+/// 9. `atan2f(+-INF,-INF)` is +-3pi/4;
+/// 10. `atan2f(+-INF, (anything but,0,NaN, and INF))` is +-pi/2;
 pub fn atan2f(y: Float, x: Float) -> Float {
   if x.is_nan() || y.is_nan() {
     return @float.not_a_number

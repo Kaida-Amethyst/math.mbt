@@ -1,3 +1,26 @@
+///| Compute arctangent of `x`
+///
+/// # Examples
+///
+/// ```moonbit
+/// assert_eq!(atanf(0), 0)
+/// assert_eq!(atanf(1), 0.7853981633974483)
+/// assert_eq!(atanf(2), 1.1071487177940904)
+/// assert_eq!(atanf(-1),-0.7853981633974483)
+/// assert_eq!(atanf(-2),-1.1071487177940904)
+/// assert_eq!(atanf(@float.infinity), 1.570796251296997)
+/// assert_eq!(atanf(@float.neg_infinity), -1.570796251296997)
+/// ```
+///
+/// # Accuracy
+///
+/// 1 ulp (unit in the last place).
+///
+/// # Special Cases
+/// 
+/// 1. atanf(NaN) = NaN
+/// 2. atanf(+Inf) = +π/2
+/// 3. atanf(-Inf) = -π/2
 pub fn atanf(x: Float) -> Float {
   let atanhi: Array[Float] = [
     4.6364760399e-01, 7.8539812565e-01,

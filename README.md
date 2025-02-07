@@ -326,7 +326,7 @@ Moonbit 数学库在计算中力求高精度，旨在匹配 glibc 实现的准�
 | to_degrees    | 将弧度转换为度                | ✓       |  0       |
 | to_radians    | 将度转换为弧度                | ✓       |  0       |
 | trunc         | 截断到整数部分                | ✓       |  0       |
-| zeta          | 计算黎曼 zeta 函数            | (TODO)  |  (TODO)  |
+| zeta          | 计算黎曼 zeta 函数            | ✓       |  3       |
 
 ### 精度说明
 
