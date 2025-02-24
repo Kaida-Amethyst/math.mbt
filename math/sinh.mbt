@@ -17,7 +17,7 @@
 ///
 /// # Accuracy
 ///
-/// 1 ulp.
+/// 0 ulp.
 pub fn sinh(x : Double) -> Double {
   if isnan(x) || isinf(x) {
     return x

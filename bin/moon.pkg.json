@@ -1,0 +1,18 @@
+{
+  "is-main": true,
+  "import": [
+    {
+      "path": "Kaida-Amethyst/moonbit-math/math",
+      "alias": "kmath"
+    },
+    {
+      "path": "Kaida-Amethyst/moonbit-math/cmath",
+      "alias": "cmath"
+    }
+  ],
+  "link" : {
+    "native": {
+      "cc-flags" : "-lm"
+    }
+  }
+}

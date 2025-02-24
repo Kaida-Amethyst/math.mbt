@@ -153,7 +153,7 @@ First add dependencies in `moon.pkg.json`:
 {
     "import" :[
         {
-            "path":"Kaida-Amethyst/moonbit-math",
+            "path":"Kaida-Amethyst/moonbit-math/math",
             "alias": "math"
         }
     ]
@@ -165,7 +165,7 @@ Or use `Kaida-Amethyst/math` if what you added is `Kaida-Amethyst/math`.
 ```json
 {
     "import" :[
-        "Kaida-Amethyst/math"
+        "Kaida-Amethyst/math/math"
     ]
 }
 ```
@@ -345,7 +345,7 @@ Moonbit 数学库在计算中力求高精度，旨在匹配 glibc 实现的准�
 {
     "import" :[
         {
-            "path":"Kaida-Amethyst/moonbit-math",
+            "path":"Kaida-Amethyst/moonbit-math/math",
             "alias": "math"
         }
     ]
@@ -357,7 +357,7 @@ Moonbit 数学库在计算中力求高精度，旨在匹配 glibc 实现的准�
 ```json
 {
     "import" :[
-        "Kaida-Amethyst/math"
+        "Kaida-Amethyst/math/math"
     ]
 }
 ```

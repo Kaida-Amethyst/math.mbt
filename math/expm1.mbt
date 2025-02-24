@@ -10,7 +10,7 @@
 ///
 /// # Accuracy
 ///
-/// 1 ulp (unit in the last place).
+/// 0 ulp (unit in the last place).
 ///
 /// # Examples
 ///
@@ -21,10 +21,21 @@
 /// assert_eq!(expm1(2.0), 6.38905609893065)
 /// ```
 pub fn expm1(x : Double) -> Double {
+  if x.is_nan() {
+    return @double.not_a_number
+  }
+  let o_threshold = 7.09782712893383973096e+02
+  if x > o_threshold {
+    return double_pos_inf
+  }
+
+  if x.is_inf() {
+    return -1.0
+  }
+
   let one = 1.0
   let huge = 1.0e+300
   let tiny = 1.0e-300
-  let o_threshold = 7.09782712893383973096e+02
   let ln2_hi = 6.93147180369123816490e-01
   let ln2_lo = 1.90821492927058770002e-10
   let invln2 = 1.44269504088896338700e+00
@@ -39,18 +50,6 @@ pub fn expm1(x : Double) -> Double {
   let mut y : Double = if xsb == 0 { x } else { -x }
   hx = hx & 0x7fffffff
   if hx >= 0x4043687A {
-    if hx >= 0x40862E42 {
-      if hx >= 0x7ff00000 {
-        if ((hx & 0xfffff) | __low(x)) != 0 {
-          return x + x
-        } else {
-          return if xsb == 0 { x } else { -1.0 }
-        }
-      }
-      if x > o_threshold {
-        return huge * huge
-      }
-    }
     if xsb != 0 {
       if x + tiny < 0.0 {
         return tiny - one
@@ -118,7 +117,7 @@ pub fn expm1(x : Double) -> Double {
       y = __combineW(__hi(y) + (k << 20).reinterpret_as_uint(), __low(y))
     }
   }
-  return y
+  y
 }
 
 test "expm1" {

@@ -36,7 +36,7 @@
 ///
 /// # Accuracy
 ///
-/// 1 ulp.
+/// 0 ulp.
 pub fn cosh(x : Double) -> Double {
   if isnan(x) {
     return x

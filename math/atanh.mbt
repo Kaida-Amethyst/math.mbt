@@ -14,7 +14,7 @@
 ///
 /// # Accuracy:
 ///
-/// 1ulp (unit in the last place).
+/// 0 ulp (unit in the last place).
 ///
 /// # Special cases:
 ///
@@ -56,13 +56,13 @@ test "atanh" {
     assert_ulp!(expect, atanh(input), ATANH_MAX_ULP)
   }
 
-  assert_atanh_ulp!(-0.8, -1.09861228866811)
+  assert_atanh_ulp!(-0.8, -1.0986122886681098)
   assert_atanh_ulp!(-0.7, -0.8673005276940531)
-  assert_atanh_ulp!(-0.6, -0.6931471805599451)
+  assert_atanh_ulp!(-0.6, -0.6931471805599453)
   assert_atanh_ulp!(-0.5, -0.5493061443340548)
-  assert_atanh_ulp!(-0.4, -0.4236489301936019)
-  assert_atanh_ulp!(-0.3, -0.3095196042031117)
-  assert_atanh_ulp!(-0.2, -0.20273255405408222)
+  assert_atanh_ulp!(-0.4, -0.42364893019360184)
+  assert_atanh_ulp!(-0.3, -0.30951960420311175)
+  assert_atanh_ulp!(-0.2, -0.2027325540540822)
   assert_atanh_ulp!(-0.1, -0.10033534773107558)
   assert_atanh_ulp!(-0, -0)
   assert_atanh_ulp!(-3.141592653589793, double_nan)

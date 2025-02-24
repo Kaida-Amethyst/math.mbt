@@ -1,9 +1,0 @@
-{
-  "is-main": true,
-  "import": [
-    {
-      "path": "Kaida-Amethyst/moonbit-math",
-      "alias": "kmath"
-    }
-  ]
-}
