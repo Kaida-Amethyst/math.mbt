@@ -38,15 +38,15 @@ The Moonbit Math Library strives for high precision in its calculations, aiming 
 | acos          | Compute arccosine                    | ✓       |  1                                  |
 | acosh         | Compute inverse hyperbolic cosine    | ✓       |  1                                  |
 | asin          | Compute arcsine                      | ✓       |  1                                  |
-| asinh         | Compute inverse hyperbolic sine      | ✓       |  1                                  |
+| asinh         | Compute inverse hyperbolic sine      | ✓       |  0                                  |
 | atan          | Compute arctangent                   | ✓       |  1                                  |
 | atan2         | Compute arctangent with two arguments| ✓       |  1                                  |
-| atanh         | Compute inverse hyperbolic tangent   | ✓       |  1                                  |
-| cbrt          | Compute cubic root                   | ✓       |  1                                  |
+| atanh         | Compute inverse hyperbolic tangent   | ✓       |  0                                  |
+| cbrt          | Compute cubic root                   | ✓       |  0                                  |
 | ceil          | Round up to the nearest integer      | ✓       |  0                                  |
 | clamp         | Clamp value within a specified range | ✓       |  0                                  |
 | cos           | Compute cosine                       | ✓       |  1                                  |
-| cosh          | Compute hyperbolic cosine            | ✓       |  1                                  |
+| cosh          | Compute hyperbolic cosine            | ✓       |  0                                  |
 | cospi         | Compute cos(πx)                      | ✓       |  3                                  |
 | bessel_i0     | Cylindrical Bessel function of order 0| (TODO) |  (TODO)                             |
 | bessel_i1     | Cylindrical Bessel function of order 1| (TODO) |  (TODO)                             |
@@ -69,7 +69,7 @@ The Moonbit Math Library strives for high precision in its calculations, aiming 
 | exp           | Compute exponential function         | ✓       |  0                                  |
 | exp10         | Compute 10 raised to the power of x  | ✓       |  1                                  |
 | exp2          | Compute 2 raised to the power of x   | ✓       |  1                                  |
-| expm1         | Compute exp(x) - 1                   | ✓       |  1                                  |
+| expm1         | Compute exp(x) - 1                   | ✓       |  0                                  |
 | fast_rsqrt    | Compute fast reciprocal square root  | ✓       |  (TODO)                             |
 | floor         | Round down to the nearest integer    | ✓       |  0                                  |
 | fract         | Compute fractional part              | ✓       |  0                                  |
@@ -130,7 +130,7 @@ The Moonbit Math Library strives for high precision in its calculations, aiming 
 | sqrt          | Compute square root                  | ✓       |  1                                  |
 | sqrt1pm1      | Compute sqrt(1 + x) - 1              | ✓       |  1                                  |
 | tan           | Compute tangent                      | ✓       |  1                                  |
-| tanh          | Compute hyperbolic tangent           | ✓       |  1                                  |
+| tanh          | Compute hyperbolic tangent           | ✓       |  0                                  |
 | to_degrees    | Convert radians to degrees           | ✓       |  0                                  |
 | to_radians    | Convert degrees to radians           | ✓       |  0                                  |
 | trunc         | Truncate to integer part             | ✓       |  0                                  |
@@ -232,17 +232,17 @@ Moonbit 数学库在计算中力求高精度，旨在匹配 glibc 实现的准�
 |---------------|-------------------------------|---------|----------|
 | abs           | 计算绝对值                    | ✓       |  0       |
 | acos          | 计算反余弦                    | ✓       |  1       |
-| acosh         | 计算反双曲余弦                | ✓       |  1       |
+| acosh         | 计算反双曲余弦                | ✓       |  0       |
 | asin          | 计算反正弦                    | ✓       |  1       |
-| asinh         | 计算反双曲正弦                | ✓       |  1       |
+| asinh         | 计算反双曲正弦                | ✓       |  0       |
 | atan          | 计算反正切                    | ✓       |  1       |
 | atan2         | 计算带有两个参数的反正切      | ✓       |  1       |
-| atanh         | 计算反双曲正切                | ✓       |  1       |
+| atanh         | 计算反双曲正切                | ✓       |  0       |
 | cbrt          | 计算立方根                    | ✓       |  0       |
 | ceil          | 向上取整到最近的整数          | ✓       |  0       |
 | clamp         | 将值限制在指定范围内          | ✓       |  0       |
 | cos           | 计算余弦                      | ✓       |  1       |
-| cosh          | 计算双曲余弦                  | ✓       |  1       |
+| cosh          | 计算双曲余弦                  | ✓       |  0       |
 | cospi         | 计算 cos(πx)                  | ✓       |  1       |
 | bessel_i0     | 柱贝塞尔函数（0阶）           | (TODO)  |  (TODO)  |
 | bessel_i1     | 柱贝塞尔函数（1阶）           | (TODO)  |  (TODO)  |
@@ -262,7 +262,7 @@ Moonbit 数学库在计算中力求高精度，旨在匹配 glibc 实现的准�
 | exp           | 计算指数函数                  | ✓       |  1       |
 | exp10         | 计算 10 的 x 次方             | ✓       |  1       |
 | exp2          | 计算 2 的 x 次方              | ✓       |  1       |
-| expm1         | 计算 exp(x) - 1               | ✓       |  1       |
+| expm1         | 计算 exp(x) - 1               | ✓       |  0       |
 | fast_rsqrt    | 计算快速倒数平方根            | ✓       |  (TODO)  |
 | floor         | 向下取整到最近的整数          | ✓       |  0       |
 | fract         | 计算小数部分                  | ✓       |  0       |
@@ -316,13 +316,13 @@ Moonbit 数学库在计算中力求高精度，旨在匹配 glibc 实现的准�
 | sinc          | 计算 sinc 函数                | (TODO)  |  (TODO)  |
 | sincos        | 同时计算正弦和余弦            | ✓       |  1       |
 | sincospi      | 同时计算 sin(πx) 和 cos(πx)   | ✓       |  1       |
-| sinh          | 计算双曲正弦                  | ✓       |  1       |
+| sinh          | 计算双曲正弦                  | ✓       |  0       |
 | sinhc         | 计算归一化双曲正弦            | (TODO)  |  (TODO)  |
 | sinpi         | 计算 sin(πx)                  | ✓       |  1       |
 | sqrt          | 计算平方根                    | ✓       |  1       |
 | sqrt1pm1      | 计算 sqrt(1 + x) - 1          | ✓       |  1       |
 | tan           | 计算正切                      | ✓       |  1       |
-| tanh          | 计算双曲正切                  | ✓       |  1       |
+| tanh          | 计算双曲正切                  | ✓       |  0       |
 | to_degrees    | 将弧度转换为度                | ✓       |  0       |
 | to_radians    | 将度转换为弧度                | ✓       |  0       |
 | trunc         | 截断到整数部分                | ✓       |  0       |

@@ -1,9 +1,15 @@
 ///|
 fn main {
-  let x = 1.0
-  let y = 5.0
-  let cmath_atan2 = @cmath.atan2(x, y)
-  let kmath_atan2 = @kmath.atan2(x, y)
-  println("cmath atan2(\{x}, \{y}) = \{cmath_atan2}")
-  println("kmath atan2(\{x}, \{y}) = \{kmath_atan2}")
+  let vals : Array[Float] = [
+    1.45, 2.55, 3.65, 4.75
+  ] 
+  fn hypotf(v : Float) -> Float {
+    let r = v.to_double() |> @kmath.hypot(2.5)
+    r.to_float()
+  }
+  println("text \"hypot\" {")
+  for v in vals {
+    println("  inspect!((\{v} : Float).hypot(2.5), content=\"\{hypotf(v)}\")")
+  }
+  println("}")
 }
