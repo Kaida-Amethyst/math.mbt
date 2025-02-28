@@ -1,0 +1,113 @@
+package Kaida-Amethyst/math/cmath
+
+// Values
+fn acos(Double) -> Double
+
+fn acosf(Float) -> Float
+
+fn acosh(Double) -> Double
+
+fn acoshf(Float) -> Float
+
+fn asin(Double) -> Double
+
+fn asinf(Float) -> Float
+
+fn asinh(Double) -> Double
+
+fn asinhf(Float) -> Float
+
+fn atan(Double) -> Double
+
+fn atan2(Double, Double) -> Double
+
+fn atan2f(Float, Float) -> Float
+
+fn atanf(Float) -> Float
+
+fn atanh(Double) -> Double
+
+fn atanhf(Float) -> Float
+
+fn cbrt(Double) -> Double
+
+fn cbrtf(Float) -> Float
+
+fn cos(Double) -> Double
+
+fn cosf(Float) -> Float
+
+fn cosh(Double) -> Double
+
+fn coshf(Float) -> Float
+
+fn exp(Double) -> Double
+
+fn exp2(Double) -> Double
+
+fn exp2f(Float) -> Float
+
+fn expf(Float) -> Float
+
+fn expm1(Double) -> Double
+
+fn expm1f(Float) -> Float
+
+fn hypot(Double, Double) -> Double
+
+fn hypotf(Float, Float) -> Float
+
+fn ldexp(Double, Int) -> Double
+
+fn ldexpf(Float, Int) -> Float
+
+fn log(Double) -> Double
+
+fn log10(Double) -> Double
+
+fn log10f(Float) -> Float
+
+fn log1p(Double) -> Double
+
+fn log1pf(Float) -> Float
+
+fn log2(Double) -> Double
+
+fn log2f(Float) -> Float
+
+fn logf(Float) -> Float
+
+fn pow(Double, Double) -> Double
+
+fn powf(Float, Float) -> Float
+
+fn scalbn(Double, Int) -> Double
+
+fn scalbnf(Float, Int) -> Float
+
+fn sin(Double) -> Double
+
+fn sinf(Float) -> Float
+
+fn sinh(Double) -> Double
+
+fn sinhf(Float) -> Float
+
+fn sqrt(Double) -> Double
+
+fn sqrtf(Float) -> Float
+
+fn tan(Double) -> Double
+
+fn tanf(Float) -> Float
+
+fn tanh(Double) -> Double
+
+fn tanhf(Float) -> Float
+
+// Types and methods
+
+// Type aliases
+
+// Traits
+

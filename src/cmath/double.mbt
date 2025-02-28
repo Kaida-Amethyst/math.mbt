@@ -1,11 +1,3 @@
-// math.h
-// sin, cos, tan
-// sinh, cosh, tanh
-// asin, acos, atan
-// asinh, acosh, atanh
-// log, log10, log2, log1p
-// exp, exp2, expm1
-// pow, sqrt, cbrt
 
 pub extern "C" fn sin(x: Double) -> Double = "sin";
 pub extern "C" fn cos(x: Double) -> Double = "cos";
@@ -36,3 +28,7 @@ pub extern "C" fn expm1(x: Double) -> Double = "expm1";
 pub extern "C" fn pow(x: Double, y: Double) -> Double = "pow";
 pub extern "C" fn sqrt(x: Double) -> Double = "sqrt";
 pub extern "C" fn cbrt(x: Double) -> Double = "cbrt";
+
+pub extern "C" fn hypot(x: Double, y: Double) -> Double = "hypot";
+pub extern "C" fn ldexp(x: Double, exp: Int) -> Double = "ldexp";
+pub extern "C" fn scalbn(x: Double, n: Int) -> Double = "scalbn";
