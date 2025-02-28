@@ -2,11 +2,11 @@
   "is-main": true,
   "import": [
     {
-      "path": "Kaida-Amethyst/moonbit-math/math",
+      "path": "Kaida-Amethyst/math",
       "alias": "kmath"
     },
     {
-      "path": "Kaida-Amethyst/moonbit-math/cmath",
+      "path": "Kaida-Amethyst/math/cmath",
       "alias": "cmath"
     }
   ],
