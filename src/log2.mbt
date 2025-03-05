@@ -22,6 +22,7 @@ pub fn log2(x : Double) -> Double {
   x.log2()
 }
 
+///|
 test "log2" {
   fn assert_log2_ulp!(input, expect) {
     assert_ulp!(expect, log2(input), LOG2_MAX_ULP)

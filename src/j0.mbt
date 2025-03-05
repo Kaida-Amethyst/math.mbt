@@ -342,6 +342,7 @@ fn qzero(x : Double) -> Double {
   (-0.125 + r / s) / x
 }
 
+///|
 test "j0" {
   fn assert_j0_ulp!(input, expect) {
     assert_ulp!(expect, j0(input), J0_MAX_ULP)

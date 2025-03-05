@@ -95,6 +95,7 @@ pub fn y0(x : Double) -> Double {
   u / v + tpi * (j0(x) * x.ln())
 }
 
+///|
 test "y0" {
   fn assert_y0_ulp!(input, expect) {
     assert_ulp!(expect, y0(input), Y0_MAX_ULP)

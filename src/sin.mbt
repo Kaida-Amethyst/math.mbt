@@ -37,6 +37,7 @@ pub fn sin(x : Double) -> Double {
   }
 }
 
+///|
 test "sin" {
   fn assert_sin_ulp!(input, expect) {
     assert_ulp!(expect, sin(input), SIN_MAX_ULP)

@@ -20,15 +20,12 @@ pub fn log1p(x : Double) -> Double {
   if x < -1.0 || x.is_nan() {
     return @double.not_a_number
   }
-
   if x == -1.0 {
     return @double.neg_infinity
   }
-
   if x.is_inf() {
     return @double.infinity
   }
-
   let ln2_hi = 6.93147180369123816490e-01
   let ln2_lo = 1.90821492927058770002e-10
   let two54 = 1.80143985094819840000e+16
@@ -117,10 +114,9 @@ pub fn log1p(x : Double) -> Double {
 }
 
 ///| `ln_1p` is an alias for `log1p`
-pub fn ln_1p(x : Double) -> Double {
-  log1p(x)
-}
+pub let ln_1p : (Double) -> Double = log1p
 
+///|
 test "log10" {
   fn assert_log1p_ulp!(input, expect_result) {
     assert_ulp!(expect_result, log1p(input), LOG1P_MAX_ULP)

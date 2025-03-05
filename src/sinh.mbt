@@ -49,6 +49,7 @@ pub fn sinh(x : Double) -> Double {
   x * shuge
 }
 
+///|
 test "sinh" {
   fn assert_sinh_ulp!(input, expect) {
     assert_ulp!(expect, sinh(input), SINH_MAX_ULP)

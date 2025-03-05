@@ -54,6 +54,7 @@ pub fn log10(x : Double) -> Double {
   z + y * log10_2hi
 }
 
+///|
 test "log10" {
   fn assert_log10_ulp!(input, expect) {
     assert_ulp!(expect, log10(input), LOG10_MAX_ULP)

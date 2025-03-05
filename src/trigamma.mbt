@@ -54,6 +54,7 @@ pub fn trigamma(x : Double) -> Double {
   psi + t * w * eval_polynomial(w, coef)
 }
 
+///|
 test "trigamma" {
   fn assert_trigamma_ulp!(input, expect) {
     assert_ulp!(expect, trigamma(input), TRIGAMMA_MAX_ULP)

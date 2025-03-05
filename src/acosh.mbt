@@ -57,6 +57,7 @@ pub fn acosh(x : Double) -> Double {
   }
 }
 
+///|
 test "acosh" {
   fn assert_acosh_ulp!(input, expect) {
     assert_ulp!(expect, acosh(input), ACOSH_MAX_ULP)

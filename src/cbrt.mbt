@@ -61,6 +61,7 @@ pub fn cbrt(x : Double) -> Double {
   }
 }
 
+///|
 test "cbrt" {
   fn assert_cbrt_ulp!(input, expect) {
     assert_ulp!(expect, cbrt(input), CBRT_MAX_ULP)

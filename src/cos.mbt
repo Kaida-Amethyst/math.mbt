@@ -37,6 +37,7 @@ pub fn cos(x : Double) -> Double {
   }
 }
 
+///|
 test "cos" {
   fn assert_cos_ulp!(input, expect) {
     assert_ulp!(expect, cos(input), COS_MAX_ULP)

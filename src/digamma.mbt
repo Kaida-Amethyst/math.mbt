@@ -66,6 +66,7 @@ pub fn digamma(x : Double) -> Double {
   log(x) - 0.5 / x - y + result
 }
 
+///|
 test "digamma" {
   fn assert_digamma_ulp!(input, expect) {
     assert_ulp!(expect, digamma(input), DIGAMMA_MAX_ULP)

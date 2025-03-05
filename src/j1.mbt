@@ -318,6 +318,7 @@ fn qone(x : Double) -> Double {
   (0.375 + r / s) / x
 }
 
+///|
 test "j1" {
   fn assert_j1_ulp!(input, expect) {
     assert_ulp!(expect, j1(input), J1_MAX_ULP)

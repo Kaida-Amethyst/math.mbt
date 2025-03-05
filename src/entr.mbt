@@ -33,6 +33,7 @@ pub fn entr(x : Double) -> Double {
   return double_neg_inf
 }
 
+///|
 test "entr" {
   assert_ulp!(entr(0.0), 0.0, 0)
   assert_ulp!(entr(0.5), 0.34657359027997264, 0)

@@ -36,6 +36,7 @@ pub fn pow(base : Double, expon : Double) -> Double {
   base.pow(expon)
 }
 
+///|
 test "pow" {
   fn assert_pow_ulp!(base, exponent, expect) {
     assert_ulp!(expect, pow(base, exponent), POW_MAX_ULP)

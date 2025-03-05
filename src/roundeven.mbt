@@ -35,6 +35,7 @@ pub fn roundeven(x : Double) -> Double {
   }
 }
 
+///|
 test "roundeven" {
   fn assert_roundeven!(x : Double, expected : Double) {
     if isnan(x) && isnan(expected) {

@@ -88,6 +88,7 @@ pub fn zeta(x : Double, y : Double) -> Double {
   s
 }
 
+///|
 test "zeta" {
   fn assert_zeta_ulp!(input1, input2, expect) {
     assert_ulp!(expect, zeta(input1, input2), ZETA_MAX_ULP)

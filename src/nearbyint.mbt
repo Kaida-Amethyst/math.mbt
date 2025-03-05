@@ -42,6 +42,7 @@ pub fn nearbyint(x : Double, round_mode~ : RoundMode = FE_TONEAREST) -> Double {
   }
 }
 
+///|
 test "nearbyint" {
   assert_eq!(nearbyint(2.5), 2.0)
   assert_eq!(nearbyint(2.5, round_mode=FE_DOWNWARD), 2.0)

@@ -165,6 +165,7 @@ pub fn erfc(x : Double) -> Double {
   }
 }
 
+///|
 test "erfc" {
   fn assert_erfc_ulp!(input, expect) {
     assert_ulp!(expect, erfc(input), ERFC_MAX_ULP)

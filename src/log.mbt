@@ -88,6 +88,10 @@ pub fn log(x : Double) -> Double {
   k * ln2_hi - (hfsq - (s * (hfsq + r) + k * ln2_lo) - f)
 }
 
+///|
+pub let ln : (Double) -> Double = log
+
+///|
 test "log" {
   fn assert_log_ulp!(input, expect) {
     assert_ulp!(expect, log(input), LOG_MAX_ULP)

@@ -61,6 +61,7 @@ pub fn asinh(x : Double) -> Double {
   }
 }
 
+///|
 test "asinh" {
   fn assert_asinh_ulp!(input, expect) {
     assert_ulp!(expect, asinh(input), ASINH_MAX_ULP)

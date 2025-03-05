@@ -38,6 +38,7 @@ pub fn sinpi(x : Double) -> Double {
   }
 }
 
+///|
 test "sinpi" {
   fn assert_sin_pi_ulp!(input, expect) {
     assert_ulp!(expect, sinpi(input), SINPI_MAX_ULP)

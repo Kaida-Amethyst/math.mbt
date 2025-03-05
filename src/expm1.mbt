@@ -28,11 +28,9 @@ pub fn expm1(x : Double) -> Double {
   if x > o_threshold {
     return double_pos_inf
   }
-
   if x.is_inf() {
     return -1.0
   }
-
   let one = 1.0
   let huge = 1.0e+300
   let tiny = 1.0e-300
@@ -120,6 +118,7 @@ pub fn expm1(x : Double) -> Double {
   y
 }
 
+///|
 test "expm1" {
   fn assert_expm1_ulp!(input, expect) {
     assert_ulp!(expect, expm1(input), EXPM1_MAX_ULP)

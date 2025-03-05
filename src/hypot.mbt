@@ -38,7 +38,7 @@ pub fn hypot(x : Double, y : Double) -> Double {
   x * sqrt(1.0 + rat * rat)
 }
 
-
+///|
 test "hypot" {
   fn assert_hypot_ulp!(input1, input2, expect) {
     assert_ulp!(expect, hypot(input1, input2), HYPOT_MAX_ULP)

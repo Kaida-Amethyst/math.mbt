@@ -116,6 +116,7 @@ fn stirf(x : Double) -> Double {
   sqtpi * y * w
 }
 
+///|
 test "tgamma" {
   fn assert_gamma_ulp!(input, expect) {
     assert_ulp!(expect, gamma(input), TGAMMA_MAX_ULP)

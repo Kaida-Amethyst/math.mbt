@@ -23,6 +23,7 @@ pub fn sqrt(x : Double) -> Double {
   x.sqrt()
 }
 
+///|
 test "sqrt" {
   fn assert_sqrt_ulp!(input, expect) {
     assert_ulp!(expect, sqrt(input), SQRT_MAX_ULP)

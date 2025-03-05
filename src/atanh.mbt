@@ -51,6 +51,7 @@ pub fn atanh(x : Double) -> Double {
   }
 }
 
+///|
 test "atanh" {
   fn assert_atanh_ulp!(input, expect) {
     assert_ulp!(expect, atanh(input), ATANH_MAX_ULP)

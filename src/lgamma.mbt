@@ -129,6 +129,7 @@ pub fn ln_gamma(x : Double) -> Double {
   lgamma(x)
 }
 
+///|
 test "lgamma" {
   fn assert_lgamma_ulp!(input, expect) {
     assert_ulp!(expect, lgamma(input), LGAMMA_MAX_ULP)

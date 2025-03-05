@@ -150,6 +150,7 @@ pub fn erf(x : Double) -> Double {
   }
 }
 
+///|
 test "erf" {
   fn assert_erf_ulp!(input, expect) {
     assert_ulp!(expect, erf(input), ERF_MAX_ULP)

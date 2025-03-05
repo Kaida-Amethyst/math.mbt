@@ -69,6 +69,7 @@ pub fn cosh(x : Double) -> Double {
   double_pos_inf
 }
 
+///|
 test "cosh" {
   fn assert_cosh_ulp!(input, expect) {
     assert_ulp!(expect, cosh(input), COSH_MAX_ULP)

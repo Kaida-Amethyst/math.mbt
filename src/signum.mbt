@@ -11,6 +11,7 @@ pub fn signum(x : Double) -> Double {
   }
 }
 
+///|
 test "signum" {
   assert_eq!(signum(0.0), 1.0)
   assert_eq!(signum(-0.0), -1.0)

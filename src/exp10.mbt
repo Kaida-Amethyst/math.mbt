@@ -24,6 +24,7 @@ pub fn exp10(x : Double) -> Double {
   pow(10.0, x)
 }
 
+///|
 test "exp10" {
   fn assert_exp10_ulp!(input, expect) {
     assert_ulp!(expect, exp10(input), EXP10_MAX_ULP)

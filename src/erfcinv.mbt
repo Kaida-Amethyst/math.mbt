@@ -69,6 +69,7 @@ pub fn erfcinv(a : Double) -> Double {
 ///|
 const ERFCINV_MAX_ULP : Int = 505787246
 
+///|
 test "erfcinv" {
   fn assert_erfcinv_ulp!(input, expect) {
     assert_ulp!(expect, erfcinv(input), ERFCINV_MAX_ULP)

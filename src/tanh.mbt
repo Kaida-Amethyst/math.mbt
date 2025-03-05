@@ -51,6 +51,7 @@ pub fn tanh(x : Double) -> Double {
   }
 }
 
+///|
 test "tanh" {
   fn assert_tanh_ulp!(input, expect) {
     assert_ulp!(expect, tanh(input), TANH_MAX_ULP)

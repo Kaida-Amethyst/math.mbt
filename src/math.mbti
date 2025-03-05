@@ -199,6 +199,8 @@ fn lerp(Double, Double, Double) -> Double
 
 fn lgamma(Double) -> Double
 
+fn ln(Double) -> Double
+
 fn ln_1p(Double) -> Double
 
 fn ln_gamma(Double) -> Double

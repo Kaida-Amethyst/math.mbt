@@ -52,6 +52,7 @@ pub fn cospi(x : Double) -> Double {
   }
 }
 
+///|
 test "cospi" {
   fn assert_cospi_ulp!(input, expect) {
     assert_ulp!(expect, cospi(input), COSPI_MAX_ULP)

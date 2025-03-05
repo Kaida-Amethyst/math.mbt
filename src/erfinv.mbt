@@ -111,6 +111,7 @@ pub fn erfinv(x : Double) -> Double {
   sign * p * x_abs
 }
 
+///|
 test "erfinv" {
   fn assert_erfinv_ulp!(input, expect) {
     assert_ulp!(expect, erfinv(input), ERFINV_MAX_ULP)
