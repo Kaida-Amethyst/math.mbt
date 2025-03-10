@@ -101,6 +101,11 @@ pub fn atan(x : Double) -> Double {
 }
 
 ///|
+pub impl Floating for Double with atan(self) -> Double {
+  atan(self)
+}
+
+///|
 test "atan" {
   fn assert_atan_ulp!(input, expect) {
     assert_ulp!(expect, atan(input), ATAN_MAX_ULP)

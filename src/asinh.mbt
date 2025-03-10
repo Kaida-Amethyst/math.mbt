@@ -62,6 +62,11 @@ pub fn asinh(x : Double) -> Double {
 }
 
 ///|
+pub impl Floating for Double with asinh(self) -> Double {
+  asinh(self)
+}
+
+///|
 test "asinh" {
   fn assert_asinh_ulp!(input, expect) {
     assert_ulp!(expect, asinh(input), ASINH_MAX_ULP)

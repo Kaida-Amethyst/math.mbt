@@ -70,6 +70,11 @@ pub fn cosh(x : Double) -> Double {
 }
 
 ///|
+pub impl Floating for Double with cosh(self) -> Double {
+  cosh(self)
+}
+
+///|
 test "cosh" {
   fn assert_cosh_ulp!(input, expect) {
     assert_ulp!(expect, cosh(input), COSH_MAX_ULP)

@@ -52,6 +52,11 @@ pub fn tanh(x : Double) -> Double {
 }
 
 ///|
+pub impl Floating for Double with tanh(self) -> Double {
+  tanh(self)
+}
+
+///|
 test "tanh" {
   fn assert_tanh_ulp!(input, expect) {
     assert_ulp!(expect, tanh(input), TANH_MAX_ULP)

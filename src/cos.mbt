@@ -38,6 +38,11 @@ pub fn cos(x : Double) -> Double {
 }
 
 ///|
+pub impl Floating for Double with cos(self) -> Double {
+  cos(self)
+}
+
+///|
 test "cos" {
   fn assert_cos_ulp!(input, expect) {
     assert_ulp!(expect, cos(input), COS_MAX_ULP)

@@ -52,6 +52,11 @@ pub fn atanh(x : Double) -> Double {
 }
 
 ///|
+pub impl Floating for Double with atanh(self) -> Double {
+  atanh(self)
+}
+
+///|
 test "atanh" {
   fn assert_atanh_ulp!(input, expect) {
     assert_ulp!(expect, atanh(input), ATANH_MAX_ULP)

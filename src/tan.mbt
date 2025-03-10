@@ -34,6 +34,11 @@ pub fn tan(x : Double) -> Double {
 }
 
 ///|
+pub impl Floating for Double with tan(self) -> Double {
+  tan(self)
+}
+
+///|
 test "tan" {
   fn assert_tan_ulp!(input, expect) {
     assert_ulp!(expect, tan(input), TAN_MAX_ULP)

@@ -50,6 +50,11 @@ pub fn sinh(x : Double) -> Double {
 }
 
 ///|
+pub impl Floating for Double with sinh(self) -> Double {
+  sinh(self)
+}
+
+///|
 test "sinh" {
   fn assert_sinh_ulp!(input, expect) {
     assert_ulp!(expect, sinh(input), SINH_MAX_ULP)

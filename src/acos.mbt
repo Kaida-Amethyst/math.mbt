@@ -76,6 +76,11 @@ pub fn acos(x : Double) -> Double {
 }
 
 ///|
+pub impl Floating for Double with acos(self) -> Double {
+  acos(self)
+}
+
+///|
 test "acos" {
   fn assert_acos_ulp!(input, expect) {
     assert_ulp!(expect, acos(input), ACOS_MAX_ULP)
