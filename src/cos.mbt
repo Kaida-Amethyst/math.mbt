@@ -37,10 +37,6 @@ pub fn cos(x : Double) -> Double {
   }
 }
 
-///|
-pub impl Floating for Double with cos(self) -> Double {
-  cos(self)
-}
 
 ///|
 test "cos" {

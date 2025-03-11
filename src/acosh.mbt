@@ -58,11 +58,6 @@ pub fn acosh(x : Double) -> Double {
 }
 
 ///|
-pub impl Floating for Double with acosh(self) -> Double {
-  acosh(self)
-}
-
-///|
 test "acosh" {
   fn assert_acosh_ulp!(input, expect) {
     assert_ulp!(expect, acosh(input), ACOSH_MAX_ULP)

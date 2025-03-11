@@ -75,11 +75,6 @@ pub fn asin(x : Double) -> Double {
 }
 
 ///|
-pub impl Floating for Double with asin(self) -> Double {
-  asin(self)
-}
-
-///|
 test "asin" {
   fn assert_asin_ulp!(input, expect) {
     assert_ulp!(expect, asin(input), ASIN_MAX_ULP)

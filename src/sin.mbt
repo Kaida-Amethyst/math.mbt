@@ -38,11 +38,6 @@ pub fn sin(x : Double) -> Double {
 }
 
 ///|
-pub impl Floating for Double with sin(self) -> Double {
-  sin(self)
-}
-
-///|
 test "sin" {
   fn assert_sin_ulp!(input, expect) {
     assert_ulp!(expect, sin(input), SIN_MAX_ULP)
