@@ -45,30 +45,35 @@ pub trait Floating {
   // TODO:...
 }
 
+///|
 pub impl Floating for Double with abs(self) {
   fabs(self)
 }
 
+///|
 pub impl Floating for Double with sqrt(self) {
   self.sqrt()
 }
 
+///|
 pub impl Floating for Double with cbrt(self) {
   cbrt(self)
 }
 
+///|
 pub impl Floating for Double with hypot(self, y) {
   hypot(self, y)
 }
 
-pub impl Floating for Double with ldexp(self, n: Int) {
+///|
+pub impl Floating for Double with ldexp(self, n : Int) {
   ldexp(self, n)
 }
 
-pub impl Floating for Double with scalbn(self, n: Int) {
+///|
+pub impl Floating for Double with scalbn(self, n : Int) {
   scalbn(self, n)
 }
-
 
 ///|
 pub impl Floating for Double with sin(self) -> Double {
@@ -84,7 +89,6 @@ pub impl Floating for Double with cos(self) -> Double {
 pub impl Floating for Double with tan(self) -> Double {
   tan(self)
 }
-
 
 ///|
 pub impl Floating for Double with asin(self) -> Double {
@@ -131,42 +135,52 @@ pub impl Floating for Double with atanh(self) -> Double {
   atanh(self)
 }
 
+///|
 pub impl Floating for Double with log(self) {
   log(self)
 }
 
+///|
 pub impl Floating for Double with ln(self) {
   ln(self)
 }
 
+///|
 pub impl Floating for Double with log2(self) {
   log2(self)
 }
 
+///|
 pub impl Floating for Double with log10(self) {
   log10(self)
 }
 
+///|
 pub impl Floating for Double with log1p(self) {
   log1p(self)
 }
 
+///|
 pub impl Floating for Double with ln_1p(self) {
   ln_1p(self)
 }
 
+///|
 pub impl Floating for Double with exp(self) {
   exp(self)
 }
 
+///|
 pub impl Floating for Double with exp2(self) {
   exp2(self)
 }
 
+///|
 pub impl Floating for Double with exp10(self) {
   exp10(self)
 }
 
+///|
 pub impl Floating for Double with expm1(self) {
   expm1(self)
 }

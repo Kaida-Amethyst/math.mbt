@@ -325,6 +325,12 @@ pub(all) enum RoundMode {
 
 // Traits
 pub trait Floating {
+  abs(Self) -> Self
+  sqrt(Self) -> Self
+  cbrt(Self) -> Self
+  hypot(Self, Self) -> Self
+  ldexp(Self, Int) -> Self
+  scalbn(Self, Int) -> Self
   sin(Self) -> Self
   cos(Self) -> Self
   tan(Self) -> Self
@@ -337,6 +343,16 @@ pub trait Floating {
   asinh(Self) -> Self
   acosh(Self) -> Self
   atanh(Self) -> Self
+  log(Self) -> Self
+  ln(Self) -> Self
+  log2(Self) -> Self
+  log10(Self) -> Self
+  log1p(Self) -> Self
+  ln_1p(Self) -> Self
+  exp(Self) -> Self
+  exp2(Self) -> Self
+  exp10(Self) -> Self
+  expm1(Self) -> Self
 }
 impl Floating for Double
 
