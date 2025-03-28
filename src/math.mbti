@@ -93,7 +93,19 @@ fn atanh(Double) -> Double
 
 fn bessel_i0(Double) -> Double
 
+fn bessel_i0e(Double) -> Double
+
 fn bessel_i1(Double) -> Double
+
+fn bessel_i1e(Double) -> Double
+
+fn bessel_k0(Double) -> Double
+
+fn bessel_k0e(Double) -> Double
+
+fn bessel_k1(Double) -> Double
+
+fn bessel_k1e(Double) -> Double
 
 fn cbrt(Double) -> Double
 
@@ -167,6 +179,14 @@ fn hermite(UInt, Double) -> Double
 
 fn hypot(Double, Double) -> Double
 
+fn i0(Double) -> Double
+
+fn i0e(Double) -> Double
+
+fn i1(Double) -> Double
+
+fn i1e(Double) -> Double
+
 fn igam(Double, Double) -> Double
 
 fn ilogb(Double) -> Int
@@ -192,6 +212,14 @@ fn j0(Double) -> Double
 fn j1(Double) -> Double
 
 fn jn(Int, Double) -> Double
+
+fn k0(Double) -> Double
+
+fn k0e(Double) -> Double
+
+fn k1(Double) -> Double
+
+fn k1e(Double) -> Double
 
 fn ldexp(Double, Int) -> Double
 

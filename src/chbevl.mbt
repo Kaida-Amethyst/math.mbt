@@ -19,7 +19,7 @@ pub fn chbevl(x : Double, arr : Array[Double]) -> Double {
   let mut b0 = arr[0]
   let mut b1 = 0.0
   let mut b2 = 0.0
-  for i = 1; i < arr.length(); i = i + 1 {
+  for i in 1..<arr.length() {
     b2 = b1
     b1 = b0
     b0 = x * b1 - b2 + arr[i]
