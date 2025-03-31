@@ -37,7 +37,7 @@
 /// # Accuracy
 ///
 /// 4 ulp
-pub fn j1(x : Double) -> Double {
+pub fn bessel_j1(x : Double) -> Double {
   if isnan(x) {
     return @double.not_a_number
   }
@@ -95,6 +95,9 @@ pub fn j1(x : Double) -> Double {
   let r = r * x
   x * 0.5 + r / s
 }
+
+///| `j1` is an alias of `bessel_j1`.
+pub let j1 : (Double) -> Double = bessel_j1
 
 // For x >= 8, the asymptotic expansions of pone is
 // 1 + 15/128 s^2 - 4725/2^15 s^4 - ...,	where s = 1/x.

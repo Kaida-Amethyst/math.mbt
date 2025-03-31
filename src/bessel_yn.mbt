@@ -12,7 +12,7 @@
 ///
 /// 1. For n = 0, y0(x) is called.
 /// 2. For n = 1, y1(x) is called.
-pub fn yn(n : Int, x : Double) -> Double {
+pub fn bessel_yn(n : Int, x : Double) -> Double {
   if isnan(x) {
     return @double.not_a_number
   }
@@ -64,3 +64,6 @@ pub fn yn(n : Int, x : Double) -> Double {
     -b
   }
 }
+
+///| `yn` is an alias for `bessel_yn`.
+pub let yn : (Int, Double) -> Double = bessel_yn

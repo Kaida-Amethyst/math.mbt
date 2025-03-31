@@ -60,7 +60,7 @@ const S04 : Double = 1.16614003333790000205e-09
 /// # Accuracy
 ///
 /// 2 ulp
-pub fn j0(x : Double) -> Double {
+pub fn bessel_j0(x : Double) -> Double {
   if isinf(x) {
     return 0.0
   }
@@ -118,6 +118,9 @@ pub fn j0(x : Double) -> Double {
     (1.0 + u) * (1.0 - u) + z * (r / s)
   }
 }
+
+///| `j0` is an alias of `bessel_j0`
+pub let j0 : (Double) -> Double = bessel_j0
 
 // /* The asymptotic expansions of pzero is
 //  *	1 - 9/128 s^2 + 11025/98304 s^4 - ...,	where s = 1/x.

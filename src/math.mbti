@@ -99,6 +99,12 @@ fn bessel_i1(Double) -> Double
 
 fn bessel_i1e(Double) -> Double
 
+fn bessel_j0(Double) -> Double
+
+fn bessel_j1(Double) -> Double
+
+fn bessel_jn(Int, Double) -> Double
+
 fn bessel_k0(Double) -> Double
 
 fn bessel_k0e(Double) -> Double
@@ -106,6 +112,8 @@ fn bessel_k0e(Double) -> Double
 fn bessel_k1(Double) -> Double
 
 fn bessel_k1e(Double) -> Double
+
+fn bessel_yn(Int, Double) -> Double
 
 fn cbrt(Double) -> Double
 
