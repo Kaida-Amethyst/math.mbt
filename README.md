@@ -150,20 +150,26 @@ As of version 0.1.17, Moonbit-Math supports the following functions:
 | `bessel_k0e`            | Scaled modified Bessel function of the second kind of order zero, exp(-x) * K₀(x). |
 | `bessel_k1`             | Modified Bessel function of the second kind of order one, K₁(x).        |
 | `bessel_k1e`            | Scaled modified Bessel function of the second kind of order one, exp(-x) * K₁(x). |
+| `bessel_j0`             | Bessel function of the first kind of order zero, J₀(x).               |
+| `bessel_j1`             | Bessel function of the first kind of order one, J₁(x).                |
+| `bessel_jn`             | Bessel function of the first kind of order n, J<sub>n</sub>(x).          |
+| `bessel_y0`             | Bessel function of the second kind of order zero, Y₀(x), also known as Neumann function N₀(x) or Weber function. |
+| `bessel_y1`             | Bessel function of the second kind of order one, Y₁(x), also known as Neumann function N₁(x) or Weber function. |
+| `bessel_yn`             | Bessel function of the second kind of order n, Y<sub>n</sub>(x), also known as Neumann function N<sub>n</sub>(x). |
 | `i0`                      | Equivalent to `bessel_i0`.                                             |
 | `i0e`                     | Equivalent to `bessel_i0e`.                                            |
 | `i1`                      | Equivalent to `bessel_i1`.                                             |
 | `i1e`                     | Equivalent to `bessel_i1e`.                                            |
-| `j0`                      | Bessel function of the first kind of order zero, J₀(x).               |
-| `j1`                      | Bessel function of the first kind of order one, J₁(x).                |
-| `jn`                      | Bessel function of the first kind of order n, J<sub>n</sub>(x).          |
+| `j0`                      | Equivalent to `bessel_j0`.                                             |
+| `j1`                      | Equivalent to `bessel_j1`.                                             |
+| `jn`                      | Equivalent to `bessel_jn`.                                             |
 | `k0`                      | Equivalent to `bessel_k0`.                                             |
 | `k0e`                     | Equivalent to `bessel_k0e`.                                            |
 | `k1`                      | Equivalent to `bessel_k1`.                                             |
 | `k1e`                     | Equivalent to `bessel_k1e`.                                            |
-| `y0`                      | Bessel function of the second kind of order zero, Y₀(x), also known as Neumann function N₀(x) or Weber function. |
-| `y1`                      | Bessel function of the second kind of order one, Y₁(x), also known as Neumann function N₁(x) or Weber function. |
-| `yn`                      | Bessel function of the second kind of order n, Y<sub>n</sub>(x), also known as Neumann function N<sub>n</sub>(x). |
+| `y0`                      | Equivalent to `bessel_y0`.                                             |
+| `y1`                      | Equivalent to `bessel_y1`.                                             |
+| `yn`                      | Equivalent to `bessel_yn`.                                             |
 | `erf`                     | Error function.                                                        |
 | `erfc`                    | Complementary error function.                                          |
 | `erfce`                   | Scaled complementary error function, exp(x²) * erfc(x).                 |
@@ -428,13 +434,22 @@ fn main {
 | `bessel_k0e`        | 比例化的第二类修正贝塞尔函数 exp(-x) * K₀(x)。                        |
 | `bessel_k1`         | 第二类修正贝塞尔函数 K₁(x)。                                        |
 | `bessel_k1e`        | 比例化的第二类修正贝塞尔函数 exp(-x) * K₁(x)。                        |
+| `bessel_j0`         | 第一类贝塞尔函数 J₀(x)。                                            |
+| `bessel_j1`         | 第一类贝塞尔函数 J₁(x)。                                            |
+| `bessel_jn`         | 第一类贝塞尔函数 J<sub>n</sub>(x)。                               |
+| `bessel_y0`         | 第一类贝塞尔函数 y₀(x)。                                            |
+| `bessel_y1`         | 第一类贝塞尔函数 y₁(x)。                                            |
+| `bessel_yn`         | 第一类贝塞尔函数 y<sub>n</sub>(x)。                               |
 | `i0`                | 等同于 `bessel_i0`。                                                 |
 | `i0e`               | 等同于 `bessel_i0e`。                                                |
 | `i1`                | 等同于 `bessel_i1`。                                                 |
 | `i1e`               | 等同于 `bessel_i1e`。                                                |
-| `j0`                | 第一类贝塞尔函数 J₀(x)。                                            |
-| `j1`                | 第一类贝塞尔函数 J₁(x)。                                            |
-| `jn`                | 第一类贝塞尔函数 J<sub>n</sub>(x)。                               |
+| `j0`                | 等同于 `bessel_j0`。                                                 |
+| `j1`                | 等同于 `bessel_j1`。                                                 |
+| `jn`                | 等同于 `bessel_jn`。                                                 |
+| `y0`                | 等同于 `bessel_y0`。                                                 |
+| `y1`                | 等同于 `bessel_y1`。                                                 |
+| `yn`                | 等同于 `bessel_yn`。                                                 |
 | `k0`                | 等同于 `bessel_k0`。                                                 |
 | `k0e`               | 等同于 `bessel_k0e`。                                                |
 | `k1`                | 等同于 `bessel_k1`。                                                 |
