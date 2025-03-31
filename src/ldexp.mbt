@@ -1,5 +1,5 @@
 ///| ldexp(x, exp) = x * 2^exp. It is equivalent to scalbn(x, exp).
-/// ldexp(x, exp) = x * 2^exp. It is equivalent to scalbn(x, exp), but with differnt implemenation.
+/// ldexp(x, exp) = x * 2^exp. It is equivalent to scalbn(x, exp), but with different implementation.
 pub fn ldexp(x : Double, pw2 : Int) -> Double {
   let mut u = x.reinterpret_as_uint64()
   let mut e = ((u >> 52) & 0x7FF).to_int()

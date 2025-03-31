@@ -525,7 +525,7 @@ fn __kernel_cos(x : Double, y : Double) -> Double {
 }
 
 ///|
-fn __kernal_tan(x : Double, y : Double, iy : Int) -> Double {
+fn __kernel_tan(x : Double, y : Double, iy : Int) -> Double {
   let one = 1.0
   let pio4 = 7.85398163397448278999e-01
   let pio4lo = 3.06161699786838301793e-17

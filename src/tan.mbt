@@ -26,10 +26,10 @@ pub fn tan(x : Double) -> Double {
   let y = Array::make(2, 0.0)
   let z = 0.0
   if fabs(x) <= PI_OVER_4 {
-    __kernal_tan(x, z, 1)
+    __kernel_tan(x, z, 1)
   } else {
     let n = rem_pio2(x, y)
-    __kernal_tan(y[0], y[1], 1 - ((n & 1) << 1))
+    __kernel_tan(y[0], y[1], 1 - ((n & 1) << 1))
   }
 }
 

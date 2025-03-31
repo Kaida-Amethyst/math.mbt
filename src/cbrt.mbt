@@ -53,7 +53,7 @@ pub fn cbrt(x : Double) -> Double {
   let w = t + t
   let r = (r - t) / (w + r)
   let t = t + t * r
-  // retore the sign bit
+  // restore the sign bit
   if sign {
     -t
   } else {
