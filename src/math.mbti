@@ -189,6 +189,8 @@ fn i1e(Double) -> Double
 
 fn igam(Double, Double) -> Double
 
+fn igami(Double, Double) -> Double
+
 fn ilogb(Double) -> Int
 
 fn inv_digamma(Double) -> Double
@@ -270,6 +272,12 @@ fn normcdf(Double) -> Double
 fn normcdfinv(Double) -> Double
 
 fn p1evl(Double, Array[Double]) -> Double
+
+fn pdtr(Int, Double) -> Double
+
+fn pdtrc(Int, Double) -> Double
+
+fn pdtri(Int, Double) -> Double
 
 fn polevl(Double, Array[Double]) -> Double
 
