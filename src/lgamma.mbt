@@ -185,5 +185,5 @@ test "lgamma" {
   assert_lgamma_ulp!(2.846, 0.5558182215673224)
   assert_lgamma_ulp!(7.881, 8.286247712559748)
   assert_lgamma_ulp!(3.772, 1.51290512968991)
-  assert_lgamma_ulp!(double_nan, double_nan)
+  assert_lgamma_ulp!(@double.not_a_number, @double.not_a_number)
 }

@@ -7,7 +7,7 @@
 /// 3. fdim(`x`, `y`) returns `NaN` if `x` or `y` is `NaN`
 pub fn fdim(x : Double, y : Double) -> Double {
   if isnan(x) || isnan(y) {
-    double_nan
+    @double.not_a_number
   } else if x > y {
     x - y
   } else {

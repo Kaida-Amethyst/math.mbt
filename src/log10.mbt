@@ -23,13 +23,13 @@
 ///
 pub fn log10(x : Double) -> Double {
   if x == 0 {
-    return double_neg_inf
+    return @double.neg_infinity
   }
   if x < 0 || isnan(x) {
-    return double_nan
+    return @double.not_a_number
   }
   if isinf(x) {
-    return double_pos_inf
+    return @double.infinity
   }
   let mut x = x
   let two54 = 1.80143985094819840000e+16 // 0x43500000, 0x00000000
@@ -60,11 +60,11 @@ test "log10" {
     assert_ulp!(expect, log10(input), LOG10_MAX_ULP)
   }
 
-  assert_log10_ulp!(-0.8, double_nan)
-  assert_log10_ulp!(-3.141592653589793, double_nan)
-  assert_log10_ulp!(-1.5707963267948966, double_nan)
-  assert_log10_ulp!(-0.7853981633974483, double_nan)
-  assert_log10_ulp!(0, double_neg_inf)
+  assert_log10_ulp!(-0.8, @double.not_a_number)
+  assert_log10_ulp!(-3.141592653589793, @double.not_a_number)
+  assert_log10_ulp!(-1.5707963267948966, @double.not_a_number)
+  assert_log10_ulp!(-0.7853981633974483, @double.not_a_number)
+  assert_log10_ulp!(0, @double.neg_infinity)
   assert_log10_ulp!(0.01, -2)
   assert_log10_ulp!(0.1, -1)
   assert_log10_ulp!(0.2, -0.6989700043360187)
@@ -79,7 +79,7 @@ test "log10" {
   assert_log10_ulp!(3.141592653589793, 0.4971498726941338)
   assert_log10_ulp!(1.5707963267948966, 0.19611987703015263)
   assert_log10_ulp!(0.7853981633974483, -0.10491011863382856)
-  assert_log10_ulp!(-1, double_nan)
+  assert_log10_ulp!(-1, @double.not_a_number)
   assert_log10_ulp!(1, 0)
   assert_log10_ulp!(2, 0.3010299956639812)
   assert_log10_ulp!(3, 0.47712125471966244)
@@ -126,10 +126,10 @@ test "log10" {
   assert_log10_ulp!(242.58711268945123, 2.3848677254814152)
   assert_log10_ulp!(21456.774415889613, 4.331564435306097)
   assert_log10_ulp!(1123.5582229412541, 3.0505955825379125)
-  assert_log10_ulp!(-1.542, double_nan)
-  assert_log10_ulp!(0, double_neg_inf)
-  assert_log10_ulp!(-0, double_neg_inf)
-  assert_log10_ulp!(double_nan, double_nan)
-  assert_log10_ulp!(double_pos_inf, double_pos_inf)
-  assert_log10_ulp!(double_neg_inf, double_nan)
+  assert_log10_ulp!(-1.542, @double.not_a_number)
+  assert_log10_ulp!(0, @double.neg_infinity)
+  assert_log10_ulp!(-0, @double.neg_infinity)
+  assert_log10_ulp!(@double.not_a_number, @double.not_a_number)
+  assert_log10_ulp!(@double.infinity, @double.infinity)
+  assert_log10_ulp!(@double.neg_infinity, @double.not_a_number)
 }

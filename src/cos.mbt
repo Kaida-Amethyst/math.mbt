@@ -20,7 +20,7 @@
 /// 0 ulp.
 pub fn cos(x : Double) -> Double {
   if isinf(x) || isnan(x) {
-    return double_nan
+    return @double.not_a_number
   }
   let y = [0.0, 0.0]
   let z = 0.0
@@ -112,7 +112,7 @@ test "cos" {
   assert_cos_ulp!(-15749436813364.748916, -0.9797265387199456)
   assert_cos_ulp!(0, 1)
   assert_cos_ulp!(-0, 1)
-  assert_cos_ulp!(double_nan, double_nan)
-  assert_cos_ulp!(double_pos_inf, double_nan)
-  assert_cos_ulp!(double_neg_inf, double_nan)
+  assert_cos_ulp!(@double.not_a_number, @double.not_a_number)
+  assert_cos_ulp!(@double.infinity, @double.not_a_number)
+  assert_cos_ulp!(@double.neg_infinity, @double.not_a_number)
 }

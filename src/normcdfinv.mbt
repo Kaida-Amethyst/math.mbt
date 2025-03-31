@@ -1,7 +1,7 @@
 ///| Calculate the inverse of the standard normal cumulative distribution function.
 pub fn normcdfinv(x : Double) -> Double {
   if x < 0 || x > 1 {
-    return double_nan
+    return @double.not_a_number
   }
   if x <= 0.5 {
     let y = 2.0 * x - 1

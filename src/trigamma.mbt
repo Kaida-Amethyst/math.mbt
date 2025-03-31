@@ -25,7 +25,7 @@ pub fn trigamma(x : Double) -> Double {
     return x
   }
   if x == 0.0 || (x < 0.0 && x == floor(x)) {
-    return double_nan
+    return @double.not_a_number
   }
   fn eval_polynomial(x : Double, coefficients : Array[Double]) -> Double {
     coefficients.rev_iter().fold(init=0.0, fn(sum, c) { x * sum + c })
@@ -84,9 +84,9 @@ test "trigamma" {
   assert_trigamma_ulp!(3.141592653589793, 0.3742437696542005)
   assert_trigamma_ulp!(1.570796326794897, 0.8794632640771828)
   assert_trigamma_ulp!(0.7853981633974483, 2.365840259013745)
-  assert_trigamma_ulp!(-1.0, double_nan)
-  assert_trigamma_ulp!(-2.0, double_nan)
-  assert_trigamma_ulp!(-3.0, double_nan)
+  assert_trigamma_ulp!(-1.0, @double.not_a_number)
+  assert_trigamma_ulp!(-2.0, @double.not_a_number)
+  assert_trigamma_ulp!(-3.0, @double.not_a_number)
   assert_trigamma_ulp!(1, 1.644934066848226)
   assert_trigamma_ulp!(2, 0.6449340668482264)
   assert_trigamma_ulp!(3, 0.3949340668482265)
@@ -117,7 +117,7 @@ test "trigamma" {
   assert_trigamma_ulp!(-2.846, 45.3187154600991)
   assert_trigamma_ulp!(-7.881, 73.88121482595784)
   assert_trigamma_ulp!(-3.772, 22.66071131391305)
-  assert_trigamma_ulp!(double_nan, double_nan)
-  assert_trigamma_ulp!(double_pos_inf, 0)
-  assert_trigamma_ulp!(double_neg_inf, double_nan)
+  assert_trigamma_ulp!(@double.not_a_number, @double.not_a_number)
+  assert_trigamma_ulp!(@double.infinity, 0)
+  assert_trigamma_ulp!(@double.neg_infinity, @double.not_a_number)
 }

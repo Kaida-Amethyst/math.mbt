@@ -125,7 +125,7 @@ test "tanh" {
   assert_tanh_ulp!(-1, -0.7615941559557649)
   assert_tanh_ulp!(0, 0)
   assert_tanh_ulp!(-0, -0)
-  assert_tanh_ulp!(double_nan, double_nan)
-  assert_tanh_ulp!(double_pos_inf, 1)
-  assert_tanh_ulp!(double_neg_inf, -1)
+  assert_tanh_ulp!(@double.not_a_number, @double.not_a_number)
+  assert_tanh_ulp!(@double.infinity, 1)
+  assert_tanh_ulp!(@double.neg_infinity, -1)
 }

@@ -26,7 +26,7 @@ pub fn expm1(x : Double) -> Double {
   }
   let o_threshold = 7.09782712893383973096e+02
   if x > o_threshold {
-    return double_pos_inf
+    return @double.infinity
   }
   if x.is_inf() {
     return -1.0
@@ -170,8 +170,8 @@ test "expm1" {
   assert_expm1_ulp!(9, 8102.083927575384)
   assert_expm1_ulp!(10, 22025.465794806718)
   assert_expm1_ulp!(100, 26881171418161356000000000000000000000000000)
-  assert_expm1_ulp!(1000, double_pos_inf)
-  assert_expm1_ulp!(10000, double_pos_inf)
+  assert_expm1_ulp!(1000, @double.infinity)
+  assert_expm1_ulp!(10000, @double.infinity)
   assert_expm1_ulp!(2.5, 11.182493960703473)
   assert_expm1_ulp!(3.4, 28.96410004739701)
   assert_expm1_ulp!(5.3, 199.33680997479166)
@@ -192,7 +192,7 @@ test "expm1" {
   assert_expm1_ulp!(-1, -0.6321205588285577)
   assert_expm1_ulp!(0, 0)
   assert_expm1_ulp!(-0, -0)
-  assert_expm1_ulp!(double_nan, double_nan)
-  assert_expm1_ulp!(double_pos_inf, double_pos_inf)
-  assert_expm1_ulp!(double_neg_inf, -1)
+  assert_expm1_ulp!(@double.not_a_number, @double.not_a_number)
+  assert_expm1_ulp!(@double.infinity, @double.infinity)
+  assert_expm1_ulp!(@double.neg_infinity, -1)
 }

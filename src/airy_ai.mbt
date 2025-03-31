@@ -35,7 +35,7 @@ pub fn airy_ai(x : Double) -> Double {
   let mut domain_flag = 0
   let mut ai = 0.0
   if isinf(x) {
-    return double_nan
+    return @double.not_a_number
   }
   if x > 103.892 {
     return 0.0

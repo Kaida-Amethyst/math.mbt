@@ -66,11 +66,11 @@ pub fn log(x : Double) -> Double {
   let ln2_hi = 6.93147180369123816490e-01 // 3fe62e42 fee00000
   let ln2_lo = 1.90821492927058770002e-10 // 3dea39ef 35793c76
   if x < 0.0 {
-    return double_nan
+    return @double.not_a_number
   } else if x.is_nan() || x.is_inf() {
     return x
   } else if x == 0.0 {
-    return double_neg_inf
+    return @double.neg_infinity
   }
   let (f1, ki) = frexp(x)
   let (f, k) = if f1 < SQRT2 / 2.0 {
@@ -97,19 +97,19 @@ test "log" {
     assert_ulp!(expect, log(input), LOG_MAX_ULP)
   }
 
-  assert_log_ulp!(-0.8, double_nan)
-  assert_log_ulp!(-0.7, double_nan)
-  assert_log_ulp!(-0.6, double_nan)
-  assert_log_ulp!(-0.5, double_nan)
-  assert_log_ulp!(-0.4, double_nan)
-  assert_log_ulp!(-0.3, double_nan)
-  assert_log_ulp!(-0.2, double_nan)
-  assert_log_ulp!(-0.1, double_nan)
-  assert_log_ulp!(-0, double_neg_inf)
-  assert_log_ulp!(-3.141592653589793, double_nan)
-  assert_log_ulp!(-1.5707963267948966, double_nan)
-  assert_log_ulp!(-0.7853981633974483, double_nan)
-  assert_log_ulp!(0, double_neg_inf)
+  assert_log_ulp!(-0.8, @double.not_a_number)
+  assert_log_ulp!(-0.7, @double.not_a_number)
+  assert_log_ulp!(-0.6, @double.not_a_number)
+  assert_log_ulp!(-0.5, @double.not_a_number)
+  assert_log_ulp!(-0.4, @double.not_a_number)
+  assert_log_ulp!(-0.3, @double.not_a_number)
+  assert_log_ulp!(-0.2, @double.not_a_number)
+  assert_log_ulp!(-0.1, @double.not_a_number)
+  assert_log_ulp!(-0, @double.neg_infinity)
+  assert_log_ulp!(-3.141592653589793, @double.not_a_number)
+  assert_log_ulp!(-1.5707963267948966, @double.not_a_number)
+  assert_log_ulp!(-0.7853981633974483, @double.not_a_number)
+  assert_log_ulp!(0, @double.neg_infinity)
   assert_log_ulp!(0.1, -2.3025850929940455)
   assert_log_ulp!(0.2, -1.6094379124341003)
   assert_log_ulp!(0.3, -1.2039728043259361)
@@ -123,15 +123,15 @@ test "log" {
   assert_log_ulp!(3.141592653589793, 1.1447298858494002)
   assert_log_ulp!(1.5707963267948966, 0.4515827052894548)
   assert_log_ulp!(0.7853981633974483, -0.2415644752704905)
-  assert_log_ulp!(-1, double_nan)
-  assert_log_ulp!(-2, double_nan)
-  assert_log_ulp!(-3, double_nan)
-  assert_log_ulp!(-4, double_nan)
-  assert_log_ulp!(-5, double_nan)
-  assert_log_ulp!(-6, double_nan)
-  assert_log_ulp!(-7, double_nan)
-  assert_log_ulp!(-8, double_nan)
-  assert_log_ulp!(-9, double_nan)
+  assert_log_ulp!(-1, @double.not_a_number)
+  assert_log_ulp!(-2, @double.not_a_number)
+  assert_log_ulp!(-3, @double.not_a_number)
+  assert_log_ulp!(-4, @double.not_a_number)
+  assert_log_ulp!(-5, @double.not_a_number)
+  assert_log_ulp!(-6, @double.not_a_number)
+  assert_log_ulp!(-7, @double.not_a_number)
+  assert_log_ulp!(-8, @double.not_a_number)
+  assert_log_ulp!(-9, @double.not_a_number)
   assert_log_ulp!(1, 0)
   assert_log_ulp!(2, 0.6931471805599453)
   assert_log_ulp!(3, 1.0986122886681096)
@@ -158,14 +158,14 @@ test "log" {
   assert_log_ulp!(2.846, 1.0459144996676606)
   assert_log_ulp!(7.881, 2.0644547993715126)
   assert_log_ulp!(3.772, 1.327605364771211)
-  assert_log_ulp!(-1.542, double_nan)
-  assert_log_ulp!(-2.846, double_nan)
-  assert_log_ulp!(-7.881, double_nan)
-  assert_log_ulp!(-3.772, double_nan)
-  assert_log_ulp!(-1, double_nan)
-  assert_log_ulp!(0, double_neg_inf)
-  assert_log_ulp!(-0, double_neg_inf)
-  assert_log_ulp!(double_nan, double_nan)
-  assert_log_ulp!(double_pos_inf, double_pos_inf)
-  // assert_log_ulp!(double_neg_inf, double_nan)
+  assert_log_ulp!(-1.542, @double.not_a_number)
+  assert_log_ulp!(-2.846, @double.not_a_number)
+  assert_log_ulp!(-7.881, @double.not_a_number)
+  assert_log_ulp!(-3.772, @double.not_a_number)
+  assert_log_ulp!(-1, @double.not_a_number)
+  assert_log_ulp!(0, @double.neg_infinity)
+  assert_log_ulp!(-0, @double.neg_infinity)
+  assert_log_ulp!(@double.not_a_number, @double.not_a_number)
+  assert_log_ulp!(@double.infinity, @double.infinity)
+  // assert_log_ulp!(@double.neg_infinity, @double.not_a_number)
 }

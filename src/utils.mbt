@@ -1,13 +1,6 @@
 // Constants
 // let int_max : Int = 0x7fffffff
 ///|
-let double_nan : Double = 0x7fffffff_ffffffffUL.reinterpret_as_double()
-
-///|
-let double_pos_inf : Double = 0x7ff00000_00000000UL.reinterpret_as_double()
-
-///|
-let double_neg_inf : Double = 0xfff00000_00000000UL.reinterpret_as_double()
 // pub let double_max : Double = (0x7fefffffffffffffUL).reinterpret_as_double()
 // pub let double_pi : Double = pi
 

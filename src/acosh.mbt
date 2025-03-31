@@ -38,11 +38,11 @@ pub fn acosh(x : Double) -> Double {
   let hx = __hi(x).reinterpret_as_int()
   if x < 1.0 || isnan(x) {
     // x < 1
-    return double_nan
+    return @double.not_a_number
   } else if x == 1.0 {
     return 0.0
   } else if ispinf(x) {
-    return double_pos_inf
+    return @double.infinity
   } else if hx >= 0x41b00000 {
     // x > 2**28
     return log(x) + ln2
@@ -63,15 +63,15 @@ test "acosh" {
     assert_ulp!(expect, acosh(input), ACOSH_MAX_ULP)
   }
 
-  assert_acosh_ulp!(-1, double_nan)
-  assert_acosh_ulp!(-2, double_nan)
-  assert_acosh_ulp!(-3, double_nan)
-  assert_acosh_ulp!(-4, double_nan)
-  assert_acosh_ulp!(-5, double_nan)
-  assert_acosh_ulp!(-6, double_nan)
-  assert_acosh_ulp!(-7, double_nan)
-  assert_acosh_ulp!(-8, double_nan)
-  assert_acosh_ulp!(-9, double_nan)
+  assert_acosh_ulp!(-1, @double.not_a_number)
+  assert_acosh_ulp!(-2, @double.not_a_number)
+  assert_acosh_ulp!(-3, @double.not_a_number)
+  assert_acosh_ulp!(-4, @double.not_a_number)
+  assert_acosh_ulp!(-5, @double.not_a_number)
+  assert_acosh_ulp!(-6, @double.not_a_number)
+  assert_acosh_ulp!(-7, @double.not_a_number)
+  assert_acosh_ulp!(-8, @double.not_a_number)
+  assert_acosh_ulp!(-9, @double.not_a_number)
   assert_acosh_ulp!(1, 0)
   assert_acosh_ulp!(2, 1.3169578969248166)
   assert_acosh_ulp!(3, 1.7627471740390859)
@@ -98,14 +98,14 @@ test "acosh" {
   assert_acosh_ulp!(2.846, 1.7066606669574687)
   assert_acosh_ulp!(7.881, 2.7535523517164964)
   assert_acosh_ulp!(3.772, 2.002699466791843)
-  assert_acosh_ulp!(-1.542, double_nan)
-  assert_acosh_ulp!(-2.846, double_nan)
-  assert_acosh_ulp!(-7.881, double_nan)
-  assert_acosh_ulp!(-3.772, double_nan)
-  assert_acosh_ulp!(-1, double_nan)
-  assert_acosh_ulp!(0, double_nan)
-  assert_acosh_ulp!(-0, double_nan)
-  assert_acosh_ulp!(double_nan, double_nan)
-  assert_acosh_ulp!(double_pos_inf, double_pos_inf)
-  assert_acosh_ulp!(double_neg_inf, double_nan)
+  assert_acosh_ulp!(-1.542, @double.not_a_number)
+  assert_acosh_ulp!(-2.846, @double.not_a_number)
+  assert_acosh_ulp!(-7.881, @double.not_a_number)
+  assert_acosh_ulp!(-3.772, @double.not_a_number)
+  assert_acosh_ulp!(-1, @double.not_a_number)
+  assert_acosh_ulp!(0, @double.not_a_number)
+  assert_acosh_ulp!(-0, @double.not_a_number)
+  assert_acosh_ulp!(@double.not_a_number, @double.not_a_number)
+  assert_acosh_ulp!(@double.infinity, @double.infinity)
+  assert_acosh_ulp!(@double.neg_infinity, @double.not_a_number)
 }

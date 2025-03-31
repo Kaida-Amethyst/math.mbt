@@ -40,10 +40,10 @@
 /// 2 ulp
 pub fn y0(x : Double) -> Double {
   if isnan(x) || x < 0.0 {
-    return double_nan
+    return @double.not_a_number
   }
   if x == 0 {
-    return double_neg_inf
+    return @double.neg_infinity
   }
   if isinf(x) {
     return 0.0
@@ -101,19 +101,19 @@ test "y0" {
     assert_ulp!(expect, y0(input), Y0_MAX_ULP)
   }
 
-  assert_y0_ulp!(-0.8, double_nan)
-  assert_y0_ulp!(-0.7, double_nan)
-  assert_y0_ulp!(-0.6, double_nan)
-  assert_y0_ulp!(-0.5, double_nan)
-  assert_y0_ulp!(-0.4, double_nan)
-  assert_y0_ulp!(-0.3, double_nan)
-  assert_y0_ulp!(-0.2, double_nan)
-  assert_y0_ulp!(-0.1, double_nan)
-  assert_y0_ulp!(-0, double_neg_inf)
-  assert_y0_ulp!(-3.141592653589793, double_nan)
-  assert_y0_ulp!(-1.5707963267948966, double_nan)
-  assert_y0_ulp!(-0.7853981633974483, double_nan)
-  assert_y0_ulp!(0, double_neg_inf)
+  assert_y0_ulp!(-0.8, @double.not_a_number)
+  assert_y0_ulp!(-0.7, @double.not_a_number)
+  assert_y0_ulp!(-0.6, @double.not_a_number)
+  assert_y0_ulp!(-0.5, @double.not_a_number)
+  assert_y0_ulp!(-0.4, @double.not_a_number)
+  assert_y0_ulp!(-0.3, @double.not_a_number)
+  assert_y0_ulp!(-0.2, @double.not_a_number)
+  assert_y0_ulp!(-0.1, @double.not_a_number)
+  assert_y0_ulp!(-0, @double.neg_infinity)
+  assert_y0_ulp!(-3.141592653589793, @double.not_a_number)
+  assert_y0_ulp!(-1.5707963267948966, @double.not_a_number)
+  assert_y0_ulp!(-0.7853981633974483, @double.not_a_number)
+  assert_y0_ulp!(0, @double.neg_infinity)
   assert_y0_ulp!(0.1, -1.5342386513503667)
   assert_y0_ulp!(0.2, -1.0811053223721152)
   assert_y0_ulp!(0.3, -0.8072735778045196)
@@ -127,8 +127,8 @@ test "y0" {
   assert_y0_ulp!(3.141592653589793, 0.32836630851631277)
   assert_y0_ulp!(1.5707963267948966, 0.4100036450465759)
   assert_y0_ulp!(0.7853981633974483, -0.1012071123915492)
-  assert_y0_ulp!(-1, double_nan)
-  assert_y0_ulp!(-2, double_nan)
+  assert_y0_ulp!(-1, @double.not_a_number)
+  assert_y0_ulp!(-2, @double.not_a_number)
   assert_y0_ulp!(1, 0.08825696421567697)
   assert_y0_ulp!(2, 0.5103756726497451)
   assert_y0_ulp!(3, 0.3768500100127904)
@@ -155,9 +155,9 @@ test "y0" {
   assert_y0_ulp!(2.846, 0.4234370194572033)
   assert_y0_ulp!(7.881, 0.20302699116200357)
   assert_y0_ulp!(3.772, 0.07611452144618826)
-  assert_y0_ulp!(-1.542, double_nan)
-  assert_y0_ulp!(-2.846, double_nan)
-  assert_y0_ulp!(double_nan, double_nan)
-  assert_y0_ulp!(double_pos_inf, 0)
-  assert_y0_ulp!(double_neg_inf, double_nan)
+  assert_y0_ulp!(-1.542, @double.not_a_number)
+  assert_y0_ulp!(-2.846, @double.not_a_number)
+  assert_y0_ulp!(@double.not_a_number, @double.not_a_number)
+  assert_y0_ulp!(@double.infinity, 0)
+  assert_y0_ulp!(@double.neg_infinity, @double.not_a_number)
 }

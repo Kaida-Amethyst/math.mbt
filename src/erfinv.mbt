@@ -6,10 +6,8 @@
 /// assert_eq!(erfinv(0.5), 0.47693627620446977)
 /// assert_eq!(erfinv(-0.5), -0.47693627620446977)
 /// assert_eq!(erfinv(0), 0)
-/// let double_pos_inf = 1.0 / 0.0
-/// let double_neg_inf = -1.0 / 0.0
-/// assert_eq!(erfinv(1), double_pos_inf)
-/// assert_eq!(erfinv(-1), double_neg_inf)
+/// assert_eq!(erfinv(1), @double.infinity)
+/// assert_eq!(erfinv(-1), @double.neg_infinity)
 /// ```
 ///
 /// # Accuracy
@@ -26,16 +24,16 @@
 /// - erfinv(-inf) returns NaN
 pub fn erfinv(x : Double) -> Double {
   if x == 1.0 {
-    return double_pos_inf
+    return @double.infinity
   }
   if x == -1.0 {
-    return double_neg_inf
+    return @double.neg_infinity
   }
   if x > 1.0 || x < -1.0 {
-    return double_nan
+    return @double.not_a_number
   }
   if isnan(x) {
-    return double_nan
+    return @double.not_a_number
   }
   let mut w = 0.0
   let mut p = 0.0
@@ -137,16 +135,16 @@ test "erfinv" {
   assert_erfinv_ulp!(0.7, 0.7328690779592169)
   assert_erfinv_ulp!(0.8, 0.9061938024368232)
   assert_erfinv_ulp!(0.9, 1.1630871536766743)
-  assert_erfinv_ulp!(3.141592653589793, double_nan)
-  assert_erfinv_ulp!(1.5707963267948966, double_nan)
+  assert_erfinv_ulp!(3.141592653589793, @double.not_a_number)
+  assert_erfinv_ulp!(1.5707963267948966, @double.not_a_number)
   assert_erfinv_ulp!(0.7853981633974483, 0.8775270040652184)
-  assert_erfinv_ulp!(-1, double_neg_inf)
-  assert_erfinv_ulp!(-2, double_nan)
-  assert_erfinv_ulp!(1, double_pos_inf)
-  assert_erfinv_ulp!(2, double_nan)
+  assert_erfinv_ulp!(-1, @double.neg_infinity)
+  assert_erfinv_ulp!(-2, @double.not_a_number)
+  assert_erfinv_ulp!(1, @double.infinity)
+  assert_erfinv_ulp!(2, @double.not_a_number)
   assert_erfinv_ulp!(0, 0)
   assert_erfinv_ulp!(-0, 0)
-  assert_erfinv_ulp!(double_nan, double_nan)
-  assert_erfinv_ulp!(double_pos_inf, double_nan)
-  assert_erfinv_ulp!(double_neg_inf, double_nan)
+  assert_erfinv_ulp!(@double.not_a_number, @double.not_a_number)
+  assert_erfinv_ulp!(@double.infinity, @double.not_a_number)
+  assert_erfinv_ulp!(@double.neg_infinity, @double.not_a_number)
 }

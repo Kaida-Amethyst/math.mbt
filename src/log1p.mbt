@@ -165,8 +165,8 @@ test "log10" {
   assert_log1p_ulp!(2.846, 1.347033647166588)
   assert_log1p_ulp!(7.881, 2.1839141632763672)
   assert_log1p_ulp!(3.772, 1.5627655042356696)
-  assert_log1p_ulp!(-1.0, double_neg_inf)
+  assert_log1p_ulp!(-1.0, @double.neg_infinity)
   assert_log1p_ulp!(0, 0)
   assert_log1p_ulp!(-0, -0)
-  assert_log1p_ulp!(double_nan, double_nan)
+  assert_log1p_ulp!(@double.not_a_number, @double.not_a_number)
 }

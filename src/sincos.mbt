@@ -21,7 +21,7 @@
 /// Same as `sin` and `cos`, both are 1 ulp.
 pub fn sincos(x : Double) -> (Double, Double) {
   if isinf(x) || isnan(x) {
-    return (double_nan, double_nan)
+    return (@double.not_a_number, @double.not_a_number)
   }
   let y = [0.0, 0.0]
   let z = 0.0

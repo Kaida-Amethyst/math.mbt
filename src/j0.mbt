@@ -65,7 +65,7 @@ pub fn j0(x : Double) -> Double {
     return 0.0
   }
   if isnan(x) {
-    return double_nan
+    return @double.not_a_number
   }
   let hx = __hi(x).reinterpret_as_int()
   let ix = hx & 0x7fffffff
@@ -416,7 +416,7 @@ test "j0" {
   assert_j0_ulp!(-1, 0.7651976865579666)
   assert_j0_ulp!(0, 1)
   assert_j0_ulp!(-0, 1)
-  assert_j0_ulp!(double_nan, double_nan)
-  assert_j0_ulp!(double_pos_inf, 0)
-  assert_j0_ulp!(double_neg_inf, 0)
+  assert_j0_ulp!(@double.not_a_number, @double.not_a_number)
+  assert_j0_ulp!(@double.infinity, 0)
+  assert_j0_ulp!(@double.neg_infinity, 0)
 }

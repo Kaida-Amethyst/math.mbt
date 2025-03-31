@@ -7,8 +7,7 @@
 /// assert_eq!(erfcinv(0.9), 0.08885598888653257)
 /// assert_eq!(erfcinv(1), 0)
 /// assert_eq!(erfcinv(1.542), -0.5247751634041989)
-/// let double_neg_inf = -1.0 / 0.0
-/// assert_eq!(erfcinv(2), double_neg_inf)
+/// assert_eq!(erfcinv(2), @double.neg_infinity)
 /// ```
 ///
 /// # Accuracy
@@ -23,10 +22,10 @@
 /// 4. erfcinv(NaN) = NaN
 pub fn erfcinv(a : Double) -> Double {
   if a <= 0.0 {
-    return double_pos_inf
+    return @double.infinity
   }
   if a >= 2.0 {
-    return double_neg_inf
+    return @double.neg_infinity
   }
   let mut t = 2.0 - a
   let mut p = 0.0
@@ -75,14 +74,14 @@ test "erfcinv" {
     assert_ulp!(expect, erfcinv(input), ERFCINV_MAX_ULP)
   }
 
-  assert_erfcinv_ulp!(-0.8, double_pos_inf)
-  assert_erfcinv_ulp!(-0.2, double_pos_inf)
-  assert_erfcinv_ulp!(-0.1, double_pos_inf)
-  assert_erfcinv_ulp!(-0, double_pos_inf)
-  assert_erfcinv_ulp!(-3.141592653589793, double_pos_inf)
-  assert_erfcinv_ulp!(-1.5707963267948966, double_pos_inf)
-  assert_erfcinv_ulp!(-0.7853981633974483, double_pos_inf)
-  assert_erfcinv_ulp!(0, double_pos_inf)
+  assert_erfcinv_ulp!(-0.8, @double.infinity)
+  assert_erfcinv_ulp!(-0.2, @double.infinity)
+  assert_erfcinv_ulp!(-0.1, @double.infinity)
+  assert_erfcinv_ulp!(-0, @double.infinity)
+  assert_erfcinv_ulp!(-3.141592653589793, @double.infinity)
+  assert_erfcinv_ulp!(-1.5707963267948966, @double.infinity)
+  assert_erfcinv_ulp!(-0.7853981633974483, @double.infinity)
+  assert_erfcinv_ulp!(0, @double.infinity)
   assert_erfcinv_ulp!(0.1, 1.1630871536766738)
   assert_erfcinv_ulp!(0.2, 0.9061938024368232)
   assert_erfcinv_ulp!(0.3, 0.7328690779592169)
@@ -93,24 +92,24 @@ test "erfcinv" {
   assert_erfcinv_ulp!(0.8, 0.17914345462129164)
   assert_erfcinv_ulp!(0.9, 0.08885599049425767)
   assert_erfcinv_ulp!(1, 0)
-  assert_erfcinv_ulp!(3.141592653589793, double_neg_inf)
+  assert_erfcinv_ulp!(3.141592653589793, @double.neg_infinity)
   assert_erfcinv_ulp!(1.5707963267948966, -0.5590068522631568)
   assert_erfcinv_ulp!(0.7853981633974483, 0.19253891596997583)
-  assert_erfcinv_ulp!(-1, double_pos_inf)
-  assert_erfcinv_ulp!(-2, double_pos_inf)
+  assert_erfcinv_ulp!(-1, @double.infinity)
+  assert_erfcinv_ulp!(-2, @double.infinity)
   assert_erfcinv_ulp!(1, 0)
-  assert_erfcinv_ulp!(2, double_neg_inf)
-  assert_erfcinv_ulp!(3, double_neg_inf)
-  assert_erfcinv_ulp!(4, double_neg_inf)
+  assert_erfcinv_ulp!(2, @double.neg_infinity)
+  assert_erfcinv_ulp!(3, @double.neg_infinity)
+  assert_erfcinv_ulp!(4, @double.neg_infinity)
   assert_erfcinv_ulp!(1.542, -0.52477516419095)
-  assert_erfcinv_ulp!(2.846, double_neg_inf)
-  assert_erfcinv_ulp!(3.772, double_neg_inf)
-  assert_erfcinv_ulp!(-1.542, double_pos_inf)
-  assert_erfcinv_ulp!(-2.846, double_pos_inf)
-  assert_erfcinv_ulp!(-1, double_pos_inf)
-  assert_erfcinv_ulp!(0, double_pos_inf)
-  assert_erfcinv_ulp!(-0, double_pos_inf)
-  assert_erfcinv_ulp!(double_nan, double_nan)
-  assert_erfcinv_ulp!(double_pos_inf, double_neg_inf)
-  assert_erfcinv_ulp!(double_neg_inf, double_pos_inf)
+  assert_erfcinv_ulp!(2.846, @double.neg_infinity)
+  assert_erfcinv_ulp!(3.772, @double.neg_infinity)
+  assert_erfcinv_ulp!(-1.542, @double.infinity)
+  assert_erfcinv_ulp!(-2.846, @double.infinity)
+  assert_erfcinv_ulp!(-1, @double.infinity)
+  assert_erfcinv_ulp!(0, @double.infinity)
+  assert_erfcinv_ulp!(-0, @double.infinity)
+  assert_erfcinv_ulp!(@double.not_a_number, @double.not_a_number)
+  assert_erfcinv_ulp!(@double.infinity, @double.neg_infinity)
+  assert_erfcinv_ulp!(@double.neg_infinity, @double.infinity)
 }

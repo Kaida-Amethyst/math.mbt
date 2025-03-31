@@ -21,7 +21,7 @@
 /// 4. erf(NaN) = NaN
 pub fn erf(x : Double) -> Double {
   if isnan(x) {
-    return double_nan
+    return @double.not_a_number
   }
   if isinf(x) {
     return if x > 0 { 1.0 } else { -1.0 }
@@ -224,7 +224,7 @@ test "erf" {
   assert_erf_ulp!(-1, -0.8427007929497149)
   assert_erf_ulp!(0, 0)
   assert_erf_ulp!(-0, -0)
-  assert_erf_ulp!(double_nan, double_nan)
-  assert_erf_ulp!(double_pos_inf, 1)
-  assert_erf_ulp!(double_neg_inf, -1)
+  assert_erf_ulp!(@double.not_a_number, @double.not_a_number)
+  assert_erf_ulp!(@double.infinity, 1)
+  assert_erf_ulp!(@double.neg_infinity, -1)
 }

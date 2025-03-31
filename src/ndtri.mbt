@@ -7,13 +7,13 @@
 /// 3. ndtri(y) = nan for y < 0 or y > 1
 pub fn ndtri(y0 : Double) -> Double {
   if y0 == 0.0 {
-    return double_neg_inf
+    return @double.neg_infinity
   }
   if y0 == 1.0 {
-    return double_pos_inf
+    return @double.infinity
   }
   if y0 < 0.0 || y0 > 1.0 {
-    return double_nan
+    return @double.not_a_number
   }
   let mut code : Bool = true
   let mut y = y0

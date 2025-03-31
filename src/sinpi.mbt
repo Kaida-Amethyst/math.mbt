@@ -112,7 +112,7 @@ test "sinpi" {
   assert_sin_pi_ulp!(-1, 0)
   assert_sin_pi_ulp!(0, 0)
   assert_sin_pi_ulp!(-0, -0)
-  assert_sin_pi_ulp!(double_nan, double_nan)
-  assert_sin_pi_ulp!(double_pos_inf, double_nan)
-  assert_sin_pi_ulp!(double_neg_inf, double_nan)
+  assert_sin_pi_ulp!(@double.not_a_number, @double.not_a_number)
+  assert_sin_pi_ulp!(@double.infinity, @double.not_a_number)
+  assert_sin_pi_ulp!(@double.neg_infinity, @double.not_a_number)
 }

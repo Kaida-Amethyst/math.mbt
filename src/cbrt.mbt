@@ -107,5 +107,5 @@ test "cbrt" {
   assert_cbrt_ulp!(-1, -1)
   assert_cbrt_ulp!(0, 0)
   assert_cbrt_ulp!(-0, -0)
-  assert_cbrt_ulp!(double_nan, double_nan)
+  assert_cbrt_ulp!(@double.not_a_number, @double.not_a_number)
 }

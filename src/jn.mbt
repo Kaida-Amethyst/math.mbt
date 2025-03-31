@@ -14,19 +14,19 @@
 /// 2. For n = 1, y1(x) is called.
 pub fn yn(n : Int, x : Double) -> Double {
   if isnan(x) {
-    return double_nan
+    return @double.not_a_number
   }
   if ispinf(x) {
     return 0.0
   }
   if n < 0 {
-    return double_nan
+    return @double.not_a_number
   }
   if x == 0.0 {
-    return double_nan
+    return @double.not_a_number
   }
   if x < 0 {
-    return double_nan
+    return @double.not_a_number
   }
   let (n, sign) = if n < 0 { (-n, 1 - ((n & 1) << 1)) } else { (n, 1) }
   if n == 0 {

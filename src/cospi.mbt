@@ -126,7 +126,7 @@ test "cospi" {
   assert_cospi_ulp!(-1, -1)
   assert_cospi_ulp!(0, 1)
   assert_cospi_ulp!(-0, 1)
-  assert_cospi_ulp!(double_nan, double_nan)
-  assert_cospi_ulp!(double_pos_inf, double_nan)
-  assert_cospi_ulp!(double_neg_inf, double_nan)
+  assert_cospi_ulp!(@double.not_a_number, @double.not_a_number)
+  assert_cospi_ulp!(@double.infinity, @double.not_a_number)
+  assert_cospi_ulp!(@double.neg_infinity, @double.not_a_number)
 }

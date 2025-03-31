@@ -23,7 +23,7 @@
 /// 4. erfc(NaN) = NaN
 pub fn erfc(x : Double) -> Double {
   if isnan(x) {
-    return double_nan
+    return @double.not_a_number
   }
   if isinf(x) {
     return if x > 0 { 0.0 } else { 2.0 }
@@ -245,7 +245,7 @@ test "erfc" {
   assert_erfc_ulp!(-1, 1.8427007929497148)
   assert_erfc_ulp!(0, 1)
   assert_erfc_ulp!(-0, 1)
-  assert_erfc_ulp!(double_nan, double_nan)
-  assert_erfc_ulp!(double_pos_inf, 0)
-  assert_erfc_ulp!(double_neg_inf, 2)
+  assert_erfc_ulp!(@double.not_a_number, @double.not_a_number)
+  assert_erfc_ulp!(@double.infinity, 0)
+  assert_erfc_ulp!(@double.neg_infinity, 2)
 }

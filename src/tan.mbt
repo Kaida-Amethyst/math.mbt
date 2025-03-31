@@ -21,7 +21,7 @@
 /// 0 ulp.
 pub fn tan(x : Double) -> Double {
   if isinf(x) || isnan(x) {
-    return double_nan
+    return @double.not_a_number
   }
   let y = Array::make(2, 0.0)
   let z = 0.0
@@ -108,7 +108,7 @@ test "tan" {
   assert_tan_ulp!(-15749436813364.748916, 0.2044851060744427)
   assert_tan_ulp!(0, 0)
   assert_tan_ulp!(-0, -0)
-  assert_tan_ulp!(double_nan, double_nan)
-  assert_tan_ulp!(double_pos_inf, double_nan)
-  assert_tan_ulp!(double_neg_inf, double_nan)
+  assert_tan_ulp!(@double.not_a_number, @double.not_a_number)
+  assert_tan_ulp!(@double.infinity, @double.not_a_number)
+  assert_tan_ulp!(@double.neg_infinity, @double.not_a_number)
 }

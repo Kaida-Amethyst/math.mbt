@@ -170,5 +170,5 @@ test "tgamma" {
   assert_gamma_ulp!(2.846, 1.743366861718904)
   assert_gamma_ulp!(7.881, 3968.913713991595)
   assert_gamma_ulp!(3.772, 4.539900655157358)
-  assert_gamma_ulp!(double_nan, double_nan)
+  assert_gamma_ulp!(@double.not_a_number, @double.not_a_number)
 }

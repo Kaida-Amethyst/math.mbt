@@ -39,7 +39,7 @@
 /// 4 ulp
 pub fn j1(x : Double) -> Double {
   if isnan(x) {
-    return double_nan
+    return @double.not_a_number
   }
   if isinf(x) {
     return 0.0
@@ -392,7 +392,7 @@ test "j1" {
   assert_j1_ulp!(-1, -0.4400505857449335)
   assert_j1_ulp!(0, 0)
   assert_j1_ulp!(-0, -0)
-  assert_j1_ulp!(double_nan, double_nan)
-  assert_j1_ulp!(double_pos_inf, 0)
-  assert_j1_ulp!(double_neg_inf, 0)
+  assert_j1_ulp!(@double.not_a_number, @double.not_a_number)
+  assert_j1_ulp!(@double.infinity, 0)
+  assert_j1_ulp!(@double.neg_infinity, 0)
 }

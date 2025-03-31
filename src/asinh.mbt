@@ -109,7 +109,7 @@ test "asinh" {
   assert_asinh_ulp!(-1, -0.881373587019543)
   assert_asinh_ulp!(0, 0)
   assert_asinh_ulp!(-0, -0)
-  assert_asinh_ulp!(double_nan, double_nan)
-  assert_asinh_ulp!(double_pos_inf, double_pos_inf)
-  assert_asinh_ulp!(double_neg_inf, double_neg_inf)
+  assert_asinh_ulp!(@double.not_a_number, @double.not_a_number)
+  assert_asinh_ulp!(@double.infinity, @double.infinity)
+  assert_asinh_ulp!(@double.neg_infinity, @double.neg_infinity)
 }

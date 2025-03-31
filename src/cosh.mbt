@@ -42,7 +42,7 @@ pub fn cosh(x : Double) -> Double {
     return x
   }
   if isinf(x) {
-    return double_pos_inf
+    return @double.infinity
   }
   let ix = __hi(x).reinterpret_as_int() & 0x7fffffff
   if ix < 0x3fd62e43 {
@@ -66,7 +66,7 @@ pub fn cosh(x : Double) -> Double {
     let t = 0.5 * w
     return t * w
   }
-  double_pos_inf
+  @double.infinity
 }
 
 ///|
@@ -121,8 +121,8 @@ test "cosh" {
   assert_cosh_ulp!(9, 4051.5420254925943)
   assert_cosh_ulp!(10, 11013.232920103324)
   assert_cosh_ulp!(100, 13440585709080678000000000000000000000000000)
-  assert_cosh_ulp!(1000, double_pos_inf)
-  assert_cosh_ulp!(10000, double_pos_inf)
+  assert_cosh_ulp!(1000, @double.infinity)
+  assert_cosh_ulp!(10000, @double.infinity)
   assert_cosh_ulp!(2.5, 6.132289479663686)
   assert_cosh_ulp!(3.4, 14.998736658678668)
   assert_cosh_ulp!(5.3, 100.17090078434929)
@@ -143,7 +143,7 @@ test "cosh" {
   assert_cosh_ulp!(-1, 1.5430806348152437)
   assert_cosh_ulp!(0, 1)
   assert_cosh_ulp!(-0, 1)
-  assert_cosh_ulp!(double_nan, double_nan)
-  assert_cosh_ulp!(double_pos_inf, double_pos_inf)
-  assert_cosh_ulp!(double_neg_inf, double_pos_inf)
+  assert_cosh_ulp!(@double.not_a_number, @double.not_a_number)
+  assert_cosh_ulp!(@double.infinity, @double.infinity)
+  assert_cosh_ulp!(@double.neg_infinity, @double.infinity)
 }

@@ -17,7 +17,7 @@
 /// ```
 pub fn roundeven(x : Double) -> Double {
   if isnan(x) {
-    return double_nan
+    return @double.not_a_number
   }
   if isinf(x) {
     return x
@@ -52,7 +52,7 @@ test "roundeven" {
   assert_roundeven!(2.6, 3.0)
   assert_roundeven!(3.4, 3.0)
   assert_roundeven!(3.5, 4.0)
-  assert_roundeven!(double_nan, double_nan)
-  assert_roundeven!(double_pos_inf, double_pos_inf)
-  assert_roundeven!(double_neg_inf, double_neg_inf)
+  assert_roundeven!(@double.not_a_number, @double.not_a_number)
+  assert_roundeven!(@double.infinity, @double.infinity)
+  assert_roundeven!(@double.neg_infinity, @double.neg_infinity)
 }

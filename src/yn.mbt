@@ -13,7 +13,7 @@
 /// 2. For n = 1, j1(x) is called.
 pub fn jn(n : Int, x : Double) -> Double {
   if isnan(x) {
-    return double_nan
+    return @double.not_a_number
   }
   if n == 0 {
     return j0(x)

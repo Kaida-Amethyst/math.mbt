@@ -30,7 +30,7 @@ pub fn entr(x : Double) -> Double {
   if x == 0 {
     return 0
   }
-  return double_neg_inf
+  return @double.neg_infinity
 }
 
 ///|
@@ -38,8 +38,8 @@ test "entr" {
   assert_ulp!(entr(0.0), 0.0, 0)
   assert_ulp!(entr(0.5), 0.34657359027997264, 0)
   assert_ulp!(entr(1.0), 0.0, 0)
-  assert_ulp!(entr(double_pos_inf), double_neg_inf, 0)
-  assert_ulp!(entr(double_nan), double_nan, 0)
+  assert_ulp!(entr(@double.infinity), @double.neg_infinity, 0)
+  assert_ulp!(entr(@double.not_a_number), @double.not_a_number, 0)
   assert_ulp!(entr(-0.0), 0.0, 0)
-  assert_ulp!(entr(-0.5), double_neg_inf, 0)
+  assert_ulp!(entr(-0.5), @double.neg_infinity, 0)
 }

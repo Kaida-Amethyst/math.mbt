@@ -14,7 +14,7 @@ pub fn inv_digamma(x : Double) -> Double {
     return 0.0
   }
   if ispinf(x) {
-    return double_pos_inf
+    return @double.infinity
   }
   let mut y = exp(x)
   let mut i = 1.0

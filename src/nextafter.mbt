@@ -6,7 +6,7 @@
 /// 2. nextafter(x, y) = NaN if either x or y are NaN.
 pub fn nextafter(x : Double, y : Double) -> Double {
   if isnan(x) || isnan(y) {
-    return double_nan
+    return @double.not_a_number
   }
   if x == y {
     return x
