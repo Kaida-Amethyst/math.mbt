@@ -1,4 +1,4 @@
-package Kaida-Amethyst/math
+package "Kaida-Amethyst/math"
 
 // Values
 const DIGITS : UInt = 15
@@ -72,6 +72,8 @@ fn acos(Double) -> Double
 fn acosf(Float) -> Float
 
 fn acosh(Double) -> Double
+
+fn acoshf(Float) -> Float
 
 fn airy_ai(Double) -> Double
 
@@ -152,6 +154,8 @@ fn exp(Double) -> Double
 fn exp10(Double) -> Double
 
 fn exp2(Double) -> Double
+
+fn expf(Float) -> Float
 
 fn expm1(Double) -> Double
 
@@ -319,6 +323,8 @@ fn rsqrt(Double) -> Double
 
 fn scalbn(Double, Int) -> Double
 
+fn scalbnf(Float, Int) -> Float
+
 fn signum(Double) -> Double
 
 fn sin(Double) -> Double
@@ -368,35 +374,4 @@ pub(all) enum RoundMode {
 // Type aliases
 
 // Traits
-pub trait Floating {
-  abs(Self) -> Self
-  sqrt(Self) -> Self
-  cbrt(Self) -> Self
-  hypot(Self, Self) -> Self
-  ldexp(Self, Int) -> Self
-  scalbn(Self, Int) -> Self
-  sin(Self) -> Self
-  cos(Self) -> Self
-  tan(Self) -> Self
-  asin(Self) -> Self
-  acos(Self) -> Self
-  atan(Self) -> Self
-  sinh(Self) -> Self
-  cosh(Self) -> Self
-  tanh(Self) -> Self
-  asinh(Self) -> Self
-  acosh(Self) -> Self
-  atanh(Self) -> Self
-  log(Self) -> Self
-  ln(Self) -> Self
-  log2(Self) -> Self
-  log10(Self) -> Self
-  log1p(Self) -> Self
-  ln_1p(Self) -> Self
-  exp(Self) -> Self
-  exp2(Self) -> Self
-  exp10(Self) -> Self
-  expm1(Self) -> Self
-}
-impl Floating for Double
 
