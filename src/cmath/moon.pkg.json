@@ -1,3 +1,13 @@
 {
-    "supported-targets" : ["native"]
+  "targets": {
+    "double.mbt": [
+      "native"
+    ],
+    "float.mbt": [
+      "native"
+    ]
+  },
+  "supported-targets": [
+    "native"
+  ]
 }
