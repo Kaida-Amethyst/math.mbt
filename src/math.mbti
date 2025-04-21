@@ -259,11 +259,15 @@ fn log(Double) -> Double
 
 fn log10(Double) -> Double
 
+fn log10f(Float) -> Float
+
 fn log1p(Double) -> Double
 
 fn log1pf(Float) -> Float
 
 fn log2(Double) -> Double
+
+fn log2f(Float) -> Float
 
 fn log_ndtr(Double) -> Double
 

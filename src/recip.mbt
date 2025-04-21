@@ -4,6 +4,6 @@ fn recip(x : Double) -> Double {
 }
 
 ///|
-//fn recipf(x : Float) -> Float {
-//  (1.0 : Float) / x
-//}
+fn recipf(x : Float) -> Float {
+  (1.0 : Float) / x
+}
