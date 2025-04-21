@@ -1,10 +1,4 @@
 ///|
-const LN2_HI_F : Float = 6.9313812256e-01
-
-///|
-const LN2_LO_F : Float = 9.0580006145e-06
-
-///|
 const LG1_F : Float = 0.66666662693
 
 ///|
@@ -50,5 +44,5 @@ pub fn logf(x : Float) -> Float {
   let r = t2 + t1
   let hfsq = (0.5 : Float) * f * f
   let dk = k.to_float()
-  s * (hfsq + r) + dk * LN2_LO_F - hfsq + f + dk * LN2_HI_F
+  s * (hfsq + r) + dk * FLOAT_LN2_LO - hfsq + f + dk * FLOAT_LN2_HI
 }

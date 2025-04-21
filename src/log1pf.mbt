@@ -53,5 +53,5 @@ pub fn log1pf(x : Float) -> Float {
   let r = t2 + t1
   let hfsq = (0.5 : Float) * f * f
   let dk = k.to_float()
-  s * (hfsq + r) + (dk * LN2_LO_F + c) - hfsq + f + dk * LN2_HI_F
+  s * (hfsq + r) + (dk * FLOAT_LN2_LO + c) - hfsq + f + dk * FLOAT_LN2_HI
 }
