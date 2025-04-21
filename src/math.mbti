@@ -133,6 +133,8 @@ fn cos(Double) -> Double
 
 fn cosh(Double) -> Double
 
+fn coshf(Float) -> Float
+
 fn cospi(Double) -> Double
 
 fn digamma(Double) -> Double
@@ -350,6 +352,8 @@ fn sincos(Double) -> (Double, Double)
 fn sincospi(Double) -> (Double, Double)
 
 fn sinh(Double) -> Double
+
+fn sinhf(Float) -> Float
 
 fn sinpi(Double) -> Double
 
