@@ -99,3 +99,6 @@ pub const GOLDEN_RATIO : Double = 1.61803398874989484820
 
 // The speed of light in vacuum, in meters per second.
 // pub const C: Double = 299792458.0;
+
+///|
+pub const FLOAT_EPSILON : Float = 1.1920928955078125e-7
