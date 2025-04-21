@@ -66,7 +66,7 @@ pub fn lgamma(x : Double) -> Double {
       p += 1.0
       z = p - q
     }
-    z = q * sin(PI * z)
+    z = q * sin(DOUBLE_PI * z)
     if z == 0.0 {
       return @double.infinity
     }

@@ -33,7 +33,7 @@ pub fn trigamma(x : Double) -> Double {
 
   let mut x = x
   if x <= 0.0 {
-    return powi(PI * recip(sinpi(x)), 2) - trigamma(1.0 - x)
+    return powi(DOUBLE_PI * recip(sinpi(x)), 2) - trigamma(1.0 - x)
   }
   let mut psi = 0.0
   if x < 8.0 {

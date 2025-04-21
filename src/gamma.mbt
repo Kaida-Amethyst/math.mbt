@@ -57,11 +57,11 @@ pub fn gamma(x : Double) -> Double {
         p += 1.0
         z = q - p
       }
-      z = q * sin(PI * z)
+      z = q * sin(DOUBLE_PI * z)
       if z == 0.0 {
         return sgngam.to_double() * @double.infinity
       }
-      z = PI / (z * stirf(q))
+      z = DOUBLE_PI / (z * stirf(q))
     } else {
       z = stirf(x)
     }

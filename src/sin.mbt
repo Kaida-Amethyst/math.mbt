@@ -215,7 +215,7 @@ test "sin" {
 //         return 0.0
 //     }
 //
-//     y = floor(x / (PI / 4.0))
+//     y = floor(x / (DOUBLE_PI / 4.0))
 //     z = floor(y / 16.0)
 //     z = y - z * 16.0
 //

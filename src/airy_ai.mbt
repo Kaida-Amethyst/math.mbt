@@ -61,7 +61,7 @@ pub fn airy_ai(x : Double) -> Double {
     for i = 0; i <= 9; i = i + 1 {
       agd = agd * (z * z) + arr_agd[i]
     }
-    let t = -2.0 * x * (-x).sqrt() / 3.0 + 0.25 * PI
+    let t = -2.0 * x * (-x).sqrt() / 3.0 + 0.25 * DOUBLE_PI
     let p = sin(t) * (1.0 + z * z * afn / afd) - cos(t) * (z * agn / agd)
     return 5.64189583547756286948e-01 / sqrt(sqrt(-x)) * p
   }

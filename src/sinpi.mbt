@@ -11,7 +11,7 @@ pub fn sinpi(x : Double) -> Double {
     return -sinpi(-x)
   }
   if x < 0.5 {
-    return sin(PI * x)
+    return sin(DOUBLE_PI * x)
   }
   let mut invert = false
   let mut x = x
@@ -30,7 +30,7 @@ pub fn sinpi(x : Double) -> Double {
   if rem == 0.5 {
     return if invert { -1.0 } else { 1.0 }
   }
-  let rem = sin(PI * rem)
+  let rem = sin(DOUBLE_PI * rem)
   if invert {
     -rem
   } else {

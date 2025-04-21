@@ -21,7 +21,7 @@
 pub fn cospi(x : Double) -> Double {
   let mut invert = false
   if fabs(x) < 0.25 {
-    return cos(PI * x)
+    return cos(DOUBLE_PI * x)
   }
   let mut x = x
   if x < 0 {
@@ -41,9 +41,9 @@ pub fn cospi(x : Double) -> Double {
   }
   if rem > 0.25 {
     rem = 0.5 - rem
-    rem = sin(PI * rem)
+    rem = sin(DOUBLE_PI * rem)
   } else {
-    rem = cos(PI * rem)
+    rem = cos(DOUBLE_PI * rem)
   }
   if invert {
     -rem

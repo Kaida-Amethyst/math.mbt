@@ -3,7 +3,7 @@ pub fn sinc(x : Double) -> Double {
   if x == 0.0 {
     return 1.0
   } else {
-    let product = PI * x
+    let product = DOUBLE_PI * x
     return sin(product) / product
   }
 }
