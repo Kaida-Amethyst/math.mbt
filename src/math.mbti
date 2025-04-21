@@ -197,6 +197,8 @@ fn hermite(UInt, Double) -> Double
 
 fn hypot(Double, Double) -> Double
 
+fn hypotf(Float, Float) -> Float
+
 fn i0(Double) -> Double
 
 fn i0e(Double) -> Double
