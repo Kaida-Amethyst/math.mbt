@@ -85,6 +85,8 @@ fn asinf(Float) -> Float
 
 fn asinh(Double) -> Double
 
+fn asinhf(Float) -> Float
+
 fn atan(Double) -> Double
 
 fn atan2(Double, Double) -> Double
@@ -94,6 +96,8 @@ fn atan2f(Float, Float) -> Float
 fn atanf(Float) -> Float
 
 fn atanh(Double) -> Double
+
+fn atanhf(Float) -> Float
 
 fn bessel_i0(Double) -> Double
 
@@ -361,9 +365,13 @@ fn sqrt(Double) -> Double
 
 fn sqrt1pm1(Double) -> Double
 
+fn sqrtf(Float) -> Float
+
 fn tan(Double) -> Double
 
 fn tanh(Double) -> Double
+
+fn tanhf(Float) -> Float
 
 fn to_degrees(Double) -> Double
 
