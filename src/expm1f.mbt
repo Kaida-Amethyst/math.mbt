@@ -34,7 +34,7 @@ pub fn expm1f(x : Float) -> Float {
     if sign {
       return -1.0
     }
-    if x > O_THRESHOLD {
+    if hx > 0x42b17217 {
       x *= (0x1.0p127 : Float)
       return x
     }

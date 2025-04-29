@@ -73,7 +73,7 @@ fn max_element(elements : Array[Double]) -> (Double, Int) {
 // 6. if x/y is -inf, y/x is not -inf, return INT_MAX
 // 7. if x/y not inf, nan, return IEEE754(x) - IEEE754(y) |> abs
 ///|
-fn ulp_error(x : Double, y : Double) -> Int64 {
+pub fn ulp_error(x : Double, y : Double) -> Int64 {
   let xisnan : Bool = isnan(x)
   let yisnan : Bool = isnan(y)
   let xispinf : Bool = isinf(x) && x > 0
@@ -111,6 +111,46 @@ fn ulp_error(x : Double, y : Double) -> Int64 {
   let yi : Int64 = y.reinterpret_as_int64()
   let diff = xi - yi
   abs_i64(diff)
+}
+
+pub fn ulp_error_f32(x : Float, y : Float) -> Int {
+  let xisnan : Bool = x.is_nan()
+  let yisnan : Bool = y.is_nan()
+  let xispinf : Bool = x.is_inf() && x > 0
+  let yispinf : Bool = y.is_inf() && y > 0
+  let xisninf : Bool = x.is_inf() && x < 0
+  let yisninf : Bool = y.is_inf() && y < 0
+  if xisnan && yisnan {
+    return 0
+  }
+  if xispinf && yispinf {
+    return 0
+  }
+  if xisninf && yisninf {
+    return 0
+  }
+  if xisnan && not(yisnan) {
+    return INT_MAX
+  }
+  if yisnan && not(xisnan) {
+    return INT_MAX
+  }
+  if xispinf && not(yispinf) {
+    return INT_MAX
+  }
+  if yispinf && not(xispinf) {
+    return INT_MAX
+  }
+  if xisninf && not(yisninf) {
+    return INT_MAX
+  }
+  if yisninf && not(xisninf) {
+    return INT_MAX
+  }
+  let xi : Int = x.reinterpret_as_int()
+  let yi : Int = y.reinterpret_as_int()
+  let diff = xi - yi
+  diff.abs()
 }
 
 ///|
