@@ -147,10 +147,7 @@ const EXPM1_F_MAX_ULP : Int = 0
 const LOG_F_MAX_ULP : Int = 0
 const LOG1P_F_MAX_ULP : Int = 0
 
-//const LOG_F_MAX_ULP : Int = 0
-//
-//const LN1P_F_MAX_ULP : Int = 0
-//
-//const EXP_F_MAX_ULP : Int = 1
-//
-//const EXP2_F_MAX_ULP : Int = 1
+const ATAN2_F_MAX_ULP : Int = 2
+const POW_F_MAX_ULP : Int = 2
+const HYPOT_F_MAX_ULP : Int = 1
+const SCALBN_F_MAX_ULP : Int = 1
