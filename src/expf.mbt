@@ -76,3 +76,40 @@ pub fn expf(x : Float) -> Float {
     scalbnf(y, k)
   }
 }
+
+test "expf" {
+  fn assert_expf_ulp!(input, expect) {
+    assert_float_ulp!(expect, expf(input), EXP_F_MAX_ULP)
+  }
+  assert_expf_ulp!(-1, 0.3678794503211975)
+  assert_expf_ulp!(1, 2.7182817459106445)
+  assert_expf_ulp!(8, 2980.9580078125)
+  assert_expf_ulp!(-8, 0.000335462624207139)
+  assert_expf_ulp!(0, 1)
+  assert_expf_ulp!(27, 532048248832)
+  assert_expf_ulp!(-27, 1.8795288676126676e-12)
+  assert_expf_ulp!(0.125, 1.133148431777954)
+  assert_expf_ulp!(-0.125, 0.8824968934059143)
+  assert_expf_ulp!(0.5, 1.6487212181091309)
+  assert_expf_ulp!(-0.5, 0.6065306663513184)
+  assert_expf_ulp!(1.5, 4.481688976287842)
+  assert_expf_ulp!(-1.5, 0.22313016653060913)
+  assert_expf_ulp!(2, 7.389056205749512)
+  assert_expf_ulp!(-2, 0.1353352814912796)
+  assert_expf_ulp!(3, 20.08553695678711)
+  assert_expf_ulp!(-3, 0.049787066876888275)
+  assert_expf_ulp!(64, 6.23514943204966e+27)
+  assert_expf_ulp!(-64, 1.6038109389511792e-28)
+  assert_expf_ulp!(1000, @float.infinity)
+  assert_expf_ulp!(-1000, 0)
+  assert_expf_ulp!(512, @float.infinity)
+  assert_expf_ulp!(729, @float.infinity)
+  assert_expf_ulp!(3511808, @float.infinity)
+  assert_expf_ulp!(15.25, 4197501.5)
+  assert_expf_ulp!(6859, @float.infinity)
+  assert_expf_ulp!(68.25, 4.371176932375463e+29)
+  assert_expf_ulp!(701.625, @float.infinity)
+  assert_expf_ulp!(@float.not_a_number, @float.not_a_number)
+  assert_expf_ulp!(@float.infinity, @float.infinity)
+  assert_expf_ulp!(@float.neg_infinity, 0)
+}

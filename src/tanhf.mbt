@@ -34,3 +34,40 @@ pub fn tanhf(x : Float) -> Float {
     tt
   }
 }
+
+test "tanhf" {
+  fn assert_tanhf_ulp!(input, expect) {
+    assert_float_ulp!(expect, tanhf(input), TANH_F_MAX_ULP)
+  }
+  assert_tanhf_ulp!(-1, -0.7615941762924194)
+  assert_tanhf_ulp!(1, 0.7615941762924194)
+  assert_tanhf_ulp!(8, 0.9999997615814209)
+  assert_tanhf_ulp!(-8, -0.9999997615814209)
+  assert_tanhf_ulp!(0, 0)
+  assert_tanhf_ulp!(27, 1)
+  assert_tanhf_ulp!(-27, -1)
+  assert_tanhf_ulp!(0.125, 0.12435300648212433)
+  assert_tanhf_ulp!(-0.125, -0.12435300648212433)
+  assert_tanhf_ulp!(0.5, 0.46211713552474976)
+  assert_tanhf_ulp!(-0.5, -0.46211713552474976)
+  assert_tanhf_ulp!(1.5, 0.9051482677459717)
+  assert_tanhf_ulp!(-1.5, -0.9051482677459717)
+  assert_tanhf_ulp!(2, 0.9640275835990906)
+  assert_tanhf_ulp!(-2, -0.9640275835990906)
+  assert_tanhf_ulp!(3, 0.9950547814369202)
+  assert_tanhf_ulp!(-3, -0.9950547814369202)
+  assert_tanhf_ulp!(64, 1)
+  assert_tanhf_ulp!(-64, -1)
+  assert_tanhf_ulp!(1000, 1)
+  assert_tanhf_ulp!(-1000, -1)
+  assert_tanhf_ulp!(512, 1)
+  assert_tanhf_ulp!(729, 1)
+  assert_tanhf_ulp!(3511808, 1)
+  assert_tanhf_ulp!(15.25, 1)
+  assert_tanhf_ulp!(6859, 1)
+  assert_tanhf_ulp!(68.25, 1)
+  assert_tanhf_ulp!(701.625, 1)
+  assert_tanhf_ulp!(@float.not_a_number, @float.not_a_number)
+  assert_tanhf_ulp!(@float.infinity, 1)
+  assert_tanhf_ulp!(@float.neg_infinity, -1)
+}

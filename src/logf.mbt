@@ -46,3 +46,40 @@ pub fn logf(x : Float) -> Float {
   let dk = k.to_float()
   s * (hfsq + r) + dk * FLOAT_LN2_LO - hfsq + f + dk * FLOAT_LN2_HI
 }
+
+test "logf" {
+  fn assert_logf_ulp!(input, expect) {
+    assert_float_ulp!(expect, logf(input), LOG_F_MAX_ULP)
+  }
+  assert_logf_ulp!(-1, @float.not_a_number)
+  assert_logf_ulp!(1, 0)
+  assert_logf_ulp!(8, 2.079441547393799)
+  assert_logf_ulp!(-8, @float.not_a_number)
+  assert_logf_ulp!(0, @float.neg_infinity)
+  assert_logf_ulp!(27, 3.295836925506592)
+  assert_logf_ulp!(-27, @float.not_a_number)
+  assert_logf_ulp!(0.125, -2.079441547393799)
+  assert_logf_ulp!(-0.125, @float.not_a_number)
+  assert_logf_ulp!(0.5, -0.6931471824645996)
+  assert_logf_ulp!(-0.5, @float.not_a_number)
+  assert_logf_ulp!(1.5, 0.40546509623527527)
+  assert_logf_ulp!(-1.5, @float.not_a_number)
+  assert_logf_ulp!(2, 0.6931471824645996)
+  assert_logf_ulp!(-2, @float.not_a_number)
+  assert_logf_ulp!(3, 1.0986123085021973)
+  assert_logf_ulp!(-3, @float.not_a_number)
+  assert_logf_ulp!(64, 4.158883094787598)
+  assert_logf_ulp!(-64, @float.not_a_number)
+  assert_logf_ulp!(1000, 6.907755374908447)
+  assert_logf_ulp!(-1000, @float.not_a_number)
+  assert_logf_ulp!(512, 6.2383246421813965)
+  assert_logf_ulp!(729, 6.591673851013184)
+  assert_logf_ulp!(3511808, 15.07164192199707)
+  assert_logf_ulp!(15.25, 2.7245795726776123)
+  assert_logf_ulp!(6859, 8.833316802978516)
+  assert_logf_ulp!(68.25, 4.223177433013916)
+  assert_logf_ulp!(701.625, 6.553399085998535)
+  assert_logf_ulp!(@float.not_a_number, @float.not_a_number)
+  assert_logf_ulp!(@float.infinity, @float.infinity)
+  assert_logf_ulp!(@float.neg_infinity, @float.not_a_number)
+}

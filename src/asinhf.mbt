@@ -31,3 +31,40 @@ pub fn asinhf(x : Float) -> Float {
     x
   }
 }
+
+test "asinhf" {
+  fn assert_asinhf_ulp!(input, expect) {
+    assert_float_ulp!(expect, asinhf(input), ASINH_F_MAX_ULP)
+  }
+  assert_asinhf_ulp!(-1, -0.8813735842704773)
+  assert_asinhf_ulp!(1, 0.8813735842704773)
+  assert_asinhf_ulp!(8, 2.776472330093384)
+  assert_asinhf_ulp!(-8, -2.776472330093384)
+  assert_asinhf_ulp!(0, 0)
+  assert_asinhf_ulp!(27, 3.9893267154693604)
+  assert_asinhf_ulp!(-27, -3.9893267154693604)
+  assert_asinhf_ulp!(0.125, 0.12467674911022186)
+  assert_asinhf_ulp!(-0.125, -0.12467674911022186)
+  assert_asinhf_ulp!(0.5, 0.4812118411064148)
+  assert_asinhf_ulp!(-0.5, -0.4812118411064148)
+  assert_asinhf_ulp!(1.5, 1.19476318359375)
+  assert_asinhf_ulp!(-1.5, -1.19476318359375)
+  assert_asinhf_ulp!(2, 1.4436354637145996)
+  assert_asinhf_ulp!(-2, -1.4436354637145996)
+  assert_asinhf_ulp!(3, 1.818446397781372)
+  assert_asinhf_ulp!(-3, -1.818446397781372)
+  assert_asinhf_ulp!(64, 4.852091312408447)
+  assert_asinhf_ulp!(-64, -4.852091312408447)
+  assert_asinhf_ulp!(1000, 7.600902557373047)
+  assert_asinhf_ulp!(-1000, -7.600902557373047)
+  assert_asinhf_ulp!(512, 6.9314727783203125)
+  assert_asinhf_ulp!(729, 7.284821510314941)
+  assert_asinhf_ulp!(3511808, 15.764789581298828)
+  assert_asinhf_ulp!(15.25, 3.418799877166748)
+  assert_asinhf_ulp!(6859, 9.526464462280273)
+  assert_asinhf_ulp!(68.25, 4.916378498077393)
+  assert_asinhf_ulp!(701.625, 7.246546745300293)
+  assert_asinhf_ulp!(@float.not_a_number, @float.not_a_number)
+  assert_asinhf_ulp!(@float.infinity, @float.infinity)
+  assert_asinhf_ulp!(@float.neg_infinity, @float.neg_infinity)
+}
