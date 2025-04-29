@@ -19,7 +19,27 @@ fn tanf_poly(x : Float, odd : Bool) -> Float {
   (if odd { -1.0 / r } else { r }).to_float()
 }
 
-///|
+///| Compute the tangent of double-precision floating-point number `x`.
+///
+/// # Examples
+///
+/// ```moonbit
+/// assert_eq!(tanf(-1.0), -1.5574077246549023)
+/// assert_eq!(tanf(3.1415926), -1.5099580252808664e-7) 
+/// assert_eq!(tanf(1.570796326), -22877334)
+/// assert_eq!(tanf(0.7853981), 0.9999998807907104) 
+/// assert_eq!(tanf(0.0), 0)
+/// assert_eq!(tanf(10000), 0.3209711346238147)
+/// ```
+///
+/// # Special Cases
+///
+/// 1. tanf(+-inf) = NaN
+/// 2. tanf(NaN) = NaN
+///
+/// # Accuracy
+///
+/// 0 ulp.
 pub fn tanf(x : Float) -> Float {
   if x.is_nan() || x.is_inf() {
     return @float.not_a_number
@@ -36,26 +56,25 @@ test "tanf" {
   fn assert_tanf_ulp!(input, expect) {
     assert_float_ulp!(expect, tanf(input), TAN_F_MAX_ULP)
   }
-
-  assert_tanf_ulp!(-1, 0)
+  assert_tanf_ulp!(-1, -1.5574077367782593)
   assert_tanf_ulp!(1, 1.5574077367782593)
   assert_tanf_ulp!(8, -6.799711227416992)
-  assert_tanf_ulp!(-8, 0)
+  assert_tanf_ulp!(-8, 6.799711227416992)
   assert_tanf_ulp!(0, 0)
   assert_tanf_ulp!(27, -3.2737038135528564)
-  assert_tanf_ulp!(-27, 0)
+  assert_tanf_ulp!(-27, 3.2737038135528564)
   assert_tanf_ulp!(0.125, 0.1256551295518875)
   assert_tanf_ulp!(-0.125, -0.1256551295518875)
   assert_tanf_ulp!(0.5, 0.5463024973869324)
   assert_tanf_ulp!(-0.5, -0.5463024973869324)
   assert_tanf_ulp!(1.5, 14.101420402526855)
-  assert_tanf_ulp!(-1.5, 0)
+  assert_tanf_ulp!(-1.5, -14.101420402526855)
   assert_tanf_ulp!(2, -2.18503999710083)
-  assert_tanf_ulp!(-2, 0)
+  assert_tanf_ulp!(-2, 2.18503999710083)
   assert_tanf_ulp!(3, -0.14254653453826904)
-  assert_tanf_ulp!(-3, 0)
+  assert_tanf_ulp!(-3, 0.14254653453826904)
   assert_tanf_ulp!(64, 2.347860336303711)
-  assert_tanf_ulp!(-64, 0)
+  assert_tanf_ulp!(-64, -2.347860336303711)
   assert_tanf_ulp!(1000, 1.470324158668518)
   assert_tanf_ulp!(-1000, -1.470324158668518)
   assert_tanf_ulp!(512, -0.07977109402418137)

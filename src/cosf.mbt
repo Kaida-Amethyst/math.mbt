@@ -1,4 +1,23 @@
-///|
+///| Compute cosine of double-precision floating-point number `x`
+///
+/// # Examples
+///
+/// ```moonbit
+/// assert_eq!(cosf(-1.0), 0.5403023058681398)
+/// assert_eq!(cosf(0.0), 1)
+/// assert_eq!(cosf(1.5707963267948966), -4.371138828673793e-8)
+/// assert_eq!(cosf(3.141592653589793), -1)
+/// assert_eq!(cosf(10000), -0.9521553682590148)
+/// ```
+///
+/// # Special Cases
+///
+/// 1. cosf(+-inf) = NaN
+/// 2. cosf(NaN) = NaN
+///
+/// # Accuracy
+///
+/// 0 ulp.
 pub fn cosf(x : Float) -> Float {
   if x.is_nan() || x.is_inf() {
     return @float.not_a_number
@@ -15,26 +34,25 @@ test "cosf" {
   fn assert_cosf_ulp!(input, expect) {
     assert_float_ulp!(expect, cosf(input), COS_F_MAX_ULP)
   }
-
-  assert_cosf_ulp!(-1, @float.neg_infinity)
+  assert_cosf_ulp!(-1, 0.5403022766113281)
   assert_cosf_ulp!(1, 0.5403022766113281)
   assert_cosf_ulp!(8, -0.1455000340938568)
-  assert_cosf_ulp!(-8, @float.neg_infinity)
+  assert_cosf_ulp!(-8, -0.1455000340938568)
   assert_cosf_ulp!(0, 1)
   assert_cosf_ulp!(27, -0.29213881492614746)
-  assert_cosf_ulp!(-27, @float.neg_infinity)
+  assert_cosf_ulp!(-27, -0.29213881492614746)
   assert_cosf_ulp!(0.125, 0.9921976923942566)
   assert_cosf_ulp!(-0.125, 0.9921976923942566)
   assert_cosf_ulp!(0.5, 0.8775825500488281)
   assert_cosf_ulp!(-0.5, 0.8775825500488281)
   assert_cosf_ulp!(1.5, 0.07073719799518585)
-  assert_cosf_ulp!(-1.5, @float.neg_infinity)
+  assert_cosf_ulp!(-1.5, 0.07073719799518585)
   assert_cosf_ulp!(2, -0.41614681482315063)
-  assert_cosf_ulp!(-2, @float.neg_infinity)
+  assert_cosf_ulp!(-2, -0.41614681482315063)
   assert_cosf_ulp!(3, -0.9899924993515015)
-  assert_cosf_ulp!(-3, @float.neg_infinity)
+  assert_cosf_ulp!(-3, -0.9899924993515015)
   assert_cosf_ulp!(64, 0.39185723662376404)
-  assert_cosf_ulp!(-64, @float.neg_infinity)
+  assert_cosf_ulp!(-64, 0.39185723662376404)
   assert_cosf_ulp!(1000, 0.5623790621757507)
   assert_cosf_ulp!(-1000, 0.5623790621757507)
   assert_cosf_ulp!(512, -0.9968333840370178)

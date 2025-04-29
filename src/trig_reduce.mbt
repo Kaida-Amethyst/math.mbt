@@ -27,7 +27,7 @@ fn trig_reduce(x : Float, switch_over : Float) -> (Float, Int) {
     let mut r : Float = 0.0
     j = x * (0x3f22f983).reinterpret_as_float() +
       (0x4b40_0000).reinterpret_as_float()
-    j = (j.reinterpret_as_uint() - 0x4b40_0000).to_float()
+    j = (j.reinterpret_as_int() - 0x4b40_0000).to_float()
     r = x - j * (0x3fc90f80).reinterpret_as_float()
     r = r - j * (0x37354440).reinterpret_as_float()
     r = r - j * (0x2c34611a).reinterpret_as_float()
