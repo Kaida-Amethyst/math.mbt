@@ -64,10 +64,12 @@ pub fn cbrtf(x : Float) -> Float {
   t.to_float()
 }
 
+///|
 test "cbrtf" {
   fn assert_cbrtf_ulp!(input, expect) {
     assert_float_ulp!(expect, cbrtf(input), CBRT_F_MAX_ULP)
   }
+
   assert_cbrtf_ulp!(-1, -1)
   assert_cbrtf_ulp!(1, 1)
   assert_cbrtf_ulp!(8, 2)

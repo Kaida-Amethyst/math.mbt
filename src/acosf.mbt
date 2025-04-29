@@ -64,10 +64,12 @@ pub fn acosf(x : Float) -> Float {
   two * (df + w)
 }
 
+///|
 test "acosf" {
   fn assert_acosf_ulp!(input, expect) {
     assert_float_ulp!(expect, acosf(input), ACOS_F_MAX_ULP)
   }
+
   assert_acosf_ulp!(-1, 3.141592502593994)
   assert_acosf_ulp!(1, 0)
   assert_acosf_ulp!(0.5, 1.0471975803375244)

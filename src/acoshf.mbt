@@ -20,10 +20,12 @@ pub fn acoshf(x : Float) -> Float {
   return logf(x) + FLOAT_LN2
 }
 
+///|
 test "acoshf" {
   fn assert_acoshf_ulp!(input, expect) {
     assert_float_ulp!(expect, acoshf(input), ACOSH_F_MAX_ULP)
   }
+
   assert_acoshf_ulp!(-1, @float.not_a_number)
   assert_acoshf_ulp!(1, 0)
   assert_acoshf_ulp!(8, 2.7686593532562256)

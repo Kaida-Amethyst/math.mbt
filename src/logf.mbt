@@ -47,10 +47,12 @@ pub fn logf(x : Float) -> Float {
   s * (hfsq + r) + dk * FLOAT_LN2_LO - hfsq + f + dk * FLOAT_LN2_HI
 }
 
+///|
 test "logf" {
   fn assert_logf_ulp!(input, expect) {
     assert_float_ulp!(expect, logf(input), LOG_F_MAX_ULP)
   }
+
   assert_logf_ulp!(-1, @float.not_a_number)
   assert_logf_ulp!(1, 0)
   assert_logf_ulp!(8, 2.079441547393799)

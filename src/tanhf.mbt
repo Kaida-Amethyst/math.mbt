@@ -35,10 +35,12 @@ pub fn tanhf(x : Float) -> Float {
   }
 }
 
+///|
 test "tanhf" {
   fn assert_tanhf_ulp!(input, expect) {
     assert_float_ulp!(expect, tanhf(input), TANH_F_MAX_ULP)
   }
+
   assert_tanhf_ulp!(-1, -0.7615941762924194)
   assert_tanhf_ulp!(1, 0.7615941762924194)
   assert_tanhf_ulp!(8, 0.9999997615814209)

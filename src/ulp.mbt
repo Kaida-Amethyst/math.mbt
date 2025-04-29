@@ -123,31 +123,65 @@ const ZETA_MAX_ULP : Int = 3
 // Single precision
 // ===================================================
 
+///|
 const CBRT_F_MAX_ULP : Int = 0
 
+///|
 const SINH_F_MAX_ULP : Int = 0
+
+///|
 const COSH_F_MAX_ULP : Int = 0
+
+///|
 const TANH_F_MAX_ULP : Int = 0
 
+///|
 const ASINH_F_MAX_ULP : Int = 0
+
+///|
 const ACOSH_F_MAX_ULP : Int = 0
+
+///|
 const ATANH_F_MAX_ULP : Int = 0
 
+///|
 const SIN_F_MAX_ULP : Int = 2
+
+///|
 const COS_F_MAX_ULP : Int = 2
+
+///|
 const TAN_F_MAX_ULP : Int = 2
 
+///|
 const ASIN_F_MAX_ULP : Int = 0
+
+///|
 const ACOS_F_MAX_ULP : Int = 0
+
+///|
 const ATAN_F_MAX_ULP : Int = 0
 
+///|
 const EXP_F_MAX_ULP : Int = 0
+
+///|
 const EXPM1_F_MAX_ULP : Int = 0
 
+///|
 const LOG_F_MAX_ULP : Int = 0
+
+///|
 const LOG1P_F_MAX_ULP : Int = 0
 
+///|
 const ATAN2_F_MAX_ULP : Int = 2
+
+///|
 const POW_F_MAX_ULP : Int = 2
+
+///|
 const HYPOT_F_MAX_ULP : Int = 1
+
+///|
 const SCALBN_F_MAX_ULP : Int = 1

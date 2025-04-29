@@ -65,11 +65,15 @@ pub fn atan2f(y : Float, x : Float) -> Float {
   }
   //println("ix = \{ix.to_string(radix=16)}, iy = \{iy.to_string(radix=16)}")
   //println("ix + (26 << 23) = \{(ix + (26 << 23)).to_string(radix=16)}")
-  if (ix + (26U << 23)) < iy || (iy == 0x7f800000) {
+  if ix + (26U << 23) < iy || iy == 0x7f800000 {
     let res = if (m & 1) != 0 { -pi / 2 } else { pi / 2 }
     return res
   }
-  let z = if (m & 2) != 0 && iy + (26U << 23) < ix { zero } else { atanf(y / x) }
+  let z = if (m & 2) != 0 && iy + (26U << 23) < ix {
+    zero
+  } else {
+    atanf(y / x)
+  }
   match m {
     0 => z
     1 => -z
@@ -78,10 +82,12 @@ pub fn atan2f(y : Float, x : Float) -> Float {
   }
 }
 
+///|
 test "atan2f" {
   fn assert_atan2f_ulp!(input1, input2, expect) {
     assert_float_ulp!(expect, atan2f(input1, input2), ATAN2_F_MAX_ULP)
   }
+
   assert_atan2f_ulp!(1, 1, 0.7853981852531433)
   assert_atan2f_ulp!(3, 5, 0.5404195189476013)
   assert_atan2f_ulp!(-2, 1, -1.1071487665176392)
@@ -103,5 +109,7 @@ test "atan2f" {
   assert_atan2f_ulp!(@float.infinity, @float.infinity, 0.7853981852531433)
   assert_atan2f_ulp!(@float.infinity, @float.neg_infinity, 2.356194496154785)
   assert_atan2f_ulp!(@float.neg_infinity, @float.infinity, -0.7853981852531433)
-  assert_atan2f_ulp!(@float.neg_infinity, @float.neg_infinity, -2.356194496154785)
+  assert_atan2f_ulp!(
+    @float.neg_infinity, @float.neg_infinity, -2.356194496154785,
+  )
 }

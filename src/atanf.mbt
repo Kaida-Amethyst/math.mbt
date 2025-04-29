@@ -84,10 +84,12 @@ pub fn atanf(x : Float) -> Float {
   }
 }
 
+///|
 test "atanf" {
   fn assert_atanf_ulp!(input, expect) {
     assert_float_ulp!(expect, atanf(input), ATAN_F_MAX_ULP)
   }
+
   assert_atanf_ulp!(-1, -0.7853981852531433)
   assert_atanf_ulp!(1, 0.7853981852531433)
   assert_atanf_ulp!(8, 1.4464412927627563)

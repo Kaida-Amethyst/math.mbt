@@ -27,10 +27,12 @@ pub fn hypotf(x : Float, y : Float) -> Float {
   x * (rat * rat + 1.0).sqrt()
 }
 
+///|
 test "hypotf" {
   fn assert_hypotf_ulp!(input1, input2, expect) {
     assert_float_ulp!(expect, hypotf(input1, input2), HYPOT_F_MAX_ULP)
   }
+
   assert_hypotf_ulp!(1, 1, 1.4142135381698608)
   assert_hypotf_ulp!(3, 5, 5.830951690673828)
   assert_hypotf_ulp!(-2, 1, 2.2360680103302)

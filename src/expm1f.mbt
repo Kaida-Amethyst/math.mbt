@@ -116,10 +116,12 @@ pub fn expm1f(x : Float) -> Float {
   }
 }
 
+///|
 test "expm1f" {
   fn assert_expm1f_ulp!(input, expect) {
     assert_float_ulp!(expect, expm1f(input), EXPM1_F_MAX_ULP)
   }
+
   assert_expm1f_ulp!(-1, -0.6321205496788025)
   assert_expm1f_ulp!(1, 1.7182817459106445)
   assert_expm1f_ulp!(8, 2979.9580078125)

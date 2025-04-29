@@ -56,10 +56,12 @@ pub fn log1pf(x : Float) -> Float {
   s * (hfsq + r) + (dk * FLOAT_LN2_LO + c) - hfsq + f + dk * FLOAT_LN2_HI
 }
 
+///|
 test "log1pf" {
   fn assert_log1pf_ulp!(input, expect) {
     assert_float_ulp!(expect, log1pf(input), LOG1P_F_MAX_ULP)
   }
+
   assert_log1pf_ulp!(-1, @float.neg_infinity)
   assert_log1pf_ulp!(1, 0.6931471824645996)
   assert_log1pf_ulp!(8, 2.1972246170043945)

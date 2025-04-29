@@ -32,10 +32,12 @@ pub fn asinhf(x : Float) -> Float {
   }
 }
 
+///|
 test "asinhf" {
   fn assert_asinhf_ulp!(input, expect) {
     assert_float_ulp!(expect, asinhf(input), ASINH_F_MAX_ULP)
   }
+
   assert_asinhf_ulp!(-1, -0.8813735842704773)
   assert_asinhf_ulp!(1, 0.8813735842704773)
   assert_asinhf_ulp!(8, 2.776472330093384)

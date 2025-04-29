@@ -24,10 +24,12 @@ pub fn atanhf(x : Float) -> Float {
   }
 }
 
+///|
 test "atanhf" {
   fn assert_atanhf_ulp!(input, expect) {
     assert_float_ulp!(expect, atanhf(input), ATANH_F_MAX_ULP)
   }
+
   assert_atanhf_ulp!(-1, @float.neg_infinity)
   assert_atanhf_ulp!(1, @float.infinity)
   assert_atanhf_ulp!(8, @float.not_a_number)

@@ -10,10 +10,12 @@ pub fn cosf(x : Float) -> Float {
   sin_cos_core(x, q + 1)
 }
 
+///|
 test "cosf" {
   fn assert_cosf_ulp!(input, expect) {
     assert_float_ulp!(expect, cosf(input), COS_F_MAX_ULP)
   }
+
   assert_cosf_ulp!(-1, @float.neg_infinity)
   assert_cosf_ulp!(1, 0.5403022766113281)
   assert_cosf_ulp!(8, -0.1455000340938568)

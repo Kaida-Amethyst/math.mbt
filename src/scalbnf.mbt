@@ -28,10 +28,12 @@ pub fn scalbnf(x : Float, n : Int) -> Float {
   return x
 }
 
+///|
 test "scalbnf" {
   fn assert_scalbnf_ulp!(input1, input2, expect) {
     assert_float_ulp!(expect, scalbnf(input1, input2), SCALBN_F_MAX_ULP)
   }
+
   assert_scalbnf_ulp!(1, 1, 2)
   assert_scalbnf_ulp!(3, 5, 96)
   assert_scalbnf_ulp!(-2, 1, -4)

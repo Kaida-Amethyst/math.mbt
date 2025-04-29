@@ -55,10 +55,12 @@ pub fn asinf(x : Float) -> Float {
   }
 }
 
+///|
 test "asinf" {
   fn assert_asinf_ulp!(input, expect) {
     assert_float_ulp!(expect, asinf(input), ASIN_F_MAX_ULP)
   }
+
   assert_asinf_ulp!(-1, -1.5707963705062866)
   assert_asinf_ulp!(1, 1.5707963705062866)
   assert_asinf_ulp!(0.5, 0.5235987901687622)

@@ -26,10 +26,12 @@ pub fn sinhf(x : Float) -> Float {
   h * k_expo2f(absx) * 2.0
 }
 
+///|
 test "sinhf" {
   fn assert_sinhf_ulp!(input, expect) {
     assert_float_ulp!(expect, sinhf(input), SINH_F_MAX_ULP)
   }
+
   assert_sinhf_ulp!(-1, -1.175201177597046)
   assert_sinhf_ulp!(1, 1.175201177597046)
   assert_sinhf_ulp!(8, 1490.4788818359375)

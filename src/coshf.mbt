@@ -27,10 +27,12 @@ pub fn coshf(x : Float) -> Float {
   k_expo2f(x)
 }
 
+///|
 test "coshf" {
   fn assert_coshf_ulp!(input, expect) {
     assert_float_ulp!(expect, coshf(input), COSH_F_MAX_ULP)
   }
+
   assert_coshf_ulp!(-1, 1.5430805683135986)
   assert_coshf_ulp!(1, 1.5430805683135986)
   assert_coshf_ulp!(8, 1490.4791259765625)

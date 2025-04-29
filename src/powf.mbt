@@ -306,10 +306,12 @@ pub fn powf(x : Float, y : Float) -> Float {
   sn * z
 }
 
+///|
 test "powf" {
   fn assert_powf_ulp!(input1, input2, expect) {
     assert_float_ulp!(expect, powf(input1, input2), POW_F_MAX_ULP)
   }
+
   assert_powf_ulp!(1, 1, 1)
   assert_powf_ulp!(3, 5, 243)
   assert_powf_ulp!(-2, 1, -2)
