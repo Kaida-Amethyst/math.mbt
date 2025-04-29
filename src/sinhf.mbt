@@ -1,4 +1,23 @@
-///|
+///| Compute hyperbolic sine function of a single-precision floating point number.
+///
+/// # Examples
+///
+/// ```moonbit
+/// assert_eq!(sinhf(-0.5), -0.5210953054937474)
+/// assert_eq!(sinhf(0.0), 0.0)
+/// assert_eq!(sinhf(0.5), 0.5210953054937474)
+/// assert_eq!(sinhf(1.0), 1.1752011936438014)
+/// ```
+///
+/// # Special Cases
+///
+/// 1. sinhf(NaN) = NaN
+/// 2. sinhf(+inf) = +inf
+/// 3. sinhf(-inf) = -inf
+///
+/// # Accuracy
+///
+/// 0 ulp.
 pub fn sinhf(x : Float) -> Float {
   let mut h : Float = 0.5
   let mut ix = x.reinterpret_as_uint()

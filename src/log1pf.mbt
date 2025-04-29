@@ -1,4 +1,21 @@
-///|
+///| `log1p(x)` computes `log(1+x)`
+///
+/// # Examples
+///
+/// ```moonbit
+/// assert_eq!(log1pf(0.1), 0.09531017980432487)
+/// assert_eq!(log1pf(1), 0.6931471805599453)
+/// assert_eq!(log1pf(-0.5), -0.6931471805599453)
+/// ```
+/// # Special Cases
+///
+/// 1. log1p(INF) is INF, log1p(NaN) is NaN;
+/// 2. log1p(-1) is -INF with signal;
+/// 3. log1p(NaN) is that NaN with no signal.
+///
+/// # Accuracy:
+///
+/// 0 ulp (unit in the last place).
 pub fn log1pf(x : Float) -> Float {
   let mut ui : UInt = x.reinterpret_as_uint()
   let mut f : Float = 0
@@ -16,9 +33,6 @@ pub fn log1pf(x : Float) -> Float {
       return (x - x) / 0.0
     }
     if (ix << 1) < (0x33800000U << 1) {
-      // if (ix & 0x7f800000) == 0 {
-      //     force_eval!(x * x);
-      // }
       return x
     }
     if ix <= 0xbe95f619 {
@@ -55,6 +69,9 @@ pub fn log1pf(x : Float) -> Float {
   let dk = k.to_float()
   s * (hfsq + r) + (dk * FLOAT_LN2_LO + c) - hfsq + f + dk * FLOAT_LN2_HI
 }
+
+///| `ln_1pf` is an alias for `log1pf`
+pub let ln_1pf : (Float) -> Float = log1pf
 
 ///|
 test "log1pf" {

@@ -1,4 +1,23 @@
-///|
+///| Compute hyperbolic cosine function of a double-precision floating point number.
+///
+/// # Examples
+///
+/// ```moonbit
+/// assert_eq!(coshf(0), 1)
+/// assert_eq!(coshf(1), 1.5430805683135986) 
+/// assert_eq!(coshf(2), 3.7621958255767822) 
+/// assert_eq!(coshf(3), 10.067661995777765)
+/// assert_eq!(coshf(-1), 1.5430805683135986)
+/// ```
+///
+/// # Special Cases
+///
+/// 1. coshf(x) is |x| if x is +INF, -INF, or NaN.
+/// 2. Only coshf(0)=1 is exact for finite x.
+///
+/// # Accuracy
+///
+/// 0 ulp.
 pub fn coshf(x : Float) -> Float {
   let mut x = x
   // |x| */

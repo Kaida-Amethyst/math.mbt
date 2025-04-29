@@ -1,7 +1,4 @@
 ///|
-const O_THRESHOLD : Float = 8.8721679688e+01 // 0x42b17180
-
-///|
 const INV_LN2 : Float = 1.4426950216e+00 // 0x3fb8aa3b
 //
 // Domain [-0.34568, 0.34568], range ~[-6.694e-10, 6.696e-10]:
@@ -9,13 +6,28 @@ const INV_LN2 : Float = 1.4426950216e+00 // 0x3fb8aa3b
 // Scaled coefficients: Qn_here = 2**n * Qn_for_q (see s_expm1.c):
 //
 
-///| Exponential, base *e*, of x-1 (Float)
+///| Computes the exponential of `x` minus one.
 ///
-/// Calculates the exponential of `x` and subtract 1, that is, *e* raised
-/// to the power `x` minus 1 (where *e* is the base of the natural
-/// system of logarithms, approximately 2.71828).
-/// The result is accurate even for small values of `x`,
-/// where using `exp(x)-1` would lose many significant digits.
+/// # Examples
+///
+/// ```moonbit
+/// assert_eq!(expm1f(1.0), 1.7182817459106445) 
+/// assert_eq!(expm1f(0.0), 0.0)
+/// assert_eq!(expm1f(-1.0), -0.6321205588285577)
+/// assert_eq!(expm1f(2.0), 6.38905609893065)
+/// ```
+///
+/// # Special cases
+///
+/// 1. expm1(INF) is INF
+/// 2. expm1(NaN) is NaN
+/// 3. expm1(-INF) is -1
+/// 4. for finite argument, only expm1(0) is exact.
+/// 5. if x > 7.09782712893383973096e+02 then expm1(x) overflows
+///
+/// # Accuracy
+///
+/// 0 ulp (unit in the last place).
 pub fn expm1f(x : Float) -> Float {
   let mut x = x
   let q1 : Float = -3.3333212137e-2 // -0x888868.0p-28

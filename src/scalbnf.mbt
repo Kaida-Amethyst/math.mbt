@@ -1,4 +1,11 @@
-///|
+///| Compute x * 2 **n where x is a double and n is an integer.
+/// # Introcution:
+///
+/// Compute x * 2 **n without computing 2 ** n.
+///
+/// # Accruacy:
+///
+/// 1 ulp (unit in the last place).
 pub fn scalbnf(x : Float, n : Int) -> Float {
   let mut y = x
   let mut n = n

@@ -1,8 +1,26 @@
-// asinh(x) = sign(x)*log(|x|+sqrt(x*x+1)) ~= x - x^3/6 + o(x^5) */
-///| Inverse hyperbolic sine (Float)
+///| Compute the inverse hyperbolic sine of `x` with single-precision floating-point.
 ///
-/// Calculates the inverse hyperbolic sine of `x`.
-/// Is defined as `sgn(x)*log(|x|+sqrt(x*x+1))`.
+/// Computes the inverse hyperbolic sine of `x`. The inverse hyperbolic sine is defined as:
+/// $$\text{asinh}(x) = \log(x + \sqrt{x^2 + 1})$$
+///
+/// # Examples
+///
+/// ```moonbit
+/// assert_eq!(asinhf(-1), -0.881373587019543)
+/// assert_eq!(asinhf(-2), -1.4436354751788103)
+/// assert_eq!(asinhf(1), 0.881373587019543)
+/// assert_eq!(asinhf(2), 1.4436354751788103)
+/// ```
+///
+/// # Special Cases
+///
+/// 1. asinhf(NaN) = NaN.
+/// 2. asinhf(±0) = ±0.
+/// 3. asinhf(±∞) = ±∞.
+///
+/// # Accuracy
+///
+/// 1 ulp (unit in the last place).
 pub fn asinhf(x : Float) -> Float {
   let u = x.reinterpret_as_uint()
   let i = u & 0x7fffffff

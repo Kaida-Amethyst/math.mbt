@@ -1,4 +1,24 @@
-///|
+///| Compute hyperbolic tangent function of a single-precision floating point number.
+///
+/// # Examples
+///
+/// ```moonbit
+/// assert_eq!(tanhf(-0.5), -0.46211713552474976) 
+/// assert_eq!(tanhf(0.5), 0.46211713552474976)
+/// assert_eq!(tanhf(0.0), 0.0)
+/// assert_eq!(tanhf(1), 0.7615941559557649)
+/// assert_eq!(tanhf(2), 0.9640275800758169)
+/// ```
+///
+/// # Special Cases
+///
+/// 1. tanhf(NaN) = NaN
+/// 2. tanhf(+inf) = 1
+/// 3. tanhf(-inf) = -1
+///
+/// # Accuracy
+///
+/// 2 ulp.
 pub fn tanhf(x : Float) -> Float {
   // x = |x| */
   let mut ix = x.reinterpret_as_uint()

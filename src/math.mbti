@@ -261,6 +261,8 @@ fn ln(Double) -> Double
 
 fn ln_1p(Double) -> Double
 
+fn ln_1pf(Float) -> Float
+
 fn ln_gamma(Double) -> Double
 
 fn log(Double) -> Double

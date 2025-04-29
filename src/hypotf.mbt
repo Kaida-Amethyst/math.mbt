@@ -5,6 +5,17 @@
 ///
 /// $$hypot(x) = \sqrt{x^2 + y^2}$$
 ///
+/// # Examples
+///
+/// ```moonbit
+/// assert_eq!(hypotf(3, 4), 5)
+/// assert_eq!(hypotf(6, 8), 10)
+/// assert_eq!(hypotf(5, 12), 13)
+/// assert_eq!(hypotf(7, 24), 25)
+/// assert_eq!(hypotf(3.14, -2.71), 4.147734642028809) 
+/// assert_eq!(hypotf(-3.14, 2.71), 4.147734642028809)
+/// ```
+///
 /// # Accuracy
 ///
 /// 2 ulps (units in the last place)

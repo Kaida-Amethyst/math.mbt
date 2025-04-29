@@ -1,7 +1,27 @@
 ///|
 const FLOAT_LN2 : Float = 0.693147180559945309417232121458176568
 
-///|
+///| Return the inverse hyperbolic cosine of x.
+///
+/// Returns the inverse hyperbolic cosine of `x`, defined as the value `y` such that `x = cosh(y)`.
+///
+/// # Examples
+///
+/// ```moonbit
+/// assert_eq!(acoshf(1.0), 0.0);
+/// assert_eq!(acoshf(2.0), 1.3169578969248166);
+/// assert_eq!(acoshf(3.0), 1.7627471740390859);
+/// assert_eq!(acoshf(4.0), 2.0634370688955608);
+/// ```
+///
+/// # Special cases
+///
+/// 1. acoshf(x) = NaN for all x < 1.
+/// 2. aooshf(NaN) = NaN.
+///
+/// # Accuracy
+///
+/// 1 ulp
 pub fn acoshf(x : Float) -> Float {
   let u = x.reinterpret_as_uint()
   let a = u & 0x7fffffffU
