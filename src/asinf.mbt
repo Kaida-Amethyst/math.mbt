@@ -17,8 +17,7 @@
 ///
 /// 1 ulp
 pub fn asinf(x : Float) -> Float {
-  let x1p120 = (0x3870000000000000UL).reinterpret_as_double()
-
+  let x1p120 = 0x3870000000000000UL.reinterpret_as_double()
   let pio2 : Double = 1.570796326794896558e+00
 
   // coefficients for R(x^2) */

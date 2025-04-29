@@ -135,6 +135,8 @@ fn clamp(Double, Double, Double) -> Double
 
 fn cos(Double) -> Double
 
+fn cosf(Float) -> Float
+
 fn cosh(Double) -> Double
 
 fn coshf(Float) -> Float
@@ -355,6 +357,8 @@ fn sincos(Double) -> (Double, Double)
 
 fn sincospi(Double) -> (Double, Double)
 
+fn sinf(Float) -> Float
+
 fn sinh(Double) -> Double
 
 fn sinhf(Float) -> Float
@@ -369,6 +373,8 @@ fn sqrtf(Float) -> Float
 
 fn tan(Double) -> Double
 
+fn tanf(Float) -> Float
+
 fn tanh(Double) -> Double
 
 fn tanhf(Float) -> Float
@@ -380,6 +386,10 @@ fn to_radians(Double) -> Double
 fn trigamma(Double) -> Double
 
 fn trunc(Double) -> Double
+
+fn ulp_error(Double, Double) -> Int64
+
+fn ulp_error_f32(Float, Float) -> Int
 
 fn y0(Double) -> Double
 

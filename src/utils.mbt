@@ -113,6 +113,7 @@ pub fn ulp_error(x : Double, y : Double) -> Int64 {
   abs_i64(diff)
 }
 
+///|
 pub fn ulp_error_f32(x : Float, y : Float) -> Int {
   let xisnan : Bool = x.is_nan()
   let yisnan : Bool = y.is_nan()

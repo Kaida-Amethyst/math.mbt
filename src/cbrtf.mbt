@@ -26,7 +26,6 @@ pub fn cbrtf(x : Float) -> Float {
   ui = ui & 0x80000000
   ui = ui | hx
 
-
   //
   // First step Newton iteration (solving t*t-x/t == 0) to 16 bits.  In
   // double precision so that its terms can be arranged for efficiency
