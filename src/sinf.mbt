@@ -34,6 +34,7 @@ test "sinf" {
   fn assert_sinf_ulp!(input, expect) {
     assert_float_ulp!(expect, sinf(input), SIN_F_MAX_ULP)
   }
+
   assert_sinf_ulp!(-1, -0.8414709568023682)
   assert_sinf_ulp!(1, 0.8414709568023682)
   assert_sinf_ulp!(8, 0.9893582463264465)

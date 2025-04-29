@@ -56,6 +56,7 @@ test "tanf" {
   fn assert_tanf_ulp!(input, expect) {
     assert_float_ulp!(expect, tanf(input), TAN_F_MAX_ULP)
   }
+
   assert_tanf_ulp!(-1, -1.5574077367782593)
   assert_tanf_ulp!(1, 1.5574077367782593)
   assert_tanf_ulp!(8, -6.799711227416992)

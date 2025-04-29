@@ -52,12 +52,10 @@ fn trig_reduce(x : Float, switch_over : Float) -> (Float, Int) {
     lo = (lo << exp) | (tp >> (32 - exp))
   }
   let phi = 0U
-  let l = ix * lo
-  let h = mulh(ix, lo)
+  let (h, l) = mul(ix, lo)
   let plo = phi + l
   let phi = h + (plo < l).to_uint()
-  let l = ix * mi
-  let h = mulh(ix, mi)
+  let (h, l) = mul(ix, mi)
   let mut plo = phi + l
   let phi = h + (plo < l).to_uint()
   let l = ix * hi
