@@ -110,7 +110,7 @@ fn trig_reduce(x: Float, switch_over: Float) -> (Float, Int) {
     return (r, q);
  }
 
-fn sinf_poly_cody_waite(x: Float) -> Float {
+fn sinf_poly(x: Float) -> Float {
     let s = x * x;
     let mut r = (0x3640_5000).reinterpret_as_float();
     r = r * s - (0x3950_3486).reinterpret_as_float();
@@ -121,7 +121,7 @@ fn sinf_poly_cody_waite(x: Float) -> Float {
     r
 }
 
-fn cosf_poly_cody_waite(x: Float) -> Float {
+fn cosf_poly(x: Float) -> Float {
     let s = x * x;
     let mut r = (0x37cd_4000).reinterpret_as_float();
     r = r * s - (0x3ab6_077d).reinterpret_as_float();
@@ -131,8 +131,8 @@ fn cosf_poly_cody_waite(x: Float) -> Float {
     r
 }
 
-fn sin_cos_core_cody_waite(x: Float, q: Int) -> Float {
-    let mut r = if (q & 1) != 0 { cosf_poly_cody_waite(x) } else { sinf_poly_cody_waite(x) };
+fn sin_cos_core(x: Float, q: Int) -> Float {
+    let mut r = if (q & 1) != 0 { cosf_poly(x) } else { sinf_poly(x) };
     if (q & 2) != 0 {
         r = -r;
     }

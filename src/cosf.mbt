@@ -1,6 +1,6 @@
 
 ///|
-pub fn cosf_cody_waite(x: Float) -> Float {
+pub fn cosf(x: Float) -> Float {
   if x.is_nan() || x.is_inf() {
     return @float.not_a_number
   }
@@ -10,5 +10,5 @@ pub fn cosf_cody_waite(x: Float) -> Float {
   }
 
   let (x, q) = trig_reduce(x, COS_SWITCHOVER);
-  sin_cos_core_cody_waite(x, q + 1)
+  sin_cos_core(x, q + 1)
 }
