@@ -22,25 +22,23 @@ pub fn log1pf(x : Float) -> Float {
   let mut c : Float = 0
   let mut iu : UInt = 0
   let one : Float = 1.0
-  let two : Float = 2.0
-  let ix = ui
   let mut k = 1
-  if ix < 0x3ed413d0 || (ix >> 31) > 0 {
-    if ix >= 0xbf800000 {
+  if ui < 0x3ed413d0 || (ui >> 31) > 0 {
+    if ui >= 0xbf800000 {
       if x == -1.0 {
         return x / 0.0
       }
       return (x - x) / 0.0
     }
-    if (ix << 1) < (0x33800000U << 1) {
+    if (ui << 1) < (0x33800000U << 1) {
       return x
     }
-    if ix <= 0xbe95f619 {
+    if ui <= 0xbe95f619 {
       k = 0
       c = 0.0
       f = x
     }
-  } else if ix >= 0x7f800000 {
+  } else if ui >= 0x7f800000 {
     return x
   }
   if k > 0 {
@@ -59,7 +57,7 @@ pub fn log1pf(x : Float) -> Float {
     ui = iu
     f = ui.reinterpret_as_float() - 1.0
   }
-  let s = f / (two + f)
+  let s = f / (f + 2.0)
   let z = s * s
   let w = z * z
   let t1 = w * (LG2_F + w * LG4_F)

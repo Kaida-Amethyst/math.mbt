@@ -121,6 +121,9 @@ pub fn ulp_error_f32(x : Float, y : Float) -> Int {
   let yispinf : Bool = y.is_inf() && y > 0
   let xisninf : Bool = x.is_inf() && x < 0
   let yisninf : Bool = y.is_inf() && y < 0
+  if x == 0 && y == 0 { // -0 and +0 are equal
+    return 0
+  }
   if xisnan && yisnan {
     return 0
   }

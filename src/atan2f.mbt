@@ -63,8 +63,6 @@ pub fn atan2f(y : Float, x : Float) -> Float {
       }
     }
   }
-  //println("ix = \{ix.to_string(radix=16)}, iy = \{iy.to_string(radix=16)}")
-  //println("ix + (26 << 23) = \{(ix + (26 << 23)).to_string(radix=16)}")
   if ix + (26U << 23) < iy || iy == 0x7f800000 {
     let res = if (m & 1) != 0 { -pi / 2 } else { pi / 2 }
     return res
