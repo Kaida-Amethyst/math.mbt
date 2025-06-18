@@ -49,7 +49,7 @@ test "sincos" {
     let sin_x = sin(x)
     let cos_x = cos(x)
     let (_sin_x, _cos_x) = sincos(x)
-    assert_eq!(_sin_x, sin_x)
-    assert_eq!(_cos_x, cos_x)
+    assert_eq(_sin_x, sin_x)
+    assert_eq(_cos_x, cos_x)
   }
 }
