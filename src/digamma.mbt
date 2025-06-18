@@ -9,9 +9,9 @@
 /// # Examples
 ///
 /// ```moonbit
-/// assert_eq!(digamma(1.0), -0.5772156649015328);
-/// assert_eq!(digamma(2.0), 0.422784335098467);
-/// assert_eq!(digamma(-0.5), 0.036489973978576895);
+/// assert_eq(digamma(1.0), -0.5772156649015328);
+/// assert_eq(digamma(2.0), 0.422784335098467);
+/// assert_eq(digamma(-0.5), 0.036489973978576895);
 /// ```
 ///
 /// # Special Cases

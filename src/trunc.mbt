@@ -3,11 +3,11 @@
 /// # Examples
 ///
 /// ```moonbit
-/// assert_eq!(trunc(2.5), 2.0)
-/// assert_eq!(trunc(3.14), 3.0)
-/// assert_eq!(trunc(-3.14), -3.0)
-/// assert_eq!(trunc(5.0), 5.0)
-/// assert_eq!(trunc(-5.0), -5.0)
+/// assert_eq(trunc(2.5), 2.0)
+/// assert_eq(trunc(3.14), 3.0)
+/// assert_eq(trunc(-3.14), -3.0)
+/// assert_eq(trunc(5.0), 5.0)
+/// assert_eq(trunc(-5.0), -5.0)
 /// ```
 ///
 /// # Special Cases

@@ -24,12 +24,12 @@ fn tanf_poly(x : Float, odd : Bool) -> Float {
 /// # Examples
 ///
 /// ```moonbit
-/// assert_eq!(tanf(-1.0), -1.5574077246549023)
-/// assert_eq!(tanf(3.1415926), -1.5099580252808664e-7) 
-/// assert_eq!(tanf(1.570796326), -22877334)
-/// assert_eq!(tanf(0.7853981), 0.9999998807907104) 
-/// assert_eq!(tanf(0.0), 0)
-/// assert_eq!(tanf(10000), 0.3209711346238147)
+/// assert_eq(tanf(-1.0), -1.5574077246549023)
+/// assert_eq(tanf(3.1415926), -1.5099580252808664e-7) 
+/// assert_eq(tanf(1.570796326), -22877334)
+/// assert_eq(tanf(0.7853981), 0.9999998807907104) 
+/// assert_eq(tanf(0.0), 0)
+/// assert_eq(tanf(10000), 0.3209711346238147)
 /// ```
 ///
 /// # Special Cases

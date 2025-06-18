@@ -7,8 +7,8 @@
 /// let (sin_x, cos_x) = sincos(x)
 /// let sin_x_directly = sin(x)
 /// let cos_x_directly = cos(x)
-/// assert_eq!(sin_x, sin_x_directly)
-/// assert_eq!(cos_x, cos_x_directly)
+/// assert_eq(sin_x, sin_x_directly)
+/// assert_eq(cos_x, cos_x_directly)
 /// ```
 ///
 /// # Special Cases

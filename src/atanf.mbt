@@ -3,13 +3,13 @@
 /// # Examples
 ///
 /// ```moonbit
-/// assert_eq!(atanf(0), 0)
-/// assert_eq!(atanf(1), 0.7853981633974483)
-/// assert_eq!(atanf(2), 1.1071487177940904)
-/// assert_eq!(atanf(-1),-0.7853981633974483)
-/// assert_eq!(atanf(-2),-1.1071487177940904)
-/// assert_eq!(atanf(@float.infinity), 1.570796251296997)
-/// assert_eq!(atanf(@float.neg_infinity), -1.570796251296997)
+/// assert_eq(atanf(0), 0)
+/// assert_eq(atanf(1), 0.7853981633974483)
+/// assert_eq(atanf(2), 1.1071487177940904)
+/// assert_eq(atanf(-1),-0.7853981633974483)
+/// assert_eq(atanf(-2),-1.1071487177940904)
+/// assert_eq(atanf(@float.infinity), 1.570796251296997)
+/// assert_eq(atanf(@float.neg_infinity), -1.570796251296997)
 /// ```
 ///
 /// # Accuracy

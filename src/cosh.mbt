@@ -22,11 +22,11 @@
 /// # Examples
 ///
 /// ```moonbit
-/// assert_eq!(cosh(0), 1)
-/// assert_eq!(cosh(1), 1.5430806348152437)
-/// assert_eq!(cosh(2), 3.7621956910836314)
-/// assert_eq!(cosh(3), 10.067661995777765)
-/// assert_eq!(cosh(-1), 1.5430806348152437)
+/// assert_eq(cosh(0), 1)
+/// assert_eq(cosh(1), 1.5430806348152437)
+/// assert_eq(cosh(2), 3.7621956910836314)
+/// assert_eq(cosh(3), 10.067661995777765)
+/// assert_eq(cosh(-1), 1.5430806348152437)
 /// ```
 ///
 /// # Special Cases

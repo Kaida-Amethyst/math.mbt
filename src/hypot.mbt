@@ -8,12 +8,12 @@
 /// # Examples
 ///
 /// ```moonbit
-/// assert_eq!(hypot(3, 4), 5)
-/// assert_eq!(hypot(6, 8), 10)
-/// assert_eq!(hypot(5, 12), 13)
-/// assert_eq!(hypot(7, 24), 25)
-/// assert_eq!(hypot(3.14, -2.71), 4.147734321289154)
-/// assert_eq!(hypot(-3.14, 2.71), 4.147734321289154)
+/// assert_eq(hypot(3, 4), 5)
+/// assert_eq(hypot(6, 8), 10)
+/// assert_eq(hypot(5, 12), 13)
+/// assert_eq(hypot(7, 24), 25)
+/// assert_eq(hypot(3.14, -2.71), 4.147734321289154)
+/// assert_eq(hypot(-3.14, 2.71), 4.147734321289154)
 /// ```
 ///
 /// # Accuracy

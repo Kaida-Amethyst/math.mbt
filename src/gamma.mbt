@@ -3,14 +3,14 @@
 /// # Examples
 ///
 /// ```moonbit
-/// assert_eq!(gamma(1.0), 1.0)
-/// assert_eq!(gamma(2.0), 1.0)
-/// assert_eq!(gamma(3.0), 2.0)
-/// assert_eq!(gamma(6.0), 120.0)
-/// assert_eq!(gamma(10.0), 362880.0)
-/// assert_eq!(gamma(-0.5), -3.5449077018110318)
-/// assert_eq!(gamma(0.5), 1.7724538509055159)
-/// assert_eq!(gamma(9.8), 231791.87991967567)
+/// assert_eq(gamma(1.0), 1.0)
+/// assert_eq(gamma(2.0), 1.0)
+/// assert_eq(gamma(3.0), 2.0)
+/// assert_eq(gamma(6.0), 120.0)
+/// assert_eq(gamma(10.0), 362880.0)
+/// assert_eq(gamma(-0.5), -3.5449077018110318)
+/// assert_eq(gamma(0.5), 1.7724538509055159)
+/// assert_eq(gamma(9.8), 231791.87991967567)
 /// ```
 ///
 /// # Special Cases

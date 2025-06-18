@@ -8,12 +8,12 @@
 /// # Examples
 ///
 /// ```
-/// let x = 1.4; assert_eq!(roundeven(x), 1.0);
-/// let x = 1.5; assert_eq!(roundeven(x), 2.0);
-/// let x = 1.6; assert_eq!(roundeven(x), 2.0);
-/// let x = 2.4; assert_eq!(roundeven(x), 2.0);
-/// let x = 2.5; assert_eq!(roundeven(x), 2.0);
-/// let x = 2.6; assert_eq!(roundeven(x), 3.0);
+/// let x = 1.4; assert_eq(roundeven(x), 1.0);
+/// let x = 1.5; assert_eq(roundeven(x), 2.0);
+/// let x = 1.6; assert_eq(roundeven(x), 2.0);
+/// let x = 2.4; assert_eq(roundeven(x), 2.0);
+/// let x = 2.5; assert_eq(roundeven(x), 2.0);
+/// let x = 2.6; assert_eq(roundeven(x), 3.0);
 /// ```
 pub fn roundeven(x : Double) -> Double {
   if isnan(x) {

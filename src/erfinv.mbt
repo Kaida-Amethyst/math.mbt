@@ -3,11 +3,11 @@
 /// # Examples
 ///
 /// ```moonbit
-/// assert_eq!(erfinv(0.5), 0.47693627620446977)
-/// assert_eq!(erfinv(-0.5), -0.47693627620446977)
-/// assert_eq!(erfinv(0), 0)
-/// assert_eq!(erfinv(1), @double.infinity)
-/// assert_eq!(erfinv(-1), @double.neg_infinity)
+/// assert_eq(erfinv(0.5), 0.47693627620446977)
+/// assert_eq(erfinv(-0.5), -0.47693627620446977)
+/// assert_eq(erfinv(0), 0)
+/// assert_eq(erfinv(1), @double.infinity)
+/// assert_eq(erfinv(-1), @double.neg_infinity)
 /// ```
 ///
 /// # Accuracy

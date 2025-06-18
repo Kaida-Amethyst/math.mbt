@@ -3,11 +3,11 @@
 /// # Examples
 ///
 /// ```moonbit
-/// assert_eq!(cospi(0), 1);
-/// assert_eq!(cospi(1), -1);
-/// assert_eq!(cospi(0.5), 0);
-/// assert_eq!(cospi(-1), -1);
-/// assert_eq!(cospi(-0.5), 0);
+/// assert_eq(cospi(0), 1);
+/// assert_eq(cospi(1), -1);
+/// assert_eq(cospi(0.5), 0);
+/// assert_eq(cospi(-1), -1);
+/// assert_eq(cospi(-0.5), 0);
 /// ```
 /// 
 /// # Accuracy

@@ -18,10 +18,10 @@
 /// ```
 /// let a: Double = 7.0;
 /// let b = 4.0;
-/// assert_eq!(rem_euclid(a, b), 3.0);
-/// assert_eq!(rem_euclid(-a, b), 1.0);
-/// assert_eq!(rem_euclid(a, -b), 3.0);
-/// assert_eq!(rem_euclid(-a, -b), 1.0);
+/// assert_eq(rem_euclid(a, b), 3.0);
+/// assert_eq(rem_euclid(-a, b), 1.0);
+/// assert_eq(rem_euclid(a, -b), 3.0);
+/// assert_eq(rem_euclid(-a, -b), 1.0);
 /// ```
 pub fn rem_euclid(x : Double, y : Double) -> Double {
   let r = x % y

@@ -15,9 +15,9 @@
 /// # Examples
 ///
 /// ```
-/// assert_eq!(clamp(-3.0, -2.0, 1.0), -2.0);
-/// assert_eq!(clamp(0.0, -2.0, 1.0), 0.0);
-/// assert_eq!(clamp(2.0, -2.0, 1.0), 1.0);
+/// assert_eq(clamp(-3.0, -2.0, 1.0), -2.0);
+/// assert_eq(clamp(0.0, -2.0, 1.0), 0.0);
+/// assert_eq(clamp(2.0, -2.0, 1.0), 1.0);
 /// ```
 pub fn clamp(x : Double, min : Double, max : Double) -> Double {
   let (min, max) = if min > max { (max, min) } else { (min, max) }

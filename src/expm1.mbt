@@ -15,10 +15,10 @@
 /// # Examples
 ///
 /// ```moonbit
-/// assert_eq!(expm1(1.0), 1.718281828459045)
-/// assert_eq!(expm1(0.0), 0.0)
-/// assert_eq!(expm1(-1.0), -0.6321205588285577)
-/// assert_eq!(expm1(2.0), 6.38905609893065)
+/// assert_eq(expm1(1.0), 1.718281828459045)
+/// assert_eq(expm1(0.0), 0.0)
+/// assert_eq(expm1(-1.0), -0.6321205588285577)
+/// assert_eq(expm1(2.0), 6.38905609893065)
 /// ```
 pub fn expm1(x : Double) -> Double {
   if x.is_nan() {

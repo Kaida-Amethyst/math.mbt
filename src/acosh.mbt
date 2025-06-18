@@ -18,10 +18,10 @@
 /// # Examples
 ///
 /// ```moonbit
-/// assert_eq!(acosh(1.0), 0.0);
-/// assert_eq!(acosh(2.0), 1.3169578969248166);
-/// assert_eq!(acosh(3.0), 1.7627471740390859);
-/// assert_eq!(acosh(4.0), 2.0634370688955608);
+/// assert_eq(acosh(1.0), 0.0);
+/// assert_eq(acosh(2.0), 1.3169578969248166);
+/// assert_eq(acosh(3.0), 1.7627471740390859);
+/// assert_eq(acosh(4.0), 2.0634370688955608);
 /// ```
 ///
 /// # Special cases

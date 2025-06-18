@@ -3,10 +3,10 @@
 /// # Examples
 ///
 /// ```moonbit
-/// assert_eq!(log2(0.1), -3.321928094887362)
-/// assert_eq!(log2(1), 0)
-/// assert_eq!(log2(2), 1)
-/// assert_eq!(log2(3), 1.584962500721156)
+/// assert_eq(log2(0.1), -3.321928094887362)
+/// assert_eq(log2(1), 0)
+/// assert_eq(log2(2), 1)
+/// assert_eq(log2(3), 1.584962500721156)
 /// ```
 ///
 /// # Special Cases:

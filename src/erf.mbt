@@ -3,10 +3,10 @@
 /// # Examples
 ///
 /// ```moonbit
-/// assert_eq!(erf(-0.8), -0.7421009647076605)
-/// assert_eq!(erf(0), 0)
-/// assert_eq!(erf(0.1), 0.1124629160182849)
-/// assert_eq!(erf(1), 0.8427007929497149)
+/// assert_eq(erf(-0.8), -0.7421009647076605)
+/// assert_eq(erf(0), 0)
+/// assert_eq(erf(0.1), 0.1124629160182849)
+/// assert_eq(erf(1), 0.8427007929497149)
 /// ```
 ///
 /// # Accuracy

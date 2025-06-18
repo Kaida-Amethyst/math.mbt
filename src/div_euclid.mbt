@@ -14,10 +14,10 @@
 // ```moonbit
 // let a : Double = 7.0
 // let b : Double = 4.0
-// assert_eq!(div_euclid(a, b), 1.0)   // 7.0 >= 4.0 * 1.0
-// assert_eq!(div_euclid(-a, b), -2.0) // -7.0 >= 4.0 * -2.0
-// assert_eq!(div_euclid(a, -b), -2.0) // 7.0 >= -4.0 * -2.0
-// assert_eq!(div_euclid(-a, -b), 1.0) // -7.0 >= -4.0 * 1.0
+// assert_eq(div_euclid(a, b), 1.0)   // 7.0 >= 4.0 * 1.0
+// assert_eq(div_euclid(-a, b), -2.0) // -7.0 >= 4.0 * -2.0
+// assert_eq(div_euclid(a, -b), -2.0) // 7.0 >= -4.0 * -2.0
+// assert_eq(div_euclid(-a, -b), 1.0) // -7.0 >= -4.0 * 1.0
 // ```
 pub fn div_euclid(x : Double, y : Double) -> Double {
   let q = trunc(x / y)

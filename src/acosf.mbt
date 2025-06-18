@@ -3,11 +3,11 @@
 /// # Examples
 ///
 /// ```moonbit
-/// assert_eq!(acosf(-0.5), 2.0943951023931957)
-/// assert_eq!(acosf(0.5), 1.0471975511965979)
-/// assert_eq!(acosf(1), 0)
-/// assert_eq!(acosf(0), 1.570796251296997)
-/// assert_eq!(acosf(-1), 3.141592502593994)
+/// assert_eq(acosf(-0.5), 2.0943951023931957)
+/// assert_eq(acosf(0.5), 1.0471975511965979)
+/// assert_eq(acosf(1), 0)
+/// assert_eq(acosf(0), 1.570796251296997)
+/// assert_eq(acosf(-1), 3.141592502593994)
 /// ```
 ///
 /// # Accruacy

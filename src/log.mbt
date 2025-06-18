@@ -42,9 +42,9 @@
 /// # Examples
 ///
 /// ```moonbit
-/// assert_eq!(log(0.1), -2.3025850929940455)
-/// assert_eq!(log(1), 0)
-/// assert_eq!(log(2), 0.6931471805599453)
+/// assert_eq(log(0.1), -2.3025850929940455)
+/// assert_eq(log(1), 0)
+/// assert_eq(log(2), 0.6931471805599453)
 /// ```
 /// 
 /// # Special cases:

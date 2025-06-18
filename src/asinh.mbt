@@ -16,10 +16,10 @@
 /// # Examples
 ///
 /// ```moonbit
-/// assert_eq!(asinh(-1), -0.881373587019543)
-/// assert_eq!(asinh(-2), -1.4436354751788103)
-/// assert_eq!(asinh(1), 0.881373587019543)
-/// assert_eq!(asinh(2), 1.4436354751788103)
+/// assert_eq(asinh(-1), -0.881373587019543)
+/// assert_eq(asinh(-2), -1.4436354751788103)
+/// assert_eq(asinh(1), 0.881373587019543)
+/// assert_eq(asinh(2), 1.4436354751788103)
 /// ```
 ///
 /// # Special Cases

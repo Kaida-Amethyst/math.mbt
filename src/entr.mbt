@@ -7,9 +7,9 @@
 /// # Examples
 ///
 /// ```moonbit
-/// assert_eq!(entr(0.0), 0.0);
-/// assert_eq!(entr(0.5), 0.34657359027997264);
-/// assert_eq!(entr(1.0), 0.0);
+/// assert_eq(entr(0.0), 0.0);
+/// assert_eq(entr(0.5), 0.34657359027997264);
+/// assert_eq(entr(1.0), 0.0);
 /// ```
 ///
 /// # Accuracy
