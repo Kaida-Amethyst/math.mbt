@@ -3,11 +3,11 @@
 /// # Examples
 ///
 /// ```moonbit
-/// assert_eq!(atanh(0.0), 0.0);
-/// assert_eq!(atanh(0.5), 0.5493061443340548);
-/// assert_eq!(atanh(1.0), @double.infinity);
-/// assert_eq!(atanh(-0.5), -0.5493061443340548);
-/// assert_eq!(atanh(-1.0), @double.neg_infinity);
+/// assert_eq(atanh(0.0), 0.0);
+/// assert_eq(atanh(0.5), 0.5493061443340548);
+/// assert_eq(atanh(1.0), @double.infinity);
+/// assert_eq(atanh(-0.5), -0.5493061443340548);
+/// assert_eq(atanh(-1.0), @double.neg_infinity);
 /// ```
 ///
 /// # Accuracy:
@@ -51,37 +51,37 @@ pub fn atanh(x : Double) -> Double {
 
 ///|
 test "atanh" {
-  fn assert_atanh_ulp!(input, expect) {
-    assert_ulp!(expect, atanh(input), ATANH_MAX_ULP)
+  fn assert_atanh_ulp(input, expect) raise {
+    assert_ulp(expect, atanh(input), ATANH_MAX_ULP)
   }
 
-  assert_atanh_ulp!(-0.8, -1.0986122886681098)
-  assert_atanh_ulp!(-0.7, -0.8673005276940531)
-  assert_atanh_ulp!(-0.6, -0.6931471805599453)
-  assert_atanh_ulp!(-0.5, -0.5493061443340548)
-  assert_atanh_ulp!(-0.4, -0.42364893019360184)
-  assert_atanh_ulp!(-0.3, -0.30951960420311175)
-  assert_atanh_ulp!(-0.2, -0.2027325540540822)
-  assert_atanh_ulp!(-0.1, -0.10033534773107558)
-  assert_atanh_ulp!(-0, -0)
-  assert_atanh_ulp!(-3.141592653589793, @double.not_a_number)
-  assert_atanh_ulp!(-1.5707963267948966, @double.not_a_number)
-  assert_atanh_ulp!(-0.7853981633974483, -1.0593061708232432)
-  assert_atanh_ulp!(0, 0)
-  assert_atanh_ulp!(0.1, 0.10033534773107558)
-  assert_atanh_ulp!(0.2, 0.2027325540540822)
-  assert_atanh_ulp!(0.3, 0.30951960420311175)
-  assert_atanh_ulp!(0.4, 0.42364893019360184)
-  assert_atanh_ulp!(0.5, 0.5493061443340548)
-  assert_atanh_ulp!(0.6, 0.6931471805599453)
-  assert_atanh_ulp!(0.7, 0.8673005276940531)
-  assert_atanh_ulp!(0.8, 1.0986122886681098)
-  assert_atanh_ulp!(0.9, 1.4722194895832204)
-  assert_atanh_ulp!(1, @double.infinity)
-  assert_atanh_ulp!(3.141592653589793, @double.not_a_number)
-  assert_atanh_ulp!(1.5707963267948966, @double.not_a_number)
-  assert_atanh_ulp!(0.7853981633974483, 1.0593061708232432)
-  assert_atanh_ulp!(@double.not_a_number, @double.not_a_number)
-  assert_atanh_ulp!(@double.infinity, @double.not_a_number)
-  assert_atanh_ulp!(@double.neg_infinity, @double.not_a_number)
+  assert_atanh_ulp(-0.8, -1.0986122886681098)
+  assert_atanh_ulp(-0.7, -0.8673005276940531)
+  assert_atanh_ulp(-0.6, -0.6931471805599453)
+  assert_atanh_ulp(-0.5, -0.5493061443340548)
+  assert_atanh_ulp(-0.4, -0.42364893019360184)
+  assert_atanh_ulp(-0.3, -0.30951960420311175)
+  assert_atanh_ulp(-0.2, -0.2027325540540822)
+  assert_atanh_ulp(-0.1, -0.10033534773107558)
+  assert_atanh_ulp(-0, -0)
+  assert_atanh_ulp(-3.141592653589793, @double.not_a_number)
+  assert_atanh_ulp(-1.5707963267948966, @double.not_a_number)
+  assert_atanh_ulp(-0.7853981633974483, -1.0593061708232432)
+  assert_atanh_ulp(0, 0)
+  assert_atanh_ulp(0.1, 0.10033534773107558)
+  assert_atanh_ulp(0.2, 0.2027325540540822)
+  assert_atanh_ulp(0.3, 0.30951960420311175)
+  assert_atanh_ulp(0.4, 0.42364893019360184)
+  assert_atanh_ulp(0.5, 0.5493061443340548)
+  assert_atanh_ulp(0.6, 0.6931471805599453)
+  assert_atanh_ulp(0.7, 0.8673005276940531)
+  assert_atanh_ulp(0.8, 1.0986122886681098)
+  assert_atanh_ulp(0.9, 1.4722194895832204)
+  assert_atanh_ulp(1, @double.infinity)
+  assert_atanh_ulp(3.141592653589793, @double.not_a_number)
+  assert_atanh_ulp(1.5707963267948966, @double.not_a_number)
+  assert_atanh_ulp(0.7853981633974483, 1.0593061708232432)
+  assert_atanh_ulp(@double.not_a_number, @double.not_a_number)
+  assert_atanh_ulp(@double.infinity, @double.not_a_number)
+  assert_atanh_ulp(@double.neg_infinity, @double.not_a_number)
 }

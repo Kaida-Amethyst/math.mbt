@@ -3,9 +3,9 @@
 /// # Examples
 ///
 /// ```moonbit
-/// assert_eq!(asinf(0), 0)
-/// assert_eq!(asinf(1), 1.5707963267948966)
-/// assert_eq!(asinf(-1), -1.5707963267948966)
+/// assert_eq(asinf(0), 0)
+/// assert_eq(asinf(1), 1.5707963267948966)
+/// assert_eq(asinf(-1), -1.5707963267948966)
 /// ```
 ///
 /// # Special Cases
@@ -48,7 +48,7 @@ pub fn asinf(x : Float) -> Float {
   let z = ((1.0 : Float) - x.abs()) * 0.5
   let s = z.to_double().sqrt()
   let x = (pio2 - 2.0 * (s + s * r(z).to_double())).to_float()
-  if (hx >> 31) != 0 {
+  if hx >> 31 != 0 {
     -x
   } else {
     x
@@ -57,37 +57,37 @@ pub fn asinf(x : Float) -> Float {
 
 ///|
 test "asinf" {
-  fn assert_asinf_ulp!(input, expect) {
-    assert_float_ulp!(expect, asinf(input), ASIN_F_MAX_ULP)
+  fn assert_asinf_ulp(input, expect) raise {
+    assert_float_ulp(expect, asinf(input), ASIN_F_MAX_ULP)
   }
 
-  assert_asinf_ulp!(-1, -1.5707963705062866)
-  assert_asinf_ulp!(1, 1.5707963705062866)
-  assert_asinf_ulp!(0.5, 0.5235987901687622)
-  assert_asinf_ulp!(-0.5, -0.5235987901687622)
-  assert_asinf_ulp!(0.25, 0.252680242061615)
-  assert_asinf_ulp!(-0.25, -0.252680242061615)
-  assert_asinf_ulp!(-0.125, -0.12532782554626465)
-  assert_asinf_ulp!(0.125, 0.12532782554626465)
-  assert_asinf_ulp!(0.0625, 0.06254076212644577)
-  assert_asinf_ulp!(-0.0625, -0.06254076212644577)
-  assert_asinf_ulp!(0.625, 0.6751315593719482)
-  assert_asinf_ulp!(-0.625, -0.6751315593719482)
-  assert_asinf_ulp!(0.75, 0.8480620980262756)
-  assert_asinf_ulp!(-0.75, -0.8480620980262756)
-  assert_asinf_ulp!(0.875, 1.065435767173767)
-  assert_asinf_ulp!(-0.875, -1.065435767173767)
-  assert_asinf_ulp!(0.9375, 1.2153751850128174)
-  assert_asinf_ulp!(-0.9375, -1.2153751850128174)
-  assert_asinf_ulp!(0.03125, 0.0312550887465477)
-  assert_asinf_ulp!(-0.03125, -0.0312550887465477)
-  assert_asinf_ulp!(0.015625, 0.015625635161995888)
-  assert_asinf_ulp!(-0.015625, -0.015625635161995888)
-  assert_asinf_ulp!(0.0078125, 0.007812579162418842)
-  assert_asinf_ulp!(-0.0078125, -0.007812579162418842)
-  assert_asinf_ulp!(10, @float.not_a_number)
-  assert_asinf_ulp!(-10, @float.not_a_number)
-  assert_asinf_ulp!(@float.not_a_number, @float.not_a_number)
-  assert_asinf_ulp!(@float.infinity, @float.not_a_number)
-  assert_asinf_ulp!(@float.neg_infinity, @float.not_a_number)
+  assert_asinf_ulp(-1, -1.5707963705062866)
+  assert_asinf_ulp(1, 1.5707963705062866)
+  assert_asinf_ulp(0.5, 0.5235987901687622)
+  assert_asinf_ulp(-0.5, -0.5235987901687622)
+  assert_asinf_ulp(0.25, 0.252680242061615)
+  assert_asinf_ulp(-0.25, -0.252680242061615)
+  assert_asinf_ulp(-0.125, -0.12532782554626465)
+  assert_asinf_ulp(0.125, 0.12532782554626465)
+  assert_asinf_ulp(0.0625, 0.06254076212644577)
+  assert_asinf_ulp(-0.0625, -0.06254076212644577)
+  assert_asinf_ulp(0.625, 0.6751315593719482)
+  assert_asinf_ulp(-0.625, -0.6751315593719482)
+  assert_asinf_ulp(0.75, 0.8480620980262756)
+  assert_asinf_ulp(-0.75, -0.8480620980262756)
+  assert_asinf_ulp(0.875, 1.065435767173767)
+  assert_asinf_ulp(-0.875, -1.065435767173767)
+  assert_asinf_ulp(0.9375, 1.2153751850128174)
+  assert_asinf_ulp(-0.9375, -1.2153751850128174)
+  assert_asinf_ulp(0.03125, 0.0312550887465477)
+  assert_asinf_ulp(-0.03125, -0.0312550887465477)
+  assert_asinf_ulp(0.015625, 0.015625635161995888)
+  assert_asinf_ulp(-0.015625, -0.015625635161995888)
+  assert_asinf_ulp(0.0078125, 0.007812579162418842)
+  assert_asinf_ulp(-0.0078125, -0.007812579162418842)
+  assert_asinf_ulp(10, @float.not_a_number)
+  assert_asinf_ulp(-10, @float.not_a_number)
+  assert_asinf_ulp(@float.not_a_number, @float.not_a_number)
+  assert_asinf_ulp(@float.infinity, @float.not_a_number)
+  assert_asinf_ulp(@float.neg_infinity, @float.not_a_number)
 }

@@ -12,12 +12,12 @@ pub fn log10f(x : Float) -> Float {
   let mut ui : UInt = x.reinterpret_as_uint()
   let mut ix : UInt = ui
   let mut k : Int = 0
-  if ix < 0x00800000 || (ix >> 31) > 0 {
+  if ix < 0x00800000 || ix >> 31 > 0 {
     // x < 2**-126  */
-    if (ix << 1) == 0 {
+    if ix << 1 == 0 {
       return -recipf(x * x)
     } // log(+-0)=-inf */
-    if (ix >> 31) > 0 {
+    if ix >> 31 > 0 {
       return (x - x) / 0.0
     } // log(-#) = NaN */
     // subnormal number, scale up x */

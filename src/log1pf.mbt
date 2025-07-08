@@ -3,9 +3,9 @@
 /// # Examples
 ///
 /// ```moonbit
-/// assert_eq!(log1pf(0.1), 0.09531017980432487)
-/// assert_eq!(log1pf(1), 0.6931471805599453)
-/// assert_eq!(log1pf(-0.5), -0.6931471805599453)
+/// assert_eq(log1pf(0.1), 0.09531017980432487)
+/// assert_eq(log1pf(1), 0.6931471805599453)
+/// assert_eq(log1pf(-0.5), -0.6931471805599453)
 /// ```
 /// # Special Cases
 ///
@@ -23,14 +23,14 @@ pub fn log1pf(x : Float) -> Float {
   let mut iu : UInt = 0
   let one : Float = 1.0
   let mut k = 1
-  if ui < 0x3ed413d0 || (ui >> 31) > 0 {
+  if ui < 0x3ed413d0 || ui >> 31 > 0 {
     if ui >= 0xbf800000 {
       if x == -1.0 {
         return x / 0.0
       }
       return (x - x) / 0.0
     }
-    if (ui << 1) < (0x33800000U << 1) {
+    if ui << 1 < 0x33800000U << 1 {
       return x
     }
     if ui <= 0xbe95f619 {
@@ -73,39 +73,39 @@ pub let ln_1pf : (Float) -> Float = log1pf
 
 ///|
 test "log1pf" {
-  fn assert_log1pf_ulp!(input, expect) {
-    assert_float_ulp!(expect, log1pf(input), LOG1P_F_MAX_ULP)
+  fn assert_log1pf_ulp(input, expect) raise {
+    assert_float_ulp(expect, log1pf(input), LOG1P_F_MAX_ULP)
   }
 
-  assert_log1pf_ulp!(-1, @float.neg_infinity)
-  assert_log1pf_ulp!(1, 0.6931471824645996)
-  assert_log1pf_ulp!(8, 2.1972246170043945)
-  assert_log1pf_ulp!(-8, @float.not_a_number)
-  assert_log1pf_ulp!(0, 0)
-  assert_log1pf_ulp!(27, 3.332204580307007)
-  assert_log1pf_ulp!(-27, @float.not_a_number)
-  assert_log1pf_ulp!(0.125, 0.11778303235769272)
-  assert_log1pf_ulp!(-0.125, -0.133531391620636)
-  assert_log1pf_ulp!(0.5, 0.40546509623527527)
-  assert_log1pf_ulp!(-0.5, -0.6931471824645996)
-  assert_log1pf_ulp!(1.5, 0.9162907600402832)
-  assert_log1pf_ulp!(-1.5, @float.not_a_number)
-  assert_log1pf_ulp!(2, 1.0986123085021973)
-  assert_log1pf_ulp!(-2, @float.not_a_number)
-  assert_log1pf_ulp!(3, 1.3862943649291992)
-  assert_log1pf_ulp!(-3, @float.not_a_number)
-  assert_log1pf_ulp!(64, 4.174387454986572)
-  assert_log1pf_ulp!(-64, @float.not_a_number)
-  assert_log1pf_ulp!(1000, 6.908754825592041)
-  assert_log1pf_ulp!(-1000, @float.not_a_number)
-  assert_log1pf_ulp!(512, 6.240275859832764)
-  assert_log1pf_ulp!(729, 6.593044281005859)
-  assert_log1pf_ulp!(3511808, 15.07164192199707)
-  assert_log1pf_ulp!(15.25, 2.788092851638794)
-  assert_log1pf_ulp!(6859, 8.833462715148926)
-  assert_log1pf_ulp!(68.25, 4.237723350524902)
-  assert_log1pf_ulp!(701.625, 6.554823398590088)
-  assert_log1pf_ulp!(@float.not_a_number, @float.not_a_number)
-  assert_log1pf_ulp!(@float.infinity, @float.infinity)
-  assert_log1pf_ulp!(@float.neg_infinity, @float.not_a_number)
+  assert_log1pf_ulp(-1, @float.neg_infinity)
+  assert_log1pf_ulp(1, 0.6931471824645996)
+  assert_log1pf_ulp(8, 2.1972246170043945)
+  assert_log1pf_ulp(-8, @float.not_a_number)
+  assert_log1pf_ulp(0, 0)
+  assert_log1pf_ulp(27, 3.332204580307007)
+  assert_log1pf_ulp(-27, @float.not_a_number)
+  assert_log1pf_ulp(0.125, 0.11778303235769272)
+  assert_log1pf_ulp(-0.125, -0.133531391620636)
+  assert_log1pf_ulp(0.5, 0.40546509623527527)
+  assert_log1pf_ulp(-0.5, -0.6931471824645996)
+  assert_log1pf_ulp(1.5, 0.9162907600402832)
+  assert_log1pf_ulp(-1.5, @float.not_a_number)
+  assert_log1pf_ulp(2, 1.0986123085021973)
+  assert_log1pf_ulp(-2, @float.not_a_number)
+  assert_log1pf_ulp(3, 1.3862943649291992)
+  assert_log1pf_ulp(-3, @float.not_a_number)
+  assert_log1pf_ulp(64, 4.174387454986572)
+  assert_log1pf_ulp(-64, @float.not_a_number)
+  assert_log1pf_ulp(1000, 6.908754825592041)
+  assert_log1pf_ulp(-1000, @float.not_a_number)
+  assert_log1pf_ulp(512, 6.240275859832764)
+  assert_log1pf_ulp(729, 6.593044281005859)
+  assert_log1pf_ulp(3511808, 15.07164192199707)
+  assert_log1pf_ulp(15.25, 2.788092851638794)
+  assert_log1pf_ulp(6859, 8.833462715148926)
+  assert_log1pf_ulp(68.25, 4.237723350524902)
+  assert_log1pf_ulp(701.625, 6.554823398590088)
+  assert_log1pf_ulp(@float.not_a_number, @float.not_a_number)
+  assert_log1pf_ulp(@float.infinity, @float.infinity)
+  assert_log1pf_ulp(@float.neg_infinity, @float.not_a_number)
 }

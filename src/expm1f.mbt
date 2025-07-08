@@ -11,10 +11,10 @@ const INV_LN2 : Float = 1.4426950216e+00 // 0x3fb8aa3b
 /// # Examples
 ///
 /// ```moonbit
-/// assert_eq!(expm1f(1.0), 1.7182817459106445) 
-/// assert_eq!(expm1f(0.0), 0.0)
-/// assert_eq!(expm1f(-1.0), -0.6321205588285577)
-/// assert_eq!(expm1f(2.0), 6.38905609893065)
+/// assert_eq(expm1f(1.0), 1.7182817459106445) 
+/// assert_eq(expm1f(0.0), 0.0)
+/// assert_eq(expm1f(-1.0), -0.6321205588285577)
+/// assert_eq(expm1f(2.0), 6.38905609893065)
 /// ```
 ///
 /// # Special cases
@@ -33,7 +33,7 @@ pub fn expm1f(x : Float) -> Float {
   let q1 : Float = -3.3333212137e-2 // -0x888868.0p-28
   let q2 : Float = 1.5807170421e-3 //  0xcf3010.0p-33
   let mut hx = x.reinterpret_as_uint()
-  let sign = (hx >> 31) != 0
+  let sign = hx >> 31 != 0
   hx = hx & 0x7fffffff
 
   // filter out huge and non-finite argument
@@ -130,39 +130,39 @@ pub fn expm1f(x : Float) -> Float {
 
 ///|
 test "expm1f" {
-  fn assert_expm1f_ulp!(input, expect) {
-    assert_float_ulp!(expect, expm1f(input), EXPM1_F_MAX_ULP)
+  fn assert_expm1f_ulp(input, expect) raise {
+    assert_float_ulp(expect, expm1f(input), EXPM1_F_MAX_ULP)
   }
 
-  assert_expm1f_ulp!(-1, -0.6321205496788025)
-  assert_expm1f_ulp!(1, 1.7182817459106445)
-  assert_expm1f_ulp!(8, 2979.9580078125)
-  assert_expm1f_ulp!(-8, -0.9996645450592041)
-  assert_expm1f_ulp!(0, 0)
-  assert_expm1f_ulp!(27, 532048248832)
-  assert_expm1f_ulp!(-27, -1)
-  assert_expm1f_ulp!(0.125, 0.1331484466791153)
-  assert_expm1f_ulp!(-0.125, -0.1175030991435051)
-  assert_expm1f_ulp!(0.5, 0.6487212777137756)
-  assert_expm1f_ulp!(-0.5, -0.39346933364868164)
-  assert_expm1f_ulp!(1.5, 3.481688976287842)
-  assert_expm1f_ulp!(-1.5, -0.7768698334693909)
-  assert_expm1f_ulp!(2, 6.389056205749512)
-  assert_expm1f_ulp!(-2, -0.8646647334098816)
-  assert_expm1f_ulp!(3, 19.08553695678711)
-  assert_expm1f_ulp!(-3, -0.9502129554748535)
-  assert_expm1f_ulp!(64, 6.23514943204966e+27)
-  assert_expm1f_ulp!(-64, -1)
-  assert_expm1f_ulp!(1000, @float.infinity)
-  assert_expm1f_ulp!(-1000, -1)
-  assert_expm1f_ulp!(512, @float.infinity)
-  assert_expm1f_ulp!(729, @float.infinity)
-  assert_expm1f_ulp!(3511808, @float.infinity)
-  assert_expm1f_ulp!(15.25, 4197500.5)
-  assert_expm1f_ulp!(6859, @float.infinity)
-  assert_expm1f_ulp!(68.25, 4.371176932375463e+29)
-  assert_expm1f_ulp!(701.625, @float.infinity)
-  assert_expm1f_ulp!(@float.not_a_number, @float.not_a_number)
-  assert_expm1f_ulp!(@float.infinity, @float.infinity)
-  assert_expm1f_ulp!(@float.neg_infinity, -1)
+  assert_expm1f_ulp(-1, -0.6321205496788025)
+  assert_expm1f_ulp(1, 1.7182817459106445)
+  assert_expm1f_ulp(8, 2979.9580078125)
+  assert_expm1f_ulp(-8, -0.9996645450592041)
+  assert_expm1f_ulp(0, 0)
+  assert_expm1f_ulp(27, 532048248832)
+  assert_expm1f_ulp(-27, -1)
+  assert_expm1f_ulp(0.125, 0.1331484466791153)
+  assert_expm1f_ulp(-0.125, -0.1175030991435051)
+  assert_expm1f_ulp(0.5, 0.6487212777137756)
+  assert_expm1f_ulp(-0.5, -0.39346933364868164)
+  assert_expm1f_ulp(1.5, 3.481688976287842)
+  assert_expm1f_ulp(-1.5, -0.7768698334693909)
+  assert_expm1f_ulp(2, 6.389056205749512)
+  assert_expm1f_ulp(-2, -0.8646647334098816)
+  assert_expm1f_ulp(3, 19.08553695678711)
+  assert_expm1f_ulp(-3, -0.9502129554748535)
+  assert_expm1f_ulp(64, 6.23514943204966e+27)
+  assert_expm1f_ulp(-64, -1)
+  assert_expm1f_ulp(1000, @float.infinity)
+  assert_expm1f_ulp(-1000, -1)
+  assert_expm1f_ulp(512, @float.infinity)
+  assert_expm1f_ulp(729, @float.infinity)
+  assert_expm1f_ulp(3511808, @float.infinity)
+  assert_expm1f_ulp(15.25, 4197500.5)
+  assert_expm1f_ulp(6859, @float.infinity)
+  assert_expm1f_ulp(68.25, 4.371176932375463e+29)
+  assert_expm1f_ulp(701.625, @float.infinity)
+  assert_expm1f_ulp(@float.not_a_number, @float.not_a_number)
+  assert_expm1f_ulp(@float.infinity, @float.infinity)
+  assert_expm1f_ulp(@float.neg_infinity, -1)
 }

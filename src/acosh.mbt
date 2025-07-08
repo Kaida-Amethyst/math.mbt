@@ -18,10 +18,10 @@
 /// # Examples
 ///
 /// ```moonbit
-/// assert_eq!(acosh(1.0), 0.0);
-/// assert_eq!(acosh(2.0), 1.3169578969248166);
-/// assert_eq!(acosh(3.0), 1.7627471740390859);
-/// assert_eq!(acosh(4.0), 2.0634370688955608);
+/// assert_eq(acosh(1.0), 0.0);
+/// assert_eq(acosh(2.0), 1.3169578969248166);
+/// assert_eq(acosh(3.0), 1.7627471740390859);
+/// assert_eq(acosh(4.0), 2.0634370688955608);
 /// ```
 ///
 /// # Special cases
@@ -59,53 +59,53 @@ pub fn acosh(x : Double) -> Double {
 
 ///|
 test "acosh" {
-  fn assert_acosh_ulp!(input, expect) {
-    assert_ulp!(expect, acosh(input), ACOSH_MAX_ULP)
+  fn assert_acosh_ulp(input, expect) raise {
+    assert_ulp(expect, acosh(input), ACOSH_MAX_ULP)
   }
 
-  assert_acosh_ulp!(-1, @double.not_a_number)
-  assert_acosh_ulp!(-2, @double.not_a_number)
-  assert_acosh_ulp!(-3, @double.not_a_number)
-  assert_acosh_ulp!(-4, @double.not_a_number)
-  assert_acosh_ulp!(-5, @double.not_a_number)
-  assert_acosh_ulp!(-6, @double.not_a_number)
-  assert_acosh_ulp!(-7, @double.not_a_number)
-  assert_acosh_ulp!(-8, @double.not_a_number)
-  assert_acosh_ulp!(-9, @double.not_a_number)
-  assert_acosh_ulp!(1, 0)
-  assert_acosh_ulp!(2, 1.3169578969248166)
-  assert_acosh_ulp!(3, 1.7627471740390859)
-  assert_acosh_ulp!(4, 2.0634370688955608)
-  assert_acosh_ulp!(5, 2.2924316695611777)
-  assert_acosh_ulp!(6, 2.477888730288475)
-  assert_acosh_ulp!(7, 2.6339157938496336)
-  assert_acosh_ulp!(8, 2.7686593833135738)
-  assert_acosh_ulp!(9, 2.8872709503576206)
-  assert_acosh_ulp!(10, 2.993222846126381)
-  assert_acosh_ulp!(100, 5.298292365610484)
-  assert_acosh_ulp!(1000, 7.600902209541989)
-  assert_acosh_ulp!(10000, 9.903487550036129)
-  assert_acosh_ulp!(2.5, 1.566799236972411)
-  assert_acosh_ulp!(3.4, 1.8945590126722978)
-  assert_acosh_ulp!(5.3, 2.351832816454804)
-  assert_acosh_ulp!(6.2, 2.5111284516219943)
-  assert_acosh_ulp!(7.1, 2.6482453267067454)
-  assert_acosh_ulp!(8.9, 2.8760272423851934)
-  assert_acosh_ulp!(9.8, 2.9729162609330437)
-  assert_acosh_ulp!(10.7, 3.0612001381589975)
-  assert_acosh_ulp!(101.6, 5.314166496026017)
-  assert_acosh_ulp!(1.542, 0.9990799125933573)
-  assert_acosh_ulp!(2.846, 1.7066606669574687)
-  assert_acosh_ulp!(7.881, 2.7535523517164964)
-  assert_acosh_ulp!(3.772, 2.002699466791843)
-  assert_acosh_ulp!(-1.542, @double.not_a_number)
-  assert_acosh_ulp!(-2.846, @double.not_a_number)
-  assert_acosh_ulp!(-7.881, @double.not_a_number)
-  assert_acosh_ulp!(-3.772, @double.not_a_number)
-  assert_acosh_ulp!(-1, @double.not_a_number)
-  assert_acosh_ulp!(0, @double.not_a_number)
-  assert_acosh_ulp!(-0, @double.not_a_number)
-  assert_acosh_ulp!(@double.not_a_number, @double.not_a_number)
-  assert_acosh_ulp!(@double.infinity, @double.infinity)
-  assert_acosh_ulp!(@double.neg_infinity, @double.not_a_number)
+  assert_acosh_ulp(-1, @double.not_a_number)
+  assert_acosh_ulp(-2, @double.not_a_number)
+  assert_acosh_ulp(-3, @double.not_a_number)
+  assert_acosh_ulp(-4, @double.not_a_number)
+  assert_acosh_ulp(-5, @double.not_a_number)
+  assert_acosh_ulp(-6, @double.not_a_number)
+  assert_acosh_ulp(-7, @double.not_a_number)
+  assert_acosh_ulp(-8, @double.not_a_number)
+  assert_acosh_ulp(-9, @double.not_a_number)
+  assert_acosh_ulp(1, 0)
+  assert_acosh_ulp(2, 1.3169578969248166)
+  assert_acosh_ulp(3, 1.7627471740390859)
+  assert_acosh_ulp(4, 2.0634370688955608)
+  assert_acosh_ulp(5, 2.2924316695611777)
+  assert_acosh_ulp(6, 2.477888730288475)
+  assert_acosh_ulp(7, 2.6339157938496336)
+  assert_acosh_ulp(8, 2.7686593833135738)
+  assert_acosh_ulp(9, 2.8872709503576206)
+  assert_acosh_ulp(10, 2.993222846126381)
+  assert_acosh_ulp(100, 5.298292365610484)
+  assert_acosh_ulp(1000, 7.600902209541989)
+  assert_acosh_ulp(10000, 9.903487550036129)
+  assert_acosh_ulp(2.5, 1.566799236972411)
+  assert_acosh_ulp(3.4, 1.8945590126722978)
+  assert_acosh_ulp(5.3, 2.351832816454804)
+  assert_acosh_ulp(6.2, 2.5111284516219943)
+  assert_acosh_ulp(7.1, 2.6482453267067454)
+  assert_acosh_ulp(8.9, 2.8760272423851934)
+  assert_acosh_ulp(9.8, 2.9729162609330437)
+  assert_acosh_ulp(10.7, 3.0612001381589975)
+  assert_acosh_ulp(101.6, 5.314166496026017)
+  assert_acosh_ulp(1.542, 0.9990799125933573)
+  assert_acosh_ulp(2.846, 1.7066606669574687)
+  assert_acosh_ulp(7.881, 2.7535523517164964)
+  assert_acosh_ulp(3.772, 2.002699466791843)
+  assert_acosh_ulp(-1.542, @double.not_a_number)
+  assert_acosh_ulp(-2.846, @double.not_a_number)
+  assert_acosh_ulp(-7.881, @double.not_a_number)
+  assert_acosh_ulp(-3.772, @double.not_a_number)
+  assert_acosh_ulp(-1, @double.not_a_number)
+  assert_acosh_ulp(0, @double.not_a_number)
+  assert_acosh_ulp(-0, @double.not_a_number)
+  assert_acosh_ulp(@double.not_a_number, @double.not_a_number)
+  assert_acosh_ulp(@double.infinity, @double.infinity)
+  assert_acosh_ulp(@double.neg_infinity, @double.not_a_number)
 }

@@ -3,11 +3,11 @@
 /// # Examples
 ///
 /// ```moonbit
-/// assert_eq!(round(2.5), 3.0)
-/// assert_eq!(round(3.14), 3.0)
-/// assert_eq!(round(-3.14), -3.0)
-/// assert_eq!(round(5.0), 5.0)
-/// assert_eq!(round(-5.0), -5.0)
+/// assert_eq(round(2.5), 3.0)
+/// assert_eq(round(3.14), 3.0)
+/// assert_eq(round(-3.14), -3.0)
+/// assert_eq(round(5.0), 5.0)
+/// assert_eq(round(-5.0), -5.0)
 /// ```
 ///
 /// # Special Cases

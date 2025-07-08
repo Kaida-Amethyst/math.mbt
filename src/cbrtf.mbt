@@ -3,11 +3,11 @@
 /// # Example
 ///
 /// ```moonbit
-/// assert_eq!(cbrtf(3), 1.4422495703074083)
-/// assert_eq!(cbrtf(-3), -1.4422495703074083)
-/// assert_eq!(cbrtf(0), 0)
-/// assert_eq!(cbrtf(1), 1)
-/// assert_eq!(cbrtf(1000), 10)
+/// assert_eq(cbrtf(3), 1.4422495703074083)
+/// assert_eq(cbrtf(-3), -1.4422495703074083)
+/// assert_eq(cbrtf(0), 0)
+/// assert_eq(cbrtf(1), 1)
+/// assert_eq(cbrtf(1000), 10)
 /// ````
 ///
 /// # Accuracy
@@ -66,36 +66,36 @@ pub fn cbrtf(x : Float) -> Float {
 
 ///|
 test "cbrtf" {
-  fn assert_cbrtf_ulp!(input, expect) {
-    assert_float_ulp!(expect, cbrtf(input), CBRT_F_MAX_ULP)
+  fn assert_cbrtf_ulp(input, expect) raise {
+    assert_float_ulp(expect, cbrtf(input), CBRT_F_MAX_ULP)
   }
 
-  assert_cbrtf_ulp!(-1, -1)
-  assert_cbrtf_ulp!(1, 1)
-  assert_cbrtf_ulp!(8, 2)
-  assert_cbrtf_ulp!(-8, -2)
-  assert_cbrtf_ulp!(0, 0)
-  assert_cbrtf_ulp!(27, 3)
-  assert_cbrtf_ulp!(-27, -3)
-  assert_cbrtf_ulp!(0.125, 0.5)
-  assert_cbrtf_ulp!(-0.125, -0.5)
-  assert_cbrtf_ulp!(0.5, 0.7937005162239075)
-  assert_cbrtf_ulp!(-0.5, -0.7937005162239075)
-  assert_cbrtf_ulp!(1.5, 1.1447142362594604)
-  assert_cbrtf_ulp!(-1.5, -1.1447142362594604)
-  assert_cbrtf_ulp!(2, 1.2599210739135742)
-  assert_cbrtf_ulp!(-2, -1.2599210739135742)
-  assert_cbrtf_ulp!(3, 1.4422495365142822)
-  assert_cbrtf_ulp!(-3, -1.4422495365142822)
-  assert_cbrtf_ulp!(64, 4)
-  assert_cbrtf_ulp!(-64, -4)
-  assert_cbrtf_ulp!(1000, 10)
-  assert_cbrtf_ulp!(-1000, -10)
-  assert_cbrtf_ulp!(512, 8)
-  assert_cbrtf_ulp!(729, 9)
-  assert_cbrtf_ulp!(3511808, 152)
-  assert_cbrtf_ulp!(15.25, 2.4798378944396973)
-  assert_cbrtf_ulp!(6859, 19)
-  assert_cbrtf_ulp!(68.25, 4.086650848388672)
-  assert_cbrtf_ulp!(701.625, 8.885905265808105)
+  assert_cbrtf_ulp(-1, -1)
+  assert_cbrtf_ulp(1, 1)
+  assert_cbrtf_ulp(8, 2)
+  assert_cbrtf_ulp(-8, -2)
+  assert_cbrtf_ulp(0, 0)
+  assert_cbrtf_ulp(27, 3)
+  assert_cbrtf_ulp(-27, -3)
+  assert_cbrtf_ulp(0.125, 0.5)
+  assert_cbrtf_ulp(-0.125, -0.5)
+  assert_cbrtf_ulp(0.5, 0.7937005162239075)
+  assert_cbrtf_ulp(-0.5, -0.7937005162239075)
+  assert_cbrtf_ulp(1.5, 1.1447142362594604)
+  assert_cbrtf_ulp(-1.5, -1.1447142362594604)
+  assert_cbrtf_ulp(2, 1.2599210739135742)
+  assert_cbrtf_ulp(-2, -1.2599210739135742)
+  assert_cbrtf_ulp(3, 1.4422495365142822)
+  assert_cbrtf_ulp(-3, -1.4422495365142822)
+  assert_cbrtf_ulp(64, 4)
+  assert_cbrtf_ulp(-64, -4)
+  assert_cbrtf_ulp(1000, 10)
+  assert_cbrtf_ulp(-1000, -10)
+  assert_cbrtf_ulp(512, 8)
+  assert_cbrtf_ulp(729, 9)
+  assert_cbrtf_ulp(3511808, 152)
+  assert_cbrtf_ulp(15.25, 2.4798378944396973)
+  assert_cbrtf_ulp(6859, 19)
+  assert_cbrtf_ulp(68.25, 4.086650848388672)
+  assert_cbrtf_ulp(701.625, 8.885905265808105)
 }

@@ -3,11 +3,11 @@
 /// # Examples
 ///
 /// ```moonbit
-/// assert_eq!(ceil(2.5), 3.0)
-/// assert_eq!(ceil(3.14), 4.0)
-/// assert_eq!(ceil(-3.14), -3.0)
-/// assert_eq!(ceil(5.0), 5.0)
-/// assert_eq!(ceil(-5.0), -5.0)
+/// assert_eq(ceil(2.5), 3.0)
+/// assert_eq(ceil(3.14), 4.0)
+/// assert_eq(ceil(-3.14), -3.0)
+/// assert_eq(ceil(5.0), 5.0)
+/// assert_eq(ceil(-5.0), -5.0)
 /// ```
 ///
 /// # Special Cases
