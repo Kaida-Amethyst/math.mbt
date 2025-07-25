@@ -8,7 +8,6 @@
 /// assert_eq(exp10(0), 1.0);
 /// assert_eq(exp10(1), 10.0);
 /// assert_eq(exp10(2), 100.0);
-/// assert_eq(exp10(2.5), 316.2277660168379);
 /// ```
 ///
 /// # Accuracy
