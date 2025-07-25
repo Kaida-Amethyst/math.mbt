@@ -92,7 +92,7 @@ pub fn y0(x : Double) -> Double {
   let u = u00 +
     z * (u01 + z * (u02 + z * (u03 + z * (u04 + z * (u05 + z * u06)))))
   let v = 1.0 + z * (v01 + z * (v02 + z * (v03 + z * v04)))
-  u / v + tpi * (j0(x) * x.ln())
+  u / v + tpi * (j0(x) * ln(x))
 }
 
 ///|

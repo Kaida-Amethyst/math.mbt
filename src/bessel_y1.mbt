@@ -95,7 +95,7 @@ pub fn y1(x : Double) -> Double {
   let u = u0[0] + z * (u0[1] + z * (u0[2] + z * (u0[3] + z * u0[4])))
   let v = 1.0 +
     z * (v0[0] + z * (v0[1] + z * (v0[2] + z * (v0[3] + z * v0[4]))))
-  x * (u / v) + tpi * (j1(x) * x.ln() - 1.0 / x)
+  x * (u / v) + tpi * (j1(x) * ln(x) - 1.0 / x)
 }
 
 ///|

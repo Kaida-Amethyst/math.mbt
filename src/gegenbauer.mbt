@@ -41,7 +41,7 @@ pub fn gegenbauer_derivative(
   n : UInt,
   lambda : Double,
   x : Double,
-  k : UInt
+  k : UInt,
 ) -> Double {
   if k > n {
     return 0.0

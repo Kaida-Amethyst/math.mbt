@@ -165,7 +165,7 @@ pub fn ulp_error_f32(x : Float, y : Float) -> Int {
 fn assert_ulp(
   expect : Double,
   actual : Double,
-  max_ulp : Int
+  max_ulp : Int,
 ) -> Unit raise Error {
   let ulp_err = ulp_error(expect, actual)
   if ulp_err > max_ulp.to_int64() {
@@ -180,7 +180,7 @@ fn assert_ulp(
 fn assert_float_ulp(
   expect : Float,
   actual : Float,
-  max_ulp : Int
+  max_ulp : Int,
 ) -> Unit raise Error {
   let ulp_err = ulp_error_f32(expect, actual)
   if ulp_err > max_ulp {

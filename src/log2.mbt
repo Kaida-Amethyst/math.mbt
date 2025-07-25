@@ -19,7 +19,7 @@
 ///
 /// 1 ulp.
 pub fn log2(x : Double) -> Double {
-  x.log2()
+  @math.log2(x)
 }
 
 ///|

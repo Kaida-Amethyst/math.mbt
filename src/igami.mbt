@@ -7,7 +7,7 @@ fn interval_halving(
   x1 : Double,
   yl : Double,
   yh : Double,
-  dithresh : Double
+  dithresh : Double,
 ) -> Double {
   let mut d = 0.0625
   let mut x0 = x0
@@ -108,11 +108,11 @@ pub fn igami(a : Double, y0 : Double) -> Double {
     }
 
     // Compute the derivative of the function at this point
-    d = (a - 1.0) * x.ln() - x - lgm
+    d = (a - 1.0) * ln(x) - x - lgm
     if d < -MAXLOG {
       break
     }
-    d = -d.exp()
+    d = -exp(d)
 
     // Compute the step to the next approximation of x
     d = (y - y0) / d

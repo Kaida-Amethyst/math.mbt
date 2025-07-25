@@ -39,7 +39,7 @@ pub fn erfinv(x : Double) -> Double {
   let mut p = 0.0
   let sign = if x > 0.0 { 1.0 } else { -1.0 }
   let x_abs = x.abs()
-  w = -((1.0 - x_abs) * (1.0 + x_abs)).ln()
+  w = -ln((1.0 - x_abs) * (1.0 + x_abs))
   if w < 6.250000 {
     w -= 3.125000
     p = -3.6444120640178196996e-21
