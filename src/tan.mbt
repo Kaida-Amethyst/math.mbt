@@ -1,4 +1,5 @@
-///| Compute the tangent of double-precision floating-point number `x`.
+///|
+/// Compute the tangent of double-precision floating-point number `x`.
 ///
 /// # Examples
 ///

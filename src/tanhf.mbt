@@ -1,4 +1,5 @@
-///| Compute hyperbolic tangent function of a single-precision floating point number.
+///|
+/// Compute hyperbolic tangent function of a single-precision floating point number.
 ///
 /// # Examples
 ///

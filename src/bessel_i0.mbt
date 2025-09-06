@@ -25,7 +25,8 @@ let i0_arrB : Array[Double] = [
   8.04490411014108831608E-1,
 ]
 
-///|Returns modified Bessel function of order zero of the argument.
+///|
+///Returns modified Bessel function of order zero of the argument.
 pub fn bessel_i0(x : Double) -> Double {
   let x = x.abs()
   if x <= 8.0 {
@@ -35,5 +36,6 @@ pub fn bessel_i0(x : Double) -> Double {
   return exp(x) * chbevl(32.0 / x - 2.0, i0_arrB) / x.sqrt()
 }
 
-///| `i0` is the alias of `bessel_i0`.
+///|
+/// `i0` is the alias of `bessel_i0`.
 pub let i0 : (Double) -> Double = bessel_i0

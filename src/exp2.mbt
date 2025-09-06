@@ -1,4 +1,5 @@
-///| Compute 2 raised to the power of x.
+///|
+/// Compute 2 raised to the power of x.
 ///
 /// # Examples
 ///

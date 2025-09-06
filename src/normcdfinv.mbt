@@ -1,4 +1,5 @@
-///| Calculate the inverse of the standard normal cumulative distribution function.
+///|
+/// Calculate the inverse of the standard normal cumulative distribution function.
 pub fn normcdfinv(x : Double) -> Double {
   if x < 0 || x > 1 {
     return @double.not_a_number

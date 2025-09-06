@@ -17,7 +17,8 @@
 // 	sin(x) +- cos(x) = -cos(2x)/(sin(x) -+ cos(x))
 // 	    to compute the worse one.)
 
-///| Compute Bessel function of the first kind of order one.
+///|
+/// Compute Bessel function of the first kind of order one.
 ///
 /// # Examples
 ///
@@ -96,7 +97,8 @@ pub fn bessel_j1(x : Double) -> Double {
   x * 0.5 + r / s
 }
 
-///| `j1` is an alias of `bessel_j1`.
+///|
+/// `j1` is an alias of `bessel_j1`.
 pub let j1 : (Double) -> Double = bessel_j1
 
 // For x >= 8, the asymptotic expansions of pone is

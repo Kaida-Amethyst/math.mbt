@@ -8,7 +8,8 @@
 // 	 := sign(x)*log(2|x|+1/(|x|+sqrt(x*x+1))) if|x|>2, else
 // 	 := sign(x)*log1p(|x| + x^2/(1 + sqrt(1+x^2)))
 
-///| Compute the inverse hyperbolic sine of `x`.
+///|
+/// Compute the inverse hyperbolic sine of `x`.
 ///
 /// Computes the inverse hyperbolic sine of `x`. The inverse hyperbolic sine is defined as:
 /// $$\text{asinh}(x) = \log(x + \sqrt{x^2 + 1})$$

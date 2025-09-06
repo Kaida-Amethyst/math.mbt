@@ -40,7 +40,8 @@ const S03 : Double = 5.13546550207318111446e-07
 ///|
 const S04 : Double = 1.16614003333790000205e-09
 
-///| Compute Bessel function of the first kind of order zero
+///|
+/// Compute Bessel function of the first kind of order zero
 ///
 /// # Examples
 ///
@@ -119,7 +120,8 @@ pub fn bessel_j0(x : Double) -> Double {
   }
 }
 
-///| `j0` is an alias of `bessel_j0`
+///|
+/// `j0` is an alias of `bessel_j0`
 pub let j0 : (Double) -> Double = bessel_j0
 
 // /* The asymptotic expansions of pzero is

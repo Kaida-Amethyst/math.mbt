@@ -1,4 +1,5 @@
-///| `log1p(x)` computes `log(1+x)`
+///|
+/// `log1p(x)` computes `log(1+x)`
 ///
 /// # Examples
 ///
@@ -113,7 +114,8 @@ pub fn log1p(x : Double) -> Double {
   }
 }
 
-///| `ln_1p` is an alias for `log1p`
+///|
+/// `ln_1p` is an alias for `log1p`
 pub let ln_1p : (Double) -> Double = log1p
 
 ///|

@@ -1,4 +1,5 @@
-///| Returns exponentially scaled modified Bessel function of the third kind of order zero of the argument.
+///|
+/// Returns exponentially scaled modified Bessel function of the third kind of order zero of the argument.
 pub fn bessel_k0e(x : Double) -> Double {
   if x <= 0.0 {
     return @double.not_a_number
@@ -11,5 +12,6 @@ pub fn bessel_k0e(x : Double) -> Double {
   return chbevl(8.0 / x - 2.0, k0_arrB) / sqrt(x)
 }
 
-///| `k0e` is an alias for `bessel_k0e`.
+///|
+/// `k0e` is an alias for `bessel_k0e`.
 pub let k0e : (Double) -> Double = bessel_k0e

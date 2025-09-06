@@ -1,4 +1,5 @@
-///| Compute cosine of double-precision floating-point number `x`
+///|
+/// Compute cosine of double-precision floating-point number `x`
 ///
 /// # Examples
 ///

@@ -1,4 +1,5 @@
-///| erfinv(x) computes the inverse error function of x.
+///|
+/// erfinv(x) computes the inverse error function of x.
 ///
 /// # Examples
 ///

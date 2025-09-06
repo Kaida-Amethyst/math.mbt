@@ -1,4 +1,5 @@
-///| Return the integral part of a floating point number
+///|
+/// Return the integral part of a floating point number
 ///
 /// # Examples
 ///

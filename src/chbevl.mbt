@@ -14,7 +14,8 @@
 //     return T{0.5} * (b0 - b2);
 // }
 
-///| Computes the Chebyshev series
+///|
+/// Computes the Chebyshev series
 pub fn chbevl(x : Double, arr : Array[Double]) -> Double {
   let mut b0 = arr[0]
   let mut b1 = 0.0

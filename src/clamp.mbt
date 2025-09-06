@@ -1,4 +1,5 @@
-///| Restrict a value to a certain interval unless it is NaN.
+///|
+/// Restrict a value to a certain interval unless it is NaN.
 ///
 /// Returns `max` if `x` is greater than `max`, and `min` if `self` is
 /// less than `min`. Otherwise this returns `self`.

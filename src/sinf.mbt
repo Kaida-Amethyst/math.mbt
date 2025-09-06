@@ -1,4 +1,5 @@
-///| Compute sine of double-precision floating-point number `x`.
+///|
+/// Compute sine of double-precision floating-point number `x`.
 ///
 /// # Examples
 ///

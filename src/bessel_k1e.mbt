@@ -1,4 +1,5 @@
-///| Returns exponentially scaled modified Bessel function of the third kind of order one of the argument:
+///|
+/// Returns exponentially scaled modified Bessel function of the third kind of order one of the argument:
 pub fn bessel_k1e(x : Double) -> Double {
   if x <= 0.0 {
     return @double.infinity
@@ -11,5 +12,6 @@ pub fn bessel_k1e(x : Double) -> Double {
   return chbevl(8.0 / x - 2.0, k1_arrB) / sqrt(x)
 }
 
-///| `k1e` is an alias for `bessel_k1e`.
+///|
+/// `k1e` is an alias for `bessel_k1e`.
 pub let k1e : (Double) -> Double = bessel_k1e

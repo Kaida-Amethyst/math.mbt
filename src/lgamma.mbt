@@ -1,4 +1,5 @@
-///| Compute Log Gamma function
+///|
+/// Compute Log Gamma function
 ///
 /// # Examples
 ///
@@ -124,7 +125,8 @@ pub fn lgamma(x : Double) -> Double {
   q
 }
 
-///| Compute the natural logarithm of the gamma function, alias for lgamma.
+///|
+/// Compute the natural logarithm of the gamma function, alias for lgamma.
 pub fn ln_gamma(x : Double) -> Double {
   lgamma(x)
 }

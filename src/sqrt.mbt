@@ -1,4 +1,5 @@
-///| Compute Square Root of a number
+///|
+/// Compute Square Root of a number
 ///
 /// # Examples
 ///

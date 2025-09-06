@@ -1,4 +1,5 @@
-///| Compute the inverse hyperbolic sine of `x` with single-precision floating-point.
+///|
+/// Compute the inverse hyperbolic sine of `x` with single-precision floating-point.
 ///
 /// Computes the inverse hyperbolic sine of `x`. The inverse hyperbolic sine is defined as:
 /// $$\text{asinh}(x) = \log(x + \sqrt{x^2 + 1})$$

@@ -1,4 +1,5 @@
-///| Computes the natural logarithm of the standard normal cumulative distribution function.
+///|
+/// Computes the natural logarithm of the standard normal cumulative distribution function.
 pub fn log_ndtr(x : Double) -> Double {
   // let sqrt1_2 = 0.707106781186547524400844362104849039; // 1/sqrt(2)
   let t = x * SQRT1_OVER_2

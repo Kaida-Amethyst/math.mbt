@@ -1,4 +1,5 @@
-///| Return double `x` is finite and is not nan
+///|
+/// Return double `x` is finite and is not nan
 ///
 /// if x is finite and not nan, return 1, otherwise return 0
 pub fn isfinite(x : Double) -> Bool {

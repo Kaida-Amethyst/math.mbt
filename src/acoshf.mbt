@@ -1,7 +1,8 @@
 ///|
 const FLOAT_LN2 : Float = 0.693147180559945309417232121458176568
 
-///| Return the inverse hyperbolic cosine of x.
+///|
+/// Return the inverse hyperbolic cosine of x.
 ///
 /// Returns the inverse hyperbolic cosine of `x`, defined as the value `y` such that `x = cosh(y)`.
 ///

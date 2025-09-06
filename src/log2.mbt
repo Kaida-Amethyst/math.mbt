@@ -1,4 +1,5 @@
-///| Compute the base-2 logarithm of a number.
+///|
+/// Compute the base-2 logarithm of a number.
 ///
 /// # Examples
 ///

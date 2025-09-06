@@ -1,4 +1,5 @@
-///| `atan2(y, x)` returns the angle whose tangent is `y/x`.
+///|
+/// `atan2(y, x)` returns the angle whose tangent is `y/x`.
 ///
 /// # Examples
 ///

@@ -20,7 +20,8 @@ pub fn ndtr(a : Double) -> Double {
   }
 }
 
-///| Computes exp(x^2) * erfc(x)
+///|
+/// Computes exp(x^2) * erfc(x)
 pub fn erfce(x : Double) -> Double {
   let coef_p : Array[Double] = [
     2.46196981473530512524E-10, 5.64189564831068821977E-1, 7.46321056442269912687E0,
@@ -48,7 +49,8 @@ pub fn erfce(x : Double) -> Double {
   p / q
 }
 
-///| Computes exp(x^2)
+///|
+/// Computes exp(x^2)
 pub fn expx2(x : Double, sign : Int) -> Double {
   let m_ : Double = 128.0
   let minv : Double = 0.0078125

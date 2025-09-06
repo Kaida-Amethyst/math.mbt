@@ -1,4 +1,5 @@
-///| gegenbauer computes the Gegenbauer polynomial of degree n with parameter lambda at x.
+///|
+/// gegenbauer computes the Gegenbauer polynomial of degree n with parameter lambda at x.
 /// # Introduction
 ///
 /// Gegenbauer polynomials are orthogonal polynomials on the interval [-1,1] with weight function (1-x^2)^lambda.
@@ -36,7 +37,8 @@ pub fn gegenbauer(n : UInt, lambda : Double, x : Double) -> Double {
   yk
 }
 
-///| gegenbauer_derivative is the derivative of the Gegenbauer polynomial of degree n with parameter lambda at x.
+///|
+/// gegenbauer_derivative is the derivative of the Gegenbauer polynomial of degree n with parameter lambda at x.
 pub fn gegenbauer_derivative(
   n : UInt,
   lambda : Double,

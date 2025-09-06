@@ -1,4 +1,5 @@
-///| Calculates Euclidean division, the matching method for `rem_euclid`.
+///|
+/// Calculates Euclidean division, the matching method for `rem_euclid`.
 /// This computes the integer `n` such that
 /// `x = n * y + rem_euclid(x, y)`.
 /// In other words, the result is `x / y` rounded to the integer `n`

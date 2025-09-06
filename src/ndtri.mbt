@@ -1,4 +1,5 @@
-///| Computes the inverse of the standard normal cumulative distribution function.
+///|
+/// Computes the inverse of the standard normal cumulative distribution function.
 ///
 /// # Special Cases
 ///

@@ -1,4 +1,5 @@
-///| Calculate the inverse complementary error function of the input argument.
+///|
+/// Calculate the inverse complementary error function of the input argument.
 ///
 /// # Examples
 ///

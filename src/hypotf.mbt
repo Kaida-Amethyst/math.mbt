@@ -1,4 +1,5 @@
-///| Returns the square root of the sum of the squares of its arguments, hypot(x, y) = sqrt(x*x, y*y)
+///|
+/// Returns the square root of the sum of the squares of its arguments, hypot(x, y) = sqrt(x*x, y*y)
 /// # Notes
 ///
 /// `hypotf` return the square root of the sum of the squares of its arguments, the formula is:

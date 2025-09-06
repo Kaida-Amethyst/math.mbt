@@ -6,7 +6,8 @@ const INV_LN2 : Float = 1.4426950216e+00 // 0x3fb8aa3b
 // Scaled coefficients: Qn_here = 2**n * Qn_for_q (see s_expm1.c):
 //
 
-///| Computes the exponential of `x` minus one.
+///|
+/// Computes the exponential of `x` minus one.
 ///
 /// # Examples
 ///

@@ -19,7 +19,8 @@ fn tanf_poly(x : Float, odd : Bool) -> Float {
   (if odd { -1.0 / r } else { r }).to_float()
 }
 
-///| Compute the tangent of double-precision floating-point number `x`.
+///|
+/// Compute the tangent of double-precision floating-point number `x`.
 ///
 /// # Examples
 ///

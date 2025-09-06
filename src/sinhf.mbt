@@ -1,4 +1,5 @@
-///| Compute hyperbolic sine function of a single-precision floating point number.
+///|
+/// Compute hyperbolic sine function of a single-precision floating point number.
 ///
 /// # Examples
 ///

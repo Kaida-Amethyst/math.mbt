@@ -1,4 +1,5 @@
-///| Return exponent of x 
+///|
+/// Return exponent of x 
 ///
 /// # Example
 ///

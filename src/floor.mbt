@@ -1,4 +1,5 @@
-///| Return the largest integral value less than or equal to x.
+///|
+/// Return the largest integral value less than or equal to x.
 ///
 /// # Examples
 ///

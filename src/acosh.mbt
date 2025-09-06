@@ -11,7 +11,8 @@
 //  acosh(NaN) is NaN without signal.
 //
 
-///| Return the inverse hyperbolic cosine of x.
+///|
+/// Return the inverse hyperbolic cosine of x.
 ///
 /// Returns the inverse hyperbolic cosine of `x`, defined as the value `y` such that `x = cosh(y)`.
 ///

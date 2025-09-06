@@ -1,4 +1,5 @@
-///| Calculates the least nonnegative remainder of `x (mod y)`.
+///|
+/// Calculates the least nonnegative remainder of `x (mod y)`.
 /// In particular, the return value `r` satisfies `0.0 <= r < abs(y)` in
 /// most cases. However, due to a floating point round-off error it can
 /// result in `r == abs(y)`, violating the mathematical definition, if

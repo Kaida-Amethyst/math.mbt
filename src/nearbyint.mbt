@@ -6,7 +6,8 @@ pub(all) enum RoundMode {
   FE_TOWARDZERO
 }
 
-///| Rounds the input floating-point number to the nearest integer according to the specified rounding mode.
+///|
+/// Rounds the input floating-point number to the nearest integer according to the specified rounding mode.
 ///
 /// # Arguments
 /// - `x`: The floating-point number to be rounded.
@@ -33,7 +34,7 @@ pub(all) enum RoundMode {
 /// # Note
 ///
 /// It is equivalent to `rint` function. Note that it's different with C-like languages.
-pub fn nearbyint(x : Double, round_mode~ : RoundMode = FE_TONEAREST) -> Double {
+pub fn nearbyint(x : Double, round_mode? : RoundMode = FE_TONEAREST) -> Double {
   match round_mode {
     FE_TONEAREST => roundeven(x)
     FE_DOWNWARD => floor(x)

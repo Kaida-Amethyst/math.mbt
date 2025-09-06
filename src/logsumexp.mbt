@@ -1,4 +1,5 @@
-///| Return the log of the sum of exponentials of the elements of the input array.
+///|
+/// Return the log of the sum of exponentials of the elements of the input array.
 /// # Introduction
 ///
 /// logsumexp(x) returns the natural logarithm of the sum of the exponentials of the elements of the input array x.

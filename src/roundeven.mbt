@@ -1,4 +1,5 @@
-///| roundeven is a function that rounds a number to the nearest even integer.
+///|
+/// roundeven is a function that rounds a number to the nearest even integer.
 ///
 /// # Special Cases
 ///

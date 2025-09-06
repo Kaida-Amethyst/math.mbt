@@ -1,4 +1,5 @@
-///| Return a number that represents the sign of the argument.
+///|
+/// Return a number that represents the sign of the argument.
 ///
 /// - `1.0` if the argument is positive, `+0.0` or `+Inf`
 /// - `-1.0` if the argument is negative, `-0.0` or `-Inf`

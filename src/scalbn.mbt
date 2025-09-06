@@ -1,4 +1,5 @@
-///| Compute x * 2 **n where x is a double and n is an integer.
+///|
+/// Compute x * 2 **n where x is a double and n is an integer.
 /// # Introcution:
 ///
 /// Compute x * 2 **n without computing 2 ** n.

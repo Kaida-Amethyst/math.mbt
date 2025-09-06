@@ -1,4 +1,5 @@
-///| Return the cube root of `x`.
+///|
+/// Return the cube root of `x`.
 ///
 /// # Example
 ///

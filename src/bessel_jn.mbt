@@ -1,4 +1,5 @@
-///| Calculate the value of the Bessel function of the first kind of order n for the input argument.
+///|
+/// Calculate the value of the Bessel function of the first kind of order n for the input argument.
 ///
 /// # Special Cases
 ///
@@ -123,5 +124,6 @@ pub fn bessel_jn(n : Int, x : Double) -> Double {
   }
 }
 
-///| `jn` is an alias for `bessel_jn`.
+///|
+/// `jn` is an alias for `bessel_jn`.
 pub let jn : (Int, Double) -> Double = bessel_jn

@@ -1,4 +1,5 @@
-///| Compute arcsine of `x`
+///|
+/// Compute arcsine of `x`
 ///
 /// # Examples
 ///

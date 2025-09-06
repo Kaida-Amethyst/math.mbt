@@ -1,4 +1,5 @@
-///| hermite(n, x) computes the nth Hermite polynomial at x.
+///|
+/// hermite(n, x) computes the nth Hermite polynomial at x.
 /// # Introduction
 ///
 /// hermite polynomials are a set of orthogonal polynomials that arise in the solution of the quantum harmonic oscillator.

@@ -1,4 +1,5 @@
-///| Compute the sine and cosine of a number simultaneously
+///|
+/// Compute the sine and cosine of a number simultaneously
 ///
 /// # Examples
 ///

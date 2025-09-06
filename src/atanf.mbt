@@ -1,4 +1,5 @@
-///| Compute arctangent of `x`
+///|
+/// Compute arctangent of `x`
 ///
 /// # Examples
 ///

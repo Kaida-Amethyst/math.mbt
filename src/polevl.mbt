@@ -1,4 +1,5 @@
-///| Compute the value of a polynomial at a point.
+///|
+/// Compute the value of a polynomial at a point.
 ///
 /// Given coef = [a_n, a_{n-1}, ..., a_1, a_0], compute the value of the polynomial:
 /// p(x) = a_n * x^n + a_{n-1} * x^{n-1} + ... + a_1 * x + a_0

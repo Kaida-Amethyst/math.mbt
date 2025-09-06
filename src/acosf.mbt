@@ -1,4 +1,5 @@
-///| Compute the principal value of the arc cosine of `x`.
+///|
+/// Compute the principal value of the arc cosine of `x`.
 ///
 /// # Examples
 ///

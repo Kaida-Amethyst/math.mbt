@@ -1,4 +1,5 @@
-///| Return the base 10 logarithm of `x`
+///|
+/// Return the base 10 logarithm of `x`
 ///
 /// # Examples
 ///

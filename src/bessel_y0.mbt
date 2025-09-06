@@ -17,7 +17,8 @@
 //    by the method mentioned above.
 // 3. Special cases: y0(0)=-inf, y0(x<0)=NaN, y0(inf)=0.
 
-///| Compute Bessel function of the second kind of order zero
+///|
+/// Compute Bessel function of the second kind of order zero
 ///
 /// # Examples
 ///

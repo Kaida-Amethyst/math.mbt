@@ -1,4 +1,5 @@
-///| digamma(x) computes the digamma function of x.
+///|
+/// digamma(x) computes the digamma function of x.
 ///
 /// digamma defined as $\psi(x) = \frac{d}{dx} \log \Gamma(x)$
 ///

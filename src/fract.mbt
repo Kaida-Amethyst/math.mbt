@@ -1,4 +1,5 @@
-///| Return the fractional part of a number
+///|
+/// Return the fractional part of a number
 /// # Introduction
 ///
 /// Returns the fractional part of a number, which is the number without the integer part.

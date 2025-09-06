@@ -1,4 +1,5 @@
-///| Computes hyperbolic arctangent of ``x`` with single-precision floating-point.
+///|
+/// Computes hyperbolic arctangent of ``x`` with single-precision floating-point.
 ///
 /// # Examples
 ///

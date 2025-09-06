@@ -1,4 +1,5 @@
-///| Compute the entropy of a probability distribution.
+///|
+/// Compute the entropy of a probability distribution.
 ///
 /// # Notes
 ///

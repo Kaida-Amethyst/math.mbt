@@ -1,4 +1,5 @@
-///| Compute the gamma function of x.
+///|
+/// Compute the gamma function of x.
 ///
 /// # Examples
 ///

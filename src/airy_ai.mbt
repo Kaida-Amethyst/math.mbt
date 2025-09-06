@@ -1,4 +1,5 @@
-///| Computes the Airy function Ai(x)
+///|
+/// Computes the Airy function Ai(x)
 pub fn airy_ai(x : Double) -> Double {
   let arr_an : Array[Double] = [
     3.46538101525629032477e-01, 1.20075952739645805542e+01, 7.62796053615234516538e+01,

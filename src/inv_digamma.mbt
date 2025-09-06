@@ -1,4 +1,5 @@
-///| Compute the inverse of the digamma function.
+///|
+/// Compute the inverse of the digamma function.
 pub fn inv_digamma(x : Double) -> Double {
   fn inner_signum(x : Double) -> Double {
     if x == 0.0 {

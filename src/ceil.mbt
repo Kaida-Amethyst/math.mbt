@@ -1,4 +1,5 @@
-///| Return the smallest integral value that is not less than x
+///|
+/// Return the smallest integral value that is not less than x
 ///
 /// # Examples
 ///

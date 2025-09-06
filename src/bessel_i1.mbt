@@ -25,7 +25,8 @@ let i1_arrB = [
   7.78576235018280120474E-1,
 ]
 
-///| Computes the modified Bessel function of the first kind of order one.
+///|
+/// Computes the modified Bessel function of the first kind of order one.
 pub fn bessel_i1(x : Double) -> Double {
   let z = x.abs()
   let z = if z <= 8.0 {
@@ -37,5 +38,6 @@ pub fn bessel_i1(x : Double) -> Double {
   return if x < 0.0 { -z } else { z }
 }
 
-///| `i1` is an alias for `bessel_i1`.
+///|
+/// `i1` is an alias for `bessel_i1`.
 pub let i1 : (Double) -> Double = bessel_i1

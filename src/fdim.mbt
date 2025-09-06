@@ -1,4 +1,5 @@
-///| Compute the positive difference between `x` and `y`.
+///|
+/// Compute the positive difference between `x` and `y`.
 ///
 /// Computes the positive difference between `x` and `y`, that is, if `x > y`, returns `x - y`, otherwise returns `0`.
 ///

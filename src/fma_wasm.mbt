@@ -10,7 +10,8 @@
 //   #|   (f32.fma (local.get 0) (local.get 1) (local.get 2))
 //   #| )
 
-///| fused multiply-add, fma(a, b, c) = a * b + c, but as a single operation with higher precision
+///|
+/// fused multiply-add, fma(a, b, c) = a * b + c, but as a single operation with higher precision
 pub fn fma(a : Double, b : Double, c : Double) -> Double {
   // __wasm_fma(a, b, c)
   a * b + c

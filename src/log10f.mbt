@@ -1,4 +1,5 @@
-///| The base 10 logarithm of `x` (Float).
+///|
+/// The base 10 logarithm of `x` (Float).
 pub fn log10f(x : Float) -> Float {
   let mut x = x
   let ivln10hi : Float = 4.3432617188e-01 // 0x3ede6000 */

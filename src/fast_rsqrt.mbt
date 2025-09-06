@@ -1,4 +1,5 @@
-///| Inverse square root approximation using the fast inverse square root algorithm.
+///|
+/// Inverse square root approximation using the fast inverse square root algorithm.
 pub fn fast_rsqrt(x : Float) -> Float {
   let threehalfs : Float = 1.5
   let x2 : Float = x * 0.5

@@ -77,7 +77,8 @@ fn interval_halving(
   x
 }
 
-///| Inverse of complemented incomplete gamma function
+///|
+/// Inverse of complemented incomplete gamma function
 pub fn igami(a : Double, y0 : Double) -> Double {
   let mut x0 = DOUBLE_MAX
   let mut yl = 0.0

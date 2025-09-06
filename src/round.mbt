@@ -1,4 +1,5 @@
-///| Return the nearest integer value to `x`.
+///|
+/// Return the nearest integer value to `x`.
 ///
 /// # Examples
 ///

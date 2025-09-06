@@ -1,4 +1,5 @@
-///| The base 2 logarithm of `x` (Float).
+///|
+/// The base 2 logarithm of `x` (Float).
 pub fn log2f(x : Float) -> Float {
   let mut x = x
   let ivln2hi : Float = 1.4428710938e+00 // 0x3fb8b000 */

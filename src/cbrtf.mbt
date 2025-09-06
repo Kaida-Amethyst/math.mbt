@@ -1,4 +1,5 @@
-///| Return the cube root of `x` with single precision.
+///|
+/// Return the cube root of `x` with single precision.
 ///
 /// # Example
 ///

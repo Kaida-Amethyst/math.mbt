@@ -1,4 +1,5 @@
-///| `log1p(x)` computes `log(1+x)`
+///|
+/// `log1p(x)` computes `log(1+x)`
 ///
 /// # Examples
 ///
@@ -68,7 +69,8 @@ pub fn log1pf(x : Float) -> Float {
   s * (hfsq + r) + (dk * FLOAT_LN2_LO + c) - hfsq + f + dk * FLOAT_LN2_HI
 }
 
-///| `ln_1pf` is an alias for `log1pf`
+///|
+/// `ln_1pf` is an alias for `log1pf`
 pub let ln_1pf : (Float) -> Float = log1pf
 
 ///|

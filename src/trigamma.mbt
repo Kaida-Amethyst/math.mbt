@@ -1,4 +1,5 @@
-///| Computes the trigamma function of `x`.
+///|
+/// Computes the trigamma function of `x`.
 ///
 /// # Examples
 ///

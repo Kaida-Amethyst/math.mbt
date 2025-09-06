@@ -1,4 +1,5 @@
-///| Return isnan(x) for double x
+///|
+/// Return isnan(x) for double x
 ///
 /// if x is NaN, return true, otherwise return false
 pub fn isnan(x : Double) -> Bool {

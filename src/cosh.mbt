@@ -17,7 +17,8 @@
 // cosh(x) is |x| if x is +INF, -INF, or NaN.
 // only cosh(0)=1 is exact for finite x.
 
-///| Compute hyperbolic cosine function of a double-precision floating point number.
+///|
+/// Compute hyperbolic cosine function of a double-precision floating point number.
 ///
 /// # Examples
 ///

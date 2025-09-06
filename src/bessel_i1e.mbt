@@ -1,4 +1,5 @@
-///| Returns exponentially scaled modified Bessel function of order one of the argument.
+///|
+/// Returns exponentially scaled modified Bessel function of order one of the argument.
 pub fn bessel_i1e(x : Double) -> Double {
   let z = x.abs()
   let z = if z <= 8.0 {
@@ -10,5 +11,6 @@ pub fn bessel_i1e(x : Double) -> Double {
   return if x < 0.0 { -z } else { z }
 }
 
-///| `i1e` is an alias for `bessel_i1e`.
+///|
+/// `i1e` is an alias for `bessel_i1e`.
 pub let i1e : (Double) -> Double = bessel_i1e

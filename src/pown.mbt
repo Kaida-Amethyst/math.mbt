@@ -1,4 +1,5 @@
-///| pown computes `x ** n` where x is a Double and n is an Int.
+///|
+/// pown computes `x ** n` where x is a Double and n is an Int.
 pub fn pown(x : Double, n : Int) -> Double {
   let (n, nisneg) = if n < 0 { (-n, true) } else { (n, false) }
   let mut n = n
@@ -17,7 +18,8 @@ pub fn pown(x : Double, n : Int) -> Double {
   s
 }
 
-///| powi computes `x ** i` where x is a Double and i is an Int. It is an alias for `pown`.
+///|
+/// powi computes `x ** i` where x is a Double and i is an Int. It is an alias for `pown`.
 pub fn powi(x : Double, i : Int) -> Double {
   pown(x, i)
 }

@@ -1,4 +1,5 @@
-///| Compute the error function of `x`.
+///|
+/// Compute the error function of `x`.
 ///
 /// # Examples
 ///

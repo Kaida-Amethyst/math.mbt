@@ -1,4 +1,5 @@
-///| Compute sin(pi*x) with high accuracy.
+///|
+/// Compute sin(pi*x) with high accuracy.
 /// # Introduction
 ///
 /// Compute sin(pi*x) with high accuracy.

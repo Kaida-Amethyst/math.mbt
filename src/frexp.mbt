@@ -6,7 +6,8 @@ fn normalize(f : Double) -> (Double, Int) {
   (f, 0)
 }
 
-///| Extract mantissa and exponent of a floating-point value.
+///|
+/// Extract mantissa and exponent of a floating-point value.
 pub fn frexp(f : Double) -> (Double, Int) {
   if f == 0.0 || f.is_inf() || f.is_nan() {
     return (f, 0)

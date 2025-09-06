@@ -1,4 +1,5 @@
-///| Calculate the square root of the sum of squares of any number of coordinates.
+///|
+/// Calculate the square root of the sum of squares of any number of coordinates.
 /// Calculate the length of a vector p, dimension of which is passed as an argument without undue overflow or underflow.
 ///
 /// # Special Cases

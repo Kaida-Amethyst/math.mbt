@@ -17,7 +17,8 @@
 //    by method mentioned above.
 //
 
-///| Compute Bessel function of the second kind of order one.
+///|
+/// Compute Bessel function of the second kind of order one.
 ///
 /// # Examples
 ///

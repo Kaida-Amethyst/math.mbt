@@ -19,7 +19,8 @@ let k1_arrB : Array[Double] = [
   2.72062619048444266945E0,
 ]
 
-///| Computes the modified Bessel function of the third kind of order one of the argument.
+///|
+/// Computes the modified Bessel function of the third kind of order one of the argument.
 pub fn bessel_k1(x : Double) -> Double {
   let z = 0.5 * x
   if z <= 0.0 {
@@ -33,5 +34,6 @@ pub fn bessel_k1(x : Double) -> Double {
   return exp(-x) * chbevl(8.0 / x - 2.0, k1_arrB) / sqrt(x)
 }
 
-///| `k1` is an alias for `bessel_k1`.
+///|
+/// `k1` is an alias for `bessel_k1`.
 pub let k1 : (Double) -> Double = bessel_k1

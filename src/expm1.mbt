@@ -1,4 +1,5 @@
-///| Computes the exponential of `x` minus one.
+///|
+/// Computes the exponential of `x` minus one.
 ///
 /// # Special cases
 ///

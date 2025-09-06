@@ -1,4 +1,5 @@
-///| Compute the Riemann zeta function of two arguments.
+///|
+/// Compute the Riemann zeta function of two arguments.
 ///
 /// # Examples
 ///

@@ -1,4 +1,5 @@
-///| Return next representable double-precision floating-point value after argument `x` in the direction of `y`.
+///|
+/// Return next representable double-precision floating-point value after argument `x` in the direction of `y`.
 ///
 /// # Special cases
 ///

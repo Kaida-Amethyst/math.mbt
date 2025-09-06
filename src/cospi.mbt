@@ -1,4 +1,5 @@
-///| Compute cos(pi*x) with high accuracy.
+///|
+/// Compute cos(pi*x) with high accuracy.
 ///
 /// # Examples
 ///

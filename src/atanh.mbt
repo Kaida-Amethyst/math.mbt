@@ -1,4 +1,5 @@
-///| Computes hyperbolic arctangent of ``x``.
+///|
+/// Computes hyperbolic arctangent of ``x``.
 ///
 /// # Examples
 ///
