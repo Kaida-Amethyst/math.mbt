@@ -1,12 +1,10 @@
 ///|
-const SQRTH : Double = 0.70710678118654752440
-
-///|
 const MAXLOG : Double = 7.09782712893383996732E2
 
 ///|
 pub fn ndtr(a : Double) -> Double {
-  let x = a * SQRTH
+  let sqrth = 0.70710678118654752440
+  let x = a * sqrth
   let z = fabs(x)
   let y = if z < 1.0 {
     0.5 + 0.5 * erf(x)
