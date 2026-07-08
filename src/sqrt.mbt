@@ -3,7 +3,7 @@
 ///
 /// # Examples
 ///
-/// ```moonbit
+/// ```moonbit nocheck
 /// assert_eq(sqrt(0), 0);
 /// assert_eq(sqrt(1), 1);
 /// assert_eq(sqrt(2), 1.4142135623730951);

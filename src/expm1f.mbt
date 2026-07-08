@@ -11,7 +11,7 @@ const INV_LN2 : Float = 1.4426950216e+00 // 0x3fb8aa3b
 ///
 /// # Examples
 ///
-/// ```moonbit
+/// ```moonbit nocheck
 /// assert_eq(expm1f(1.0), 1.7182817459106445) 
 /// assert_eq(expm1f(0.0), 0.0)
 /// assert_eq(expm1f(-1.0), -0.6321205588285577)

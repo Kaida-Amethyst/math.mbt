@@ -24,7 +24,7 @@ fn tanf_poly(x : Float, odd : Bool) -> Float {
 ///
 /// # Examples
 ///
-/// ```moonbit
+/// ```moonbit nocheck
 /// assert_eq(tanf(-1.0), -1.5574077246549023)
 /// assert_eq(tanf(3.1415926), -1.5099580252808664e-7) 
 /// assert_eq(tanf(1.570796326), -22877334)

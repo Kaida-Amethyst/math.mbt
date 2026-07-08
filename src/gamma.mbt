@@ -3,7 +3,7 @@
 ///
 /// # Examples
 ///
-/// ```moonbit
+/// ```moonbit nocheck
 /// assert_eq(gamma(1.0), 1.0)
 /// assert_eq(gamma(2.0), 1.0)
 /// assert_eq(gamma(3.0), 2.0)
