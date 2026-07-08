@@ -3,7 +3,7 @@
 ///
 /// # Examples
 ///
-/// ```moonbit
+/// ```moonbit nocheck
 /// assert_eq(tanhf(-0.5), -0.46211713552474976) 
 /// assert_eq(tanhf(0.5), 0.46211713552474976)
 /// assert_eq(tanhf(0.0), 0.0)

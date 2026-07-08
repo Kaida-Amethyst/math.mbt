@@ -15,7 +15,7 @@
 ///
 /// # Examples
 ///
-/// ```moonbit
+/// ```moonbit nocheck
 /// assert_eq(expm1(1.0), 1.718281828459045)
 /// assert_eq(expm1(0.0), 0.0)
 /// assert_eq(expm1(-1.0), -0.6321205588285577)

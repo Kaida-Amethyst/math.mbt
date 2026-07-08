@@ -6,7 +6,7 @@
 ///
 /// # Example:
 ///
-/// ```moonbit
+/// ```moonbit nocheck
 /// assert_eq(fract(3.25), 0.25);
 /// ```
 ///

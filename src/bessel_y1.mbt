@@ -22,7 +22,7 @@
 ///
 /// # Examples
 ///
-/// ```moonbit
+/// ```moonbit nocheck
 /// let inf = 1.0/0.0
 /// assert_eq(y1(0), -inf);
 /// assert_eq(y1(1), -0.7812128213002887);

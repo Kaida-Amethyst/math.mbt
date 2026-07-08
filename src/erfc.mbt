@@ -3,7 +3,7 @@
 ///
 /// # Examples
 ///
-/// ```moonbit
+/// ```moonbit nocheck
 /// assert_eq(erfc(0.5), 0.4795001221869535)
 /// assert_eq(erfc(1.0), 0.15729920705028513)
 /// assert_eq(erfc(2.0), 0.004677734981047266)

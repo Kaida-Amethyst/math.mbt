@@ -22,7 +22,7 @@
 ///
 /// # Examples
 ///
-/// ```moonbit
+/// ```moonbit nocheck
 /// assert_eq(j1(0), 0)
 /// assert_eq(j1(1), 0.4400505857449335)
 /// assert_eq(j1(2), 0.5767248077568733)

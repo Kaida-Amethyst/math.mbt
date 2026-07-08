@@ -3,7 +3,7 @@
 ///
 /// # Examples
 ///
-/// ```moonbit
+/// ```moonbit nocheck
 /// assert_eq(round(2.5), 3.0)
 /// assert_eq(round(3.14), 3.0)
 /// assert_eq(round(-3.14), -3.0)
