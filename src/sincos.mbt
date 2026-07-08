@@ -3,7 +3,7 @@
 ///
 /// # Examples
 ///
-/// ```moonbit nocheck
+/// ```moonbit
 /// let x = 1.0
 /// let (sin_x, cos_x) = sincos(x)
 /// let sin_x_directly = sin(x)

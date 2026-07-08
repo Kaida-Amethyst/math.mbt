@@ -3,7 +3,7 @@
 ///
 /// # Examples
 ///
-/// ```moonbit nocheck
+/// ```moonbit
 /// assert_eq(cospi(0), 1);
 /// assert_eq(cospi(1), -1);
 /// assert_eq(cospi(0.5), 0);
@@ -30,12 +30,12 @@ pub fn cospi(x : Double) -> Double {
   }
   let mut rem = floor(x)
   if fabs(floor(rem / 2) * 2 - rem) > double_epsilon {
-    invert = not(invert)
+    invert = !invert
   }
   rem = x - rem
   if rem > 0.5 {
     rem = 1.0 - rem
-    invert = not(invert)
+    invert = !invert
   }
   if rem == 0.5 {
     return 0.0

@@ -35,7 +35,7 @@ pub fn log2f(x : Float) -> Float {
   k += (ix >> 23).reinterpret_as_int() - 0x7f
   ix = (ix & 0x007fffff) + 0x3f3504f3
   ui = ix
-  x = ui.reinterpret_as_float()
+  x = Float::reinterpret_from_uint(ui)
   let f = x - 1.0
   let s = f / (f + 2.0)
   let z = s * s
@@ -46,7 +46,7 @@ pub fn log2f(x : Float) -> Float {
   let hfsq = f * f * 0.5
   let hi = f - hfsq
   let ui = hi.reinterpret_as_uint() & 0xfffff000
-  let hi = ui.reinterpret_as_float()
+  let hi = Float::reinterpret_from_uint(ui)
   let lo = f - hi - hfsq + s * (hfsq + r)
-  (lo + hi) * ivln2lo + lo * ivln2hi + hi * ivln2hi + k.to_float()
+  (lo + hi) * ivln2lo + lo * ivln2hi + hi * ivln2hi + Float::from_int(k)
 }

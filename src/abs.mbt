@@ -4,5 +4,5 @@ fn fabs(x : Double) -> Double {
 }
 
 // fn fabsf(x: Float) -> Float {
-//   (x.reinterpret_as_uint() & 0x7fff_ffffU).to_float()
+//   Float::reinterpret_from_uint(x.reinterpret_as_uint() & 0x7fff_ffffU)
 // }

@@ -3,7 +3,7 @@
 ///
 /// # Examples
 ///
-/// ```moonbit nocheck
+/// ```moonbit
 /// assert_eq(log2(0.1), -3.321928094887362)
 /// assert_eq(log2(1), 0)
 /// assert_eq(log2(2), 1)
@@ -20,7 +20,7 @@
 ///
 /// 1 ulp.
 pub fn log2(x : Double) -> Double {
-  @math.log2(x)
+  @core_math.log2(x)
 }
 
 ///|

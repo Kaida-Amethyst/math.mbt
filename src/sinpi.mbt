@@ -22,7 +22,7 @@ pub fn sinpi(x : Double) -> Double {
   }
   let rem = floor(x)
   if fabs(floor(rem / 2) * 2 - rem) > double_epsilon {
-    invert = not(invert)
+    invert = !invert
   }
   let mut rem = x - rem
   if rem > 0.5 {

@@ -8,7 +8,7 @@
 ///
 /// # Examples
 ///
-/// ```moonbit nocheck
+/// ```moonbit
 /// assert_eq(hypotf(3, 4), 5)
 /// assert_eq(hypotf(6, 8), 10)
 /// assert_eq(hypotf(5, 12), 13)

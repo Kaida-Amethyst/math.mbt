@@ -3,7 +3,7 @@
 ///
 /// # Examples
 ///
-/// ```moonbit nocheck
+/// ```moonbit
 /// assert_eq(tanhf(-0.5), -0.46211713552474976) 
 /// assert_eq(tanhf(0.5), 0.46211713552474976)
 /// assert_eq(tanhf(0.0), 0.0)
@@ -25,7 +25,7 @@ pub fn tanhf(x : Float) -> Float {
   let mut ix = x.reinterpret_as_uint()
   let sign = ix >> 31 != 0
   ix = ix & 0x7fffffff
-  let x = ix.reinterpret_as_float()
+  let x = Float::reinterpret_from_uint(ix)
   let w = ix
   let tt = if w > 0x3f0c9f54 {
     // |x| > log(3)/2 ~= 0.5493 or nan */

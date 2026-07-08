@@ -8,7 +8,7 @@ const FLOAT_LN2 : Float = 0.693147180559945309417232121458176568
 ///
 /// # Examples
 ///
-/// ```moonbit nocheck
+/// ```moonbit
 /// assert_eq(acoshf(1.0), 0.0);
 /// assert_eq(acoshf(2.0), 1.3169578969248166);
 /// assert_eq(acoshf(3.0), 1.7627471740390859);

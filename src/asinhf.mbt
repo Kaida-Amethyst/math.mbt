@@ -6,7 +6,7 @@
 ///
 /// # Examples
 ///
-/// ```moonbit nocheck
+/// ```moonbit
 /// assert_eq(asinhf(-1), -0.881373587019543)
 /// assert_eq(asinhf(-2), -1.4436354751788103)
 /// assert_eq(asinhf(1), 0.881373587019543)
@@ -29,7 +29,7 @@ pub fn asinhf(x : Float) -> Float {
   let ln2 : Float = 0.693147180559945309417232121458176568
 
   // |x| */
-  let x = i.reinterpret_as_float()
+  let x = Float::reinterpret_from_uint(i)
   let x = if i >= 0x3f800000U + (12U << 23) {
     // |x| >= 0x1p12 or inf or nan */
     logf(x) + ln2

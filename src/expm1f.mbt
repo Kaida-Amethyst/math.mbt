@@ -11,7 +11,7 @@ const INV_LN2 : Float = 1.4426950216e+00 // 0x3fb8aa3b
 ///
 /// # Examples
 ///
-/// ```moonbit nocheck
+/// ```moonbit
 /// assert_eq(expm1f(1.0), 1.7182817459106445) 
 /// assert_eq(expm1f(0.0), 0.0)
 /// assert_eq(expm1f(-1.0), -0.6321205588285577)
@@ -61,7 +61,7 @@ pub fn expm1f(x : Float) -> Float {
     // if  |x| > 0.5 ln2
     if hx < 0x3F851592 {
       // and |x| < 1.5 ln2
-      if not(sign) {
+      if !sign {
         hi = x - FLOAT_LN2_HI
         lo = FLOAT_LN2_LO
         k = 1
@@ -72,7 +72,7 @@ pub fn expm1f(x : Float) -> Float {
       }
     } else {
       k = (INV_LN2 * x + (if sign { -0.5 } else { 0.5 })).to_int()
-      let t = k.to_float()
+      let t = Float::from_int(k)
       hi = x - t * FLOAT_LN2_HI // t*ln2_hi is exact here
       lo = t * FLOAT_LN2_LO
     }
@@ -110,8 +110,8 @@ pub fn expm1f(x : Float) -> Float {
     }
     return (1.0 : Float) + (2.0 : Float) * (x - e)
   }
-  let twopk = ((0x7f + k) << 23).reinterpret_as_float() // 2^k
-  if not(k is (0..=56)) {
+  let twopk = Float::reinterpret_from_int((0x7f + k) << 23) // 2^k
+  if !(k is (0..=56)) {
     // suffice to return exp(x)-1
     let mut y = x - e + 1.0
     if k == 128 {
@@ -121,7 +121,7 @@ pub fn expm1f(x : Float) -> Float {
     }
     return y - 1.0
   }
-  let uf = ((0x7f - k) << 23).reinterpret_as_float() // 2^-k
+  let uf = Float::reinterpret_from_int((0x7f - k) << 23) // 2^-k
   if k < 23 {
     (x - e + ((1.0 : Float) - uf)) * twopk
   } else {

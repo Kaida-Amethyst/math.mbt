@@ -3,7 +3,7 @@
 ///
 /// # Examples
 ///
-/// ```moonbit nocheck
+/// ```moonbit
 /// assert_eq(atanf(0), 0)
 /// assert_eq(atanf(1), 0.7853981633974483)
 /// assert_eq(atanf(2), 1.1071487177940904)

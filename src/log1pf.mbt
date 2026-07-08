@@ -3,7 +3,7 @@
 ///
 /// # Examples
 ///
-/// ```moonbit nocheck
+/// ```moonbit
 /// assert_eq(log1pf(0.1), 0.09531017980432487)
 /// assert_eq(log1pf(1), 0.6931471805599453)
 /// assert_eq(log1pf(-0.5), -0.6931471805599453)
@@ -48,15 +48,15 @@ pub fn log1pf(x : Float) -> Float {
     iu += 0x3f800000U - 0x3f3504f3U
     k = (iu >> 23).reinterpret_as_int() - 0x7f
     if k < 25 {
-      let fui = ui.reinterpret_as_float()
+      let fui = Float::reinterpret_from_uint(ui)
       c = if k >= 2 { one - (fui - x) } else { x - (fui - 1.0) }
-      c /= ui.reinterpret_as_float()
+      c /= Float::reinterpret_from_uint(ui)
     } else {
       c = 0.0
     }
     iu = (iu & 0x007fffff) + 0x3f3504f3
     ui = iu
-    f = ui.reinterpret_as_float() - 1.0
+    f = Float::reinterpret_from_uint(ui) - 1.0
   }
   let s = f / (f + 2.0)
   let z = s * s
@@ -65,7 +65,7 @@ pub fn log1pf(x : Float) -> Float {
   let t2 = z * (LG1_F + w * LG3_F)
   let r = t2 + t1
   let hfsq = (0.5 : Float) * f * f
-  let dk = k.to_float()
+  let dk = Float::from_int(k)
   s * (hfsq + r) + (dk * FLOAT_LN2_LO + c) - hfsq + f + dk * FLOAT_LN2_HI
 }
 

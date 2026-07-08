@@ -34,7 +34,7 @@
 ///
 /// 2 ulp (units in the last place) are added for rounding.
 pub fn pow(base : Double, expon : Double) -> Double {
-  base.pow(expon)
+  @core_math.pow(base, expon)
 }
 
 ///|

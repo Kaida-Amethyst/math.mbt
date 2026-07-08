@@ -68,7 +68,7 @@ pub fn ndtri(y0 : Double) -> Double {
     x1 = z * polevl(z, p2) / polevl(z, q2)
   }
   let x = x0 - x1
-  if not(code) {
+  if !code {
     x
   } else {
     -x

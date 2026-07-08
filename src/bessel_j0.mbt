@@ -45,7 +45,7 @@ const S04 : Double = 1.16614003333790000205e-09
 ///
 /// # Examples
 ///
-/// ```moonbit nocheck
+/// ```moonbit
 /// assert_eq(j0(0.0), 1.0);
 /// assert_eq(j0(1.0), 0.7651976865579666);
 /// assert_eq(j0(2.0), 0.22389077914123567);

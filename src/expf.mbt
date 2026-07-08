@@ -24,7 +24,7 @@ pub fn expf(x : Float) -> Float {
       // NaN */
       return x
     }
-    if hx >= 0x42b17218 && not(signb) {
+    if hx >= 0x42b17218 && !signb {
       // x >= 88.722839f */
       // overflow */
       x *= (0x1.0p127 : Float)
@@ -52,7 +52,7 @@ pub fn expf(x : Float) -> Float {
     } else {
       k = 1 - sign - sign
     }
-    let kf = k.to_float()
+    let kf = Float::from_int(k)
     hi = x - kf * FLOAT_LN2_HI // k*ln2hi is exact here
     lo = kf * FLOAT_LN2_LO
     x = hi - lo

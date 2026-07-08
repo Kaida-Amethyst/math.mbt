@@ -3,7 +3,7 @@
 ///
 /// # Examples
 ///
-/// ```moonbit nocheck
+/// ```moonbit
 /// assert_eq(asinf(0), 0)
 /// assert_eq(asinf(1), 1.5707963267948966)
 /// assert_eq(asinf(-1), -1.5707963267948966)
@@ -36,7 +36,7 @@ pub fn asinf(x : Float) -> Float {
   let ix = hx & 0x7fffffff
   if ix >= 0x3f800000 {
     if ix == 0x3f800000 {
-      return (x.to_double() * pio2 + x1p120).to_float()
+      return Float::from_double(x.to_double() * pio2 + x1p120)
     }
     return @float.not_a_number // asin(|x|>1) is NaN */
   }
@@ -48,7 +48,7 @@ pub fn asinf(x : Float) -> Float {
   }
   let z = ((1.0 : Float) - x.abs()) * 0.5
   let s = z.to_double().sqrt()
-  let x = (pio2 - 2.0 * (s + s * r(z).to_double())).to_float()
+  let x = Float::from_double(pio2 - 2.0 * (s + s * r(z).to_double()))
   if hx >> 31 != 0 {
     -x
   } else {

@@ -13,7 +13,7 @@ const LG4_F : Float = 0.24279078841
 ///|
 pub fn logf(x : Float) -> Float {
   let mut x = x
-  let x1p25 = (0x4c000000).reinterpret_as_float()
+  let x1p25 = Float::reinterpret_from_int(0x4c000000)
   let mut ix = x.reinterpret_as_int()
   let mut k = 0
   if ix < 0x00800000 || ix >> 31 != 0 {
@@ -34,7 +34,7 @@ pub fn logf(x : Float) -> Float {
   ix += 0x3f800000 - 0x3f3504f3
   k += (ix >> 23) - 0x7f
   ix = (ix & 0x007fffff) + 0x3f3504f3
-  x = ix.reinterpret_as_float()
+  x = Float::reinterpret_from_int(ix)
   let f = x - 1.0
   let s = f / ((2.0 : Float) + f)
   let z = s * s
@@ -43,7 +43,7 @@ pub fn logf(x : Float) -> Float {
   let t2 = z * (LG1_F + w * LG3_F)
   let r = t2 + t1
   let hfsq = (0.5 : Float) * f * f
-  let dk = k.to_float()
+  let dk = Float::from_int(k)
   s * (hfsq + r) + dk * FLOAT_LN2_LO - hfsq + f + dk * FLOAT_LN2_HI
 }
 

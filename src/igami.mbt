@@ -125,7 +125,7 @@ pub fn igami(a : Double, y0 : Double) -> Double {
   }
 
   // If Newton iteration didn't converge, use interval halving
-  if not(newton_converged) {
+  if !newton_converged {
     x = interval_halving(a, y0, x, x0, x1, yl, yh, dithresh)
   }
   // underflow

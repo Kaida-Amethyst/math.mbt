@@ -6,6 +6,6 @@ pub fn fast_rsqrt(x : Float) -> Float {
   let mut y : Float = x
   let mut i : Int = y.reinterpret_as_int()
   i = 0x5f3759df - (i >> 1)
-  y = i.reinterpret_as_float()
+  y = Float::reinterpret_from_int(i)
   y * (threehalfs - x2 * y * y)
 }

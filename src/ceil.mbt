@@ -3,7 +3,7 @@
 ///
 /// # Examples
 ///
-/// ```moonbit nocheck
+/// ```moonbit
 /// assert_eq(ceil(2.5), 3.0)
 /// assert_eq(ceil(3.14), 4.0)
 /// assert_eq(ceil(-3.14), -3.0)

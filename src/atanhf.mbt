@@ -3,7 +3,7 @@
 ///
 /// # Examples
 ///
-/// ```moonbit nocheck
+/// ```moonbit
 /// assert_eq(atanhf(0.0), 0.0);
 /// assert_eq(atanhf(0.5), 0.5493061443340548);
 /// assert_eq(atanhf(1.0), @float.infinity);
@@ -25,7 +25,7 @@ pub fn atanhf(x : Float) -> Float {
   let u = x.reinterpret_as_uint()
   let sign = u >> 31 != 0
   let u = u & 0x7fffffff
-  let x = u.reinterpret_as_float()
+  let x = Float::reinterpret_from_uint(u)
   let x = if u < 0x3f800000U - (1U << 23) {
     if u < 0x3f800000U - (32U << 23) {
       x

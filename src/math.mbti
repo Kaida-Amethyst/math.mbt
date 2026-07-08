@@ -130,7 +130,7 @@ fn cbrtf(Float) -> Float
 
 fn ceil(Double) -> Double
 
-fn chbevl(Double, Array[Double]) -> Double
+fn chbevl(Double, ReadOnlyArray[Double]) -> Double
 
 fn clamp(Double, Double, Double) -> Double
 
@@ -413,4 +413,3 @@ pub(all) enum RoundMode {
 // Type aliases
 
 // Traits
-

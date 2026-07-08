@@ -3,7 +3,7 @@
 ///
 /// # Examples
 ///
-/// ```moonbit nocheck
+/// ```moonbit
 /// assert_eq(coshf(0), 1)
 /// assert_eq(coshf(1), 1.5430805683135986) 
 /// assert_eq(coshf(2), 3.7621958255767822) 
@@ -24,7 +24,7 @@ pub fn coshf(x : Float) -> Float {
   // |x| */
   let mut ix = x.reinterpret_as_uint()
   ix = ix & 0x7fffffff
-  x = ix.reinterpret_as_float()
+  x = Float::reinterpret_from_uint(ix)
   let w = ix
 
   // |x| < log(2) */

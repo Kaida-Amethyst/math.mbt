@@ -16,7 +16,7 @@
 
 ///|
 /// Computes the Chebyshev series
-pub fn chbevl(x : Double, arr : Array[Double]) -> Double {
+pub fn chbevl(x : Double, arr : ReadOnlyArray[Double]) -> Double {
   let mut b0 = arr[0]
   let mut b1 = 0.0
   let mut b2 = 0.0

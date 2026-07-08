@@ -3,7 +3,7 @@
 ///
 /// # Examples
 ///
-/// ```moonbit nocheck
+/// ```moonbit
 /// assert_eq(acos(-0.5), 2.0943951023931957)
 /// assert_eq(acos(0.5), 1.0471975511965979)
 /// assert_eq(acos(1), 0)

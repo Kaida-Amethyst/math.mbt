@@ -16,7 +16,7 @@ fn tanf_poly(x : Float, odd : Bool) -> Float {
   let s = z * x
   let u = coef[0] + z * coef[1]
   r = x + s * u + s * w * (t + w * r)
-  (if odd { -1.0 / r } else { r }).to_float()
+  Float::from_double(if odd { -1.0 / r } else { r })
 }
 
 ///|
@@ -24,7 +24,7 @@ fn tanf_poly(x : Float, odd : Bool) -> Float {
 ///
 /// # Examples
 ///
-/// ```moonbit nocheck
+/// ```moonbit
 /// assert_eq(tanf(-1.0), -1.5574077246549023)
 /// assert_eq(tanf(3.1415926), -1.5099580252808664e-7) 
 /// assert_eq(tanf(1.570796326), -22877334)

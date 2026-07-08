@@ -3,7 +3,7 @@
 ///
 /// # Examples
 ///
-/// ```moonbit nocheck
+/// ```moonbit
 /// assert_eq(sinhf(-0.5), -0.5210953054937474)
 /// assert_eq(sinhf(0.0), 0.0)
 /// assert_eq(sinhf(0.5), 0.5210953054937474)
@@ -27,7 +27,7 @@ pub fn sinhf(x : Float) -> Float {
   }
   // |x|
   ix = ix & 0x7fffffff
-  let absx = ix.reinterpret_as_float()
+  let absx = Float::reinterpret_from_uint(ix)
   let w = ix
 
   // |x| < log(FLT_MAX)

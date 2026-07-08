@@ -3,7 +3,7 @@
 ///
 /// # Examples
 ///
-/// ```moonbit nocheck
+/// ```moonbit
 /// assert_eq(trigamma(0.5), 4.93480220054468); 
 /// assert_eq(trigamma(1.0), 1.6449340668482262);
 /// assert_eq(trigamma(2.0), 0.6449340668482261);

@@ -3,7 +3,7 @@
 ///
 /// # Example
 ///
-/// ```moonbit nocheck
+/// ```moonbit
 /// assert_eq(cbrt(3), 1.4422495703074083)
 /// assert_eq(cbrt(-3), -1.4422495703074083)
 /// assert_eq(cbrt(0), 0)

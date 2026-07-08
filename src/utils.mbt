@@ -93,22 +93,22 @@ pub fn ulp_error(x : Double, y : Double) -> Int64 {
   if xisninf && yisninf {
     return 0
   }
-  if xisnan && not(yisnan) {
+  if xisnan && !yisnan {
     return INT64_MAX
   }
-  if yisnan && not(xisnan) {
+  if yisnan && !xisnan {
     return INT64_MAX
   }
-  if xispinf && not(yispinf) {
+  if xispinf && !yispinf {
     return INT64_MAX
   }
-  if yispinf && not(xispinf) {
+  if yispinf && !xispinf {
     return INT64_MAX
   }
-  if xisninf && not(yisninf) {
+  if xisninf && !yisninf {
     return INT64_MAX
   }
-  if yisninf && not(xisninf) {
+  if yisninf && !xisninf {
     return INT64_MAX
   }
   let xi : Int64 = x.reinterpret_as_int64()
@@ -137,22 +137,22 @@ pub fn ulp_error_f32(x : Float, y : Float) -> Int {
   if xisninf && yisninf {
     return 0
   }
-  if xisnan && not(yisnan) {
+  if xisnan && !yisnan {
     return INT_MAX
   }
-  if yisnan && not(xisnan) {
+  if yisnan && !xisnan {
     return INT_MAX
   }
-  if xispinf && not(yispinf) {
+  if xispinf && !yispinf {
     return INT_MAX
   }
-  if yispinf && not(xispinf) {
+  if yispinf && !xispinf {
     return INT_MAX
   }
-  if xisninf && not(yisninf) {
+  if xisninf && !yisninf {
     return INT_MAX
   }
-  if yisninf && not(xisninf) {
+  if yisninf && !xisninf {
     return INT_MAX
   }
   let xi : Int = x.reinterpret_as_int()
