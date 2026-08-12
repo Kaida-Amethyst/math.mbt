@@ -390,10 +390,6 @@ pub fn trigamma(Double) -> Double
 
 pub fn trunc(Double) -> Double
 
-pub fn ulp_error(Double, Double) -> Int64
-
-pub fn ulp_error_f32(Float, Float) -> Int
-
 pub fn y0(Double) -> Double
 
 pub fn y1(Double) -> Double
@@ -415,4 +411,3 @@ pub(all) enum RoundMode {
 // Type aliases
 
 // Traits
-
