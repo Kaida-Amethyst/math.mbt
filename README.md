@@ -24,12 +24,17 @@ moon add Kaida-Amethyst/math
 
 ## Usage
 
+All APIs are currently experimental and are exported from the
+`Kaida-Amethyst/math/experimental` package. The root package intentionally
+exports no public API until individual function families pass the stable
+promotion criteria.
+
 To use the moonbit-math package in your project, add the following dependency to your `moon.pkg.json` file:
 
 ```json
 {
     "import" :[
-        "Kaida-Amethyst/math"
+        "Kaida-Amethyst/math/experimental"
     ]
 }
 ```
@@ -39,12 +44,15 @@ After that, you can use the mathematical functions in your package, for example:
 ```moonbit
 fn main {
     let angle = 1.0 // in radians
-    let result = @math.sin(angle)
+    let result = @experimental.sin(angle)
     println("The sine of \{angle} is \{result}")
 }
 ```
 
-**Note:** The above method of adding the package will override the usage of the `math` package in the Core standard library. Moonbit-Math maintains compatibility with the `math` library in Moonbit's Core standard library. This means that using common mathematical functions like `sin`, `cosh`, `cbrt`, etc., in both Core and Moonbit-Math will result in consistent behavior.
+**Note:** The default alias of this package is `experimental`, so the Core
+standard library's `@math` alias remains available. Compatibility with Core is
+an ecosystem goal, but experimental APIs do not yet carry a stable behavior or
+accuracy guarantee.
 
 If you need to differentiate between using the `math` package from the Core standard library and the Moonbit-Math package, you need to configure your `moon.pkg.json` file as follows:
 
@@ -52,7 +60,7 @@ If you need to differentiate between using the `math` package from the Core stan
 {
     "import" :[
         {
-            "path": "Kaida-Amethyst/math",
+            "path": "Kaida-Amethyst/math/experimental",
             "alias" : "kmath"
         }
     ]
@@ -308,12 +316,16 @@ moon add Kaida-Amethyst/math
 
 ## 使用
 
+当前所有 API 均处于 experimental 阶段，由
+`Kaida-Amethyst/math/experimental` 包导出。根包暂不导出公共 API，函数族只有通过
+stable 晋升门槛后才会移入根包。
+
 要在您的 package 中使用 Moonbit-Math，请在其 `moon.pkg.json` 文件中添加以下依赖：
 
 ```json
 {
     "import" :[
-        "Kaida-Amethyst/math"
+        "Kaida-Amethyst/math/experimental"
     ]
 }
 ```
@@ -323,12 +335,14 @@ moon add Kaida-Amethyst/math
 ```moonbit
 fn main {
     let angle = 1.0 // 以弧度为单位
-    let result = @math.sin(angle)
+    let result = @experimental.sin(angle)
     println("The sine of \{angle} is \{result}")
 }
 ```
 
-**注意：** 上述添加包的方法会覆盖掉 Core 标准库中的 `math` 包。Moonbit-Math 与 Moonbit 语言标准库 Core 中的 `math` 库保持了兼容性。这意味着使用 Core 和 Moonbit-Math 中共同的数学函数（例如 `sin`、`cosh`、`cbrt` 等）将具有一致的行为。
+**注意：** 该包的默认别名是 `experimental`，因此 Core 标准库的 `@math`
+别名仍然可用。与 Core 兼容是本库的生态目标，但 experimental API 尚不提供稳定的
+行为或精度保证。
 
 如果您需要区分使用标准库 Core 的 `math` 包和 Moonbit-Math 的 `math` 包，请在 `moon.pkg.json` 中进行如下配置：
 
@@ -336,7 +350,7 @@ fn main {
 {
     "import" :[
         {
-            "path": "Kaida-Amethyst/math",
+            "path": "Kaida-Amethyst/math/experimental",
             "alias" : "kmath"
         }
     ]

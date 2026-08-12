@@ -1,0 +1,17 @@
+import {
+  "moonbitlang/core/double",
+  "moonbitlang/core/float",
+  "moonbitlang/core/math" @core_math,
+}
+
+import {
+  "Kaida-Amethyst/math/internal/ulp",
+} for "wbtest"
+
+options(
+  targets: {
+    "fma_wasm.mbt": [ "wasm", "wasm-gc" ],
+    "fma_js.mbt": [ "js" ],
+    "fma.mbt": [ "not", "js", "wasm", "wasm-gc" ],
+  },
+)
