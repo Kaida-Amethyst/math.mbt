@@ -12,6 +12,8 @@
 
 1. [Q-02. R0 的工作范围](Q-02-r0-scope.md)（依赖：R0 中各函数的修复以本问题结论为语义基础）
 2. [Q-11. 稳定 API 的跨后端一致性标准](Q-11-cross-backend-consistency.md)（依赖：跨后端比较需要共同语义基线）
+3. [Q-20. stable API 的晋升测试门槛](Q-20-stable-promotion-testing.md)（依赖：契约测试与参考结果必须服从本问题的裁判顺序）
+4. [Q-21. 外部 oracle 与纯 MoonBit 发布边界](Q-21-external-oracle-release-purity.md)（依赖：不同外部工具只在其权威范围内充当参考）
 
 ## 建议的解决方案
 

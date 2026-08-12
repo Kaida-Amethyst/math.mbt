@@ -15,6 +15,7 @@ Q-03、Q-04 和 Q-16 已经确定 ULP 距离的语义、内部可见性和超范
 3. [Q-12. R0 回归测试的组织方式](Q-12-regression-test-layout.md)（依赖：内部数值工具使用白盒测试）
 4. [Q-14. R0 的完成门槛](Q-14-r0-exit-criteria.md)（组成：正确的 ULP 尺子是 R0 验收项）
 5. [Q-16. ULP 距离超过返回范围时的表示](Q-16-ulp-distance-range.md)（依赖：规定超大有限距离饱和为最大哨兵值）
+6. [Q-19. stable、experimental 与 internal 的包分层](Q-19-package-maturity-layout.md)（后续：若采用 internal 子包，已经实现的 ULP 文件还需要迁移为职责化内部包）
 
 ## 建议的解决方案
 

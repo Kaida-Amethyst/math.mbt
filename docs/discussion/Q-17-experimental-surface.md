@@ -1,4 +1,4 @@
-# Q-17. experimental 状态在 R0 中如何呈现 〔已解决〕
+# Q-17. experimental 状态在 R0 中如何呈现 〔已作废〕
 
 > 最后更新日期：2026-08-12
 > 仓库：Kaida-Amethyst/math.mbt
@@ -8,11 +8,14 @@
 
 Q-13 已决定在 R0 中建立全量公共 API 成熟度清单，并区分 stable、experimental 和 internal，但尚未决定这些状态如何向用户呈现和产生约束。这个问题会影响 R0 是以低破坏性的清单起步，还是立即调整包与导入结构。
 
+后续讨论认为以独立成熟度清单作为主要机制过于繁琐，并提出直接用 `src/`、`src/experimental/` 和 `src/internal/` 的包结构表达成熟度。该方向实质替代了本问题采用的“清单优先、暂不分包”，因此本问题标记为已作废；历史采用方案仍保留，替代方案转入 Q-19 继续决策。
+
 ## 关联问题
 
 1. [Q-04. ULP 测量函数是否保留为公共 API](Q-04-ulp-api-visibility.md)（一般关系：internal 状态需要通过真实可见性收回，而不只是文档标签）
 2. [Q-13. R0 是否清点全部公共 API 的成熟度](Q-13-public-api-inventory.md)（来源：全量清单已经决定，本问题补充其对用户生效的方式）
 3. [Q-14. R0 的完成门槛](Q-14-r0-exit-criteria.md)（依赖：成熟度清单需要有可检查的呈现方式）
+4. [Q-19. stable、experimental 与 internal 的包分层](Q-19-package-maturity-layout.md)（被替代：Q-19 改以包路径作为成熟度边界）
 
 ## 建议的解决方案
 

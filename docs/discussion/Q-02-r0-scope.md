@@ -16,6 +16,7 @@
 4. [Q-07. norm 中 NaN 与无穷的优先级](Q-07-norm-special-values.md)（组成：已确认反例所需的契约决策）
 5. [Q-09. logsumexp 对全负无穷输入的处理](Q-09-logsumexp-special-values.md)（组成：已确认反例所需的契约决策）
 6. [Q-14. R0 的完成门槛](Q-14-r0-exit-criteria.md)（后续：工作范围确定后才能冻结完成门槛）
+7. [Q-13. R0 是否清点全部公共 API 的成熟度](Q-13-public-api-inventory.md)（历史组成：原方案用独立清单落实公共 API 清点，该实现方式后来作废）
 
 ## 建议的解决方案
 

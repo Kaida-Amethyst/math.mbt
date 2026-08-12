@@ -11,7 +11,8 @@
 ## 关联问题
 
 1. [Q-03. ULP 距离的语义契约](Q-03-ulp-distance-contract.md)（依赖：无论可见性如何，内部使用前都必须先确定语义）
-2. [Q-13. R0 是否清点全部公共 API 的成熟度](Q-13-public-api-inventory.md)（一般关系：ULP 函数是 stable/experimental/internal 分类的具体案例）
+2. [Q-13. R0 是否清点全部公共 API 的成熟度](Q-13-public-api-inventory.md)（历史关系：ULP 函数曾是独立成熟度清单的具体案例，该清单方案后来作废）
+3. [Q-19. stable、experimental 与 internal 的包分层](Q-19-package-maturity-layout.md)（后续：若采用职责化 internal 包，ULP 工具将由包路径实际限制可见性）
 
 ## 建议的解决方案
 

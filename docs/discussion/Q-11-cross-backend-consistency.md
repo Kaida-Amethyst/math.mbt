@@ -12,6 +12,7 @@
 
 1. [Q-01. 稳定 API 的语义裁判顺序](Q-01-semantic-precedence.md)（依赖：各后端必须先共享同一语义基线）
 2. [Q-14. R0 的完成门槛](Q-14-r0-exit-criteria.md)（依赖：本问题结论将进入完成门槛）
+3. [Q-20. stable API 的晋升测试门槛](Q-20-stable-promotion-testing.md)（依赖：stable 晋升必须在全部支持后端验证本问题采用的一致性标准）
 
 ## 建议的解决方案
 

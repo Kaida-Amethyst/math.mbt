@@ -12,6 +12,7 @@
 
 1. [Q-03. ULP 距离的语义契约](Q-03-ulp-distance-contract.md)（依赖：ULP 编码细节需要内部测试）
 2. [Q-14. R0 的完成门槛](Q-14-r0-exit-criteria.md)（依赖：采用的测试层次将成为完成条件）
+3. [Q-20. stable API 的晋升测试门槛](Q-20-stable-promotion-testing.md)（后续：晋升证据需要落实到公共黑盒测试和内部白盒测试中）
 
 ## 建议的解决方案
 
