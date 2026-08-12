@@ -1,8 +1,7 @@
 // Generated using `moon info`, DON'T EDIT IT
-package "Kaida-Amethyst/math"
+package "Kaida-Amethyst/math/test"
 
 // Values
-pub fn exp(Double) -> Double
 
 // Errors
 

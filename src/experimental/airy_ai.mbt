@@ -79,7 +79,7 @@ pub fn airy_ai(x : Double) -> Double {
     }
     ai = 5.64189583547756286948e-01 *
       (an / ad) /
-      (2.0 * x.sqrt().sqrt() * exp(zeta))
+      (2.0 * x.sqrt().sqrt() * @math.exp(zeta))
     if x > 8.3203353 {
       return ai
     }

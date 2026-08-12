@@ -31,9 +31,9 @@ pub fn bessel_i0(x : Double) -> Double {
   let x = x.abs()
   if x <= 8.0 {
     let y = x / 2.0 - 2.0
-    return exp(x) * chbevl(y, i0_arrA)
+    return @math.exp(x) * chbevl(y, i0_arrA)
   }
-  return exp(x) * chbevl(32.0 / x - 2.0, i0_arrB) / x.sqrt()
+  return @math.exp(x) * chbevl(32.0 / x - 2.0, i0_arrB) / x.sqrt()
 }
 
 ///|

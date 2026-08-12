@@ -77,7 +77,7 @@ pub fn expx2(x : Double, sign : Int) -> Double {
   }
 
   // u is exact, u1 is small.
-  u = exp(u) * exp(u1)
+  u = @math.exp(u) * @math.exp(u1)
   u
 }
 

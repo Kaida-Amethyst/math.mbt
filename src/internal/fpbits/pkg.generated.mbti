@@ -1,0 +1,17 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Kaida-Amethyst/math/internal/fpbits"
+
+// Values
+pub fn from_words(UInt, UInt) -> Double
+
+pub fn high_word(Double) -> UInt
+
+pub fn low_word(Double) -> UInt
+
+// Errors
+
+// Types and methods
+
+// Type aliases
+
+// Traits

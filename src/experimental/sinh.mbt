@@ -40,10 +40,10 @@ pub fn sinh(x : Double) -> Double {
     return h * (t + t / (t + 1.0))
   }
   if ix < 0x40862E42 {
-    return h * exp(abs_x)
+    return h * @math.exp(abs_x)
   }
   if abs_x.reinterpret_as_uint64() < 0x408633ce8fb9f87d {
-    let w = exp(0.5 * abs_x)
+    let w = @math.exp(0.5 * abs_x)
     let t = h * w
     return t * w
   }

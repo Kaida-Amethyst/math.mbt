@@ -162,8 +162,6 @@ pub fn erfcx(Double) -> Double
 
 pub fn erfinv(Double) -> Double
 
-pub fn exp(Double) -> Double
-
 pub fn exp10(Double) -> Double
 
 pub fn exp2(Double) -> Double

@@ -113,7 +113,7 @@ pub fn igami(a : Double, y0 : Double) -> Double {
     if d < -MAXLOG {
       break
     }
-    d = -exp(d)
+    d = -@math.exp(d)
 
     // Compute the step to the next approximation of x
     d = (y - y0) / d

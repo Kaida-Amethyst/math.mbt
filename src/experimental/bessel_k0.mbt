@@ -31,7 +31,7 @@ pub fn bessel_k0(x : Double) -> Double {
     return y
   }
   let z = 8.0 / x - 2.0
-  return exp(-x) * chbevl(z, k0_arrB) / sqrt(x)
+  return @math.exp(-x) * chbevl(z, k0_arrB) / sqrt(x)
 }
 
 ///|

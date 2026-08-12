@@ -7,7 +7,7 @@ pub fn bessel_k1e(x : Double) -> Double {
   if x <= 2.0 {
     let y = x * x - 2.0
     let y = log(0.5 * x) * bessel_i1(x) + chbevl(y, k1_arrA) / x
-    return y * exp(x)
+    return y * @math.exp(x)
   }
   return chbevl(8.0 / x - 2.0, k1_arrB) / sqrt(x)
 }

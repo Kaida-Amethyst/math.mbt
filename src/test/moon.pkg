@@ -1,0 +1,4 @@
+import {
+  "Kaida-Amethyst/math",
+  "moonbitlang/core/double",
+} for "test"

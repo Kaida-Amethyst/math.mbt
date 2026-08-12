@@ -1,1 +1,6 @@
-// Stable package. APIs are promoted here only after satisfying Q-20.
+import {
+  "Kaida-Amethyst/math/internal/fpbits",
+  "moonbitlang/core/double",
+}
+
+// Stable APIs in this package have satisfied the Q-20 promotion gate.

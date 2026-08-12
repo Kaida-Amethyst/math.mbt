@@ -55,15 +55,15 @@ pub fn cosh(x : Double) -> Double {
     return 1.0 + t * t / (w + w)
   }
   if ix < 0x40360000 {
-    let t = exp(fabs(x))
+    let t = @math.exp(fabs(x))
     return 0.5 * t + 0.5 / t
   }
   if ix < 0x40862E42 {
-    return 0.5 * exp(fabs(x))
+    return 0.5 * @math.exp(fabs(x))
   }
   let lx = __low(x).reinterpret_as_int()
   if ix < 0x408633ce || (ix == 0x408633ce && lx <= 0x8fb9f87d) {
-    let w = exp(0.5 * fabs(x))
+    let w = @math.exp(0.5 * fabs(x))
     let t = 0.5 * w
     return t * w
   }

@@ -143,7 +143,7 @@ pub fn erf(x : Double) -> Double {
   }
   let mut z = x
   z = __combineW(__hi(z), 0)
-  let r = exp(-z * z - 0.5625) * exp((z - x) * (z + x) + r / s)
+  let r = @math.exp(-z * z - 0.5625) * @math.exp((z - x) * (z + x) + r / s)
   if hx >= 0 {
     1.0 - r / x
   } else {

@@ -24,58 +24,48 @@ moon add Kaida-Amethyst/math
 
 ## Usage
 
-All APIs are currently experimental and are exported from the
-`Kaida-Amethyst/math/experimental` package. The root package intentionally
-exports no public API until individual function families pass the stable
-promotion criteria.
+APIs that pass the stable promotion criteria are exported from
+`Kaida-Amethyst/math`; `exp` is currently the first stable API. Remaining APIs
+are available from `Kaida-Amethyst/math/experimental` without a stable behavior
+or accuracy guarantee.
 
-To use the moonbit-math package in your project, add the following dependency to your `moon.pkg.json` file:
-
-```json
-{
-    "import" :[
-        "Kaida-Amethyst/math/experimental"
-    ]
-}
-```
-
-After that, you can use the mathematical functions in your package, for example:
-
-```moonbit
-fn main {
-    let angle = 1.0 // in radians
-    let result = @experimental.sin(angle)
-    println("The sine of \{angle} is \{result}")
-}
-```
-
-**Note:** The default alias of this package is `experimental`, so the Core
-standard library's `@math` alias remains available. Compatibility with Core is
-an ecosystem goal, but experimental APIs do not yet carry a stable behavior or
-accuracy guarantee.
-
-If you need to differentiate between using the `math` package from the Core standard library and the Moonbit-Math package, you need to configure your `moon.pkg.json` file as follows:
+Because the root package's default alias conflicts with Core's `@math`, import
+it with an explicit alias:
 
 ```json
 {
-    "import" :[
+    "import": [
         {
-            "path": "Kaida-Amethyst/math/experimental",
-            "alias" : "kmath"
+            "path": "Kaida-Amethyst/math",
+            "alias": "kmath"
         }
     ]
 }
 ```
 
-Then, you can use the mathematical functions in your code with the alias:
+Then use the stable `exp` API as follows:
+
+```moonbit
+fn main {
+    let result = @kmath.exp(1.0)
+    println("exp(1) = \{result}")
+}
+```
+
+Experimental functions require a separate import:
+
+```json
+{
+    "import": [
+        "Kaida-Amethyst/math/experimental"
+    ]
+}
+```
 
 ```moonbit
 fn main {
     let angle = 1.0
-    let result1 = @kmath.sin(angle)    // use Moonbit-Math's sin function
-    let result2 = @math.sin(angle)      // use Core-Math's sin function
-    println("Moonbit-Math: The sine of \{angle} is \{result1}")
-    println("Core: The sine of \{angle} is \{result2}")
+    println(@experimental.sin(angle))
 }
 ```
 
@@ -115,7 +105,7 @@ As of version 0.1.17, Moonbit-Math supports the following functions:
 
 | Function Name | Description                                                  |
 | ------------- | ------------------------------------------------------------ |
-| `exp`         | Exponential function, computes e raised to the power of x.   |
+| `exp`         | **Stable.** Computes e raised to the power of x.             |
 | `exp10`       | Base-10 exponential function.                                |
 | `exp2`        | Base-2 exponential function.                                 |
 | `expm1`       | Computes exp(x) - 1, offering better precision for small values. |
@@ -316,56 +306,46 @@ moon add Kaida-Amethyst/math
 
 ## 使用
 
-当前所有 API 均处于 experimental 阶段，由
-`Kaida-Amethyst/math/experimental` 包导出。根包暂不导出公共 API，函数族只有通过
-stable 晋升门槛后才会移入根包。
-
-要在您的 package 中使用 Moonbit-Math，请在其 `moon.pkg.json` 文件中添加以下依赖：
-
-```json
-{
-    "import" :[
-        "Kaida-Amethyst/math/experimental"
-    ]
-}
-```
-
-之后，您就可以在该 package 中使用数学函数了，例如：
-
-```moonbit
-fn main {
-    let angle = 1.0 // 以弧度为单位
-    let result = @experimental.sin(angle)
-    println("The sine of \{angle} is \{result}")
-}
-```
-
-**注意：** 该包的默认别名是 `experimental`，因此 Core 标准库的 `@math`
-别名仍然可用。与 Core 兼容是本库的生态目标，但 experimental API 尚不提供稳定的
+通过 stable 晋升门槛的 API 由 `Kaida-Amethyst/math` 根包导出；`exp` 是当前首个
+stable API。其余 API 仍位于 `Kaida-Amethyst/math/experimental`，尚不提供稳定的
 行为或精度保证。
 
-如果您需要区分使用标准库 Core 的 `math` 包和 Moonbit-Math 的 `math` 包，请在 `moon.pkg.json` 中进行如下配置：
+根包的默认别名会与 Core 的 `@math` 冲突，因此建议显式指定别名：
 
 ```json
 {
-    "import" :[
+    "import": [
         {
-            "path": "Kaida-Amethyst/math/experimental",
-            "alias" : "kmath"
+            "path": "Kaida-Amethyst/math",
+            "alias": "kmath"
         }
     ]
 }
 ```
 
-然后，您可以在您的代码中通过别名来使用 Moonbit-Math 的函数：
+然后可以使用 stable 的 `exp`：
+
+```moonbit
+fn main {
+    let result = @kmath.exp(1.0)
+    println("exp(1) = \{result}")
+}
+```
+
+experimental 函数需要单独导入：
+
+```json
+{
+    "import": [
+        "Kaida-Amethyst/math/experimental"
+    ]
+}
+```
 
 ```moonbit
 fn main {
     let angle = 1.0
-    let result1 = @kmath.sin(angle)    // 使用 Moonbit-Math 的 sin 函数
-    let result2 = @math.sin(angle)      // 使用 Core-Math 的 sin 函数
-    println("Moonbit-Math: The sine of \{angle} is \{result1}")
-    println("Core: The sine of \{angle} is \{result2}")
+    println(@experimental.sin(angle))
 }
 ```
 
@@ -405,7 +385,7 @@ fn main {
 
 | 函数名      | 描述                               |
 | ----------- | ---------------------------------- |
-| `exp`       | 指数函数，计算 e 的 x 次方。            |
+| `exp`       | **Stable。**计算 e 的 x 次方。          |
 | `exp10`     | 以 10 为底的指数函数。                 |
 | `exp2`      | 以 2 为底的指数函数。                  |
 | `expm1`     | 计算 exp(x) - 1，用于提高小数值的精度。 |

@@ -38,7 +38,7 @@ pub fn erfcx(x : Double) -> Double {
   if x < 0.0 {
     let s = x * x
     let d = fma(x, x, -s)
-    let e = exp(s)
+    let e = @math.exp(s)
     r = e - r
     r = fma(e, d + d, r)
     r = r + e

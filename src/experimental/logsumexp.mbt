@@ -10,7 +10,7 @@ pub fn logsumexp(elements : Array[Double]) -> Double {
   let mut result = 0.0
   for i, v in elements {
     if i != idx {
-      result += exp(v - max_val)
+      result += @math.exp(v - max_val)
     }
   }
   max_val + log1p(result)

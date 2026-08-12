@@ -1,4 +1,5 @@
 import {
+  "Kaida-Amethyst/math",
   "moonbitlang/core/double",
   "moonbitlang/core/float",
   "moonbitlang/core/math" @core_math,

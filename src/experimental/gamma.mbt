@@ -107,7 +107,7 @@ fn stirf(x : Double) -> Double {
   ]
   let w = 1.0 / x
   let w = 1.0 + w * polevl(w, stir)
-  let y = exp(x)
+  let y = @math.exp(x)
   let y = if x > maxstir {
     let v = pow(x, 0.5 * x - 0.25)
     v * (v / y)

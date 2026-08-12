@@ -17,7 +17,7 @@ pub fn inv_digamma(x : Double) -> Double {
   if ispinf(x) {
     return @double.infinity
   }
-  let mut y = exp(x)
+  let mut y = @math.exp(x)
   let mut i = 1.0
   while i > 1.0e-15 {
     y += i * inner_signum(x - digamma(y))

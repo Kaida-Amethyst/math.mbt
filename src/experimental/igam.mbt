@@ -20,7 +20,7 @@ fn igamc(a : Double, x : Double) -> Double {
   if ax < -MAXLOG {
     return 0.0
   }
-  let ax = exp(ax)
+  let ax = @math.exp(ax)
 
   // Continued fraction
   let mut y = 1.0 - a
@@ -72,7 +72,7 @@ pub fn igam(a : Double, x : Double) -> Double {
   if ax < -MAXLOG {
     return 0.0
   }
-  let ax = exp(ax)
+  let ax = @math.exp(ax)
 
   // Power series
   let mut r = a
