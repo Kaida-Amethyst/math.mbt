@@ -26,9 +26,9 @@ moon add Kaida-Amethyst/math
 
 APIs that pass the stable promotion criteria are exported from
 `Kaida-Amethyst/math`; `exp`, `expf`, `expm1f`, `sinhf`, `coshf`, `tanhf`,
-`scalbn`, its `ldexp` alias, and `scalbnf` are currently stable. Remaining APIs
-are available from `Kaida-Amethyst/math/experimental` without a stable behavior
-or accuracy guarantee.
+`cbrtf`, `scalbn`, its `ldexp` alias, and `scalbnf` are currently stable.
+Remaining APIs are available from `Kaida-Amethyst/math/experimental` without a
+stable behavior or accuracy guarantee.
 
 Because the root package's default alias conflicts with Core's `@math`, import
 it with an explicit alias:
@@ -55,6 +55,7 @@ fn main {
   println("tanhf(1) = \{@kmath.tanhf(1.0)}")
   println("sinhf(1) = \{@kmath.sinhf(1.0)}")
   println("coshf(1) = \{@kmath.coshf(1.0)}")
+  println("cbrtf(27) = \{@kmath.cbrtf(27.0)}")
   println("scalbn(1.5, 2) = \{@kmath.scalbn(1.5, 2)}")
   println("ldexp(1.5, 2) = \{@kmath.ldexp(1.5, 2)}")
   println("scalbnf(1.5, 2) = \{@kmath.scalbnf(1.5, 2)}")
@@ -199,6 +200,7 @@ As of version 0.1.17, Moonbit-Math supports the following functions:
 | Function Name | Description                                                               |
 | ------------- | ------------------------------------------------------------------------- |
 | `cbrt`        | Cube root function.                                                       |
+| `cbrtf`       | **Stable.** Computes the binary32 cube root within 1 ULP.                 |
 | `ceil`        | Ceiling function, rounds up to the nearest integer.                         |
 | `clamp`       | Clamps a value within a specified range.                                  |
 | `div_euclid`  | Computes the result of Euclidean division.                                |
@@ -265,6 +267,7 @@ For floating-point functions, Moonbit-Math has currently measured the following 
 | `exp10`       | 1       |
 | `expm1`       | 0       |
 | `cbrt`        | 0       |
+| `cbrtf`       | 0       |
 | `atan`        | 1       |
 | `atan2`       | 1       |
 | `asin`        | 1       |
@@ -330,8 +333,8 @@ moon add Kaida-Amethyst/math
 ## 使用
 
 通过 stable 晋升门槛的 API 由 `Kaida-Amethyst/math` 根包导出；`exp`、`expf`、`expm1f`、
-`sinhf`、`coshf`、`tanhf`、`scalbn`、其别名 `ldexp` 以及 `scalbnf` 是当前 stable API。
-其余 API 仍位于
+`sinhf`、`coshf`、`tanhf`、`cbrtf`、`scalbn`、其别名 `ldexp` 以及 `scalbnf` 是当前
+stable API。其余 API 仍位于
 `Kaida-Amethyst/math/experimental`，尚不提供稳定的行为或精度保证。
 
 根包的默认别名会与 Core 的 `@math` 冲突，因此建议显式指定别名：
@@ -358,6 +361,7 @@ fn main {
     println("tanhf(1) = \{@kmath.tanhf(1.0)}")
     println("sinhf(1) = \{@kmath.sinhf(1.0)}")
     println("coshf(1) = \{@kmath.coshf(1.0)}")
+    println("cbrtf(27) = \{@kmath.cbrtf(27.0)}")
     println("scalbn(1.5, 2) = \{@kmath.scalbn(1.5, 2)}")
     println("ldexp(1.5, 2) = \{@kmath.ldexp(1.5, 2)}")
     println("scalbnf(1.5, 2) = \{@kmath.scalbnf(1.5, 2)}")
@@ -505,6 +509,7 @@ fn main {
 | 函数名        | 描述                                                                |
 | ------------- | ------------------------------------------------------------------- |
 | `cbrt`        | 立方根函数。                                                          |
+| `cbrtf`       | **Stable。**计算 binary32 立方根，误差不超过 1 ULP。                  |
 | `ceil`        | 向上取整函数。                                                        |
 | `clamp`       | 将值限制在给定的范围内。                                                |
 | `div_euclid`  | 计算欧几里得除法的结果。                                                  |
@@ -571,6 +576,7 @@ Moonbit-Math 使用 ULP（Unit in the Last Place）来衡量精度。有关 ULP 
 | `exp10`   | 1        |
 | `expm1`   | 0        |
 | `cbrt`    | 0        |
+| `cbrtf`   | 0        |
 | `atan`    | 1        |
 | `atan2`   | 1        |
 | `asin`    | 1        |

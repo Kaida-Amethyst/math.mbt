@@ -126,8 +126,6 @@ pub fn bessel_yn(Int, Double) -> Double
 
 pub fn cbrt(Double) -> Double
 
-pub fn cbrtf(Float) -> Float
-
 pub fn ceil(Double) -> Double
 
 pub fn chbevl(Double, ReadOnlyArray[Double]) -> Double
