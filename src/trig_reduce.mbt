@@ -2,6 +2,9 @@
 const SIN_SWITCHOVER : Float = 201.15625
 
 ///|
+const COS_SWITCHOVER : Float = 142.90625
+
+///|
 fn mulh(a : UInt, b : UInt) -> UInt {
   let a = a.to_uint64()
   let b = b.to_uint64()

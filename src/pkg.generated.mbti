@@ -16,6 +16,8 @@ pub fn atanhf(Float) -> Float
 
 pub fn cbrtf(Float) -> Float
 
+pub fn cosf(Float) -> Float
+
 pub fn coshf(Float) -> Float
 
 pub fn exp(Double) -> Double

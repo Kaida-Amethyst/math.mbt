@@ -121,9 +121,6 @@ const ZETA_MAX_ULP : Int = 3
 // ===================================================
 
 ///|
-const COS_F_MAX_ULP : Int = 2
-
-///|
 const TAN_F_MAX_ULP : Int = 2
 
 ///|

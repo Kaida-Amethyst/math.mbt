@@ -91,35 +91,3 @@ fn trig_reduce(x : Float, switch_over : Float) -> (Float, Int) {
   let r = Float::reinterpret_from_uint(r)
   return (r, q)
 }
-
-///|
-fn sinf_poly(x : Float) -> Float {
-  let s = x * x
-  let mut r = Float::reinterpret_from_int(0x3640_5000)
-  r = r * s - Float::reinterpret_from_int(0x3950_3486)
-  r = r * s + Float::reinterpret_from_int(0x3c08_88c1)
-  r = r * s - Float::reinterpret_from_int(0x3e2a_aaab)
-  let t = x * s
-  r = r * t + x
-  r
-}
-
-///|
-fn cosf_poly(x : Float) -> Float {
-  let s = x * x
-  let mut r = Float::reinterpret_from_int(0x37cd_4000)
-  r = r * s - Float::reinterpret_from_int(0x3ab6_077d)
-  r = r * s + Float::reinterpret_from_int(0x3d2a_aaa8)
-  r = r * s - Float::reinterpret_from_int(0x3f00_0000)
-  r = r * s + Float::reinterpret_from_int(0x3f80_0000)
-  r
-}
-
-///|
-fn sin_cos_core(x : Float, q : Int) -> Float {
-  let mut r = if (q & 1) != 0 { cosf_poly(x) } else { sinf_poly(x) }
-  if (q & 2) != 0 {
-    r = -r
-  }
-  r
-}

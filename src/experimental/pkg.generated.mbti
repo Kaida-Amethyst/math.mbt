@@ -122,8 +122,6 @@ pub fn clamp(Double, Double, Double) -> Double
 
 pub fn cos(Double) -> Double
 
-pub fn cosf(Float) -> Float
-
 pub fn cosh(Double) -> Double
 
 pub fn cospi(Double) -> Double
