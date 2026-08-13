@@ -1,7 +1,7 @@
-# `scalbn` MPFR oracle
+# `scalbn` / `ldexp` MPFR oracle
 
 This directory contains the development-only oracle used to certify the
-MoonBit `scalbn(Double, Int) -> Double` implementation.
+MoonBit `scalbn(Double, Int) -> Double` implementation and its `ldexp` alias.
 
 For every finite nonzero input, the generator loads the binary64 value exactly
 into MPFR, applies `mpfr_mul_2si`, and converts the exact scaled value to
@@ -11,10 +11,11 @@ infinity are handled directly so their sign is explicit; NaN payloads are not
 part of the public contract and are tested only by classification.
 
 The generated MoonBit test contains fixed `(input_bits, exponent,
-expected_bits)` tuples. It checks both `@math.scalbn` and MoonBit Core's
-`@core_math.scalbn`. MPFR, GMP, a C compiler, `pkg-config`, and `make` are
-needed only to regenerate or verify the corpus; ordinary builds and tests stay
-pure MoonBit.
+expected_bits)` tuples. It checks both public names, `@math.scalbn` and
+`@math.ldexp`, against MPFR, and compares `@math.scalbn` with MoonBit Core's
+`@core_math.scalbn`. MPFR, GMP, a C compiler, `pkg-config`, and `make` are needed
+only to regenerate or verify the corpus; ordinary builds and tests stay pure
+MoonBit.
 
 ## Corpus design
 
@@ -59,9 +60,10 @@ size after an enlarged audit.
 ## Audit record
 
 On 2026-08-13, the default corpus contained 15,646 unique `(input, exponent)`
-pairs generated with MPFR 4.2.2. It matched exactly in debug and release mode
-on wasm, wasm-gc, JavaScript, and native, and every case also matched MoonBit
-Core. The maximum observed error was zero ULP.
+pairs generated with MPFR 4.2.2. `scalbn` matched exactly in debug and release
+mode on wasm, wasm-gc, JavaScript, and native, and every case also matched
+MoonBit Core. The maximum observed error was zero ULP. The same corpus now also
+checks the `ldexp` alias on every backend.
 
 The three random strata were then enlarged from 4,096 to 32,768 samples each.
 All 101,662 resulting unique cases matched MPFR exactly in native debug and

@@ -25,9 +25,9 @@ moon add Kaida-Amethyst/math
 ## Usage
 
 APIs that pass the stable promotion criteria are exported from
-`Kaida-Amethyst/math`; `exp` and `scalbn` are currently stable. Remaining APIs
-are available from `Kaida-Amethyst/math/experimental` without a stable behavior
-or accuracy guarantee.
+`Kaida-Amethyst/math`; `exp`, `scalbn`, and its `ldexp` alias are currently
+stable. Remaining APIs are available from `Kaida-Amethyst/math/experimental`
+without a stable behavior or accuracy guarantee.
 
 Because the root package's default alias conflicts with Core's `@math`, import
 it with an explicit alias:
@@ -50,6 +50,7 @@ fn main {
   let result = @kmath.exp(1.0)
   println("exp(1) = \{result}")
   println("scalbn(1.5, 2) = \{@kmath.scalbn(1.5, 2)}")
+  println("ldexp(1.5, 2) = \{@kmath.ldexp(1.5, 2)}")
 }
 ```
 
@@ -205,7 +206,7 @@ As of version 0.1.17, Moonbit-Math supports the following functions:
 | `isnormal`    | Checks if a floating-point number is normal (neither zero, subnormal, infinite, nor NaN). |
 | `ispinf`      | Checks if a floating-point number is positive infinity.                   |
 | `issubnormal` | Checks if a floating-point number is subnormal.                            |
-| `ldexp`       | Computes x * 2<sup>exp</sup>.                                             |
+| `ldexp`       | **Stable alias of `scalbn`.** Computes x * 2<sup>exp</sup>.               |
 | `lerp`        | Performs linear interpolation between two values.                          |
 | `norm`        | Computes the Euclidean norm (L2 norm) of an array.                       |
 | `norm3d`      | Computes the Euclidean norm of a 3D vector.                               |
@@ -240,6 +241,7 @@ For floating-point functions, Moonbit-Math has currently measured the following 
 | `pow`         | 2       |
 | `exp`         | 1       |
 | `scalbn`      | 0       |
+| `ldexp`       | 0       |
 | `exp2`        | 1       |
 | `exp10`       | 1       |
 | `expm1`       | 0       |
@@ -308,9 +310,9 @@ moon add Kaida-Amethyst/math
 
 ## 使用
 
-通过 stable 晋升门槛的 API 由 `Kaida-Amethyst/math` 根包导出；`exp` 和 `scalbn` 是当前
-stable API。其余 API 仍位于 `Kaida-Amethyst/math/experimental`，尚不提供稳定的行为或
-精度保证。
+通过 stable 晋升门槛的 API 由 `Kaida-Amethyst/math` 根包导出；`exp`、`scalbn` 及其别名
+`ldexp` 是当前 stable API。其余 API 仍位于 `Kaida-Amethyst/math/experimental`，尚不提供
+稳定的行为或精度保证。
 
 根包的默认别名会与 Core 的 `@math` 冲突，因此建议显式指定别名：
 
@@ -332,6 +334,7 @@ fn main {
     let result = @kmath.exp(1.0)
     println("exp(1) = \{result}")
     println("scalbn(1.5, 2) = \{@kmath.scalbn(1.5, 2)}")
+    println("ldexp(1.5, 2) = \{@kmath.ldexp(1.5, 2)}")
 }
 ```
 
@@ -490,7 +493,7 @@ fn main {
 | `isnormal`    | 检查浮点数是否为正规数（既不是零、次正规数、无穷大也不是 NaN）。             |
 | `ispinf`      | 检查浮点数是否为正无穷大。                                              |
 | `issubnormal` | 检查浮点数是否为次正规数。                                              |
-| `ldexp`       | 计算 x * 2<sup>exp</sup>。                                            |
+| `ldexp`       | **`scalbn` 的 stable 别名。**计算 x * 2<sup>exp</sup>。               |
 | `lerp`        | 在两个值之间进行线性插值。                                                |
 | `norm`        | 计算数组的欧几里得范数（L2 范数）。                                       |
 | `norm3d`      | 计算三维向量的欧几里得范数。                                              |
@@ -525,6 +528,7 @@ Moonbit-Math 使用 ULP（Unit in the Last Place）来衡量精度。有关 ULP 
 | `pow`     | 2        |
 | `exp`     | 1        |
 | `scalbn`  | 0        |
+| `ldexp`   | 0        |
 | `exp2`    | 1        |
 | `exp10`   | 1        |
 | `expm1`   | 0        |

@@ -250,8 +250,6 @@ pub fn k1(Double) -> Double
 
 pub fn k1e(Double) -> Double
 
-pub fn ldexp(Double, Int) -> Double
-
 pub fn lerp(Double, Double, Double) -> Double
 
 pub fn lgamma(Double) -> Double

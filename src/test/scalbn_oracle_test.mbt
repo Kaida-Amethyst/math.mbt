@@ -15731,6 +15731,25 @@ test "scalbn agrees exactly with the MPFR oracle" {
 }
 
 ///|
+test "ldexp agrees exactly with the MPFR oracle" {
+  for cases in scalbn_mpfr_case_groups() {
+    for item in cases {
+      let (input_bits, exponent, expected_bits) = item
+      let actual_bits = @math.ldexp(
+        input_bits.reinterpret_as_double(),
+        exponent,
+      ).reinterpret_as_uint64()
+      if actual_bits != expected_bits {
+        println(
+          "ldexp oracle mismatch: input_bits=\{input_bits}, exponent=\{exponent}, expected_bits=\{expected_bits}, actual_bits=\{actual_bits}",
+        )
+        assert_true(false)
+      }
+    }
+  }
+}
+
+///|
 test "scalbn matches MoonBit Core over the oracle corpus" {
   for cases in scalbn_mpfr_case_groups() {
     for item in cases {

@@ -4,6 +4,7 @@ package "Kaida-Amethyst/math"
 // Values
 pub fn exp(Double) -> Double
 
+#alias(ldexp)
 pub fn scalbn(Double, Int) -> Double
 
 // Errors

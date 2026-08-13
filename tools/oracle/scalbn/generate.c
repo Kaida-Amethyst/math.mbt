@@ -305,25 +305,31 @@ static void emit_cases(const OracleCase *cases, size_t case_count) {
   printf("}\n\n");
 }
 
-static void emit_tests(void) {
+static void emit_oracle_check(const char *function_name) {
   printf("///|\n");
-  printf("test \"scalbn agrees exactly with the MPFR oracle\" {\n");
+  printf("test \"%s agrees exactly with the MPFR oracle\" {\n", function_name);
   printf("  for cases in scalbn_mpfr_case_groups() {\n");
   printf("    for item in cases {\n");
   printf("      let (input_bits, exponent, expected_bits) = item\n");
-  printf("      let actual_bits = @math.scalbn(\n");
+  printf("      let actual_bits = @math.%s(\n", function_name);
   printf("        input_bits.reinterpret_as_double(),\n");
   printf("        exponent,\n");
   printf("      ).reinterpret_as_uint64()\n");
   printf("      if actual_bits != expected_bits {\n");
   printf("        println(\n");
-  printf("          \"scalbn oracle mismatch: input_bits=\\{input_bits}, exponent=\\{exponent}, expected_bits=\\{expected_bits}, actual_bits=\\{actual_bits}\",\n");
+  printf("          \"%s oracle mismatch: input_bits=\\{input_bits}, exponent=\\{exponent}, expected_bits=\\{expected_bits}, actual_bits=\\{actual_bits}\",\n",
+         function_name);
   printf("        )\n");
   printf("        assert_true(false)\n");
   printf("      }\n");
   printf("    }\n");
   printf("  }\n");
   printf("}\n\n");
+}
+
+static void emit_tests(void) {
+  emit_oracle_check("scalbn");
+  emit_oracle_check("ldexp");
 
   printf("///|\n");
   printf("test \"scalbn matches MoonBit Core over the oracle corpus\" {\n");

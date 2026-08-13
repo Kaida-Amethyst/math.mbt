@@ -1,6 +1,8 @@
 ///|
 /// Returns `input * 2^exponent` as an IEEE 754 binary64 value, without first
-/// computing `2^exponent` as a `Double`.
+/// computing `2^exponent` as a `Double`. The same function is also exported as
+/// `ldexp`; because `Double` is a binary format, the two names have identical
+/// semantics.
 ///
 /// ## Domain and special values
 ///
@@ -19,18 +21,19 @@
 /// ## Verification
 ///
 /// A 15,646-case fixed corpus generated with an independent MPFR oracle checks
-/// exact result bits across normal, subnormal, underflow, and overflow
-/// transitions, including extreme `Int` exponents. Its maximum observed error is
-/// 0 ULP. The corpus passes in debug and release mode on wasm, wasm-gc,
-/// JavaScript, and native and is also compared with MoonBit Core. This is testing
-/// evidence, not a formal proof. See the
+/// exact result bits through both the `scalbn` and `ldexp` names across normal,
+/// subnormal, underflow, and overflow transitions, including extreme `Int`
+/// exponents. Its maximum observed error is 0 ULP. The corpus passes in debug and
+/// release mode on wasm, wasm-gc, JavaScript, and native and is also compared
+/// with MoonBit Core. This is testing evidence, not a formal proof. See the
 /// [oracle documentation](../tools/oracle/scalbn/README.md) for the corpus design
 /// and reproduction commands.
 ///
 /// ## References
 ///
-/// - The public behavior follows
-///   [POSIX `scalbn`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/scalbn.html)
+/// - The public behavior follows POSIX
+///   [`scalbn`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/scalbn.html)
+///   and [`ldexp`](https://pubs.opengroup.org/onlinepubs/9799919799/functions/ldexp.html)
 ///   for binary64 under round-to-nearest, ties-to-even.
 /// - The staged scaling algorithm is derived from
 ///   [musl `scalbn.c`](https://git.musl-libc.org/cgit/musl/tree/src/math/scalbn.c).
@@ -47,6 +50,7 @@
 ///   assert_eq(scalbn(1.0, -1074).reinterpret_as_uint64(), 1UL)
 /// }
 /// ```
+#alias(ldexp)
 pub fn scalbn(input : Double, exponent : Int) -> Double {
   let mut n = exponent
   let mut y = input
