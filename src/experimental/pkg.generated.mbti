@@ -76,8 +76,6 @@ pub fn acosf(Float) -> Float
 
 pub fn acosh(Double) -> Double
 
-pub fn acoshf(Float) -> Float
-
 pub fn airy_ai(Double) -> Double
 
 pub fn asin(Double) -> Double

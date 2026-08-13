@@ -27,7 +27,7 @@ moon add Kaida-Amethyst/math
 APIs that pass the stable promotion criteria are exported from
 `Kaida-Amethyst/math`; `exp`, `expf`, `expm1f`, `sinhf`, `coshf`, `tanhf`,
 `cbrtf`, `sqrtf`, `logf`, `log1pf`, its `ln_1pf` alias, `asinhf`, `atanhf`,
-`scalbn`, its `ldexp` alias, and `scalbnf` are currently stable.
+`acoshf`, `scalbn`, its `ldexp` alias, and `scalbnf` are currently stable.
 Remaining APIs are available from `Kaida-Amethyst/math/experimental` without a
 stable behavior or accuracy guarantee.
 
@@ -62,6 +62,7 @@ fn main {
   println("log1pf(1) = \{@kmath.log1pf(1.0)}")
   println("asinhf(1) = \{@kmath.asinhf(1.0)}")
   println("atanhf(0.5) = \{@kmath.atanhf(0.5)}")
+  println("acoshf(2) = \{@kmath.acoshf(2.0)}")
   println("scalbn(1.5, 2) = \{@kmath.scalbn(1.5, 2)}")
   println("ldexp(1.5, 2) = \{@kmath.ldexp(1.5, 2)}")
   println("scalbnf(1.5, 2) = \{@kmath.scalbnf(1.5, 2)}")
@@ -111,6 +112,7 @@ As of version 0.1.17, Moonbit-Math supports the following functions:
 | Function Name | Description              |
 | ------------- | ------------------------ |
 | `acosh`       | Inverse hyperbolic cosine. |
+| `acoshf`      | **Stable.** Binary32 inverse hyperbolic cosine within 2 ULP. |
 | `asinh`       | Inverse hyperbolic sine.   |
 | `asinhf`      | **Stable.** Binary32 inverse hyperbolic sine within 1 ULP. |
 | `atanh`       | Inverse hyperbolic tangent.|
@@ -282,6 +284,7 @@ For floating-point functions, Moonbit-Math has currently measured the following 
 | `log1pf`      | 1       |
 | `asinhf`      | 1       |
 | `atanhf`      | 1       |
+| `acoshf`      | 2       |
 | `atan`        | 1       |
 | `atan2`       | 1       |
 | `asin`        | 1       |
@@ -348,7 +351,8 @@ moon add Kaida-Amethyst/math
 
 通过 stable 晋升门槛的 API 由 `Kaida-Amethyst/math` 根包导出；`exp`、`expf`、`expm1f`、
 `sinhf`、`coshf`、`tanhf`、`cbrtf`、`sqrtf`、`logf`、`log1pf`、其别名
-`ln_1pf`、`asinhf`、`atanhf`、`scalbn`、其别名 `ldexp` 以及 `scalbnf` 是当前 stable API。
+`ln_1pf`、`asinhf`、`atanhf`、`acoshf`、`scalbn`、其别名 `ldexp` 以及 `scalbnf`
+是当前 stable API。
 其余 API 仍位于
 `Kaida-Amethyst/math/experimental`，尚不提供稳定的行为或精度保证。
 
@@ -382,6 +386,7 @@ fn main {
     println("log1pf(1) = \{@kmath.log1pf(1.0)}")
     println("asinhf(1) = \{@kmath.asinhf(1.0)}")
     println("atanhf(0.5) = \{@kmath.atanhf(0.5)}")
+    println("acoshf(2) = \{@kmath.acoshf(2.0)}")
     println("scalbn(1.5, 2) = \{@kmath.scalbn(1.5, 2)}")
     println("ldexp(1.5, 2) = \{@kmath.ldexp(1.5, 2)}")
     println("scalbnf(1.5, 2) = \{@kmath.scalbnf(1.5, 2)}")
@@ -431,6 +436,7 @@ fn main {
 | 函数名    | 描述         |
 | --------- | ------------ |
 | `acosh`   | 反双曲余弦函数。 |
+| `acoshf`  | **Stable。**计算 binary32 反双曲余弦，误差不超过 2 ULP。 |
 | `asinh`   | 反双曲正弦函数。 |
 | `asinhf`  | **Stable。**计算 binary32 反双曲正弦，误差不超过 1 ULP。 |
 | `atanh`   | 反双曲正切函数。 |
@@ -605,6 +611,7 @@ Moonbit-Math 使用 ULP（Unit in the Last Place）来衡量精度。有关 ULP 
 | `log1pf`  | 1        |
 | `asinhf`  | 1        |
 | `atanhf`  | 1        |
+| `acoshf`  | 2        |
 | `atan`    | 1        |
 | `atan2`   | 1        |
 | `asin`    | 1        |

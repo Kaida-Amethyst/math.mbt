@@ -2,6 +2,8 @@
 package "Kaida-Amethyst/math"
 
 // Values
+pub fn acoshf(Float) -> Float
+
 pub fn asinhf(Float) -> Float
 
 pub fn atanhf(Float) -> Float
