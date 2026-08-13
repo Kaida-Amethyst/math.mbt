@@ -5,7 +5,7 @@ CPPFLAGS += $(shell pkg-config --cflags mpfr)
 LDLIBS += $(shell pkg-config --libs mpfr)
 
 GENERATOR := build/generate
-OUTPUT := ../../../src/test/scalbnf_oracle_test.mbt
+OUTPUT := ../../../src/test/scalbnf/oracle_test.mbt
 SAMPLES_PER_STRATUM ?= 4096
 
 .PHONY: all generate verify clean

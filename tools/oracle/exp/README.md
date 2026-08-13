@@ -78,4 +78,4 @@ backends with MoonBit 0.1.20260803. The ordinary test run remained pure
 MoonBit; MPFR and CORE-MATH were used only for offline generation and audit.
 
 Run `make verify` to regenerate into a temporary file and compare it byte for
-byte with `src/test/exp_oracle_test.mbt`.
+byte with `src/test/exp/oracle_test.mbt`.

@@ -5,7 +5,7 @@ CPPFLAGS += $(shell pkg-config --cflags mpfr)
 LDLIBS += $(shell pkg-config --libs mpfr)
 
 GENERATOR := build/generate
-OUTPUT := ../../../src/test/logf_oracle_test.mbt
+OUTPUT := ../../../src/test/logf/oracle_test.mbt
 SAMPLES_PER_STRATUM ?= 4096
 MAX_ULP ?= 1
 

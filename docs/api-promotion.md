@@ -117,7 +117,9 @@ normal/subnormal 转换、signed zero、指数极值以及相邻输入。可以�
 
 ```text
 src/<family>.mbt
-src/test/<family>_oracle_test.mbt
+src/test/<family>/
+├── moon.pkg
+└── oracle_test.mbt
 tools/oracle/<family>/
 ├── generate.c
 ├── Makefile
@@ -137,15 +139,16 @@ tools/oracle/<family>/
 
 ### 6.2 大型 oracle 测试包
 
-大型固化语料统一放在 `src/test/` 独立包，例如：
+每个函数的大型固化语料放在各自独立的测试包，例如：
 
 ```text
-src/test/exp_oracle_test.mbt
-src/test/scalbn_oracle_test.mbt
+src/test/exp/oracle_test.mbt
+src/test/scalbn/oracle_test.mbt
 ```
 
-该包通过 `@math` 调用根包公共 API，因此同时验证导出接口和外部调用路径。大型语料与
-stable 实现形成独立编译边界，避免根包源码随着认证数据膨胀。
+这些包通过 `@math` 调用根包公共 API，因此同时验证导出接口和外部调用路径。每个函数
+单独形成编译边界，既避免根包源码随着认证数据膨胀，也避免所有固化数组被合并成超过
+WebAssembly 单函数大小限制的测试初始化函数。
 
 ### 6.3 白盒测试
 
@@ -230,7 +233,7 @@ stable 行为。不得只运行一个后端后推断其他后端正确。
 ```text
 src/exp.mbt
 src/internal/fpbits/
-src/test/exp_oracle_test.mbt
+src/test/exp/oracle_test.mbt
 tools/oracle/exp/
 ```
 
@@ -301,7 +304,7 @@ error         = 1 ULP
 - [ ] 误差尺度与函数类型相符；
 - [ ] 参考证据独立于当前实现；
 - [ ] 分支边界、相邻浮点数、分层随机输入和最坏案例已覆盖；
-- [ ] 大型 oracle 位于 `src/test/<family>_oracle_test.mbt`；
+- [ ] 大型 oracle 位于独立的 `src/test/<family>/oracle_test.mbt` 测试包；
 - [ ] 外部生成器位于 `tools/oracle/<family>/`，且可以逐字节再生成；
 - [ ] 普通构建和测试保持纯 MoonBit；
 - [ ] 无独特价值的旧白盒或手写十进制样本已经删除；
