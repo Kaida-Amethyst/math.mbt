@@ -130,9 +130,6 @@ const SINH_F_MAX_ULP : Int = 0
 const COSH_F_MAX_ULP : Int = 0
 
 ///|
-const TANH_F_MAX_ULP : Int = 0
-
-///|
 const ASINH_F_MAX_ULP : Int = 0
 
 ///|

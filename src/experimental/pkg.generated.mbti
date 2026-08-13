@@ -368,8 +368,6 @@ pub fn tanf(Float) -> Float
 
 pub fn tanh(Double) -> Double
 
-pub fn tanhf(Float) -> Float
-
 pub fn to_degrees(Double) -> Double
 
 pub fn to_radians(Double) -> Double
