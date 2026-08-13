@@ -256,8 +256,6 @@ pub fn log1p(Double) -> Double
 
 pub fn log2(Double) -> Double
 
-pub fn log2f(Float) -> Float
-
 pub fn log_ndtr(Double) -> Double
 
 pub fn logaddexp(Double, Double) -> Double
