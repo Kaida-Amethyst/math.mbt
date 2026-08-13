@@ -140,8 +140,6 @@ pub fn cosf(Float) -> Float
 
 pub fn cosh(Double) -> Double
 
-pub fn coshf(Float) -> Float
-
 pub fn cospi(Double) -> Double
 
 pub fn digamma(Double) -> Double

@@ -2,6 +2,8 @@
 package "Kaida-Amethyst/math"
 
 // Values
+pub fn coshf(Float) -> Float
+
 pub fn exp(Double) -> Double
 
 pub fn expf(Float) -> Float

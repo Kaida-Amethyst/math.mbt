@@ -25,10 +25,10 @@ moon add Kaida-Amethyst/math
 ## Usage
 
 APIs that pass the stable promotion criteria are exported from
-`Kaida-Amethyst/math`; `exp`, `expf`, `expm1f`, `sinhf`, `tanhf`, `scalbn`, its
-`ldexp` alias, and `scalbnf` are currently stable. Remaining APIs are available
-from `Kaida-Amethyst/math/experimental` without a stable behavior or accuracy
-guarantee.
+`Kaida-Amethyst/math`; `exp`, `expf`, `expm1f`, `sinhf`, `coshf`, `tanhf`,
+`scalbn`, its `ldexp` alias, and `scalbnf` are currently stable. Remaining APIs
+are available from `Kaida-Amethyst/math/experimental` without a stable behavior
+or accuracy guarantee.
 
 Because the root package's default alias conflicts with Core's `@math`, import
 it with an explicit alias:
@@ -54,6 +54,7 @@ fn main {
   println("expm1f(1) = \{@kmath.expm1f(1.0)}")
   println("tanhf(1) = \{@kmath.tanhf(1.0)}")
   println("sinhf(1) = \{@kmath.sinhf(1.0)}")
+  println("coshf(1) = \{@kmath.coshf(1.0)}")
   println("scalbn(1.5, 2) = \{@kmath.scalbn(1.5, 2)}")
   println("ldexp(1.5, 2) = \{@kmath.ldexp(1.5, 2)}")
   println("scalbnf(1.5, 2) = \{@kmath.scalbnf(1.5, 2)}")
@@ -230,6 +231,7 @@ As of version 0.1.17, Moonbit-Math supports the following functions:
 | `expm1f`      | **Stable.** Computes e<sup>x</sup> - 1 for binary32 within 1 ULP.         |
 | `tanhf`       | **Stable.** Computes the binary32 hyperbolic tangent within 2 ULP.        |
 | `sinhf`       | **Stable.** Computes the binary32 hyperbolic sine within 2 ULP.           |
+| `coshf`       | **Stable.** Computes the binary32 hyperbolic cosine within 1 ULP.         |
 | `scalbn`      | **Stable.** Computes x * 2<sup>n</sup> with correct binary64 rounding.   |
 | `scalbnf`     | **Stable.** Computes x * 2<sup>n</sup> with correct binary32 rounding.   |
 | `signum`      | Returns the sign of a number: -1, 0, or 1.                                |
@@ -255,6 +257,7 @@ For floating-point functions, Moonbit-Math has currently measured the following 
 | `expm1f`      | 1       |
 | `tanhf`       | 2       |
 | `sinhf`       | 2       |
+| `coshf`       | 1       |
 | `scalbn`      | 0       |
 | `ldexp`       | 0       |
 | `scalbnf`     | 0       |
@@ -327,7 +330,8 @@ moon add Kaida-Amethyst/math
 ## 使用
 
 通过 stable 晋升门槛的 API 由 `Kaida-Amethyst/math` 根包导出；`exp`、`expf`、`expm1f`、
-`sinhf`、`tanhf`、`scalbn`、其别名 `ldexp` 以及 `scalbnf` 是当前 stable API。其余 API 仍位于
+`sinhf`、`coshf`、`tanhf`、`scalbn`、其别名 `ldexp` 以及 `scalbnf` 是当前 stable API。
+其余 API 仍位于
 `Kaida-Amethyst/math/experimental`，尚不提供稳定的行为或精度保证。
 
 根包的默认别名会与 Core 的 `@math` 冲突，因此建议显式指定别名：
@@ -353,6 +357,7 @@ fn main {
     println("expm1f(1) = \{@kmath.expm1f(1.0)}")
     println("tanhf(1) = \{@kmath.tanhf(1.0)}")
     println("sinhf(1) = \{@kmath.sinhf(1.0)}")
+    println("coshf(1) = \{@kmath.coshf(1.0)}")
     println("scalbn(1.5, 2) = \{@kmath.scalbn(1.5, 2)}")
     println("ldexp(1.5, 2) = \{@kmath.ldexp(1.5, 2)}")
     println("scalbnf(1.5, 2) = \{@kmath.scalbnf(1.5, 2)}")
@@ -532,6 +537,7 @@ fn main {
 | `expm1f`      | **Stable。**计算 binary32 的 e<sup>x</sup> - 1，误差不超过 1 ULP。   |
 | `tanhf`       | **Stable。**计算 binary32 双曲正切，误差不超过 2 ULP。               |
 | `sinhf`       | **Stable。**计算 binary32 双曲正弦，误差不超过 2 ULP。               |
+| `coshf`       | **Stable。**计算 binary32 双曲余弦，误差不超过 1 ULP。               |
 | `scalbn`      | **Stable。**计算 x * 2<sup>n</sup>，并正确舍入到 binary64。         |
 | `scalbnf`     | **Stable。**计算 x * 2<sup>n</sup>，并正确舍入到 binary32。         |
 | `signum`      | 返回数字的符号：-1、0 或 1。                                               |
@@ -557,6 +563,7 @@ Moonbit-Math 使用 ULP（Unit in the Last Place）来衡量精度。有关 ULP 
 | `expm1f`  | 1        |
 | `tanhf`   | 2        |
 | `sinhf`   | 2        |
+| `coshf`   | 1        |
 | `scalbn`  | 0        |
 | `ldexp`   | 0        |
 | `scalbnf` | 0        |
