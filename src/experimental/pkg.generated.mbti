@@ -250,8 +250,6 @@ pub fn log(Double) -> Double
 
 pub fn log10(Double) -> Double
 
-pub fn log10f(Float) -> Float
-
 pub fn log1p(Double) -> Double
 
 pub fn log2(Double) -> Double

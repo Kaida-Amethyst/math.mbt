@@ -26,7 +26,7 @@ moon add Kaida-Amethyst/math
 
 APIs that pass the stable promotion criteria are exported from
 `Kaida-Amethyst/math`; `exp`, `expf`, `expm1f`, `sinhf`, `coshf`, `tanhf`,
-`cbrtf`, `sqrtf`, `logf`, `log1pf`, its `ln_1pf` alias, `log2f`, `asinhf`,
+`cbrtf`, `sqrtf`, `logf`, `log1pf`, its `ln_1pf` alias, `log2f`, `log10f`, `asinhf`,
 `atanhf`, `acoshf`, `scalbn`, its `ldexp` alias, and `scalbnf` are currently
 stable.
 Remaining APIs are available from `Kaida-Amethyst/math/experimental` without a
@@ -62,6 +62,7 @@ fn main {
   println("logf(2) = \{@kmath.logf(2.0)}")
   println("log1pf(1) = \{@kmath.log1pf(1.0)}")
   println("log2f(8) = \{@kmath.log2f(8.0)}")
+  println("log10f(1000) = \{@kmath.log10f(1000.0)}")
   println("asinhf(1) = \{@kmath.asinhf(1.0)}")
   println("atanhf(0.5) = \{@kmath.atanhf(0.5)}")
   println("acoshf(2) = \{@kmath.acoshf(2.0)}")
@@ -141,6 +142,7 @@ As of version 0.1.17, Moonbit-Math supports the following functions:
 | `ln_gamma`    | Equivalent to `lgamma`.                                      |
 | `log`         | Natural logarithm function (base e).                         |
 | `log10`       | Base-10 logarithm function.                                 |
+| `log10f`      | **Stable.** Computes binary32 base-10 logarithm within 1 ULP. |
 | `log1p`       | Computes the natural logarithm of 1 + x, for better precision with small values. |
 | `log1pf`      | **Stable.** Computes binary32 `log1p` within 1 ULP.         |
 | `log2`        | Base-2 logarithm function.                                  |
@@ -268,6 +270,7 @@ For floating-point functions, Moonbit-Math has currently measured the following 
 | `log2`        | 1       |
 | `log2f`       | 1       |
 | `log10`       | 0       |
+| `log10f`      | 1       |
 | `log1p`       | 0       |
 | `pow`         | 2       |
 | `exp`         | 1       |
@@ -355,7 +358,7 @@ moon add Kaida-Amethyst/math
 
 通过 stable 晋升门槛的 API 由 `Kaida-Amethyst/math` 根包导出；`exp`、`expf`、`expm1f`、
 `sinhf`、`coshf`、`tanhf`、`cbrtf`、`sqrtf`、`logf`、`log1pf`、其别名
-`ln_1pf`、`log2f`、`asinhf`、`atanhf`、`acoshf`、`scalbn`、其别名 `ldexp`
+`ln_1pf`、`log2f`、`log10f`、`asinhf`、`atanhf`、`acoshf`、`scalbn`、其别名 `ldexp`
 以及 `scalbnf` 是当前 stable API。
 其余 API 仍位于
 `Kaida-Amethyst/math/experimental`，尚不提供稳定的行为或精度保证。
@@ -389,6 +392,7 @@ fn main {
     println("logf(2) = \{@kmath.logf(2.0)}")
     println("log1pf(1) = \{@kmath.log1pf(1.0)}")
     println("log2f(8) = \{@kmath.log2f(8.0)}")
+    println("log10f(1000) = \{@kmath.log10f(1000.0)}")
     println("asinhf(1) = \{@kmath.asinhf(1.0)}")
     println("atanhf(0.5) = \{@kmath.atanhf(0.5)}")
     println("acoshf(2) = \{@kmath.acoshf(2.0)}")
@@ -468,6 +472,7 @@ fn main {
 | `ln_gamma`  | 等同于 `lgamma`。                     |
 | `log`       | 自然对数函数（以 e 为底）。             |
 | `log10`     | 以 10 为底的对数函数。                 |
+| `log10f`    | **Stable。**计算 binary32 的以 10 为底的对数，误差不超过 1 ULP。 |
 | `log1p`     | 计算 1 + x 的自然对数，用于提高小数值的精度。 |
 | `log1pf`    | **Stable。**计算 binary32 的 `log1p`，误差不超过 1 ULP。 |
 | `log2`      | 以 2 为底的对数函数。                  |
@@ -598,6 +603,7 @@ Moonbit-Math 使用 ULP（Unit in the Last Place）来衡量精度。有关 ULP 
 | `log2`    | 1        |
 | `log2f`   | 1        |
 | `log10`   | 0        |
+| `log10f`  | 1        |
 | `log1p`   | 0        |
 | `pow`     | 2        |
 | `exp`     | 1        |
