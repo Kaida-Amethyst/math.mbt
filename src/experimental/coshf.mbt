@@ -33,7 +33,7 @@ pub fn coshf(x : Float) -> Float {
       return 1.0
     }
     //force_eval!(x + 0x1.0p120);
-    let t = expm1f(x)
+    let t = @math.expm1f(x)
     return (1.0 : Float) + t * t / ((2.0 : Float) * (t + 1.0))
   }
 

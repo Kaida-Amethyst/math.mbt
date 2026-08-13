@@ -168,8 +168,6 @@ pub fn exp2(Double) -> Double
 
 pub fn expm1(Double) -> Double
 
-pub fn expm1f(Float) -> Float
-
 pub fn expx2(Double, Int) -> Double
 
 pub fn fast_rsqrt(Float) -> Float

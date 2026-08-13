@@ -32,7 +32,7 @@ pub fn sinhf(x : Float) -> Float {
 
   // |x| < log(FLT_MAX)
   if w < 0x42b17217 {
-    let t = expm1f(absx)
+    let t = @math.expm1f(absx)
     if w < 0x3f800000 {
       if w < 0x3f800000U - (12U << 23) {
         return x

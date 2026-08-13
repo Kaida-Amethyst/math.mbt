@@ -33,16 +33,16 @@ pub fn tanhf(x : Float) -> Float {
       // |x| > 10 */
       (1.0 : Float) + (0.0 : Float) / x
     } else {
-      let t = expm1f(x * 2.0)
+      let t = @math.expm1f(x * 2.0)
       (1.0 : Float) - (2.0 : Float) / (t + 2.0)
     }
   } else if w > 0x3e82c578 {
     // |x| > log(5/3)/2 ~= 0.2554 */
-    let t = expm1f(x * 2.0)
+    let t = @math.expm1f(x * 2.0)
     t / (t + 2.0)
   } else if w >= 0x00800000 {
     // |x| >= 0x1p-126 */
-    let t = expm1f(x * -2.0)
+    let t = @math.expm1f(x * -2.0)
     -t / (t + 2.0)
   } else {
     // |x| is subnormal */

@@ -6,6 +6,8 @@ pub fn exp(Double) -> Double
 
 pub fn expf(Float) -> Float
 
+pub fn expm1f(Float) -> Float
+
 #alias(ldexp)
 pub fn scalbn(Double, Int) -> Double
 
