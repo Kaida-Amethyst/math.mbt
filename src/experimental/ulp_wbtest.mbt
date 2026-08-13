@@ -179,6 +179,3 @@ const POW_F_MAX_ULP : Int = 2
 
 ///|
 const HYPOT_F_MAX_ULP : Int = 1
-
-///|
-const SCALBN_F_MAX_ULP : Int = 1

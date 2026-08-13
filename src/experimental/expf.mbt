@@ -73,6 +73,6 @@ pub fn expf(x : Float) -> Float {
   if k == 0 {
     y
   } else {
-    scalbnf(y, k)
+    @math.scalbnf(y, k)
   }
 }

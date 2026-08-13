@@ -342,8 +342,6 @@ pub fn roundeven(Double) -> Double
 
 pub fn rsqrt(Double) -> Double
 
-pub fn scalbnf(Float, Int) -> Float
-
 pub fn signum(Double) -> Double
 
 pub fn sin(Double) -> Double

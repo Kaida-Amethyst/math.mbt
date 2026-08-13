@@ -333,7 +333,7 @@ pub fn powf(x : Float, y : Float) -> Float {
   j += n << 23
   if j >> 23 <= 0 {
     // subnormal output */
-    z = scalbnf(z, n)
+    z = @math.scalbnf(z, n)
   } else {
     z = Float::reinterpret_from_int(j)
   }

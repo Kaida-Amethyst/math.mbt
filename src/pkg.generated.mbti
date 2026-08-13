@@ -7,6 +7,8 @@ pub fn exp(Double) -> Double
 #alias(ldexp)
 pub fn scalbn(Double, Int) -> Double
 
+pub fn scalbnf(Float, Int) -> Float
+
 // Errors
 
 // Types and methods

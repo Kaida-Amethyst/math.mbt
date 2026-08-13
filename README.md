@@ -25,9 +25,10 @@ moon add Kaida-Amethyst/math
 ## Usage
 
 APIs that pass the stable promotion criteria are exported from
-`Kaida-Amethyst/math`; `exp`, `scalbn`, and its `ldexp` alias are currently
-stable. Remaining APIs are available from `Kaida-Amethyst/math/experimental`
-without a stable behavior or accuracy guarantee.
+`Kaida-Amethyst/math`; `exp`, `scalbn`, its `ldexp` alias, and `scalbnf` are
+currently stable. Remaining APIs are available from
+`Kaida-Amethyst/math/experimental` without a stable behavior or accuracy
+guarantee.
 
 Because the root package's default alias conflicts with Core's `@math`, import
 it with an explicit alias:
@@ -51,6 +52,7 @@ fn main {
   println("exp(1) = \{result}")
   println("scalbn(1.5, 2) = \{@kmath.scalbn(1.5, 2)}")
   println("ldexp(1.5, 2) = \{@kmath.ldexp(1.5, 2)}")
+  println("scalbnf(1.5, 2) = \{@kmath.scalbnf(1.5, 2)}")
 }
 ```
 
@@ -221,6 +223,7 @@ As of version 0.1.17, Moonbit-Math supports the following functions:
 | `round`       | Rounds to the nearest integer, away from zero.                             |
 | `roundeven`   | Rounds to the nearest even integer.                                       |
 | `scalbn`      | **Stable.** Computes x * 2<sup>n</sup> with correct binary64 rounding.   |
+| `scalbnf`     | **Stable.** Computes x * 2<sup>n</sup> with correct binary32 rounding.   |
 | `signum`      | Returns the sign of a number: -1, 0, or 1.                                |
 | `to_degrees`  | Converts radians to degrees.                                              |
 | `to_radians`  | Converts degrees to radians.                                              |
@@ -242,6 +245,7 @@ For floating-point functions, Moonbit-Math has currently measured the following 
 | `exp`         | 1       |
 | `scalbn`      | 0       |
 | `ldexp`       | 0       |
+| `scalbnf`     | 0       |
 | `exp2`        | 1       |
 | `exp10`       | 1       |
 | `expm1`       | 0       |
@@ -310,9 +314,9 @@ moon add Kaida-Amethyst/math
 
 ## 使用
 
-通过 stable 晋升门槛的 API 由 `Kaida-Amethyst/math` 根包导出；`exp`、`scalbn` 及其别名
-`ldexp` 是当前 stable API。其余 API 仍位于 `Kaida-Amethyst/math/experimental`，尚不提供
-稳定的行为或精度保证。
+通过 stable 晋升门槛的 API 由 `Kaida-Amethyst/math` 根包导出；`exp`、`scalbn`、其别名
+`ldexp` 以及 `scalbnf` 是当前 stable API。其余 API 仍位于
+`Kaida-Amethyst/math/experimental`，尚不提供稳定的行为或精度保证。
 
 根包的默认别名会与 Core 的 `@math` 冲突，因此建议显式指定别名：
 
@@ -335,6 +339,7 @@ fn main {
     println("exp(1) = \{result}")
     println("scalbn(1.5, 2) = \{@kmath.scalbn(1.5, 2)}")
     println("ldexp(1.5, 2) = \{@kmath.ldexp(1.5, 2)}")
+    println("scalbnf(1.5, 2) = \{@kmath.scalbnf(1.5, 2)}")
 }
 ```
 
@@ -508,6 +513,7 @@ fn main {
 | `round`       | 四舍五入到最接近的整数，远离零。                                            |
 | `roundeven`   | 四舍五入到最接近的偶数。                                                  |
 | `scalbn`      | **Stable。**计算 x * 2<sup>n</sup>，并正确舍入到 binary64。         |
+| `scalbnf`     | **Stable。**计算 x * 2<sup>n</sup>，并正确舍入到 binary32。         |
 | `signum`      | 返回数字的符号：-1、0 或 1。                                               |
 | `to_degrees`  | 将弧度转换为度。                                                        |
 | `to_radians`  | 将度转换为弧度。                                                        |
@@ -529,6 +535,7 @@ Moonbit-Math 使用 ULP（Unit in the Last Place）来衡量精度。有关 ULP 
 | `exp`     | 1        |
 | `scalbn`  | 0        |
 | `ldexp`   | 0        |
+| `scalbnf` | 0        |
 | `exp2`    | 1        |
 | `exp10`   | 1        |
 | `expm1`   | 0        |
