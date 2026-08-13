@@ -1,31 +1,53 @@
 ///|
-/// Returns e raised to `input`.
+/// Returns the base-e exponential of `input` as an IEEE 754 binary64 value.
 ///
-/// # Example
-///
-/// ```moonbit nocheck
-/// assert_eq(exp(1.0), 2.718281828459045)
-/// assert_eq(exp(-1.0), 0.36787944117144233)
-/// ```
-///
-/// # Accuracy
-///
-/// For every finite input, the result is within one ULP of the exact value
-/// rounded to IEEE 754 binary64 with round-to-nearest, ties-to-even.
-///
-/// # Special cases
+/// ## Domain and special values
 ///
 /// - `exp(NaN)` is NaN; no NaN payload is promised.
 /// - `exp(+infinity)` is positive infinity.
 /// - `exp(-infinity)` is positive zero.
 /// - `exp(+0.0)` and `exp(-0.0)` are exactly `1.0`.
-/// - A finite input produces a nonnegative result; overflow produces positive
-///   infinity and underflow may produce positive zero.
+/// - Overflow produces positive infinity; underflow may produce a positive
+///   subnormal value or positive zero.
+/// - No floating-point status flags or `errno` behavior is promised.
 ///
-/// # Reference
+/// ## Accuracy
 ///
-/// The range reduction and polynomial approximation are derived from
-/// [fdlibm `e_exp.c`](https://android.googlesource.com/platform/bionic/+/4032c1e/libm/src/e_exp.c).
+/// For every finite input, the result is within 1 ULP of the exact exponential
+/// rounded to binary64 with round-to-nearest, ties-to-even. Correct rounding is
+/// not promised.
+///
+/// ## Properties
+///
+/// A finite input produces a nonnegative result.
+///
+/// ## Verification
+///
+/// A 24,697-case fixed corpus was generated with an independent MPFR oracle.
+/// Its maximum observed error is 1 ULP, and it passes in debug and release mode
+/// on wasm, wasm-gc, JavaScript, and native. A pinned CORE-MATH hard-case audit
+/// checked 1,129,371 non-NaN inputs on native in debug mode with the same bound.
+/// This is testing evidence, not a formal proof. See the
+/// [oracle documentation](../tools/oracle/exp/README.md) for the generation method,
+/// known worst case, and reproduction commands.
+///
+/// ## References
+///
+/// - The range reduction and polynomial approximation are derived from
+///   [fdlibm `e_exp.c`](https://android.googlesource.com/platform/bionic/+/4032c1e/libm/src/e_exp.c).
+/// - Reference results are generated with
+///   [GNU MPFR](https://www.mpfr.org/mpfr-current/mpfr.html).
+/// - The hard-case audit uses the pinned
+///   [CORE-MATH binary64 `exp` corpus](https://gitlab.inria.fr/core-math/core-math/-/blob/07cf01e12a42b82cc478341982936cad7f3f9bdc/src/binary64/exp/exp.wc).
+///
+/// ## Example
+///
+/// ```moonbit check
+/// test {
+///   assert_eq(exp(0.0), 1.0)
+///   assert_eq(exp(@double.neg_infinity), 0.0)
+/// }
+/// ```
 pub fn exp(input : Double) -> Double {
   let mut x = input
   let one = 1.0

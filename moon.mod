@@ -13,3 +13,7 @@ keywords = [ "math", "numeric" ]
 description = "High-precision Math library Implemented By Pure Moonbit"
 
 source = "src"
+
+options(
+  exclude: [ "tools" ],
+)
