@@ -130,9 +130,6 @@ const COS_F_MAX_ULP : Int = 2
 const TAN_F_MAX_ULP : Int = 2
 
 ///|
-const ACOS_F_MAX_ULP : Int = 0
-
-///|
 const ATAN2_F_MAX_ULP : Int = 2
 
 ///|

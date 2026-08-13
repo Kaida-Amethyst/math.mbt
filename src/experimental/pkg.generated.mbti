@@ -72,8 +72,6 @@ pub const UINT_MAX : UInt = 4294967295
 
 pub fn acos(Double) -> Double
 
-pub fn acosf(Float) -> Float
-
 pub fn acosh(Double) -> Double
 
 pub fn airy_ai(Double) -> Double
