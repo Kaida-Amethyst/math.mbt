@@ -26,8 +26,8 @@ moon add Kaida-Amethyst/math
 
 APIs that pass the stable promotion criteria are exported from
 `Kaida-Amethyst/math`; `exp`, `expf`, `expm1f`, `sinhf`, `coshf`, `tanhf`,
-`cbrtf`, `sqrtf`, `scalbn`, its `ldexp` alias, and `scalbnf` are currently
-stable.
+`cbrtf`, `sqrtf`, `logf`, `scalbn`, its `ldexp` alias, and `scalbnf` are
+currently stable.
 Remaining APIs are available from `Kaida-Amethyst/math/experimental` without a
 stable behavior or accuracy guarantee.
 
@@ -58,6 +58,7 @@ fn main {
   println("coshf(1) = \{@kmath.coshf(1.0)}")
   println("cbrtf(27) = \{@kmath.cbrtf(27.0)}")
   println("sqrtf(4) = \{@kmath.sqrtf(4.0)}")
+  println("logf(2) = \{@kmath.logf(2.0)}")
   println("scalbn(1.5, 2) = \{@kmath.scalbn(1.5, 2)}")
   println("ldexp(1.5, 2) = \{@kmath.ldexp(1.5, 2)}")
   println("scalbnf(1.5, 2) = \{@kmath.scalbnf(1.5, 2)}")
@@ -135,7 +136,7 @@ As of version 0.1.17, Moonbit-Math supports the following functions:
 | `log2`        | Base-2 logarithm function.                                  |
 | `log_ndtr`    | Logarithm of the standard normal cumulative distribution function. |
 | `logaddexp`   | Computes log(exp(x) + exp(y)) avoiding overflow.            |
-| `logf`        | Computes the natural logarithm for `Float` type.             |
+| `logf`        | **Stable.** Computes binary32 natural logarithm within 1 ULP. |
 | `logsumexp`   | Computes the logarithm of the sum of exponentials of an array. |
 | `ndtr`        | Standard normal cumulative distribution function.             |
 | `ndtri`       | Inverse of the standard normal cumulative distribution function. |
@@ -271,6 +272,7 @@ For floating-point functions, Moonbit-Math has currently measured the following 
 | `expm1`       | 0       |
 | `cbrt`        | 0       |
 | `cbrtf`       | 0       |
+| `logf`        | 1       |
 | `atan`        | 1       |
 | `atan2`       | 1       |
 | `asin`        | 1       |
@@ -336,8 +338,8 @@ moon add Kaida-Amethyst/math
 ## 使用
 
 通过 stable 晋升门槛的 API 由 `Kaida-Amethyst/math` 根包导出；`exp`、`expf`、`expm1f`、
-`sinhf`、`coshf`、`tanhf`、`cbrtf`、`scalbn`、其别名 `ldexp` 以及 `scalbnf` 是当前
-stable API。其余 API 仍位于
+`sinhf`、`coshf`、`tanhf`、`cbrtf`、`sqrtf`、`logf`、`scalbn`、其别名 `ldexp`
+以及 `scalbnf` 是当前 stable API。其余 API 仍位于
 `Kaida-Amethyst/math/experimental`，尚不提供稳定的行为或精度保证。
 
 根包的默认别名会与 Core 的 `@math` 冲突，因此建议显式指定别名：
@@ -365,6 +367,8 @@ fn main {
     println("sinhf(1) = \{@kmath.sinhf(1.0)}")
     println("coshf(1) = \{@kmath.coshf(1.0)}")
     println("cbrtf(27) = \{@kmath.cbrtf(27.0)}")
+    println("sqrtf(4) = \{@kmath.sqrtf(4.0)}")
+    println("logf(2) = \{@kmath.logf(2.0)}")
     println("scalbn(1.5, 2) = \{@kmath.scalbn(1.5, 2)}")
     println("ldexp(1.5, 2) = \{@kmath.ldexp(1.5, 2)}")
     println("scalbnf(1.5, 2) = \{@kmath.scalbnf(1.5, 2)}")
@@ -442,7 +446,7 @@ fn main {
 | `log2`      | 以 2 为底的对数函数。                  |
 | `log_ndtr`  | 标准正态分布累积分布函数对数值。       |
 | `logaddexp` | 计算 log(exp(x) + exp(y))，避免溢出。   |
-| `logf`      | 计算 `Float` 类型的自然对数。           |
+| `logf`      | **Stable。**计算 binary32 自然对数，误差不超过 1 ULP。 |
 | `logsumexp` | 计算数组中所有值的指数和的对数。         |
 | `ndtr`      | 标准正态分布累积分布函数。             |
 | `ndtri`     | 标准正态分布累积分布函数的反函数。       |
@@ -581,6 +585,7 @@ Moonbit-Math 使用 ULP（Unit in the Last Place）来衡量精度。有关 ULP 
 | `expm1`   | 0        |
 | `cbrt`    | 0        |
 | `cbrtf`   | 0        |
+| `logf`    | 1        |
 | `atan`    | 1        |
 | `atan2`   | 1        |
 | `asin`    | 1        |

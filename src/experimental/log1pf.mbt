@@ -1,4 +1,16 @@
 ///|
+const LG1_F : Float = 0.66666662693
+
+///|
+const LG2_F : Float = 0.40000972152
+
+///|
+const LG3_F : Float = 0.28498786688
+
+///|
+const LG4_F : Float = 0.24279078841
+
+///|
 /// `log1p(x)` computes `log(1+x)`
 ///
 /// # Examples

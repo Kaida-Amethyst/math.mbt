@@ -32,10 +32,10 @@ pub fn asinhf(x : Float) -> Float {
   let x = Float::reinterpret_from_uint(i)
   let x = if i >= 0x3f800000U + (12U << 23) {
     // |x| >= 0x1p12 or inf or nan */
-    logf(x) + ln2
+    @math.logf(x) + ln2
   } else if i >= 0x3f800000U + (1U << 23) {
     // |x| >= 2 */
-    logf(x * 2.0 + recipf(@math.sqrtf(x * x + 1.0) + x))
+    @math.logf(x * 2.0 + recipf(@math.sqrtf(x * x + 1.0) + x))
   } else if i >= 0x3f800000U - (12U << 23) {
     // |x| >= 0x1p-12, up to 1.6ulp error in [0.125,0.5] */
     log1pf(x + x * x / (@math.sqrtf(x * x + 1.0) + 1.0))

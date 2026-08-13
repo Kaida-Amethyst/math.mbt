@@ -35,8 +35,8 @@ pub fn acoshf(x : Float) -> Float {
   }
   if a < 0x3f800000U + (12U << 23) {
     // |x| < 0x1p12 */
-    return logf(x * 2.0 - (1.0 : Float) / (x + (x * x - 1.0).sqrt()))
+    return @math.logf(x * 2.0 - (1.0 : Float) / (x + (x * x - 1.0).sqrt()))
   }
   // x >= 0x1p12 */
-  return logf(x) + FLOAT_LN2
+  return @math.logf(x) + FLOAT_LN2
 }
