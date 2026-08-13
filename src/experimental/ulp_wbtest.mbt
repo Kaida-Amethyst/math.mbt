@@ -121,9 +121,6 @@ const ZETA_MAX_ULP : Int = 3
 // ===================================================
 
 ///|
-const ASINH_F_MAX_ULP : Int = 0
-
-///|
 const ACOSH_F_MAX_ULP : Int = 0
 
 ///|
