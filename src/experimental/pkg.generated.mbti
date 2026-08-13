@@ -352,8 +352,6 @@ pub fn sinf(Float) -> Float
 
 pub fn sinh(Double) -> Double
 
-pub fn sinhf(Float) -> Float
-
 pub fn sinpi(Double) -> Double
 
 pub fn sqrt(Double) -> Double

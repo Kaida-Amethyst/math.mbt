@@ -13,6 +13,8 @@ pub fn scalbn(Double, Int) -> Double
 
 pub fn scalbnf(Float, Int) -> Float
 
+pub fn sinhf(Float) -> Float
+
 pub fn tanhf(Float) -> Float
 
 // Errors
