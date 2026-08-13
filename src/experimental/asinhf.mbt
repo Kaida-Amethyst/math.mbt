@@ -38,7 +38,7 @@ pub fn asinhf(x : Float) -> Float {
     @math.logf(x * 2.0 + recipf(@math.sqrtf(x * x + 1.0) + x))
   } else if i >= 0x3f800000U - (12U << 23) {
     // |x| >= 0x1p-12, up to 1.6ulp error in [0.125,0.5] */
-    log1pf(x + x * x / (@math.sqrtf(x * x + 1.0) + 1.0))
+    @math.log1pf(x + x * x / (@math.sqrtf(x * x + 1.0) + 1.0))
   } else {
     // |x| < 0x1p-12, raise inexact if x!=0 */
     // x + 0x1.0p120

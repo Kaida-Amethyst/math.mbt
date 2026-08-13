@@ -250,8 +250,6 @@ pub fn ln(Double) -> Double
 
 pub fn ln_1p(Double) -> Double
 
-pub fn ln_1pf(Float) -> Float
-
 pub fn ln_gamma(Double) -> Double
 
 pub fn log(Double) -> Double
@@ -261,8 +259,6 @@ pub fn log10(Double) -> Double
 pub fn log10f(Float) -> Float
 
 pub fn log1p(Double) -> Double
-
-pub fn log1pf(Float) -> Float
 
 pub fn log2(Double) -> Double
 

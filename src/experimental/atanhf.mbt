@@ -31,11 +31,11 @@ pub fn atanhf(x : Float) -> Float {
       x
     } else {
       // |x| < 0.5, up to 1.7ulp error
-      log1pf(x * 2.0 + x * 2.0 * x / ((1.0 : Float) - x)) * 0.5
+      @math.log1pf(x * 2.0 + x * 2.0 * x / ((1.0 : Float) - x)) * 0.5
     }
   } else {
     // avoid overflow
-    log1pf(x / ((1.0 : Float) - x) * 2.0) * 0.5
+    @math.log1pf(x / ((1.0 : Float) - x) * 2.0) * 0.5
   }
   if sign {
     -x

@@ -29,7 +29,7 @@ pub fn acoshf(x : Float) -> Float {
   if a < 0x3f800000U + (1U << 23) {
     // |x| < 2, invalid if x < 1 or nan */
     // up to 2ulp error in [1,1.125] */
-    return log1pf(
+    return @math.log1pf(
       x - 1.0 + ((x - 1.0) * (x - 1.0) + (2.0 : Float) * (x - 1.0)).sqrt(),
     )
   }

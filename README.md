@@ -26,8 +26,8 @@ moon add Kaida-Amethyst/math
 
 APIs that pass the stable promotion criteria are exported from
 `Kaida-Amethyst/math`; `exp`, `expf`, `expm1f`, `sinhf`, `coshf`, `tanhf`,
-`cbrtf`, `sqrtf`, `logf`, `scalbn`, its `ldexp` alias, and `scalbnf` are
-currently stable.
+`cbrtf`, `sqrtf`, `logf`, `log1pf`, its `ln_1pf` alias, `scalbn`, its `ldexp`
+alias, and `scalbnf` are currently stable.
 Remaining APIs are available from `Kaida-Amethyst/math/experimental` without a
 stable behavior or accuracy guarantee.
 
@@ -59,6 +59,7 @@ fn main {
   println("cbrtf(27) = \{@kmath.cbrtf(27.0)}")
   println("sqrtf(4) = \{@kmath.sqrtf(4.0)}")
   println("logf(2) = \{@kmath.logf(2.0)}")
+  println("log1pf(1) = \{@kmath.log1pf(1.0)}")
   println("scalbn(1.5, 2) = \{@kmath.scalbn(1.5, 2)}")
   println("ldexp(1.5, 2) = \{@kmath.ldexp(1.5, 2)}")
   println("scalbnf(1.5, 2) = \{@kmath.scalbnf(1.5, 2)}")
@@ -128,11 +129,12 @@ As of version 0.1.17, Moonbit-Math supports the following functions:
 | `lgamma`      | Natural logarithm of the absolute value of the Gamma function. |
 | `ln`          | Natural logarithm function (base e).                         |
 | `ln_1p`       | Equivalent to `log1p`.                                       |
+| `ln_1pf`      | **Stable alias of `log1pf`.**                                |
 | `ln_gamma`    | Equivalent to `lgamma`.                                      |
 | `log`         | Natural logarithm function (base e).                         |
 | `log10`       | Base-10 logarithm function.                                 |
 | `log1p`       | Computes the natural logarithm of 1 + x, for better precision with small values. |
-| `log1pf`      | Computes `log1p` for `Float` type.                         |
+| `log1pf`      | **Stable.** Computes binary32 `log1p` within 1 ULP.         |
 | `log2`        | Base-2 logarithm function.                                  |
 | `log_ndtr`    | Logarithm of the standard normal cumulative distribution function. |
 | `logaddexp`   | Computes log(exp(x) + exp(y)) avoiding overflow.            |
@@ -273,6 +275,7 @@ For floating-point functions, Moonbit-Math has currently measured the following 
 | `cbrt`        | 0       |
 | `cbrtf`       | 0       |
 | `logf`        | 1       |
+| `log1pf`      | 1       |
 | `atan`        | 1       |
 | `atan2`       | 1       |
 | `asin`        | 1       |
@@ -338,8 +341,8 @@ moon add Kaida-Amethyst/math
 ## 使用
 
 通过 stable 晋升门槛的 API 由 `Kaida-Amethyst/math` 根包导出；`exp`、`expf`、`expm1f`、
-`sinhf`、`coshf`、`tanhf`、`cbrtf`、`sqrtf`、`logf`、`scalbn`、其别名 `ldexp`
-以及 `scalbnf` 是当前 stable API。其余 API 仍位于
+`sinhf`、`coshf`、`tanhf`、`cbrtf`、`sqrtf`、`logf`、`log1pf`、其别名
+`ln_1pf`、`scalbn`、其别名 `ldexp` 以及 `scalbnf` 是当前 stable API。其余 API 仍位于
 `Kaida-Amethyst/math/experimental`，尚不提供稳定的行为或精度保证。
 
 根包的默认别名会与 Core 的 `@math` 冲突，因此建议显式指定别名：
@@ -369,6 +372,7 @@ fn main {
     println("cbrtf(27) = \{@kmath.cbrtf(27.0)}")
     println("sqrtf(4) = \{@kmath.sqrtf(4.0)}")
     println("logf(2) = \{@kmath.logf(2.0)}")
+    println("log1pf(1) = \{@kmath.log1pf(1.0)}")
     println("scalbn(1.5, 2) = \{@kmath.scalbn(1.5, 2)}")
     println("ldexp(1.5, 2) = \{@kmath.ldexp(1.5, 2)}")
     println("scalbnf(1.5, 2) = \{@kmath.scalbnf(1.5, 2)}")
@@ -438,11 +442,12 @@ fn main {
 | `lgamma`    | 伽马函数的绝对值的自然对数。           |
 | `ln`        | 自然对数函数（以 e 为底）。             |
 | `ln_1p`     | 等同于 `log1p`。                      |
+| `ln_1pf`    | **`log1pf` 的 stable 别名。**         |
 | `ln_gamma`  | 等同于 `lgamma`。                     |
 | `log`       | 自然对数函数（以 e 为底）。             |
 | `log10`     | 以 10 为底的对数函数。                 |
 | `log1p`     | 计算 1 + x 的自然对数，用于提高小数值的精度。 |
-| `log1pf`    | 计算 `Float` 类型的 `log1p`。          |
+| `log1pf`    | **Stable。**计算 binary32 的 `log1p`，误差不超过 1 ULP。 |
 | `log2`      | 以 2 为底的对数函数。                  |
 | `log_ndtr`  | 标准正态分布累积分布函数对数值。       |
 | `logaddexp` | 计算 log(exp(x) + exp(y))，避免溢出。   |
@@ -586,6 +591,7 @@ Moonbit-Math 使用 ULP（Unit in the Last Place）来衡量精度。有关 ULP 
 | `cbrt`    | 0        |
 | `cbrtf`   | 0        |
 | `logf`    | 1        |
+| `log1pf`  | 1        |
 | `atan`    | 1        |
 | `atan2`   | 1        |
 | `asin`    | 1        |
