@@ -354,8 +354,6 @@ pub fn sqrt(Double) -> Double
 
 pub fn sqrt1pm1(Double) -> Double
 
-pub fn sqrtf(Float) -> Float
-
 pub fn tan(Double) -> Double
 
 pub fn tanf(Float) -> Float

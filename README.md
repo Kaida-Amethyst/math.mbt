@@ -26,7 +26,8 @@ moon add Kaida-Amethyst/math
 
 APIs that pass the stable promotion criteria are exported from
 `Kaida-Amethyst/math`; `exp`, `expf`, `expm1f`, `sinhf`, `coshf`, `tanhf`,
-`cbrtf`, `scalbn`, its `ldexp` alias, and `scalbnf` are currently stable.
+`cbrtf`, `sqrtf`, `scalbn`, its `ldexp` alias, and `scalbnf` are currently
+stable.
 Remaining APIs are available from `Kaida-Amethyst/math/experimental` without a
 stable behavior or accuracy guarantee.
 
@@ -56,6 +57,7 @@ fn main {
   println("sinhf(1) = \{@kmath.sinhf(1.0)}")
   println("coshf(1) = \{@kmath.coshf(1.0)}")
   println("cbrtf(27) = \{@kmath.cbrtf(27.0)}")
+  println("sqrtf(4) = \{@kmath.sqrtf(4.0)}")
   println("scalbn(1.5, 2) = \{@kmath.scalbn(1.5, 2)}")
   println("ldexp(1.5, 2) = \{@kmath.ldexp(1.5, 2)}")
   println("scalbnf(1.5, 2) = \{@kmath.scalbnf(1.5, 2)}")
@@ -201,6 +203,7 @@ As of version 0.1.17, Moonbit-Math supports the following functions:
 | ------------- | ------------------------------------------------------------------------- |
 | `cbrt`        | Cube root function.                                                       |
 | `cbrtf`       | **Stable.** Computes the binary32 cube root within 1 ULP.                 |
+| `sqrtf`       | **Stable.** Delegates binary32 square root to `Float::sqrt`.              |
 | `ceil`        | Ceiling function, rounds up to the nearest integer.                         |
 | `clamp`       | Clamps a value within a specified range.                                  |
 | `div_euclid`  | Computes the result of Euclidean division.                                |
@@ -510,6 +513,7 @@ fn main {
 | ------------- | ------------------------------------------------------------------- |
 | `cbrt`        | 立方根函数。                                                          |
 | `cbrtf`       | **Stable。**计算 binary32 立方根，误差不超过 1 ULP。                  |
+| `sqrtf`       | **Stable。**直接使用 `Float::sqrt` 计算 binary32 平方根。             |
 | `ceil`        | 向上取整函数。                                                        |
 | `clamp`       | 将值限制在给定的范围内。                                                |
 | `div_euclid`  | 计算欧几里得除法的结果。                                                  |
