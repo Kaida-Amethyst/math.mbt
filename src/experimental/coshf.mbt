@@ -39,7 +39,7 @@ pub fn coshf(x : Float) -> Float {
 
   // |x| < log(FLT_MAX) */
   if w < 0x42b17217 {
-    let t = expf(x)
+    let t = @math.expf(x)
     return (t + recipf(t)) * 0.5
   }
 

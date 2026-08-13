@@ -5,5 +5,5 @@ fn k_expo2f(x : Float) -> Float {
   // note that k is odd and scale*scale overflows */
   let scale = Float::reinterpret_from_int((0x7f + k / 2) << 23)
   // exp(x - k ln2) * 2**(k-1) */
-  expf(x - k_ln2) * scale * scale
+  @math.expf(x - k_ln2) * scale * scale
 }

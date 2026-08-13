@@ -166,8 +166,6 @@ pub fn exp10(Double) -> Double
 
 pub fn exp2(Double) -> Double
 
-pub fn expf(Float) -> Float
-
 pub fn expm1(Double) -> Double
 
 pub fn expm1f(Float) -> Float

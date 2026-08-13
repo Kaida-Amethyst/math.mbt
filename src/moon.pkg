@@ -1,6 +1,7 @@
 import {
   "Kaida-Amethyst/math/internal/fpbits",
   "moonbitlang/core/double",
+  "moonbitlang/core/float",
 }
 
 // Stable APIs in this package have satisfied the Q-20 promotion gate.

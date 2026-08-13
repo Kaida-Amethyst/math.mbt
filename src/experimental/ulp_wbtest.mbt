@@ -160,9 +160,6 @@ const ACOS_F_MAX_ULP : Int = 0
 const ATAN_F_MAX_ULP : Int = 0
 
 ///|
-const EXP_F_MAX_ULP : Int = 0
-
-///|
 const EXPM1_F_MAX_ULP : Int = 0
 
 ///|
