@@ -96,8 +96,6 @@ pub fn atanf(Float) -> Float
 
 pub fn atanh(Double) -> Double
 
-pub fn atanhf(Float) -> Float
-
 pub fn bessel_i0(Double) -> Double
 
 pub fn bessel_i0e(Double) -> Double

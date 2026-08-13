@@ -15,7 +15,7 @@ enum {
   GENERATED_CASES_PER_CHUNK = 2048,
 };
 
-static const uint64_t RANDOM_SEED = UINT64_C(0x9b05688c2b3e6c1f);
+static const uint64_t RANDOM_SEED = UINT64_C(0x5be0cd19137e2179);
 static const uint32_t F32_SIGN_MASK = UINT32_C(0x80000000);
 static const uint32_t F32_EXPONENT_MASK = UINT32_C(0x7f800000);
 static const uint32_t F32_FRACTION_MASK = UINT32_C(0x007fffff);
@@ -37,7 +37,7 @@ typedef struct {
 } GeneratorOptions;
 
 static void die(const char *message) {
-  fprintf(stderr, "log1pf oracle: %s\n", message);
+  fprintf(stderr, "atanhf oracle: %s\n", message);
   exit(EXIT_FAILURE);
 }
 
@@ -127,16 +127,6 @@ static uint64_t xorshift64star(uint64_t *state) {
   return x * UINT64_C(0x2545f4914f6cdd1d);
 }
 
-static void add_float_neighborhood(InputSet *set, float center,
-                                   unsigned radius) {
-  add_bit_neighborhood(set, float_to_bits(center), radius);
-}
-
-static void add_mpfr_neighborhood(InputSet *set, const mpfr_t center,
-                                  unsigned radius) {
-  add_float_neighborhood(set, mpfr_get_flt(center, MPFR_RNDN), radius);
-}
-
 static void add_fixed_inputs(InputSet *set) {
   static const uint32_t fixed_bits[] = {
       UINT32_C(0x00000000), /* +0 */
@@ -164,40 +154,27 @@ static void add_fixed_inputs(InputSet *set) {
 }
 
 static void add_analytic_boundaries(InputSet *set) {
-  /* Positive binades and the negative binades contained in the valid domain. */
+  /* Every exponent boundary, including invalid-domain inputs. */
   for (uint32_t exponent = 0; exponent < 255; ++exponent) {
     uint32_t lower = exponent << 23;
     uint32_t upper = lower | F32_FRACTION_MASK;
     add_bit_neighborhood(set, lower, 4);
     add_bit_neighborhood(set, upper, 4);
-    if (exponent < 127) {
-      add_bit_neighborhood(set, lower | F32_SIGN_MASK, 4);
-      add_bit_neighborhood(set, upper | F32_SIGN_MASK, 4);
-    }
+    add_bit_neighborhood(set, lower | F32_SIGN_MASK, 4);
+    add_bit_neighborhood(set, upper | F32_SIGN_MASK, 4);
   }
 
-  static const uint32_t branch_boundaries[] = {
-      UINT32_C(0x00000000), UINT32_C(0x33800000),
-      UINT32_C(0x80000000), UINT32_C(0xb3800000),
-      UINT32_C(0xbe95f619), UINT32_C(0x3ed413d0),
-      UINT32_C(0xbf800000),
+  static const uint32_t branch_magnitudes[] = {
+      UINT32_C(0x00000000), /* zero */
+      UINT32_C(0x2f800000), /* 2^-32 */
+      UINT32_C(0x3f000000), /* 0.5 */
+      UINT32_C(0x3f800000), /* 1, the domain boundary */
   };
   for (size_t i = 0;
-       i < sizeof(branch_boundaries) / sizeof(branch_boundaries[0]); ++i) {
-    add_bit_neighborhood(set, branch_boundaries[i], 32);
+       i < sizeof(branch_magnitudes) / sizeof(branch_magnitudes[0]); ++i) {
+    add_bit_neighborhood(set, branch_magnitudes[i], 64);
+    add_bit_neighborhood(set, branch_magnitudes[i] | F32_SIGN_MASK, 64);
   }
-
-  /* Inputs for which 1+x crosses the logarithmic reduction boundary. */
-  mpfr_t boundary;
-  mpfr_init2(boundary, 512);
-  mpfr_set_flt(boundary, bits_to_float(UINT32_C(0x3f3504f3)), MPFR_RNDN);
-  for (long exponent = -24; exponent <= 127; ++exponent) {
-    mpfr_set_flt(boundary, bits_to_float(UINT32_C(0x3f3504f3)), MPFR_RNDN);
-    mpfr_mul_2si(boundary, boundary, exponent, MPFR_RNDN);
-    mpfr_sub_ui(boundary, boundary, 1, MPFR_RNDN);
-    add_mpfr_neighborhood(set, boundary, 8);
-  }
-  mpfr_clear(boundary);
 }
 
 static void add_random_inputs(InputSet *set, size_t samples_per_stratum) {
@@ -214,29 +191,36 @@ static void add_random_inputs(InputSet *set, size_t samples_per_stratum) {
     }
     input_set_push(set, raw);
 
-    /* Positive exponent-stratified inputs exercise the whole valid domain. */
+    /* Exponent-stratified inputs, including subnormals and extreme binades. */
+    uint32_t exponent = (uint32_t)(random % UINT64_C(0xff));
+    uint32_t sign = random2 & F32_SIGN_MASK;
+    uint32_t fraction_bits = random2 & F32_FRACTION_MASK;
+    input_set_push(set, sign | (exponent << 23) | fraction_bits);
+
+    /* Valid-domain exponent-stratified inputs cover [-1, 1]. */
     uint32_t random3 = (uint32_t)xorshift64star(&state);
-    uint32_t positive_exponent = random3 % UINT32_C(0xff);
-    input_set_push(set, (positive_exponent << 23) |
+    uint32_t exponent2 = random3 % UINT32_C(0x7f);
+    input_set_push(set, (random3 & F32_SIGN_MASK) | (exponent2 << 23) |
                             ((uint32_t)random & F32_FRACTION_MASK));
 
-    /* Negative exponent-stratified inputs remain inside [-1, 0]. */
-    uint32_t negative_exponent = random2 % UINT32_C(0x7f);
-    input_set_push(set, F32_SIGN_MASK | (negative_exponent << 23) |
-                            (random2 & F32_FRACTION_MASK));
+    /* Dense samples around one of the three nonzero branch boundaries. */
+    static const uint32_t branch_magnitudes[] = {
+        UINT32_C(0x2f800000), UINT32_C(0x3f000000), UINT32_C(0x3f800000),
+    };
+    uint32_t center = branch_magnitudes[random3 % UINT32_C(3)];
+    uint32_t distance = random3 & UINT32_C(0x0000ffff);
+    uint32_t magnitude = (random3 & UINT32_C(0x00010000)) == 0
+                             ? center + distance
+                             : center - distance;
+    input_set_push(set, (random2 & F32_SIGN_MASK) | magnitude);
 
-    /* Dense signed samples around zero target the cancellation-safe branch. */
-    uint32_t small_magnitude = random3 & UINT32_C(0x37ffffff);
-    input_set_push(set, (random2 & F32_SIGN_MASK) | small_magnitude);
-
-    /* Samples on both sides of x = -1 exercise the domain boundary. */
-    uint32_t distance = random3 & UINT32_C(0x001fffff);
-    input_set_push(set, UINT32_C(0xbf800000) + distance);
-    input_set_push(set, UINT32_C(0xbf800000) - distance);
+    /* Dense samples in the tiny branch check exact signed passthrough. */
+    input_set_push(set, (random3 & F32_SIGN_MASK) |
+                            (random2 % UINT32_C(0x2f800000)));
   }
 }
 
-static uint32_t oracle_log1pf(uint32_t input_bits,
+static uint32_t oracle_atanhf(uint32_t input_bits,
                               mpfr_prec_t *used_precision) {
   float input = bits_to_float(input_bits);
   uint32_t magnitude = input_bits & ~F32_SIGN_MASK;
@@ -244,17 +228,13 @@ static uint32_t oracle_log1pf(uint32_t input_bits,
     *used_precision = INITIAL_ORACLE_PRECISION;
     return input_bits;
   }
-  if ((input_bits & F32_SIGN_MASK) != 0 && magnitude > UINT32_C(0x3f800000)) {
+  if (magnitude > UINT32_C(0x3f800000)) {
     *used_precision = INITIAL_ORACLE_PRECISION;
     return UINT32_C(0x7fc00000);
   }
-  if (input_bits == UINT32_C(0xbf800000)) {
+  if (magnitude == UINT32_C(0x3f800000)) {
     *used_precision = INITIAL_ORACLE_PRECISION;
-    return UINT32_C(0xff800000);
-  }
-  if (input_bits == F32_EXPONENT_MASK) {
-    *used_precision = INITIAL_ORACLE_PRECISION;
-    return input_bits;
+    return (input_bits & F32_SIGN_MASK) | F32_EXPONENT_MASK;
   }
 
   mpfr_t x;
@@ -269,8 +249,8 @@ static uint32_t oracle_log1pf(uint32_t input_bits,
        precision <= MAX_ORACLE_PRECISION; precision *= 2) {
     mpfr_set_prec(lower, precision);
     mpfr_set_prec(upper, precision);
-    mpfr_log1p(lower, x, MPFR_RNDD);
-    mpfr_log1p(upper, x, MPFR_RNDU);
+    mpfr_atanh(lower, x, MPFR_RNDD);
+    mpfr_atanh(upper, x, MPFR_RNDU);
     uint32_t lower_bits = float_to_bits(mpfr_get_flt(lower, MPFR_RNDN));
     uint32_t upper_bits = float_to_bits(mpfr_get_flt(upper, MPFR_RNDN));
     if (lower_bits == upper_bits) {
@@ -288,7 +268,7 @@ static uint32_t oracle_log1pf(uint32_t input_bits,
 static GeneratorOptions parse_options(int argc, char **argv) {
   GeneratorOptions options = {
       .samples_per_stratum = DEFAULT_SAMPLES_PER_STRATUM,
-      .maximum_ulp = 1,
+      .maximum_ulp = 2,
   };
   for (int i = 1; i < argc; ++i) {
     if (strcmp(argv[i], "--samples-per-stratum") == 0 && i + 1 < argc) {
@@ -318,8 +298,8 @@ static GeneratorOptions parse_options(int argc, char **argv) {
 static void emit_tests(const OracleCase *cases, size_t count,
                        const GeneratorOptions *options,
                        mpfr_prec_t maximum_precision) {
-  printf("// Code generated by tools/oracle/log1pf/generate.c; DO NOT EDIT.\n");
-  printf("// Oracle: MPFR %s, log1p, binary32 round-to-nearest ties-to-even.\n",
+  printf("// Code generated by tools/oracle/atanhf/generate.c; DO NOT EDIT.\n");
+  printf("// Oracle: MPFR %s, atanh, binary32 round-to-nearest ties-to-even.\n",
          mpfr_get_version());
   printf("// Oracle method: adaptive [%d, %d]-bit directed-rounding interval; maximum precision used: %ld bits.\n",
          INITIAL_ORACLE_PRECISION, MAX_ORACLE_PRECISION,
@@ -328,7 +308,7 @@ static void emit_tests(const OracleCase *cases, size_t count,
          "; samples per stratum: %zu; admitted error: %u ULP; total unique cases: %zu.\n",
          RANDOM_SEED, options->samples_per_stratum, options->maximum_ulp,
          count);
-  printf("// Inputs cover special values, domain and branch boundaries, logarithmic reduction boundaries, and five deterministic random strata.\n\n");
+  printf("// Inputs cover special values, the real-domain and implementation branch boundaries, and four deterministic random strata.\n\n");
 
   size_t chunk_count =
       (count + GENERATED_CASES_PER_CHUNK - 1) / GENERATED_CASES_PER_CHUNK;
@@ -338,7 +318,7 @@ static void emit_tests(const OracleCase *cases, size_t count,
     if (end > count) {
       end = count;
     }
-    printf("///|\nfn log1pf_mpfr_cases_%zu() -> Array[(UInt, UInt)] {\n",
+    printf("///|\nfn atanhf_mpfr_cases_%zu() -> Array[(UInt, UInt)] {\n",
            chunk);
     printf("  [\n");
     for (size_t i = begin; i < end; ++i) {
@@ -348,14 +328,14 @@ static void emit_tests(const OracleCase *cases, size_t count,
     printf("  ]\n}\n\n");
   }
 
-  printf("///|\nfn log1pf_mpfr_case_groups() -> Array[Array[(UInt, UInt)]] {\n");
+  printf("///|\nfn atanhf_mpfr_case_groups() -> Array[Array[(UInt, UInt)]] {\n");
   printf("  [\n");
   for (size_t chunk = 0; chunk < chunk_count; ++chunk) {
-    printf("    log1pf_mpfr_cases_%zu(),\n", chunk);
+    printf("    atanhf_mpfr_cases_%zu(),\n", chunk);
   }
   printf("  ]\n}\n\n");
 
-  printf("///|\nfn log1pf_oracle_ulp_error(expect : Float, actual : Float) -> UInt {\n");
+  printf("///|\nfn atanhf_oracle_ulp_error(expect : Float, actual : Float) -> UInt {\n");
   printf("  if expect == actual {\n");
   printf("    return 0U\n");
   printf("  }\n");
@@ -374,28 +354,24 @@ static void emit_tests(const OracleCase *cases, size_t count,
   printf("  }\n");
   printf("}\n\n");
 
-  printf("///|\ntest \"log1pf agrees with the MPFR oracle within %u ULP\" {\n",
+  printf("///|\ntest \"atanhf agrees with the MPFR oracle within %u ULP\" {\n",
          options->maximum_ulp);
   printf("  let mut maximum_error = 0U\n");
-  printf("  for cases in log1pf_mpfr_case_groups() {\n");
+  printf("  for cases in atanhf_mpfr_case_groups() {\n");
   printf("    for pair in cases {\n");
   printf("      let (input_bits, expected_bits) = pair\n");
   printf("      let input = Float::reinterpret_from_int(input_bits.reinterpret_as_int())\n");
   printf("      let expected = Float::reinterpret_from_int(\n");
   printf("        expected_bits.reinterpret_as_int(),\n");
   printf("      )\n");
-  printf("      let actual = @math.log1pf(input)\n");
-  printf("      let error = log1pf_oracle_ulp_error(expected, actual)\n");
-  printf("      assert_eq(\n");
-  printf("        @math.ln_1pf(input).reinterpret_as_uint(),\n");
-  printf("        actual.reinterpret_as_uint(),\n");
-  printf("      )\n");
+  printf("      let actual = @math.atanhf(input)\n");
+  printf("      let error = atanhf_oracle_ulp_error(expected, actual)\n");
   printf("      if error > maximum_error {\n");
   printf("        maximum_error = error\n");
   printf("      }\n");
   printf("      if error > %uU {\n", options->maximum_ulp);
   printf("        println(\n");
-  printf("          \"log1pf oracle mismatch: input_bits=\\{input_bits}, expected_bits=\\{expected_bits}, actual_bits=\\{actual.reinterpret_as_uint()}, ulp=\\{error}\",\n");
+  printf("          \"atanhf oracle mismatch: input_bits=\\{input_bits}, expected_bits=\\{expected_bits}, actual_bits=\\{actual.reinterpret_as_uint()}, ulp=\\{error}\",\n");
   printf("        )\n");
   printf("        assert_true(false)\n");
   printf("      }\n");
@@ -404,31 +380,36 @@ static void emit_tests(const OracleCase *cases, size_t count,
   printf("  assert_true(maximum_error <= %uU)\n", options->maximum_ulp);
   printf("}\n\n");
 
-  printf("///|\ntest \"MoonBit Core log1pf meets the oracle bound over the corpus\" {\n");
-  printf("  for cases in log1pf_mpfr_case_groups() {\n");
+  printf("///|\ntest \"MoonBit Core atanhf meets the oracle bound over the corpus\" {\n");
+  printf("  for cases in atanhf_mpfr_case_groups() {\n");
   printf("    for pair in cases {\n");
   printf("      let (input_bits, expected_bits) = pair\n");
   printf("      let input = Float::reinterpret_from_int(input_bits.reinterpret_as_int())\n");
   printf("      let expected = Float::reinterpret_from_int(\n");
   printf("        expected_bits.reinterpret_as_int(),\n");
   printf("      )\n");
-  printf("      let actual = @core_math.ln_1pf(input)\n");
-  printf("      assert_true(log1pf_oracle_ulp_error(expected, actual) <= %uU)\n",
+  printf("      let actual = @core_math.atanhf(input)\n");
+  printf("      assert_true(atanhf_oracle_ulp_error(expected, actual) <= %uU)\n",
          options->maximum_ulp);
   printf("    }\n");
   printf("  }\n");
   printf("}\n\n");
 
-  printf("///|\ntest \"log1pf is monotonic over its real domain\" {\n");
+  printf("///|\ntest \"atanhf is monotonic and odd over its real domain\" {\n");
   printf("  let mut previous : Float = 0.0\n");
   printf("  let mut have_previous = false\n");
-  printf("  for cases in log1pf_mpfr_case_groups() {\n");
+  printf("  for cases in atanhf_mpfr_case_groups() {\n");
   printf("    for pair in cases {\n");
   printf("      let (input_bits, _) = pair\n");
   printf("      let input = Float::reinterpret_from_int(input_bits.reinterpret_as_int())\n");
-  printf("      if input >= -1.0 {\n");
-  printf("        let actual = @math.log1pf(input)\n");
+  printf("      if (input_bits & 0x7fffffffU) <= 0x3f800000U {\n");
+  printf("        let actual = @math.atanhf(input)\n");
   printf("        assert_true(!actual.is_nan())\n");
+  printf("        let opposite = @math.atanhf(-input)\n");
+  printf("        assert_eq(\n");
+  printf("          opposite.reinterpret_as_uint(),\n");
+  printf("          (-actual).reinterpret_as_uint(),\n");
+  printf("        )\n");
   printf("        if have_previous {\n");
   printf("          assert_true(previous <= actual)\n");
   printf("        }\n");
@@ -462,7 +443,7 @@ int main(int argc, char **argv) {
     mpfr_prec_t used_precision = 0;
     cases[i] = (OracleCase){
         .input_bits = inputs.items[i],
-        .expected_bits = oracle_log1pf(inputs.items[i], &used_precision),
+        .expected_bits = oracle_atanhf(inputs.items[i], &used_precision),
     };
     if (used_precision > maximum_precision) {
       maximum_precision = used_precision;

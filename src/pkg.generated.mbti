@@ -4,6 +4,8 @@ package "Kaida-Amethyst/math"
 // Values
 pub fn asinhf(Float) -> Float
 
+pub fn atanhf(Float) -> Float
+
 pub fn cbrtf(Float) -> Float
 
 pub fn coshf(Float) -> Float
