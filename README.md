@@ -27,7 +27,7 @@ moon add Kaida-Amethyst/math
 APIs that pass the stable promotion criteria are exported from
 `Kaida-Amethyst/math`; `exp`, `expf`, `expm1f`, `sinhf`, `coshf`, `tanhf`,
 `cbrtf`, `sqrtf`, `logf`, `log1pf`, its `ln_1pf` alias, `log2f`, `log10f`,
-`acosf`, `asinf`, `asinhf`, `atanf`, `atanhf`, `acoshf`, `scalbn`, its `ldexp` alias,
+`acosf`, `asinf`, `asinhf`, `atanf`, `atanhf`, `acoshf`, `hypotf`, `scalbn`, its `ldexp` alias,
 and `scalbnf` are currently stable.
 Remaining APIs are available from `Kaida-Amethyst/math/experimental` without a
 stable behavior or accuracy guarantee.
@@ -69,6 +69,7 @@ fn main {
   println("atanhf(0.5) = \{@kmath.atanhf(0.5)}")
   println("acoshf(2) = \{@kmath.acoshf(2.0)}")
   println("atanf(1) = \{@kmath.atanf(1.0)}")
+  println("hypotf(3, 4) = \{@kmath.hypotf(3.0, 4.0)}")
   println("scalbn(1.5, 2) = \{@kmath.scalbn(1.5, 2)}")
   println("ldexp(1.5, 2) = \{@kmath.ldexp(1.5, 2)}")
   println("scalbnf(1.5, 2) = \{@kmath.scalbnf(1.5, 2)}")
@@ -232,6 +233,7 @@ As of version 0.1.17, Moonbit-Math supports the following functions:
 | `floor`       | Floor function, rounds down to the nearest integer.                         |
 | `gelu`        | Gaussian Error Linear Unit activation function.                           |
 | `hypot`       | Computes sqrt(x² + y²).                                                   |
+| `hypotf`      | **Stable.** Computes a binary32 hypotenuse within 1 ULP.                  |
 | `isinf`       | Checks if a floating-point number is infinite.                            |
 | `isnan`       | Checks if a floating-point number is NaN (Not a Number).                  |
 | `isninf`      | Checks if a floating-point number is negative infinity.                   |
@@ -293,6 +295,7 @@ For floating-point functions, Moonbit-Math has currently measured the following 
 | `expm1`       | 0       |
 | `cbrt`        | 0       |
 | `cbrtf`       | 0       |
+| `hypotf`      | 1       |
 | `logf`        | 1       |
 | `log1pf`      | 1       |
 | `asinhf`      | 1       |
@@ -367,7 +370,7 @@ moon add Kaida-Amethyst/math
 
 通过 stable 晋升门槛的 API 由 `Kaida-Amethyst/math` 根包导出；`exp`、`expf`、`expm1f`、
 `sinhf`、`coshf`、`tanhf`、`cbrtf`、`sqrtf`、`logf`、`log1pf`、其别名
-`ln_1pf`、`log2f`、`log10f`、`acosf`、`asinf`、`asinhf`、`atanf`、`atanhf`、`acoshf`、`scalbn`、其别名 `ldexp`
+`ln_1pf`、`log2f`、`log10f`、`acosf`、`asinf`、`asinhf`、`atanf`、`atanhf`、`acoshf`、`hypotf`、`scalbn`、其别名 `ldexp`
 以及 `scalbnf` 是当前 stable API。
 其余 API 仍位于
 `Kaida-Amethyst/math/experimental`，尚不提供稳定的行为或精度保证。
@@ -408,6 +411,7 @@ fn main {
     println("atanhf(0.5) = \{@kmath.atanhf(0.5)}")
     println("acoshf(2) = \{@kmath.acoshf(2.0)}")
     println("atanf(1) = \{@kmath.atanf(1.0)}")
+    println("hypotf(3, 4) = \{@kmath.hypotf(3.0, 4.0)}")
     println("scalbn(1.5, 2) = \{@kmath.scalbn(1.5, 2)}")
     println("ldexp(1.5, 2) = \{@kmath.ldexp(1.5, 2)}")
     println("scalbnf(1.5, 2) = \{@kmath.scalbnf(1.5, 2)}")
@@ -574,6 +578,7 @@ fn main {
 | `floor`       | 向下取整函数。                                                        |
 | `gelu`        | Gaussian Error Linear Unit 激活函数。                                   |
 | `hypot`       | 计算 sqrt(x² + y²)。                                                  |
+| `hypotf`      | **Stable。**计算 binary32 斜边，误差不超过 1 ULP。                   |
 | `isinf`       | 检查浮点数是否为无穷大。                                                |
 | `isnan`       | 检查浮点数是否为 NaN（非数值）。                                       |
 | `isninf`      | 检查浮点数是否为负无穷大。                                              |
@@ -635,6 +640,7 @@ Moonbit-Math 使用 ULP（Unit in the Last Place）来衡量精度。有关 ULP 
 | `expm1`   | 0        |
 | `cbrt`    | 0        |
 | `cbrtf`   | 0        |
+| `hypotf`  | 1        |
 | `logf`    | 1        |
 | `log1pf`  | 1        |
 | `asinhf`  | 1        |

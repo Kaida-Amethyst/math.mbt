@@ -24,6 +24,8 @@ pub fn expf(Float) -> Float
 
 pub fn expm1f(Float) -> Float
 
+pub fn hypotf(Float, Float) -> Float
+
 pub fn log10f(Float) -> Float
 
 #alias(ln_1pf)

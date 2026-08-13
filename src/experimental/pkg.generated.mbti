@@ -184,8 +184,6 @@ pub fn hermite(UInt, Double) -> Double
 
 pub fn hypot(Double, Double) -> Double
 
-pub fn hypotf(Float, Float) -> Float
-
 pub fn i0(Double) -> Double
 
 pub fn i0e(Double) -> Double
