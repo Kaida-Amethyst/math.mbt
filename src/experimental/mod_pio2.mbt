@@ -261,7 +261,7 @@ fn __kernel_rem_pio2(
     }
 
     // compute n
-    z = scalbn(z, q0) // actual value of z
+    z = @math.scalbn(z, q0) // actual value of z
     z -= 8.0 * (z * 0.125).floor() // trim off integer >= 8
     n = z.to_int()
     z -= n.to_double()
@@ -305,7 +305,7 @@ fn __kernel_rem_pio2(
       if ih == 2 {
         z = 1.0 - z
         if carry != 0 {
-          z -= scalbn(1.0, q0)
+          z -= @math.scalbn(1.0, q0)
         }
       }
     }
@@ -352,7 +352,7 @@ fn __kernel_rem_pio2(
       }
     } else {
       // break z into 24-bit if necessary
-      z = scalbn(z, -q0)
+      z = @math.scalbn(z, -q0)
       if z >= two24 {
         fw = (twon24 * z).floor()
         iq[jz] = (z - two24 * fw).to_int()
@@ -365,7 +365,7 @@ fn __kernel_rem_pio2(
     }
 
     // convert integer "bit" chunk to floating-point value
-    fw = scalbn(1.0, q0)
+    fw = @math.scalbn(1.0, q0)
     i = jz
     while i >= 0 {
       q[i] = fw * iq[i].to_double()

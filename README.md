@@ -25,7 +25,7 @@ moon add Kaida-Amethyst/math
 ## Usage
 
 APIs that pass the stable promotion criteria are exported from
-`Kaida-Amethyst/math`; `exp` is currently the first stable API. Remaining APIs
+`Kaida-Amethyst/math`; `exp` and `scalbn` are currently stable. Remaining APIs
 are available from `Kaida-Amethyst/math/experimental` without a stable behavior
 or accuracy guarantee.
 
@@ -43,12 +43,13 @@ it with an explicit alias:
 }
 ```
 
-Then use the stable `exp` API as follows:
+Then use the stable APIs as follows:
 
 ```moonbit
 fn main {
-    let result = @kmath.exp(1.0)
-    println("exp(1) = \{result}")
+  let result = @kmath.exp(1.0)
+  println("exp(1) = \{result}")
+  println("scalbn(1.5, 2) = \{@kmath.scalbn(1.5, 2)}")
 }
 ```
 
@@ -218,7 +219,7 @@ As of version 0.1.17, Moonbit-Math supports the following functions:
 | `rnorm`       | Computes the reciprocal of the Euclidean norm of an array.               |
 | `round`       | Rounds to the nearest integer, away from zero.                             |
 | `roundeven`   | Rounds to the nearest even integer.                                       |
-| `scalbn`      | Computes x * 2<sup>n</sup>.                                             |
+| `scalbn`      | **Stable.** Computes x * 2<sup>n</sup> with correct binary64 rounding.   |
 | `signum`      | Returns the sign of a number: -1, 0, or 1.                                |
 | `to_degrees`  | Converts radians to degrees.                                              |
 | `to_radians`  | Converts degrees to radians.                                              |
@@ -238,6 +239,7 @@ For floating-point functions, Moonbit-Math has currently measured the following 
 | `log1p`       | 0       |
 | `pow`         | 2       |
 | `exp`         | 1       |
+| `scalbn`      | 0       |
 | `exp2`        | 1       |
 | `exp10`       | 1       |
 | `expm1`       | 0       |
@@ -306,9 +308,9 @@ moon add Kaida-Amethyst/math
 
 ## 使用
 
-通过 stable 晋升门槛的 API 由 `Kaida-Amethyst/math` 根包导出；`exp` 是当前首个
-stable API。其余 API 仍位于 `Kaida-Amethyst/math/experimental`，尚不提供稳定的
-行为或精度保证。
+通过 stable 晋升门槛的 API 由 `Kaida-Amethyst/math` 根包导出；`exp` 和 `scalbn` 是当前
+stable API。其余 API 仍位于 `Kaida-Amethyst/math/experimental`，尚不提供稳定的行为或
+精度保证。
 
 根包的默认别名会与 Core 的 `@math` 冲突，因此建议显式指定别名：
 
@@ -323,12 +325,13 @@ stable API。其余 API 仍位于 `Kaida-Amethyst/math/experimental`，尚不提
 }
 ```
 
-然后可以使用 stable 的 `exp`：
+然后可以使用 stable API：
 
 ```moonbit
 fn main {
     let result = @kmath.exp(1.0)
     println("exp(1) = \{result}")
+    println("scalbn(1.5, 2) = \{@kmath.scalbn(1.5, 2)}")
 }
 ```
 
@@ -501,7 +504,7 @@ fn main {
 | `rnorm`       | 计算数组的欧几里得范数的倒数。                                            |
 | `round`       | 四舍五入到最接近的整数，远离零。                                            |
 | `roundeven`   | 四舍五入到最接近的偶数。                                                  |
-| `scalbn`      | 计算 x * 2<sup>n</sup>。                                            |
+| `scalbn`      | **Stable。**计算 x * 2<sup>n</sup>，并正确舍入到 binary64。         |
 | `signum`      | 返回数字的符号：-1、0 或 1。                                               |
 | `to_degrees`  | 将弧度转换为度。                                                        |
 | `to_radians`  | 将度转换为弧度。                                                        |
@@ -521,6 +524,7 @@ Moonbit-Math 使用 ULP（Unit in the Last Place）来衡量精度。有关 ULP 
 | `log1p`   | 0        |
 | `pow`     | 2        |
 | `exp`     | 1        |
+| `scalbn`  | 0        |
 | `exp2`    | 1        |
 | `exp10`   | 1        |
 | `expm1`   | 0        |
