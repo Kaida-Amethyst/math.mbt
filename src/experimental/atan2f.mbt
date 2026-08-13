@@ -31,7 +31,7 @@ pub fn atan2f(y : Float, x : Float) -> Float {
   let ix = x.reinterpret_as_uint()
   let iy = y.reinterpret_as_uint()
   if ix == 0x3f800000 {
-    return atanf(y)
+    return @math.atanf(y)
   }
   let m = ((iy >> 31) & 1) | ((ix >> 30) & 2)
   let ix = ix & 0x7fffffff
@@ -71,7 +71,7 @@ pub fn atan2f(y : Float, x : Float) -> Float {
   let z = if (m & 2) != 0 && iy + (26U << 23) < ix {
     zero
   } else {
-    atanf(y / x)
+    @math.atanf(y / x)
   }
   match m {
     0 => z

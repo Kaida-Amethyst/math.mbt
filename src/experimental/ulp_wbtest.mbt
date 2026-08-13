@@ -136,9 +136,6 @@ const ASIN_F_MAX_ULP : Int = 0
 const ACOS_F_MAX_ULP : Int = 0
 
 ///|
-const ATAN_F_MAX_ULP : Int = 0
-
-///|
 const ATAN2_F_MAX_ULP : Int = 2
 
 ///|

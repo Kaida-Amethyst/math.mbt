@@ -6,6 +6,8 @@ pub fn acoshf(Float) -> Float
 
 pub fn asinhf(Float) -> Float
 
+pub fn atanf(Float) -> Float
+
 pub fn atanhf(Float) -> Float
 
 pub fn cbrtf(Float) -> Float
