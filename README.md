@@ -27,7 +27,7 @@ moon add Kaida-Amethyst/math
 APIs that pass the stable promotion criteria are exported from
 `Kaida-Amethyst/math`; `exp`, `expf`, `expm1f`, `sinhf`, `coshf`, `tanhf`,
 `cbrtf`, `sqrtf`, `logf`, `log1pf`, its `ln_1pf` alias, `log2f`, `log10f`,
-`acosf`, `asinf`, `asinhf`, `atanf`, `atanhf`, `acoshf`, `hypotf`, `scalbn`, its `ldexp` alias,
+`acosf`, `asinf`, `asinhf`, `atanf`, `atanhf`, `acoshf`, `hypotf`, `sinf`, `scalbn`, its `ldexp` alias,
 and `scalbnf` are currently stable.
 Remaining APIs are available from `Kaida-Amethyst/math/experimental` without a
 stable behavior or accuracy guarantee.
@@ -70,6 +70,7 @@ fn main {
   println("acoshf(2) = \{@kmath.acoshf(2.0)}")
   println("atanf(1) = \{@kmath.atanf(1.0)}")
   println("hypotf(3, 4) = \{@kmath.hypotf(3.0, 4.0)}")
+  println("sinf(1) = \{@kmath.sinf(1.0)}")
   println("scalbn(1.5, 2) = \{@kmath.scalbn(1.5, 2)}")
   println("ldexp(1.5, 2) = \{@kmath.ldexp(1.5, 2)}")
   println("scalbnf(1.5, 2) = \{@kmath.scalbnf(1.5, 2)}")
@@ -111,6 +112,7 @@ As of version 0.1.17, Moonbit-Math supports the following functions:
 | `cos`         | Cosine function.                                         |
 | `cospi`       | Computes the cosine of `x * pi`.                         |
 | `sin`         | Sine function.                                           |
+| `sinf`        | **Stable.** Computes binary32 sine within 1 ULP.         |
 | `sinc`        | Normalized sinc function, defined as sin(πx)/(πx).         |
 | `sincos`      | Simultaneously computes the sine and cosine values.       |
 | `sincospi`    | Simultaneously computes the sine and cosine of `x * pi`.  |
@@ -285,6 +287,7 @@ For floating-point functions, Moonbit-Math has currently measured the following 
 | `expf`        | 1       |
 | `expm1f`      | 1       |
 | `tanhf`       | 2       |
+| `sinf`        | 1       |
 | `sinhf`       | 2       |
 | `coshf`       | 1       |
 | `scalbn`      | 0       |
@@ -370,7 +373,7 @@ moon add Kaida-Amethyst/math
 
 通过 stable 晋升门槛的 API 由 `Kaida-Amethyst/math` 根包导出；`exp`、`expf`、`expm1f`、
 `sinhf`、`coshf`、`tanhf`、`cbrtf`、`sqrtf`、`logf`、`log1pf`、其别名
-`ln_1pf`、`log2f`、`log10f`、`acosf`、`asinf`、`asinhf`、`atanf`、`atanhf`、`acoshf`、`hypotf`、`scalbn`、其别名 `ldexp`
+`ln_1pf`、`log2f`、`log10f`、`acosf`、`asinf`、`asinhf`、`atanf`、`atanhf`、`acoshf`、`hypotf`、`sinf`、`scalbn`、其别名 `ldexp`
 以及 `scalbnf` 是当前 stable API。
 其余 API 仍位于
 `Kaida-Amethyst/math/experimental`，尚不提供稳定的行为或精度保证。
@@ -412,6 +415,7 @@ fn main {
     println("acoshf(2) = \{@kmath.acoshf(2.0)}")
     println("atanf(1) = \{@kmath.atanf(1.0)}")
     println("hypotf(3, 4) = \{@kmath.hypotf(3.0, 4.0)}")
+    println("sinf(1) = \{@kmath.sinf(1.0)}")
     println("scalbn(1.5, 2) = \{@kmath.scalbn(1.5, 2)}")
     println("ldexp(1.5, 2) = \{@kmath.ldexp(1.5, 2)}")
     println("scalbnf(1.5, 2) = \{@kmath.scalbnf(1.5, 2)}")
@@ -453,6 +457,7 @@ fn main {
 | `cos`     | 余弦函数。                               |
 | `cospi`   | 计算 `x * pi` 的余弦。                     |
 | `sin`     | 正弦函数。                               |
+| `sinf`    | **Stable。**计算 binary32 正弦，误差不超过 1 ULP。 |
 | `sinc`    | 归一化 sinc 函数，定义为 sin(πx)/(πx)。      |
 | `sincos`  | 同时计算正弦和余弦值。                       |
 | `sincospi`| 同时计算 `x * pi` 的正弦和余弦值。          |
@@ -630,6 +635,7 @@ Moonbit-Math 使用 ULP（Unit in the Last Place）来衡量精度。有关 ULP 
 | `expf`    | 1        |
 | `expm1f`  | 1        |
 | `tanhf`   | 2        |
+| `sinf`    | 1        |
 | `sinhf`   | 2        |
 | `coshf`   | 1        |
 | `scalbn`  | 0        |

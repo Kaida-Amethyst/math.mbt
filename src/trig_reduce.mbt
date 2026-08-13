@@ -1,5 +1,5 @@
 ///|
-const COS_SWITCHOVER : Float = 142.90625
+const SIN_SWITCHOVER : Float = 201.15625
 
 ///|
 fn mulh(a : UInt, b : UInt) -> UInt {

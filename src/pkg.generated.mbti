@@ -40,6 +40,8 @@ pub fn scalbn(Double, Int) -> Double
 
 pub fn scalbnf(Float, Int) -> Float
 
+pub fn sinf(Float) -> Float
+
 pub fn sinhf(Float) -> Float
 
 pub fn sqrtf(Float) -> Float

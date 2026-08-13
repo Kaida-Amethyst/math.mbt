@@ -320,8 +320,6 @@ pub fn sincos(Double) -> (Double, Double)
 
 pub fn sincospi(Double) -> (Double, Double)
 
-pub fn sinf(Float) -> Float
-
 pub fn sinh(Double) -> Double
 
 pub fn sinpi(Double) -> Double
