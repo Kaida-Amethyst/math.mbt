@@ -17,10 +17,11 @@
 ///
 /// ## Verification
 ///
-/// A 28,975-case fixed corpus generated with an independent MPFR oracle covers
-/// IEEE 754 classes, every exponent boundary, quadrant landmarks, the range
-/// reduction transition at `201.15625`, and fixed-seed stratified inputs. An
-/// enlarged 171,798-case audit also passed in native debug and release mode.
+/// A 30,011-case fixed corpus generated with an independent MPFR oracle covers
+/// IEEE 754 classes, every exponent boundary, the musl direct-dispatch
+/// boundaries, the medium/large reduction transition, quadrant landmarks, and
+/// fixed-seed stratified inputs.
+/// An enlarged 172,993-case native debug audit passed the same bound.
 /// The fixed corpus checks bit-exact odd symmetry and range and passes in debug
 /// and release mode on wasm, wasm-gc, JavaScript, and native, with a maximum
 /// observed error of 1 ULP; MoonBit Core is checked against the same independent
@@ -30,10 +31,15 @@
 ///
 /// ## References
 ///
-/// - The public behavior and implementation structure are compatible with
+/// - The binary64 kernel and argument-reduction implementation are derived from
+///   musl libc
+///   [`sinf.c`](https://git.musl-libc.org/cgit/musl/tree/src/math/sinf.c?id=f21a96538f78fa8e2040831b4209b35f2fb581da)
+///   and its private helpers at commit
+///   `f21a96538f78fa8e2040831b4209b35f2fb581da`; the large reducer is specialized
+///   to its binary32 caller while retaining musl's constants and arithmetic.
+/// - The public behavior is compatible with
 ///   [MoonBit Core `math.sinf`](https://github.com/moonbitlang/core/blob/ace5c88416720bbed83b1c55f2ab93d2ed68a8c2/math/trig.mbt).
-/// - Large arguments use an integer Payne–Hanek-style range reduction; reference
-///   results are generated independently with
+/// - Reference results are generated independently with
 ///   [GNU MPFR](https://www.mpfr.org/mpfr-current/mpfr.html).
 ///
 /// ## Example
@@ -45,14 +51,59 @@
 /// }
 /// ```
 pub fn sinf(input : Float) -> Float {
-  if input.is_nan() || input.is_inf() {
-    return @float.not_a_number
+  let bits = input.reinterpret_as_uint()
+  let sign = bits >> 31 != 0U
+  let magnitude = bits & 0x7fffffffU
+  let x = input.to_double()
+  let pi_over_two = 0x1.921fb54442d18p0
+  if magnitude <= 0x3f490fdaU {
+    if magnitude < 0x39800000U {
+      return input
+    }
+    return musl_sindf(x)
   }
-  if input == 0.0 {
-    return input
+  if magnitude <= 0x407b53d1U {
+    if magnitude <= 0x4016cbe3U {
+      return if sign {
+        -musl_cosdf(x + pi_over_two)
+      } else {
+        musl_cosdf(x - pi_over_two)
+      }
+    }
+    return musl_sindf(
+      if sign {
+        -(x + 2.0 * pi_over_two)
+      } else {
+        -(x - 2.0 * pi_over_two)
+      },
+    )
   }
-  let (reduced, quadrant) = trig_reduce(input, SIN_SWITCHOVER)
-  sin_cos_core(reduced, quadrant)
+  if magnitude <= 0x40e231d5U {
+    if magnitude <= 0x40afeddfU {
+      return if sign {
+        musl_cosdf(x + 3.0 * pi_over_two)
+      } else {
+        -musl_cosdf(x - 3.0 * pi_over_two)
+      }
+    }
+    return musl_sindf(
+      if sign {
+        x + 4.0 * pi_over_two
+      } else {
+        x - 4.0 * pi_over_two
+      },
+    )
+  }
+  if magnitude >= 0x7f800000U {
+    return input - input
+  }
+  let (remainder, quadrant) = musl_rem_pio2f(input)
+  match quadrant & 3 {
+    0 => musl_sindf(remainder)
+    1 => musl_cosdf(remainder)
+    2 => musl_sindf(-remainder)
+    _ => -musl_cosdf(remainder)
+  }
 }
 
 ///|
@@ -68,7 +119,7 @@ test "sinf handles non-finite values and signed zero" {
 }
 
 ///|
-test "sinf covers quadrant landmarks and its range-reduction transition" {
+test "sinf covers musl dispatch and range-reduction boundaries" {
   assert_eq(sinf(1.0).reinterpret_as_uint(), 0x3f576aa4U)
   assert_eq(sinf(Float::reinterpret_from_uint(0x3fc90fdbU)), 1.0)
   assert_eq(
@@ -76,7 +127,11 @@ test "sinf covers quadrant landmarks and its range-reduction transition" {
     0xb3bbbd2eU,
   )
   assert_eq(
-    sinf(Float::reinterpret_from_uint(0x43492800U)).reinterpret_as_uint(),
-    0x3dc0e1a5U,
+    sinf(Float::reinterpret_from_uint(0x40e231d5U)).reinterpret_as_uint(),
+    0x3f3504eeU,
+  )
+  assert_eq(
+    sinf(Float::reinterpret_from_uint(0x4dc90fdbU)).reinterpret_as_uint(),
+    0xbf3d5f98U,
   )
 }

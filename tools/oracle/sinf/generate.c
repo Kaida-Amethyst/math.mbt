@@ -143,8 +143,12 @@ static void add_fixed_inputs(InputSet *set) {
       UINT32_C(0xbfc90fdb),
       UINT32_C(0x40490fdb), /* nearest binary32 to pi */
       UINT32_C(0xc0490fdb),
-      UINT32_C(0x43492800), /* implementation switchover: 201.15625 */
-      UINT32_C(0xc3492800),
+      UINT32_C(0x3f490fda), /* musl direct-dispatch boundaries */
+      UINT32_C(0x4016cbe3),
+      UINT32_C(0x407b53d1),
+      UINT32_C(0x40afeddf),
+      UINT32_C(0x40e231d5),
+      UINT32_C(0x4dc90fdb), /* musl medium/large reduction boundary */
       UINT32_C(0x7f7fffff), /* maximum finite */
       UINT32_C(0xff7fffff),
       UINT32_C(0x7f800000), /* +infinity */
@@ -153,6 +157,7 @@ static void add_fixed_inputs(InputSet *set) {
   for (size_t i = 0; i < sizeof(fixed_bits) / sizeof(fixed_bits[0]); ++i) {
     add_bit_neighborhood(set, fixed_bits[i], 2);
   }
+  input_set_push(set, UINT32_C(0xfb9177e1)); /* observed one-ULP witness */
 
   for (int value = -1024; value <= 1024; ++value) {
     input_set_push(set, float_to_bits((float)value));
@@ -173,10 +178,14 @@ static void add_analytic_boundaries(InputSet *set) {
   static const uint32_t branch_magnitudes[] = {
       UINT32_C(0x00000000), /* zero */
       UINT32_C(0x39800000), /* 2^-12 */
-      UINT32_C(0x3f490fdb), /* pi/4 */
+      UINT32_C(0x3f490fda), /* musl pi/4 dispatch bound */
       UINT32_C(0x3fc90fdb), /* pi/2 */
+      UINT32_C(0x4016cbe3), /* 3pi/4 dispatch bound */
       UINT32_C(0x40490fdb), /* pi */
-      UINT32_C(0x43492800), /* implementation switchover */
+      UINT32_C(0x407b53d1), /* 5pi/4 dispatch bound */
+      UINT32_C(0x40afeddf), /* 7pi/4 dispatch bound */
+      UINT32_C(0x40e231d5), /* 9pi/4 dispatch bound */
+      UINT32_C(0x4dc90fdb), /* medium/large reduction boundary */
   };
   for (size_t i = 0;
        i < sizeof(branch_magnitudes) / sizeof(branch_magnitudes[0]); ++i) {
@@ -213,11 +222,13 @@ static void add_random_inputs(InputSet *set, size_t samples_per_stratum) {
 
     /* Dense samples around reduction and quadrant boundaries. */
     static const uint32_t branch_magnitudes[] = {
-        UINT32_C(0x39800000), UINT32_C(0x3f490fdb),
-        UINT32_C(0x3fc90fdb), UINT32_C(0x40490fdb),
-        UINT32_C(0x43492800),
+        UINT32_C(0x39800000), UINT32_C(0x3f490fda),
+        UINT32_C(0x3fc90fdb), UINT32_C(0x4016cbe3),
+        UINT32_C(0x40490fdb), UINT32_C(0x407b53d1),
+        UINT32_C(0x40afeddf), UINT32_C(0x40e231d5),
+        UINT32_C(0x4dc90fdb),
     };
-    uint32_t center = branch_magnitudes[random3 % UINT32_C(5)];
+    uint32_t center = branch_magnitudes[random3 % UINT32_C(9)];
     uint32_t distance = random3 & UINT32_C(0x0000ffff);
     uint32_t magnitude = (random3 & UINT32_C(0x00010000)) == 0
                              ? center + distance
@@ -313,7 +324,7 @@ static void emit_tests(const OracleCase *cases, size_t count,
          "; samples per stratum: %zu; admitted error: %u ULP; total unique cases: %zu.\n",
          RANDOM_SEED, options->samples_per_stratum, options->maximum_ulp,
          count);
-  printf("// Inputs cover IEEE 754 classes, all exponent boundaries, quadrant landmarks, the reduction switchover, and four deterministic random strata.\n\n");
+  printf("// Inputs cover IEEE 754 classes, all exponent boundaries, quadrant landmarks, musl direct-dispatch and medium/large reduction boundaries, and four deterministic random strata.\n\n");
 
   size_t chunk_count =
       (count + GENERATED_CASES_PER_CHUNK - 1) / GENERATED_CASES_PER_CHUNK;

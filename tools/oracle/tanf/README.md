@@ -18,8 +18,9 @@ The fixed corpus includes:
 
 - signed zeros, subnormals, normal values, finite extrema, and infinities;
 - every signed binary32 exponent boundary and its neighboring inputs;
-- neighborhoods of π/4, π/2, π, including inputs close to tangent's poles, and
-  the implementation's `142.90625` fast/large range-reduction transition;
+- neighborhoods of π/4, π/2, and π, including inputs close to tangent's
+  poles, every musl direct-dispatch boundary through 9π/4, and the
+  `0x4dc90fdb` medium/large reduction transition;
 - deterministic raw-bit, exponent-stratified, reduction-neighborhood, and
   near-zero inputs;
 - every maximum-error witness found during enlarged audits.
@@ -42,20 +43,18 @@ Restore the standard corpus afterward with the default settings.
 
 ## Audit record
 
-On 2026-08-13, the default corpus contained 28,972 unique inputs generated with
-MPFR 4.2.2. It passed within 2 ULP and retained bit-exact odd symmetry in debug
-and release mode on wasm, wasm-gc, JavaScript, and native. MoonBit Core stayed
-within the same bound.
+On 2026-08-14, the default corpus contained 30,005 unique inputs generated with
+MPFR 4.2.2. The library's maximum observed error was 1 ULP, within its existing
+2 ULP contract, and it retained bit-exact odd symmetry in debug and release mode
+on wasm, wasm-gc, JavaScript, and native. MoonBit Core stayed within 2 ULP.
 
-Tightening the standard corpus to 1 ULP found a two-ULP witness: input
-`0xfd000002`, correctly rounded MPFR result `0xbfe6c2cf`, and library result
-`0xbfe6c2d1`. The witness remains in the standard corpus. This confirms the
-existing 2 ULP expectation for the fdlibm-derived reduced-interval polynomial;
-the audit found no evidence of a migration regression requiring a replacement
-implementation.
+Tightening the standard corpus to 0 ULP found a one-ULP witness: input
+`0xff6198f2`, correctly rounded MPFR result `0xbe6c4061`, and library result
+`0xbe6c4060`. The witness remains in the standard corpus. The public bound stays
+at 2 ULP because this sampled result is testing evidence, not an exhaustive
+binary32 audit.
 
 An enlarged deterministic audit used 32,768 samples in each random stratum,
-producing 171,784 unique inputs. The library stayed within 2 ULP and retained
-bit-exact odd symmetry in native debug and release mode. The audit is not
-exhaustive or a formal proof, so the stable contract does not claim correct
-rounding.
+producing 173,006 unique inputs. The library stayed within 2 ULP and retained
+bit-exact odd symmetry in native debug mode. The audit is not exhaustive or a
+formal proof, so the stable contract does not claim correct rounding.

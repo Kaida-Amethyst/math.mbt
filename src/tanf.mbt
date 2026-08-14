@@ -1,29 +1,4 @@
 ///|
-fn tanf_poly(input : Float, reciprocal_branch : Bool) -> Float {
-  let x = input.to_double()
-  let coefficients : FixedArray[Double] = [
-    0.333331395030791399758, 0.133392002712976742718, 0.0533812378445670393523, 0.0245283181166547278873,
-    0.00297435743359967304927, 0.00946564784943673166728,
-  ]
-  let square = x * x
-  let mut high_order = coefficients[4] + square * coefficients[5]
-  let middle = coefficients[2] + square * coefficients[3]
-  let fourth_power = square * square
-  let cube = square * x
-  let low_order = coefficients[0] + square * coefficients[1]
-  high_order = x +
-    cube * low_order +
-    cube * fourth_power * (middle + fourth_power * high_order)
-  Float::from_double(
-    if reciprocal_branch {
-      -1.0 / high_order
-    } else {
-      high_order
-    },
-  )
-}
-
-///|
 /// Returns the tangent of `input` radians as an IEEE 754 binary32 value.
 ///
 /// ## Domain and special values
@@ -44,23 +19,27 @@ fn tanf_poly(input : Float, reciprocal_branch : Bool) -> Float {
 ///
 /// ## Verification
 ///
-/// A 28,972-case fixed corpus generated with an independent MPFR oracle covers
+/// A 30,005-case fixed corpus generated with an independent MPFR oracle covers
 /// IEEE 754 classes, every exponent boundary, neighborhoods of the poles,
-/// quadrant landmarks, the range reduction transition at `142.90625`, and
-/// fixed-seed stratified inputs. An enlarged 171,784-case audit also passed in
-/// native debug and release mode. The fixed corpus checks bit-exact odd symmetry
-/// and passes in debug and release mode on wasm, wasm-gc, JavaScript, and native,
-/// with a maximum observed error of 2 ULP; MoonBit Core is checked against the
-/// same independent reference. This is testing evidence, not a formal proof.
+/// quadrant landmarks, the musl direct-dispatch boundaries, the medium/large
+/// reduction transition, and fixed-seed stratified inputs. It checks bit-exact
+/// odd symmetry and passes in debug and release mode on wasm, wasm-gc,
+/// JavaScript, and native, with a maximum observed error of 1 ULP. An enlarged
+/// 173,006-case native debug audit passed the same bound. MoonBit Core is checked
+/// against the same independent reference. This is testing evidence, not a
+/// formal proof.
 /// See the [oracle documentation](../tools/oracle/tanf/README.md) for the corpus
 /// design, maximum-error witness, and reproduction commands.
 ///
 /// ## References
 ///
-/// - The reduced-interval polynomial is derived from FreeBSD msun
-///   [`k_tanf.c`](https://github.com/JuliaMath/openlibm/blob/82e90aef0657289192efe77be89791c07dea0775/src/k_tanf.c)
-///   as distributed by OpenLibm.
-/// - The public behavior and implementation structure are compatible with
+/// - The binary64 kernel and argument-reduction implementation are derived from
+///   musl libc
+///   [`tanf.c`](https://git.musl-libc.org/cgit/musl/tree/src/math/tanf.c?id=f21a96538f78fa8e2040831b4209b35f2fb581da)
+///   and its private helpers at commit
+///   `f21a96538f78fa8e2040831b4209b35f2fb581da`; the large reducer is specialized
+///   to its binary32 caller while retaining musl's constants and arithmetic.
+/// - The public behavior is compatible with
 ///   [MoonBit Core `math.tanf`](https://github.com/moonbitlang/core/blob/ace5c88416720bbed83b1c55f2ab93d2ed68a8c2/math/trig.mbt).
 /// - Reference results are generated independently with
 ///   [GNU MPFR](https://www.mpfr.org/mpfr-current/mpfr.html).
@@ -74,14 +53,62 @@ fn tanf_poly(input : Float, reciprocal_branch : Bool) -> Float {
 /// }
 /// ```
 pub fn tanf(input : Float) -> Float {
-  if input.is_nan() || input.is_inf() {
-    return @float.not_a_number
+  let bits = input.reinterpret_as_uint()
+  let sign = bits >> 31 != 0U
+  let magnitude = bits & 0x7fffffffU
+  let x = input.to_double()
+  let pi_over_two = 0x1.921fb54442d18p0
+  if magnitude <= 0x3f490fdaU {
+    if magnitude < 0x39800000U {
+      return input
+    }
+    return musl_tandf(x, false)
   }
-  if input == 0.0 {
-    return input
+  if magnitude <= 0x407b53d1U {
+    if magnitude <= 0x4016cbe3U {
+      return musl_tandf(
+        if sign {
+          x + pi_over_two
+        } else {
+          x - pi_over_two
+        },
+        true,
+      )
+    }
+    return musl_tandf(
+      if sign {
+        x + 2.0 * pi_over_two
+      } else {
+        x - 2.0 * pi_over_two
+      },
+      false,
+    )
   }
-  let (reduced, quadrant) = trig_reduce(input, COS_SWITCHOVER)
-  tanf_poly(reduced, (quadrant & 1) != 0)
+  if magnitude <= 0x40e231d5U {
+    if magnitude <= 0x40afeddfU {
+      return musl_tandf(
+        if sign {
+          x + 3.0 * pi_over_two
+        } else {
+          x - 3.0 * pi_over_two
+        },
+        true,
+      )
+    }
+    return musl_tandf(
+      if sign {
+        x + 4.0 * pi_over_two
+      } else {
+        x - 4.0 * pi_over_two
+      },
+      false,
+    )
+  }
+  if magnitude >= 0x7f800000U {
+    return input - input
+  }
+  let (remainder, quadrant) = musl_rem_pio2f(input)
+  musl_tandf(remainder, (quadrant & 1) != 0)
 }
 
 ///|
@@ -97,18 +124,18 @@ test "tanf handles non-finite values and signed zero" {
 }
 
 ///|
-test "tanf covers poles, range reduction, and its 2 ULP witness" {
+test "tanf covers poles and musl range-reduction boundaries" {
   assert_eq(tanf(1.0).reinterpret_as_uint(), 0x3fc75923U)
   assert_eq(
     tanf(Float::reinterpret_from_uint(0x3fc90fdbU)).reinterpret_as_uint(),
-    0xcbae8a4bU,
+    0xcbae8a4aU,
   )
   assert_eq(
-    tanf(Float::reinterpret_from_uint(0x430ee800U)).reinterpret_as_uint(),
-    0x41dccd47U,
+    tanf(Float::reinterpret_from_uint(0x40e231d5U)).reinterpret_as_uint(),
+    0x3f7ffff0U,
   )
   assert_eq(
-    tanf(Float::reinterpret_from_uint(0xfd000002U)).reinterpret_as_uint(),
-    0xbfe6c2d1U,
+    tanf(Float::reinterpret_from_uint(0x4dc90fdbU)).reinterpret_as_uint(),
+    0xbf8cb742U,
   )
 }
