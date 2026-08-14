@@ -27,8 +27,9 @@ moon add Kaida-Amethyst/math
 APIs that pass the stable promotion criteria are exported from
 `Kaida-Amethyst/math`; `exp`, `expf`, `expm1f`, `sinhf`, `coshf`, `tanhf`,
 `cbrtf`, `sqrtf`, `logf`, `log1pf`, its `ln_1pf` alias, `log2f`, `log10f`,
-`acosf`, `asinf`, `asinhf`, `atanf`, `atanhf`, `acoshf`, `cosf`, `hypotf`, `sinf`, `tanf`, `scalbn`, its `ldexp` alias,
-and `scalbnf` are currently stable.
+`acosf`, `asinf`, `asinhf`, `atanf`, `atan2f`, `atanhf`, `acoshf`, `cosf`,
+`hypotf`, `sinf`, `tanf`, `scalbn`, its `ldexp` alias, and `scalbnf` are
+currently stable.
 Remaining APIs are available from `Kaida-Amethyst/math/experimental` without a
 stable behavior or accuracy guarantee.
 
@@ -69,6 +70,7 @@ fn main {
   println("atanhf(0.5) = \{@kmath.atanhf(0.5)}")
   println("acoshf(2) = \{@kmath.acoshf(2.0)}")
   println("atanf(1) = \{@kmath.atanf(1.0)}")
+  println("atan2f(1, -1) = \{@kmath.atan2f(1.0, -1.0)}")
   println("hypotf(3, 4) = \{@kmath.hypotf(3.0, 4.0)}")
   println("cosf(1) = \{@kmath.cosf(1.0)}")
   println("sinf(1) = \{@kmath.sinf(1.0)}")
@@ -111,6 +113,7 @@ As of version 0.1.17, Moonbit-Math supports the following functions:
 | `atan`        | Inverse tangent function.                                |
 | `atanf`       | **Stable.** Computes binary32 arctangent within 1 ULP.   |
 | `atan2`       | Computes the arctangent of y/x, with the result in radians. |
+| `atan2f`      | **Stable.** Computes binary32 two-argument arctangent within 2 ULP. |
 | `cos`         | Cosine function.                                         |
 | `cosf`        | **Stable.** Computes binary32 cosine within 1 ULP.       |
 | `cospi`       | Computes the cosine of `x * pi`.                         |
@@ -313,6 +316,7 @@ For floating-point functions, Moonbit-Math has currently measured the following 
 | `atan`        | 1       |
 | `atanf`       | 1       |
 | `atan2`       | 1       |
+| `atan2f`      | 2       |
 | `asin`        | 1       |
 | `asinf`       | 1       |
 | `acosf`       | 1       |
@@ -379,8 +383,9 @@ moon add Kaida-Amethyst/math
 
 通过 stable 晋升门槛的 API 由 `Kaida-Amethyst/math` 根包导出；`exp`、`expf`、`expm1f`、
 `sinhf`、`coshf`、`tanhf`、`cbrtf`、`sqrtf`、`logf`、`log1pf`、其别名
-`ln_1pf`、`log2f`、`log10f`、`acosf`、`asinf`、`asinhf`、`atanf`、`atanhf`、`acoshf`、`cosf`、`hypotf`、`sinf`、`tanf`、`scalbn`、其别名 `ldexp`
-以及 `scalbnf` 是当前 stable API。
+`ln_1pf`、`log2f`、`log10f`、`acosf`、`asinf`、`asinhf`、`atanf`、
+`atan2f`、`atanhf`、`acoshf`、`cosf`、`hypotf`、`sinf`、`tanf`、
+`scalbn`、其别名 `ldexp` 以及 `scalbnf` 是当前 stable API。
 其余 API 仍位于
 `Kaida-Amethyst/math/experimental`，尚不提供稳定的行为或精度保证。
 
@@ -420,6 +425,7 @@ fn main {
     println("atanhf(0.5) = \{@kmath.atanhf(0.5)}")
     println("acoshf(2) = \{@kmath.acoshf(2.0)}")
     println("atanf(1) = \{@kmath.atanf(1.0)}")
+    println("atan2f(1, -1) = \{@kmath.atan2f(1.0, -1.0)}")
     println("hypotf(3, 4) = \{@kmath.hypotf(3.0, 4.0)}")
     println("cosf(1) = \{@kmath.cosf(1.0)}")
     println("sinf(1) = \{@kmath.sinf(1.0)}")
@@ -462,6 +468,7 @@ fn main {
 | `atan`    | 反正切函数。                               |
 | `atanf`   | **Stable。**计算 binary32 反正切，误差不超过 1 ULP。 |
 | `atan2`   | 计算给定的 y/x 的反正切（结果以弧度表示）。 |
+| `atan2f`  | **Stable。**计算 binary32 二元反正切，误差不超过 2 ULP。 |
 | `cos`     | 余弦函数。                               |
 | `cosf`    | **Stable。**计算 binary32 余弦，误差不超过 1 ULP。 |
 | `cospi`   | 计算 `x * pi` 的余弦。                     |
@@ -667,6 +674,7 @@ Moonbit-Math 使用 ULP（Unit in the Last Place）来衡量精度。有关 ULP 
 | `atan`    | 1        |
 | `atanf`   | 1        |
 | `atan2`   | 1        |
+| `atan2f`  | 2        |
 | `asin`    | 1        |
 | `asinf`   | 1        |
 | `acosf`   | 1        |
