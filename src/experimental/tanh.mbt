@@ -36,10 +36,10 @@ pub fn tanh(x : Double) -> Double {
     if ix < 0x3c800000 {
       x * (1.0 + x)
     } else if ix >= 0x3ff00000 {
-      let t = expm1(2.0 * fabs(x))
+      let t = @math.expm1(2.0 * fabs(x))
       1.0 - 2.0 / (t + 2.0)
     } else {
-      let t = expm1(-2.0 * fabs(x))
+      let t = @math.expm1(-2.0 * fabs(x))
       -t / (t + 2.0)
     }
   } else {

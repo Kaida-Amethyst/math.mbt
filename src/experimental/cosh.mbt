@@ -47,7 +47,7 @@ pub fn cosh(x : Double) -> Double {
   }
   let ix = __hi(x).reinterpret_as_int() & 0x7fffffff
   if ix < 0x3fd62e43 {
-    let t = expm1(fabs(x))
+    let t = @math.expm1(fabs(x))
     let w = 1.0 + t
     if ix < 0x3c800000 {
       return w

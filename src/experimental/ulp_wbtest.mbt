@@ -20,9 +20,6 @@ const EXP2_MAX_ULP : Int = 1
 const EXP10_MAX_ULP : Int = 1
 
 ///|
-const EXPM1_MAX_ULP : Int = 0
-
-///|
 const CBRT_MAX_ULP : Int = 0
 
 ///|

@@ -25,7 +25,7 @@ moon add Kaida-Amethyst/math
 ## Usage
 
 APIs that pass the stable promotion criteria are exported from
-`Kaida-Amethyst/math`; `exp`, `expf`, `expm1f`, `sinhf`, `coshf`, `tanhf`,
+`Kaida-Amethyst/math`; `exp`, `expf`, `expm1`, `expm1f`, `sinhf`, `coshf`, `tanhf`,
 `cbrtf`, `sqrt`, `sqrtf`, `logf`, `log1pf`, its `ln_1pf` alias, `log2f`, `log10f`,
 `acos`, `acosf`, `asin`, `asinf`, `asinhf`, `atan`, `atanf`, `atan2`, `atan2f`, `atanhf`, `acoshf`, `cosf`,
 `hypotf`, `sinf`, `tanf`, `scalbn`, its `ldexp` alias, and `scalbnf` are
@@ -54,6 +54,7 @@ fn main {
   let result = @kmath.exp(1.0)
   println("exp(1) = \{result}")
   println("expf(1) = \{@kmath.expf(1.0)}")
+  println("expm1(1) = \{@kmath.expm1(1.0)}")
   println("expm1f(1) = \{@kmath.expm1f(1.0)}")
   println("tanhf(1) = \{@kmath.tanhf(1.0)}")
   println("sinhf(1) = \{@kmath.sinhf(1.0)}")
@@ -152,7 +153,7 @@ As of version 0.1.17, Moonbit-Math supports the following functions:
 | `exp`         | **Stable.** Computes e raised to the power of x.             |
 | `exp10`       | Base-10 exponential function.                                |
 | `exp2`        | Base-2 exponential function.                                 |
-| `expm1`       | Computes exp(x) - 1, offering better precision for small values. |
+| `expm1`       | **Stable.** Computes binary64 exp(x) - 1 within 1 ULP.  |
 | `expx2`       | Computes x * 2<sup>n</sup>.                                 |
 | `ilogb`       | Returns the integer base-2 exponent of x.                   |
 | `inv_digamma` | Inverse of the `digamma` function.                         |
@@ -309,7 +310,7 @@ For floating-point functions, Moonbit-Math has currently measured the following 
 | `scalbnf`     | 0       |
 | `exp2`        | 1       |
 | `exp10`       | 1       |
-| `expm1`       | 0       |
+| `expm1`       | 1       |
 | `cbrt`        | 0       |
 | `cbrtf`       | 0       |
 | `hypotf`      | 1       |
@@ -385,7 +386,7 @@ moon add Kaida-Amethyst/math
 
 ## 使用
 
-通过 stable 晋升门槛的 API 由 `Kaida-Amethyst/math` 根包导出；`exp`、`expf`、`expm1f`、
+通过 stable 晋升门槛的 API 由 `Kaida-Amethyst/math` 根包导出；`exp`、`expf`、`expm1`、`expm1f`、
 `sinhf`、`coshf`、`tanhf`、`cbrtf`、`sqrt`、`sqrtf`、`logf`、`log1pf`、其别名
 `ln_1pf`、`log2f`、`log10f`、`acos`、`acosf`、`asin`、`asinf`、`asinhf`、`atan`、`atanf`、
 `atan2`、`atan2f`、`atanhf`、`acoshf`、`cosf`、`hypotf`、`sinf`、`tanf`、
@@ -413,6 +414,7 @@ fn main {
     let result = @kmath.exp(1.0)
     println("exp(1) = \{result}")
     println("expf(1) = \{@kmath.expf(1.0)}")
+    println("expm1(1) = \{@kmath.expm1(1.0)}")
     println("expm1f(1) = \{@kmath.expm1f(1.0)}")
     println("tanhf(1) = \{@kmath.tanhf(1.0)}")
     println("sinhf(1) = \{@kmath.sinhf(1.0)}")
@@ -511,7 +513,7 @@ fn main {
 | `exp`       | **Stable。**计算 e 的 x 次方。          |
 | `exp10`     | 以 10 为底的指数函数。                 |
 | `exp2`      | 以 2 为底的指数函数。                  |
-| `expm1`     | 计算 exp(x) - 1，用于提高小数值的精度。 |
+| `expm1`     | **Stable。**计算 binary64 的 exp(x) - 1，误差不超过 1 ULP。 |
 | `expx2`     | 计算 x * 2<sup>n</sup>。             |
 | `ilogb`     | 返回 x 的以 2 为底的指数部分的整数值。   |
 | `inv_digamma` | `digamma` 函数的反函数。             |
@@ -671,7 +673,7 @@ Moonbit-Math 使用 ULP（Unit in the Last Place）来衡量精度。有关 ULP 
 | `scalbnf` | 0        |
 | `exp2`    | 1        |
 | `exp10`   | 1        |
-| `expm1`   | 0        |
+| `expm1`   | 1        |
 | `cbrt`    | 0        |
 | `cbrtf`   | 0        |
 | `hypotf`  | 1        |

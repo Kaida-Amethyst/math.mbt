@@ -34,6 +34,8 @@ pub fn exp(Double) -> Double
 
 pub fn expf(Float) -> Float
 
+pub fn expm1(Double) -> Double
+
 pub fn expm1f(Float) -> Float
 
 pub fn hypotf(Float, Float) -> Float

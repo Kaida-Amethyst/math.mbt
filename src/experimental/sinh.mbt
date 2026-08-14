@@ -33,7 +33,7 @@ pub fn sinh(x : Double) -> Double {
         return x
       }
     }
-    let t = expm1(abs_x)
+    let t = @math.expm1(abs_x)
     if ix < 0x3ff00000 {
       return h * (2.0 * t - t * t / (t + 1.0))
     }
