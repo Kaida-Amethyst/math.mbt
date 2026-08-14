@@ -68,6 +68,8 @@ pub fn sqrtf(Float) -> Float
 
 pub fn tanf(Float) -> Float
 
+pub fn tanh(Double) -> Double
+
 pub fn tanhf(Float) -> Float
 
 // Errors

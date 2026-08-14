@@ -32,9 +32,6 @@ const ASINH_MAX_ULP : Int = 0
 const ATANH_MAX_ULP : Int = 0
 
 ///|
-const TANH_MAX_ULP : Int = 0
-
-///|
 const COS_MAX_ULP : Int = 0
 
 ///|

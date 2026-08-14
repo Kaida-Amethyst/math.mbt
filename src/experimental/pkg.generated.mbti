@@ -310,8 +310,6 @@ pub fn sqrt1pm1(Double) -> Double
 
 pub fn tan(Double) -> Double
 
-pub fn tanh(Double) -> Double
-
 pub fn to_degrees(Double) -> Double
 
 pub fn to_radians(Double) -> Double
