@@ -12,6 +12,8 @@ pub fn asinhf(Float) -> Float
 
 pub fn atan(Double) -> Double
 
+pub fn atan2(Double, Double) -> Double
+
 pub fn atan2f(Float, Float) -> Float
 
 pub fn atanf(Float) -> Float

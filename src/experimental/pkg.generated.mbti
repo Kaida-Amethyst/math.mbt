@@ -80,8 +80,6 @@ pub fn asin(Double) -> Double
 
 pub fn asinh(Double) -> Double
 
-pub fn atan2(Double, Double) -> Double
-
 pub fn atanh(Double) -> Double
 
 pub fn bessel_i0(Double) -> Double
