@@ -27,7 +27,7 @@ moon add Kaida-Amethyst/math
 APIs that pass the stable promotion criteria are exported from
 `Kaida-Amethyst/math`; `exp`, `expf`, `expm1f`, `sinhf`, `coshf`, `tanhf`,
 `cbrtf`, `sqrt`, `sqrtf`, `logf`, `log1pf`, its `ln_1pf` alias, `log2f`, `log10f`,
-`acosf`, `asinf`, `asinhf`, `atan`, `atanf`, `atan2`, `atan2f`, `atanhf`, `acoshf`, `cosf`,
+`acosf`, `asin`, `asinf`, `asinhf`, `atan`, `atanf`, `atan2`, `atan2f`, `atanhf`, `acoshf`, `cosf`,
 `hypotf`, `sinf`, `tanf`, `scalbn`, its `ldexp` alias, and `scalbnf` are
 currently stable.
 Remaining APIs are available from `Kaida-Amethyst/math/experimental` without a
@@ -66,6 +66,7 @@ fn main {
   println("log2f(8) = \{@kmath.log2f(8.0)}")
   println("log10f(1000) = \{@kmath.log10f(1000.0)}")
   println("acosf(0.5) = \{@kmath.acosf(0.5)}")
+  println("asin(0.5) = \{@kmath.asin(0.5)}")
   println("asinf(0.5) = \{@kmath.asinf(0.5)}")
   println("asinhf(1) = \{@kmath.asinhf(1.0)}")
   println("atanhf(0.5) = \{@kmath.atanhf(0.5)}")
@@ -111,7 +112,7 @@ As of version 0.1.17, Moonbit-Math supports the following functions:
 | ------------- | -------------------------------------------------------- |
 | `acos`        | Inverse cosine function.                                 |
 | `acosf`       | **Stable.** Computes binary32 arc cosine within 1 ULP.   |
-| `asin`        | Inverse sine function.                                   |
+| `asin`        | **Stable.** Computes binary64 arcsine within 1 ULP.       |
 | `asinf`       | **Stable.** Computes binary32 arcsine within 1 ULP.      |
 | `atan`        | **Stable.** Computes binary64 arctangent within 1 ULP.   |
 | `atanf`       | **Stable.** Computes binary32 arctangent within 1 ULP.   |
@@ -385,7 +386,7 @@ moon add Kaida-Amethyst/math
 
 通过 stable 晋升门槛的 API 由 `Kaida-Amethyst/math` 根包导出；`exp`、`expf`、`expm1f`、
 `sinhf`、`coshf`、`tanhf`、`cbrtf`、`sqrt`、`sqrtf`、`logf`、`log1pf`、其别名
-`ln_1pf`、`log2f`、`log10f`、`acosf`、`asinf`、`asinhf`、`atan`、`atanf`、
+`ln_1pf`、`log2f`、`log10f`、`acosf`、`asin`、`asinf`、`asinhf`、`atan`、`atanf`、
 `atan2`、`atan2f`、`atanhf`、`acoshf`、`cosf`、`hypotf`、`sinf`、`tanf`、
 `scalbn`、其别名 `ldexp` 以及 `scalbnf` 是当前 stable API。
 其余 API 仍位于
@@ -423,6 +424,7 @@ fn main {
     println("log2f(8) = \{@kmath.log2f(8.0)}")
     println("log10f(1000) = \{@kmath.log10f(1000.0)}")
     println("acosf(0.5) = \{@kmath.acosf(0.5)}")
+    println("asin(0.5) = \{@kmath.asin(0.5)}")
     println("asinf(0.5) = \{@kmath.asinf(0.5)}")
     println("asinhf(1) = \{@kmath.asinhf(1.0)}")
     println("atanhf(0.5) = \{@kmath.atanhf(0.5)}")
@@ -468,7 +470,7 @@ fn main {
 | --------- | ---------------------------------------- |
 | `acos`    | 反余弦函数。                               |
 | `acosf`   | **Stable。**计算 binary32 反余弦，误差不超过 1 ULP。 |
-| `asin`    | 反正弦函数。                               |
+| `asin`    | **Stable。**计算 binary64 反正弦，误差不超过 1 ULP。 |
 | `asinf`   | **Stable。**计算 binary32 反正弦，误差不超过 1 ULP。 |
 | `atan`    | **Stable。**计算 binary64 反正切，误差不超过 1 ULP。 |
 | `atanf`   | **Stable。**计算 binary32 反正切，误差不超过 1 ULP。 |

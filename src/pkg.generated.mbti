@@ -6,6 +6,8 @@ pub fn acosf(Float) -> Float
 
 pub fn acoshf(Float) -> Float
 
+pub fn asin(Double) -> Double
+
 pub fn asinf(Float) -> Float
 
 pub fn asinhf(Float) -> Float
