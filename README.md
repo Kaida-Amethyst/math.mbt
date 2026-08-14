@@ -25,7 +25,7 @@ moon add Kaida-Amethyst/math
 ## Usage
 
 APIs that pass the stable promotion criteria are exported from
-`Kaida-Amethyst/math`; `exp`, `expf`, `expm1`, `expm1f`, `sinhf`, `coshf`, `tanhf`,
+`Kaida-Amethyst/math`; `exp`, `expf`, `expm1`, `expm1f`, `sinh`, `sinhf`, `coshf`, `tanhf`,
 `cbrtf`, `sqrt`, `sqrtf`, `logf`, `log1pf`, its `ln_1pf` alias, `log2f`, `log10f`,
 `acos`, `acosf`, `asin`, `asinf`, `asinhf`, `atan`, `atanf`, `atan2`, `atan2f`, `atanhf`, `acoshf`, `cosf`,
 `hypotf`, `sinf`, `tanf`, `scalbn`, its `ldexp` alias, and `scalbnf` are
@@ -56,6 +56,7 @@ fn main {
   println("expf(1) = \{@kmath.expf(1.0)}")
   println("expm1(1) = \{@kmath.expm1(1.0)}")
   println("expm1f(1) = \{@kmath.expm1f(1.0)}")
+  println("sinh(1) = \{@kmath.sinh(1.0)}")
   println("tanhf(1) = \{@kmath.tanhf(1.0)}")
   println("sinhf(1) = \{@kmath.sinhf(1.0)}")
   println("coshf(1) = \{@kmath.coshf(1.0)}")
@@ -143,7 +144,7 @@ As of version 0.1.17, Moonbit-Math supports the following functions:
 | `atanh`       | Inverse hyperbolic tangent.|
 | `atanhf`      | **Stable.** Binary32 inverse hyperbolic tangent within 1 ULP. |
 | `cosh`        | Hyperbolic cosine.       |
-| `sinh`        | Hyperbolic sine.         |
+| `sinh`        | **Stable.** Computes binary64 hyperbolic sine within 2 ULP. |
 | `tanh`        | Hyperbolic tangent.      |
 
 ### Exponential and Logarithmic Functions
@@ -331,7 +332,7 @@ For floating-point functions, Moonbit-Math has currently measured the following 
 | `asinh`       | 0       |
 | `atanh`       | 0       |
 | `cosh`        | 0       |
-| `sinh`        | 0       |
+| `sinh`        | 2       |
 | `tanh`        | 0       |
 | `cos`         | 0       |
 | `sin`         | 0       |
@@ -386,7 +387,7 @@ moon add Kaida-Amethyst/math
 
 ## 使用
 
-通过 stable 晋升门槛的 API 由 `Kaida-Amethyst/math` 根包导出；`exp`、`expf`、`expm1`、`expm1f`、
+通过 stable 晋升门槛的 API 由 `Kaida-Amethyst/math` 根包导出；`exp`、`expf`、`expm1`、`expm1f`、`sinh`、
 `sinhf`、`coshf`、`tanhf`、`cbrtf`、`sqrt`、`sqrtf`、`logf`、`log1pf`、其别名
 `ln_1pf`、`log2f`、`log10f`、`acos`、`acosf`、`asin`、`asinf`、`asinhf`、`atan`、`atanf`、
 `atan2`、`atan2f`、`atanhf`、`acoshf`、`cosf`、`hypotf`、`sinf`、`tanf`、
@@ -416,6 +417,7 @@ fn main {
     println("expf(1) = \{@kmath.expf(1.0)}")
     println("expm1(1) = \{@kmath.expm1(1.0)}")
     println("expm1f(1) = \{@kmath.expm1f(1.0)}")
+    println("sinh(1) = \{@kmath.sinh(1.0)}")
     println("tanhf(1) = \{@kmath.tanhf(1.0)}")
     println("sinhf(1) = \{@kmath.sinhf(1.0)}")
     println("coshf(1) = \{@kmath.coshf(1.0)}")
@@ -503,7 +505,7 @@ fn main {
 | `atanh`   | 反双曲正切函数。 |
 | `atanhf`  | **Stable。**计算 binary32 反双曲正切，误差不超过 1 ULP。 |
 | `cosh`    | 双曲余弦函数。   |
-| `sinh`    | 双曲正弦函数。   |
+| `sinh`    | **Stable。**计算 binary64 双曲正弦，误差不超过 2 ULP。 |
 | `tanh`    | 双曲正切函数。   |
 
 ### 指数和对数函数
@@ -694,7 +696,7 @@ Moonbit-Math 使用 ULP（Unit in the Last Place）来衡量精度。有关 ULP 
 | `asinh`   | 0        |
 | `atanh`   | 0        |
 | `cosh`    | 0        |
-| `sinh`    | 0        |
+| `sinh`    | 2        |
 | `tanh`    | 0        |
 | `cos`     | 0        |
 | `sin`     | 0        |
