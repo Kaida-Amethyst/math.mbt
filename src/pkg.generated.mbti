@@ -28,6 +28,8 @@ pub fn cbrtf(Float) -> Float
 
 pub fn cosf(Float) -> Float
 
+pub fn cosh(Double) -> Double
+
 pub fn coshf(Float) -> Float
 
 pub fn exp(Double) -> Double
