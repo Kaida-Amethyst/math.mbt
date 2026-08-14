@@ -39,9 +39,9 @@ pub fn atanh(x : Double) -> Double {
   let x = fabs(x)
   let t = if x <= 0.5 {
     let t = x + x
-    0.5 * log1p(t + t * x / (1.0 - x))
+    0.5 * @math.log1p(t + t * x / (1.0 - x))
   } else {
-    0.5 * log1p((x + x) / (1.0 - x))
+    0.5 * @math.log1p((x + x) / (1.0 - x))
   }
   if hx >= 0 {
     t

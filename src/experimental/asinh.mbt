@@ -53,7 +53,7 @@ pub fn asinh(x : Double) -> Double {
     log(2.0 * t + one / (@math.sqrt(x * x + one) + t))
   } else {
     let t = x * x
-    log1p(fabs(x) + t / (one + @math.sqrt(one + t)))
+    @math.log1p(fabs(x) + t / (one + @math.sqrt(one + t)))
   }
   if hx > 0 {
     w

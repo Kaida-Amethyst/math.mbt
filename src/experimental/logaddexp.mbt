@@ -8,8 +8,8 @@ pub fn logaddexp(x1 : Double, x2 : Double) -> Double {
   }
   let temp : Double = x1 - x2
   if temp > 0 {
-    x1 + log1p(@math.exp(-temp))
+    x1 + @math.log1p(@math.exp(-temp))
   } else {
-    x2 + log1p(@math.exp(temp))
+    x2 + @math.log1p(@math.exp(temp))
   }
 }

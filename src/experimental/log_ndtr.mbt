@@ -6,6 +6,6 @@ pub fn log_ndtr(x : Double) -> Double {
   if x < -1.0 {
     log(erfcx(-t) / 2.0) - t * t
   } else {
-    log1p(-erfc(t) / 2.0)
+    @math.log1p(-erfc(t) / 2.0)
   }
 }

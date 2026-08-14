@@ -54,6 +54,6 @@ pub fn acosh(x : Double) -> Double {
   } else {
     // 1 < x < 2
     let t = x - one
-    return log1p(t + @math.sqrt(2.0 * t + t * t))
+    return @math.log1p(t + @math.sqrt(2.0 * t + t * t))
   }
 }

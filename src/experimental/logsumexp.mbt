@@ -13,5 +13,5 @@ pub fn logsumexp(elements : Array[Double]) -> Double {
       result += @math.exp(v - max_val)
     }
   }
-  max_val + log1p(result)
+  max_val + @math.log1p(result)
 }

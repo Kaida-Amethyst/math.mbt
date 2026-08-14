@@ -44,6 +44,9 @@ pub fn hypotf(Float, Float) -> Float
 
 pub fn log10f(Float) -> Float
 
+#alias(ln_1p)
+pub fn log1p(Double) -> Double
+
 #alias(ln_1pf)
 pub fn log1pf(Float) -> Float
 
