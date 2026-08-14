@@ -92,11 +92,11 @@ pub fn bessel_j0(x : Double) -> Double {
       }
     }
     if ix > 0x48000000 {
-      z = invsqrtpi * cc / sqrt(x)
+      z = invsqrtpi * cc / @math.sqrt(x)
     } else {
       let u = pzero(x)
       let v = qzero(x)
-      z = invsqrtpi * (u * cc - v * ss) / sqrt(x)
+      z = invsqrtpi * (u * cc - v * ss) / @math.sqrt(x)
     }
     return z
   }

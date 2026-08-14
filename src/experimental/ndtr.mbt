@@ -11,7 +11,7 @@ pub fn ndtr(a : Double) -> Double {
   } else {
     let y = 0.5 * erfce(z)
     let z = expx2(a, -1)
-    y * sqrt(z)
+    y * @math.sqrt(z)
   }
   if x > 0.0 {
     1.0 - y

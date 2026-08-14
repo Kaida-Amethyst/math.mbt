@@ -64,7 +64,7 @@ pub fn airy_ai(x : Double) -> Double {
     }
     let t = -2.0 * x * (-x).sqrt() / 3.0 + 0.25 * DOUBLE_PI
     let p = sin(t) * (1.0 + z * z * afn / afd) - cos(t) * (z * agn / agd)
-    return 5.64189583547756286948e-01 / sqrt(sqrt(-x)) * p
+    return 5.64189583547756286948e-01 / @math.sqrt(@math.sqrt(-x)) * p
   }
   if x >= 2.09 {
     domain_flag = 5

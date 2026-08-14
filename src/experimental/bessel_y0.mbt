@@ -78,11 +78,11 @@ pub fn y0(x : Double) -> Double {
       }
     }
     let z = if ix > 0x48000000 {
-      invsqrtpi * ss / sqrt(x)
+      invsqrtpi * ss / @math.sqrt(x)
     } else {
       let u = pzero(x)
       let v = qzero(x)
-      invsqrtpi * (u * ss + v * cc) / sqrt(x)
+      invsqrtpi * (u * ss + v * cc) / @math.sqrt(x)
     }
     return z
   }

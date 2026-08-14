@@ -49,7 +49,7 @@ pub fn bessel_yn(n : Int, x : Double) -> Double {
       3 => sin(x) + cos(x)
       _ => panic()
     }
-    b = INV_SQRT_PI * temp / sqrt(x)
+    b = INV_SQRT_PI * temp / @math.sqrt(x)
   } else {
     a = y0(x)
     b = y1(x)

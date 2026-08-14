@@ -41,7 +41,7 @@ pub fn bessel_jn(n : Int, x : Double) -> Double {
         3 => cos(x) - sin(x)
         _ => panic()
       }
-      b = INV_SQRT_PI * temp / sqrt(x)
+      b = INV_SQRT_PI * temp / @math.sqrt(x)
     } else {
       a = j0(x)
       b = j1(x)

@@ -38,7 +38,7 @@ pub fn ndtri(y0 : Double) -> Double {
     let x = y + y * (y2 * polevl(y2, p0) / polevl(y2, q0))
     return x * s2pi
   }
-  let x = sqrt(-2.0 * log(y))
+  let x = @math.sqrt(-2.0 * log(y))
   let x0 = x - log(x) / x
   let z = 1.0 / x
   let mut x1 = 0.0

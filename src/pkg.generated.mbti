@@ -48,6 +48,8 @@ pub fn sinf(Float) -> Float
 
 pub fn sinhf(Float) -> Float
 
+pub fn sqrt(Double) -> Double
+
 pub fn sqrtf(Float) -> Float
 
 pub fn tanf(Float) -> Float

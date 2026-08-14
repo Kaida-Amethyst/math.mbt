@@ -26,7 +26,7 @@ moon add Kaida-Amethyst/math
 
 APIs that pass the stable promotion criteria are exported from
 `Kaida-Amethyst/math`; `exp`, `expf`, `expm1f`, `sinhf`, `coshf`, `tanhf`,
-`cbrtf`, `sqrtf`, `logf`, `log1pf`, its `ln_1pf` alias, `log2f`, `log10f`,
+`cbrtf`, `sqrt`, `sqrtf`, `logf`, `log1pf`, its `ln_1pf` alias, `log2f`, `log10f`,
 `acosf`, `asinf`, `asinhf`, `atanf`, `atan2f`, `atanhf`, `acoshf`, `cosf`,
 `hypotf`, `sinf`, `tanf`, `scalbn`, its `ldexp` alias, and `scalbnf` are
 currently stable.
@@ -59,6 +59,7 @@ fn main {
   println("sinhf(1) = \{@kmath.sinhf(1.0)}")
   println("coshf(1) = \{@kmath.coshf(1.0)}")
   println("cbrtf(27) = \{@kmath.cbrtf(27.0)}")
+  println("sqrt(4) = \{@kmath.sqrt(4.0)}")
   println("sqrtf(4) = \{@kmath.sqrtf(4.0)}")
   println("logf(2) = \{@kmath.logf(2.0)}")
   println("log1pf(1) = \{@kmath.log1pf(1.0)}")
@@ -173,7 +174,7 @@ As of version 0.1.17, Moonbit-Math supports the following functions:
 | `powi`        | Computes the base as `Double` raised to the power of an `Int` exponent. |
 | `pown`        | Computes the base as `Double` raised to the power of an `Int` exponent. |
 | `rsqrt`       | Computes 1 / sqrt(x).                                       |
-| `sqrt`        | Square root function.                                        |
+| `sqrt`        | **Stable.** Delegates binary64 square root to `Double::sqrt`. |
 | `sqrt1pm1`    | Computes sqrt(1 + x) - 1, for better precision with small values. |
 | `zeta`        | Zeta function.                                             |
 
@@ -332,7 +333,6 @@ For floating-point functions, Moonbit-Math has currently measured the following 
 | `tan`         | 0       |
 | `cospi`       | 49      |
 | `sinpi`       | 3       |
-| `sqrt`        | 0       |
 | `hypot`       | 1       |
 | `erf`         | 1       |
 | `erfc`        | 1       |
@@ -382,7 +382,7 @@ moon add Kaida-Amethyst/math
 ## 使用
 
 通过 stable 晋升门槛的 API 由 `Kaida-Amethyst/math` 根包导出；`exp`、`expf`、`expm1f`、
-`sinhf`、`coshf`、`tanhf`、`cbrtf`、`sqrtf`、`logf`、`log1pf`、其别名
+`sinhf`、`coshf`、`tanhf`、`cbrtf`、`sqrt`、`sqrtf`、`logf`、`log1pf`、其别名
 `ln_1pf`、`log2f`、`log10f`、`acosf`、`asinf`、`asinhf`、`atanf`、
 `atan2f`、`atanhf`、`acoshf`、`cosf`、`hypotf`、`sinf`、`tanf`、
 `scalbn`、其别名 `ldexp` 以及 `scalbnf` 是当前 stable API。
@@ -414,6 +414,7 @@ fn main {
     println("sinhf(1) = \{@kmath.sinhf(1.0)}")
     println("coshf(1) = \{@kmath.coshf(1.0)}")
     println("cbrtf(27) = \{@kmath.cbrtf(27.0)}")
+    println("sqrt(4) = \{@kmath.sqrt(4.0)}")
     println("sqrtf(4) = \{@kmath.sqrtf(4.0)}")
     println("logf(2) = \{@kmath.logf(2.0)}")
     println("log1pf(1) = \{@kmath.log1pf(1.0)}")
@@ -528,7 +529,7 @@ fn main {
 | `powi`      | 计算底数为 `Double` 类型，指数为 `Int` 类型的幂。 |
 | `pown`      | 计算底数为 `Double` 类型，指数为 `Int` 类型的幂。 |
 | `rsqrt`     | 计算 1 / sqrt(x)。                   |
-| `sqrt`      | 平方根函数。                           |
+| `sqrt`      | **Stable。**直接使用 `Double::sqrt` 计算 binary64 平方根。 |
 | `sqrt1pm1`  | 计算 sqrt(1 + x) - 1，用于提高小数值的精度。 |
 | `zeta`      | Zeta 函数。                           |
 
@@ -690,7 +691,6 @@ Moonbit-Math 使用 ULP（Unit in the Last Place）来衡量精度。有关 ULP 
 | `tan`     | 0        |
 | `cospi`   | 49       |
 | `sinpi`   | 3        |
-| `sqrt`    | 0        |
 | `hypot`   | 1        |
 | `erf`     | 1        |
 | `erfc`    | 1        |

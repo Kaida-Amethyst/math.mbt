@@ -58,7 +58,7 @@ pub fn asin(x : Double) -> Double {
   let t = w * 0.5
   let p = t * (ps0 + t * (ps1 + t * (ps2 + t * (ps3 + t * (ps4 + t * ps5)))))
   let q = 1.0 + t * (qs1 + t * (qs2 + t * (qs3 + t * qs4)))
-  let s = sqrt(t)
+  let s = @math.sqrt(t)
   if ix >= 0x3FEF3333 {
     let w = p / q
     let t = pio2_hi - (2.0 * (s + s * w) - pio2_lo)

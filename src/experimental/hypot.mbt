@@ -36,5 +36,5 @@ pub fn hypot(x : Double, y : Double) -> Double {
     return x
   }
   let rat = y / x
-  x * sqrt(1.0 + rat * rat)
+  x * @math.sqrt(1.0 + rat * rat)
 }

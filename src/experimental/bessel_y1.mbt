@@ -81,11 +81,11 @@ pub fn y1(x : Double) -> Double {
       }
     }
     let z = if ix > 0x48000000 {
-      invsqrtpi * ss / sqrt(x)
+      invsqrtpi * ss / @math.sqrt(x)
     } else {
       let u = pone(x)
       let v = qone(x)
-      invsqrtpi * (u * ss + v * cc) / sqrt(x)
+      invsqrtpi * (u * ss + v * cc) / @math.sqrt(x)
     }
     return z
   }

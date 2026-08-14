@@ -33,7 +33,7 @@ pub fn bessel_i1(x : Double) -> Double {
     let y = z / 2.0 - 2.0
     chbevl(y, i1_arrA) * z * @math.exp(z)
   } else {
-    @math.exp(z) * chbevl(32.0 / z - 2.0, i1_arrB) / sqrt(z)
+    @math.exp(z) * chbevl(32.0 / z - 2.0, i1_arrB) / @math.sqrt(z)
   }
   return if x < 0.0 { -z } else { z }
 }

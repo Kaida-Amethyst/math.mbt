@@ -9,7 +9,7 @@ pub fn bessel_k1e(x : Double) -> Double {
     let y = log(0.5 * x) * bessel_i1(x) + chbevl(y, k1_arrA) / x
     return y * @math.exp(x)
   }
-  return chbevl(8.0 / x - 2.0, k1_arrB) / sqrt(x)
+  return chbevl(8.0 / x - 2.0, k1_arrB) / @math.sqrt(x)
 }
 
 ///|

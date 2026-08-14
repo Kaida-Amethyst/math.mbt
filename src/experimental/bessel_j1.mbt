@@ -73,11 +73,11 @@ pub fn bessel_j1(x : Double) -> Double {
       }
     }
     let z = if ix > 0x48000000 {
-      invsqrtpi * cc / sqrt(y)
+      invsqrtpi * cc / @math.sqrt(y)
     } else {
       let u = pone(y)
       let v = qone(y)
-      invsqrtpi * (u * cc - v * ss) / sqrt(y)
+      invsqrtpi * (u * cc - v * ss) / @math.sqrt(y)
     }
     if hx < 0 {
       return -z

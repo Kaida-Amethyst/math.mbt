@@ -50,10 +50,10 @@ pub fn acosh(x : Double) -> Double {
   } else if hx > 0x40000000 {
     // 2**28 > x > 2
     let t = x * x
-    return log(2.0 * x - one / (x + sqrt(t - one)))
+    return log(2.0 * x - one / (x + @math.sqrt(t - one)))
   } else {
     // 1 < x < 2
     let t = x - one
-    return log1p(t + sqrt(2.0 * t + t * t))
+    return log1p(t + @math.sqrt(2.0 * t + t * t))
   }
 }

@@ -50,10 +50,10 @@ pub fn asinh(x : Double) -> Double {
     log(fabs(x)) + ln2
   } else if ix > 0x40000000 {
     let t = fabs(x)
-    log(2.0 * t + one / (sqrt(x * x + one) + t))
+    log(2.0 * t + one / (@math.sqrt(x * x + one) + t))
   } else {
     let t = x * x
-    log1p(fabs(x) + t / (one + sqrt(one + t)))
+    log1p(fabs(x) + t / (one + @math.sqrt(one + t)))
   }
   if hx > 0 {
     w

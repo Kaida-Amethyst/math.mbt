@@ -12,5 +12,5 @@ pub fn norm(vec : Array[Double]) -> Double {
   for p in vec {
     ssum += square(fabs(p) / max)
   }
-  max * sqrt(ssum)
+  max * @math.sqrt(ssum)
 }

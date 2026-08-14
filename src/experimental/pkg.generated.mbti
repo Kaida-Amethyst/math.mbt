@@ -320,8 +320,6 @@ pub fn sinh(Double) -> Double
 
 pub fn sinpi(Double) -> Double
 
-pub fn sqrt(Double) -> Double
-
 pub fn sqrt1pm1(Double) -> Double
 
 pub fn tan(Double) -> Double
