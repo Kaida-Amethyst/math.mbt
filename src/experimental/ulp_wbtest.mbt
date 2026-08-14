@@ -26,9 +26,6 @@ const EXPM1_MAX_ULP : Int = 0
 const CBRT_MAX_ULP : Int = 0
 
 ///|
-const ACOS_MAX_ULP : Int = 1
-
-///|
 const ACOSH_MAX_ULP : Int = 0
 
 ///|

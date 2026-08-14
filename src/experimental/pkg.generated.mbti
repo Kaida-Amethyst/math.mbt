@@ -70,8 +70,6 @@ pub const UINT64_MAX : UInt64 = 18446744073709551615
 
 pub const UINT_MAX : UInt = 4294967295
 
-pub fn acos(Double) -> Double
-
 pub fn acosh(Double) -> Double
 
 pub fn airy_ai(Double) -> Double
