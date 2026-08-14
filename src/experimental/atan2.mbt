@@ -39,7 +39,7 @@ pub fn atan2(y : Double, x : Double) -> Double {
   let ix = hx & 0x7fffffff
   let iy = hy & 0x7fffffff
   if x == 1.0 {
-    return atan(y)
+    return @math.atan(y)
   }
   let m = ((hy >> 31) & 1) | ((hx >> 30) & 2)
   if y == 0 {
@@ -78,7 +78,7 @@ pub fn atan2(y : Double, x : Double) -> Double {
   } else if hx < 0 && k < -60 {
     0.0
   } else {
-    atan(fabs(y / x))
+    @math.atan(fabs(y / x))
   }
   match m {
     0 => z
